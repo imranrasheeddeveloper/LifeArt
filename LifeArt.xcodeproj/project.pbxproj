@@ -1,0 +1,615 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4F154756261C94D80092C2AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F154755261C94D80092C2AE /* AppDelegate.swift */; };
+		4F154758261C94D80092C2AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F154757261C94D80092C2AE /* SceneDelegate.swift */; };
+		4F15475A261C94D80092C2AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F154759261C94D80092C2AE /* ViewController.swift */; };
+		4F15475D261C94D80092C2AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F15475B261C94D80092C2AE /* Main.storyboard */; };
+		4F154760261C94D80092C2AE /* LifeArt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4F15475E261C94D80092C2AE /* LifeArt.xcdatamodeld */; };
+		4F154762261C94DA0092C2AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F154761261C94DA0092C2AE /* Assets.xcassets */; };
+		4F154765261C94DA0092C2AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F154763261C94DA0092C2AE /* LaunchScreen.storyboard */; };
+		4F154770261C94DB0092C2AE /* LifeArtTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F15476F261C94DB0092C2AE /* LifeArtTests.swift */; };
+		4F15477B261C94DB0092C2AE /* LifeArtUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F15477A261C94DB0092C2AE /* LifeArtUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4F15476C261C94DB0092C2AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4F15474A261C94D80092C2AE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4F154751261C94D80092C2AE;
+			remoteInfo = LifeArt;
+		};
+		4F154777261C94DB0092C2AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4F15474A261C94D80092C2AE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4F154751261C94D80092C2AE;
+			remoteInfo = LifeArt;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4F154752261C94D80092C2AE /* LifeArt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LifeArt.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F154755261C94D80092C2AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4F154757261C94D80092C2AE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		4F154759261C94D80092C2AE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4F15475C261C94D80092C2AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4F15475F261C94D80092C2AE /* LifeArt.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LifeArt.xcdatamodel; sourceTree = "<group>"; };
+		4F154761261C94DA0092C2AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4F154764261C94DA0092C2AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4F154766261C94DA0092C2AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4F15476B261C94DB0092C2AE /* LifeArtTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LifeArtTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F15476F261C94DB0092C2AE /* LifeArtTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeArtTests.swift; sourceTree = "<group>"; };
+		4F154771261C94DB0092C2AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4F154776261C94DB0092C2AE /* LifeArtUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LifeArtUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F15477A261C94DB0092C2AE /* LifeArtUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LifeArtUITests.swift; sourceTree = "<group>"; };
+		4F15477C261C94DB0092C2AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4F15474F261C94D80092C2AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F154768261C94DB0092C2AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F154773261C94DB0092C2AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4F154749261C94D80092C2AE = {
+			isa = PBXGroup;
+			children = (
+				4F154754261C94D80092C2AE /* LifeArt */,
+				4F15476E261C94DB0092C2AE /* LifeArtTests */,
+				4F154779261C94DB0092C2AE /* LifeArtUITests */,
+				4F154753261C94D80092C2AE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4F154753261C94D80092C2AE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4F154752261C94D80092C2AE /* LifeArt.app */,
+				4F15476B261C94DB0092C2AE /* LifeArtTests.xctest */,
+				4F154776261C94DB0092C2AE /* LifeArtUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4F154754261C94D80092C2AE /* LifeArt */ = {
+			isa = PBXGroup;
+			children = (
+				4F154755261C94D80092C2AE /* AppDelegate.swift */,
+				4F154757261C94D80092C2AE /* SceneDelegate.swift */,
+				4F154759261C94D80092C2AE /* ViewController.swift */,
+				4F15475B261C94D80092C2AE /* Main.storyboard */,
+				4F154761261C94DA0092C2AE /* Assets.xcassets */,
+				4F154763261C94DA0092C2AE /* LaunchScreen.storyboard */,
+				4F154766261C94DA0092C2AE /* Info.plist */,
+				4F15475E261C94D80092C2AE /* LifeArt.xcdatamodeld */,
+			);
+			path = LifeArt;
+			sourceTree = "<group>";
+		};
+		4F15476E261C94DB0092C2AE /* LifeArtTests */ = {
+			isa = PBXGroup;
+			children = (
+				4F15476F261C94DB0092C2AE /* LifeArtTests.swift */,
+				4F154771261C94DB0092C2AE /* Info.plist */,
+			);
+			path = LifeArtTests;
+			sourceTree = "<group>";
+		};
+		4F154779261C94DB0092C2AE /* LifeArtUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4F15477A261C94DB0092C2AE /* LifeArtUITests.swift */,
+				4F15477C261C94DB0092C2AE /* Info.plist */,
+			);
+			path = LifeArtUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4F154751261C94D80092C2AE /* LifeArt */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4F15477F261C94DB0092C2AE /* Build configuration list for PBXNativeTarget "LifeArt" */;
+			buildPhases = (
+				4F15474E261C94D80092C2AE /* Sources */,
+				4F15474F261C94D80092C2AE /* Frameworks */,
+				4F154750261C94D80092C2AE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LifeArt;
+			productName = LifeArt;
+			productReference = 4F154752261C94D80092C2AE /* LifeArt.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4F15476A261C94DB0092C2AE /* LifeArtTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4F154782261C94DB0092C2AE /* Build configuration list for PBXNativeTarget "LifeArtTests" */;
+			buildPhases = (
+				4F154767261C94DB0092C2AE /* Sources */,
+				4F154768261C94DB0092C2AE /* Frameworks */,
+				4F154769261C94DB0092C2AE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4F15476D261C94DB0092C2AE /* PBXTargetDependency */,
+			);
+			name = LifeArtTests;
+			productName = LifeArtTests;
+			productReference = 4F15476B261C94DB0092C2AE /* LifeArtTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4F154775261C94DB0092C2AE /* LifeArtUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4F154785261C94DB0092C2AE /* Build configuration list for PBXNativeTarget "LifeArtUITests" */;
+			buildPhases = (
+				4F154772261C94DB0092C2AE /* Sources */,
+				4F154773261C94DB0092C2AE /* Frameworks */,
+				4F154774261C94DB0092C2AE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4F154778261C94DB0092C2AE /* PBXTargetDependency */,
+			);
+			name = LifeArtUITests;
+			productName = LifeArtUITests;
+			productReference = 4F154776261C94DB0092C2AE /* LifeArtUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4F15474A261C94D80092C2AE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					4F154751261C94D80092C2AE = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					4F15476A261C94DB0092C2AE = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 4F154751261C94D80092C2AE;
+					};
+					4F154775261C94DB0092C2AE = {
+						CreatedOnToolsVersion = 12.4;
+						TestTargetID = 4F154751261C94D80092C2AE;
+					};
+				};
+			};
+			buildConfigurationList = 4F15474D261C94D80092C2AE /* Build configuration list for PBXProject "LifeArt" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4F154749261C94D80092C2AE;
+			productRefGroup = 4F154753261C94D80092C2AE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4F154751261C94D80092C2AE /* LifeArt */,
+				4F15476A261C94DB0092C2AE /* LifeArtTests */,
+				4F154775261C94DB0092C2AE /* LifeArtUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4F154750261C94D80092C2AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F154765261C94DA0092C2AE /* LaunchScreen.storyboard in Resources */,
+				4F154762261C94DA0092C2AE /* Assets.xcassets in Resources */,
+				4F15475D261C94D80092C2AE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F154769261C94DB0092C2AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F154774261C94DB0092C2AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4F15474E261C94D80092C2AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F15475A261C94D80092C2AE /* ViewController.swift in Sources */,
+				4F154756261C94D80092C2AE /* AppDelegate.swift in Sources */,
+				4F154758261C94D80092C2AE /* SceneDelegate.swift in Sources */,
+				4F154760261C94D80092C2AE /* LifeArt.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F154767261C94DB0092C2AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F154770261C94DB0092C2AE /* LifeArtTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4F154772261C94DB0092C2AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F15477B261C94DB0092C2AE /* LifeArtUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4F15476D261C94DB0092C2AE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4F154751261C94D80092C2AE /* LifeArt */;
+			targetProxy = 4F15476C261C94DB0092C2AE /* PBXContainerItemProxy */;
+		};
+		4F154778261C94DB0092C2AE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4F154751261C94D80092C2AE /* LifeArt */;
+			targetProxy = 4F154777261C94DB0092C2AE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4F15475B261C94D80092C2AE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4F15475C261C94D80092C2AE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4F154763261C94DA0092C2AE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4F154764261C94DA0092C2AE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4F15477D261C94DB0092C2AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4F15477E261C94DB0092C2AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4F154780261C94DB0092C2AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 84DA638W4Y;
+				INFOPLIST_FILE = LifeArt/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.itridtechnologies.LifeArt;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4F154781261C94DB0092C2AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 84DA638W4Y;
+				INFOPLIST_FILE = LifeArt/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.itridtechnologies.LifeArt;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		4F154783261C94DB0092C2AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 84DA638W4Y;
+				INFOPLIST_FILE = LifeArtTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.itridtechnologies.LifeArtTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LifeArt.app/LifeArt";
+			};
+			name = Debug;
+		};
+		4F154784261C94DB0092C2AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 84DA638W4Y;
+				INFOPLIST_FILE = LifeArtTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.itridtechnologies.LifeArtTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LifeArt.app/LifeArt";
+			};
+			name = Release;
+		};
+		4F154786261C94DB0092C2AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 84DA638W4Y;
+				INFOPLIST_FILE = LifeArtUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.itridtechnologies.LifeArtUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LifeArt;
+			};
+			name = Debug;
+		};
+		4F154787261C94DB0092C2AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 84DA638W4Y;
+				INFOPLIST_FILE = LifeArtUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.itridtechnologies.LifeArtUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = LifeArt;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4F15474D261C94D80092C2AE /* Build configuration list for PBXProject "LifeArt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F15477D261C94DB0092C2AE /* Debug */,
+				4F15477E261C94DB0092C2AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4F15477F261C94DB0092C2AE /* Build configuration list for PBXNativeTarget "LifeArt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F154780261C94DB0092C2AE /* Debug */,
+				4F154781261C94DB0092C2AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4F154782261C94DB0092C2AE /* Build configuration list for PBXNativeTarget "LifeArtTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F154783261C94DB0092C2AE /* Debug */,
+				4F154784261C94DB0092C2AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4F154785261C94DB0092C2AE /* Build configuration list for PBXNativeTarget "LifeArtUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F154786261C94DB0092C2AE /* Debug */,
+				4F154787261C94DB0092C2AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4F15475E261C94D80092C2AE /* LifeArt.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4F15475F261C94D80092C2AE /* LifeArt.xcdatamodel */,
+			);
+			currentVersion = 4F15475F261C94D80092C2AE /* LifeArt.xcdatamodel */;
+			path = LifeArt.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 4F15474A261C94D80092C2AE /* Project object */;
+}

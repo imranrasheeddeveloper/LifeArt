@@ -9,9 +9,11 @@ import UIKit
 
 class SuggestedCell: UICollectionViewCell {
 
+    @IBOutlet weak var cellBackgroundView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        cellBackgroundView.viewShadowWithoutBorder()
     }
 
 }

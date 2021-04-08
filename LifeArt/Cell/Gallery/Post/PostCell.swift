@@ -8,10 +8,13 @@
 import UIKit
 
 class PostCell: UITableViewCell {
-
+ 
+    @IBOutlet weak var bgView : UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        bgView.viewShadow()
+        
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -12,26 +12,26 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="SuggestedCell" customModule="LifeArt" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="156" height="234"/>
+            <rect key="frame" x="0.0" y="0.0" width="200" height="250"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="156" height="234"/>
+                <rect key="frame" x="0.0" y="0.0" width="200" height="250"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="btu-mK-ztA" customClass="RoundedView" customModule="LifeArt" customModuleProvider="target">
-                        <rect key="frame" x="10" y="10" width="136" height="214"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="btu-mK-ztA">
+                        <rect key="frame" x="10" y="10" width="180" height="230"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="artist1" translatesAutoresizingMaskIntoConstraints="NO" id="5A1-Ge-QXb">
-                                <rect key="frame" x="0.0" y="0.0" width="136" height="149"/>
+                                <rect key="frame" x="0.0" y="0.0" width="180" height="160"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Noreh G deo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="re2-Jq-hEE">
-                                <rect key="frame" x="23.5" y="154" width="89" height="19"/>
+                                <rect key="frame" x="45.5" y="165" width="89" height="19"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fqV-uu-hPh" customClass="ButtonRounded" customModule="LifeArt" customModuleProvider="target">
-                                <rect key="frame" x="5" y="183" width="126" height="26"/>
+                                <rect key="frame" x="5" y="194" width="170" height="31"/>
                                 <color key="backgroundColor" name="colorPrimary"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                 <state key="normal" title="Follow">
@@ -44,7 +44,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ae-To-Dtb">
-                                <rect key="frame" x="115" y="5" width="16" height="16"/>
+                                <rect key="frame" x="159" y="5" width="16" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="16" id="aq1-gZ-uP3"/>
                                     <constraint firstAttribute="height" constant="16" id="iek-Jl-aes"/>
@@ -67,24 +67,6 @@
                             <constraint firstItem="5A1-Ge-QXb" firstAttribute="height" secondItem="btu-mK-ztA" secondAttribute="height" multiplier="0.696262" id="zDq-UL-QKi"/>
                             <constraint firstAttribute="trailing" secondItem="5A1-Ge-QXb" secondAttribute="trailing" id="zhS-78-KnP"/>
                         </constraints>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="boolean" keyPath="topLeft" value="YES"/>
-                            <userDefinedRuntimeAttribute type="boolean" keyPath="topRight" value="YES"/>
-                            <userDefinedRuntimeAttribute type="boolean" keyPath="bottomLeft" value="YES"/>
-                            <userDefinedRuntimeAttribute type="boolean" keyPath="bottomRight" value="YES"/>
-                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                <real key="value" value="10"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                <real key="value" value="5"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                <size key="value" width="0.0" height="5"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                <color key="value" systemColor="systemGray2Color"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
             </view>
@@ -96,6 +78,9 @@
                 <constraint firstAttribute="trailing" secondItem="btu-mK-ztA" secondAttribute="trailing" constant="10" id="sha-ga-2hf"/>
             </constraints>
             <size key="customSize" width="156" height="234"/>
+            <connections>
+                <outlet property="cellBackgroundView" destination="btu-mK-ztA" id="p8p-06-ZvV"/>
+            </connections>
             <point key="canvasLocation" x="53.623188405797109" y="139.28571428571428"/>
         </collectionViewCell>
     </objects>
@@ -112,9 +97,6 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

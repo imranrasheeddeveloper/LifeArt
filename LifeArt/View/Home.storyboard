@@ -63,21 +63,32 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="F4D-rg-yBU">
+                                <rect key="frame" x="0.0" y="144" width="414" height="669"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Kld-fh-G7M"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="F4D-rg-yBU" firstAttribute="leading" secondItem="Kld-fh-G7M" secondAttribute="leading" id="3hw-Fy-QfF"/>
                             <constraint firstItem="QT2-ke-39d" firstAttribute="top" secondItem="Kld-fh-G7M" secondAttribute="top" constant="10" id="3sM-UE-s2W"/>
+                            <constraint firstItem="Kld-fh-G7M" firstAttribute="trailing" secondItem="F4D-rg-yBU" secondAttribute="trailing" id="7DP-iV-7sW"/>
                             <constraint firstItem="n0a-sH-vA4" firstAttribute="top" secondItem="Kld-fh-G7M" secondAttribute="top" id="AmR-EW-e6x"/>
                             <constraint firstItem="Kld-fh-G7M" firstAttribute="trailing" secondItem="QT2-ke-39d" secondAttribute="trailing" constant="20" id="StL-By-ka9"/>
                             <constraint firstItem="Kld-fh-G7M" firstAttribute="trailing" secondItem="n0a-sH-vA4" secondAttribute="trailing" id="Txi-zt-ZZr"/>
                             <constraint firstItem="n0a-sH-vA4" firstAttribute="leading" secondItem="Kld-fh-G7M" secondAttribute="leading" id="V0L-e9-UZ6"/>
                             <constraint firstItem="WH3-Qx-BaC" firstAttribute="top" secondItem="QT2-ke-39d" secondAttribute="bottom" constant="10" id="ahA-wH-KCS"/>
+                            <constraint firstItem="Kld-fh-G7M" firstAttribute="bottom" secondItem="F4D-rg-yBU" secondAttribute="bottom" id="gMm-1J-zrS"/>
+                            <constraint firstItem="F4D-rg-yBU" firstAttribute="top" secondItem="n0a-sH-vA4" secondAttribute="bottom" id="xmC-Wd-wwy"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Gallery" id="Sgd-Qa-ker">
                         <imageReference key="image" image="newspaper" catalog="system" renderingMode="original"/>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="tableview" destination="F4D-rg-yBU" id="xUG-MY-pck"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bXT-T9-viv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -144,16 +155,61 @@
         <!--Professional-->
         <scene sceneID="sDi-UI-VKn">
             <objects>
-                <viewController id="c8G-Qr-1CX" sceneMemberID="viewController">
+                <viewController id="c8G-Qr-1CX" customClass="ProfessionalVC" customModule="LifeArt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="93d-Pu-XcW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5DU-NC-9hH" customClass="ImageRoundedView" customModule="LifeArt" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="414" height="100"/>
+                                <subviews>
+                                    <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search for Models or Actors" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W73-P8-isI">
+                                        <rect key="frame" x="20" y="34" width="374" height="56"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </searchBar>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <constraints>
+                                    <constraint firstItem="W73-P8-isI" firstAttribute="leading" secondItem="5DU-NC-9hH" secondAttribute="leading" constant="20" id="IT0-to-bed"/>
+                                    <constraint firstAttribute="height" constant="100" id="UQI-HO-xqm"/>
+                                    <constraint firstAttribute="bottom" secondItem="W73-P8-isI" secondAttribute="bottom" constant="10" id="b5a-tm-stw"/>
+                                    <constraint firstAttribute="trailing" secondItem="W73-P8-isI" secondAttribute="trailing" constant="20" id="phK-yo-BsP"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topLeft" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topRight" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomLeft" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomRight" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CF8-mb-0BJ">
+                                <rect key="frame" x="0.0" y="144" width="414" height="669"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Uwd-Qy-68A"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="5DU-NC-9hH" firstAttribute="leading" secondItem="93d-Pu-XcW" secondAttribute="leading" id="GWM-Pr-fzl"/>
+                            <constraint firstItem="Uwd-Qy-68A" firstAttribute="trailing" secondItem="CF8-mb-0BJ" secondAttribute="trailing" id="KbQ-hq-YQo"/>
+                            <constraint firstItem="CF8-mb-0BJ" firstAttribute="top" secondItem="5DU-NC-9hH" secondAttribute="bottom" id="LQo-Ep-U2m"/>
+                            <constraint firstItem="Uwd-Qy-68A" firstAttribute="trailing" secondItem="5DU-NC-9hH" secondAttribute="trailing" id="Zjm-Fk-Viz"/>
+                            <constraint firstItem="5DU-NC-9hH" firstAttribute="top" secondItem="Uwd-Qy-68A" secondAttribute="top" id="qHS-lw-R4b"/>
+                            <constraint firstItem="Uwd-Qy-68A" firstAttribute="bottom" secondItem="CF8-mb-0BJ" secondAttribute="bottom" id="sWn-sq-Ncj"/>
+                            <constraint firstItem="CF8-mb-0BJ" firstAttribute="leading" secondItem="Uwd-Qy-68A" secondAttribute="leading" id="xAw-Ir-8mj"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Professional" id="DNg-Ve-fpM">
                         <imageReference key="image" image="archivebox.fill" catalog="system" renderingMode="original"/>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="tableView" destination="CF8-mb-0BJ" id="f9D-pL-1Ap"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N8Q-ao-YZY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -116,5 +116,23 @@ extension UIView {
         mask.path = path.cgPath
         layer.mask = mask
     }
+    func viewShadow() {
+        //self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+        self.layer.shadowRadius = 3
+        self.layer.shadowOffset =  .zero
+        self.layer.shadowOpacity = 0.2
+        self.borderWidth = 0.2
+        self.borderColor = .black
+        self.layer.cornerRadius = 20
+        self.layer.shadowColor = UIColor(ciColor: .gray).cgColor
+    }
+    func viewShadowWithoutBorder() {
+        //self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+        self.layer.shadowRadius = 3
+        self.layer.shadowOffset =  .zero
+        self.layer.shadowOpacity = 0.3
+        self.layer.cornerRadius = 20
+        self.layer.shadowColor = UIColor(ciColor: .gray).cgColor
+    }
     
 }

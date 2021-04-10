@@ -17,7 +17,6 @@ class ProfessionalVC: UIViewController {
         tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.register(UINib(nibName: "SuggestedParentCell", bundle: nil), forCellReuseIdentifier: "SuggestedParentCell")
-        
     }
 
 }
@@ -31,15 +30,7 @@ extension ProfessionalVC :  UITableViewDataSource , UITableViewDelegate{
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 250
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-               let header:UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
-        header.textLabel?.textColor = .black
-               header.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        header.textLabel?.text = "Sugessted Model"
-        
+        return 500
     }
 }
 

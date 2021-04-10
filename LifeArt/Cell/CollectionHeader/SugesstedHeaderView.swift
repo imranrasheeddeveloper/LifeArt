@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class SugesstedHeaderView: UICollectionReusableView {
-    static let reuseIdentifierHeader = "MyId"
+    static let reuseIdentifierHeader = "SugesstedHeaderView"
     let titleLabel = UILabel()
         let viewAllButton = UIButton()
         

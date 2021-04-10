@@ -97,7 +97,7 @@
         <!--Notification-->
         <scene sceneID="cFh-N4-6eM">
             <objects>
-                <viewController id="yQH-Ae-iFX" sceneMemberID="viewController">
+                <viewController id="yQH-Ae-iFX" customClass="ChatController" customModule="LifeArt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zTW-wn-41W">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

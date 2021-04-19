@@ -13,6 +13,8 @@ enum ControllerIdentifier: String {
     case VerifyNumberVC
     case CreateProfileVC
     case TabBar
+    case ProfessionalProfileVC
+    case AddVC
     
 }
 

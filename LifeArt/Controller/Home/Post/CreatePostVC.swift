@@ -9,22 +9,24 @@
 import UIKit
 
 class CreatePostVC: UIViewController {
-
+    @IBOutlet weak var textView : UITextView!
+    @IBOutlet weak var NavigationBarView : UIView!
+    @IBOutlet weak var bottomView : UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setStatusBar()
+        hideKeyboard()
+        NavigationBarView.dropShadow()
+        NavigationBarView.roundCorners(corners: .layerMinXMaxYCorner, radius: 30)
+        textView.layer.cornerRadius = 10
+        bottomView.dropShadow()
+        textView.layer.borderWidth = 1
+        if #available(iOS 13.0, *) {
+            textView.layer.borderColor = UIColor.systemGray4.cgColor
+        } else {
+            textView.layer.borderColor = UIColor.gray.cgColor
+        }
         // Do any additional setup after loading the view.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

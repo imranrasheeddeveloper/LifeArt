@@ -11,20 +11,27 @@ class GalleryVC: UIViewController {
 
     
     @IBOutlet weak var tableview : UITableView!
+    @IBOutlet weak var topSearchView: UIView!
     let dataSource = GalleryDataSource()
     let delegate = GalleryDelegate()
+    var pageIndex: Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
-        showAlert()
+       showAlert()
         hideKeyboard()
         setStatusBar()
         regiesterNibs()
         tableview.dataSource = dataSource
         tableview.delegate = delegate
         tableview.separatorStyle = .none
+        topSearchView.roundCorners(corners: .layerMinXMaxYCorner, radius: 30)
+        topSearchView.dropShadow()
+//        AlertView.instance.showAlert()
         
     }
+    
+
     
     
     //MARK:- functions

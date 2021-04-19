@@ -10,9 +10,16 @@ import UIKit
 
 class AnnouncmentsCell: UITableViewCell {
 
+    @IBOutlet weak var discriptionView: UIView!
+    @IBOutlet weak var typeView: UIView!
+    @IBOutlet weak var clockView: UIView!
+    @IBOutlet weak var amountView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        discriptionView.dropShadow()
+        typeView.dropShadow()
+        clockView.dropShadow()
+        amountView.dropShadow()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

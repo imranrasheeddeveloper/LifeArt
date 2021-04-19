@@ -19,7 +19,6 @@ class SignupVC: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
         hideKeyboard()
         setStatusBar()
-        showSheet()
     }
     
       func showSheet() {
@@ -35,6 +34,9 @@ class SignupVC: UIViewController {
     
     @IBAction func signUPAction(_ sender : UIButton){
         self.pushToController(from: .main, identifier: .VerifyNumberVC)
+    }
+    @IBAction func whoAreYou(_ sender: UITextField) {
+        showSheet()
     }
 }
 extension SignupVC:  UIViewControllerTransitioningDelegate {

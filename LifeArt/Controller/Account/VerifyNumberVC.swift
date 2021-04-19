@@ -12,7 +12,7 @@ class VerifyNumberVC: UIViewController, OTPDelegate {
     
     //MARK:- outlets
     @IBOutlet weak var otpContainerView : UIView!
-    
+    @IBOutlet weak var topHeaderView : UIView!
     //MARK:- varibales Declartions
     let otpStackView = OTPStackView()
     
@@ -23,6 +23,8 @@ class VerifyNumberVC: UIViewController, OTPDelegate {
         setupOtpContainerView()
         hideKeyboard()
         setStatusBar()
+        topHeaderView.roundCorners(corners: .layerMinXMaxYCorner, radius: 30)
+        topHeaderView.dropShadow()
     }
     
     //MARK:- Functions

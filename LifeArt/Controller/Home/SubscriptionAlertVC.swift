@@ -10,21 +10,33 @@ import UIKit
 
 class SubscriptionAlertVC: UIViewController {
 
+    @IBOutlet weak var alertView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupView()
+        animateView()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setupView() {
+        alertView.layer.cornerRadius = 15
+        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
     }
-    */
+    
+    func animateView() {
+        alertView.alpha = 0;
+        self.alertView.frame.origin.y = self.alertView.frame.origin.y + 50
+        UIView.animate(withDuration: 0.4, animations: { () -> Void in
+            self.alertView.alpha = 1.0;
+            self.alertView.frame.origin.y = self.alertView.frame.origin.y - 50
+        })
 
+    }
+    @IBAction func addPaymentMethod(_ sender: UIButton) {
+        self.pushToRoot(from: .Payment, identifier: .AddVC)
+        
+    }
+    @IBAction func closeAlert(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }

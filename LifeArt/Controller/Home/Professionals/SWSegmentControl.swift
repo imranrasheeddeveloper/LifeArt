@@ -1,9 +1,9 @@
 //
 //  SWSegmentControl.swift
-//  DemoBuisness
+//  LifeArt
 //
-//  Created by Saif Chaudhary on 1/22/17.
-//  Copyright © 2017 Saif Chaudhary. All rights reserved.
+//  Created by Muhammad Imran on 14/04/2021.
+//  Copyright © 2021 Itrid Technologies. All rights reserved.
 //
 
 import UIKit
@@ -13,11 +13,10 @@ open class SWSegmentedControl: UIControl {
     
     private var selectionIndicatorView: UIView!
     private var buttons: [UIButton]?
-    private var items: [String] = ["REVIEWS", "INFO","PHOTOS"]
+    private var items: [String] = ["Posts", "Photo"]
     
     
-    // Wait for a day UIFont will be inspectable
-    @IBInspectable open var font: UIFont = fonts.Gotham.medium.font(fontSize(rawValue: CGFloat(16))!) {
+    @IBInspectable open var font: UIFont = UIFont.systemFont(ofSize: 16) {
         didSet {
             self.configureView()
         }

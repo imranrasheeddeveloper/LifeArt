@@ -126,6 +126,7 @@ extension UIView {
         self.layer.cornerRadius = 20
         self.layer.shadowColor = UIColor(ciColor: .gray).cgColor
     }
+    
     func viewShadowWithoutBorder() {
         //self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
         self.layer.shadowRadius = 3
@@ -285,100 +286,104 @@ extension UIColor {
     static let customPurple = UIColor.rgb(red: 128, green: 87, blue: 194)
 }
 
-var imageCahce = [String: UIImage]()
-extension UIImageView {
-    
-    func loadProfileImage(with urlString: String) {
-        
-        //check if image exists within the image cahce
-        
-        if let cachedImage = imageCahce[urlString] {
-            self.image = cachedImage
-            return
+
+
+
+extension UIView {
+    var parentViewController: UIViewController? {
+        var parentResponder: UIResponder? = self
+        while parentResponder != nil {
+            parentResponder = parentResponder!.next
+            if let viewController = parentResponder as? UIViewController {
+                return viewController
+            }
         }
-        
-        //check if image does not exist in cache
-        
-        //url for image location
-        guard let url = URL(string: urlString) else {return}
-        
-        //fetch contents of url
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            //STEP 1: handle error
-            if let error = error {
-                print("DEBUG: failed to load image with error \(error.localizedDescription)")
-            }
-            //STEP 2: image data
-            guard let imageData = data else {return}
-            
-            //STEP 3: set image using data
-            let photoImage = UIImage(data: imageData)
-            
-            //STEP 4: set key and value for image cache
-            imageCahce[url.absoluteString] = photoImage
-            
-            //STEP 5: set image
-            DispatchQueue.main.async {
-                self.image = photoImage
-            }
-        }.resume()
+        return nil
     }
 }
 
-extension UIViewController {
+extension UIView {
     
-    func presentAlertController(withTitle title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        present(alert, animated: true, completion: nil)
+    func addConstraintsWithFormatString(formate: String, views: UIView...) {
+        
+        var viewsDictionary = [String: UIView]()
+        
+        for (index, view) in views.enumerated() {
+            let key = "v\(index)"
+            view.translatesAutoresizingMaskIntoConstraints = false
+            viewsDictionary[key] = view
+        }
+        
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: formate, options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: viewsDictionary))
         
     }
+    public func roundCorner() {
+        let height = self.bounds.height
+        self.layer.cornerRadius = height/2
+        self.clipsToBounds = true
+    }
+}
+
+extension UIColor {
     
-    func shouldPresentLoadingView(_ present: Bool, message: String? = nil){
-        if present {
-            let loadingView = UIView()
-            loadingView.frame = self.view.frame //the view will take up whole screen
-            loadingView.backgroundColor = .black
-            loadingView.alpha = 0
-            loadingView.tag = 1
-            
-            let indicator = UIActivityIndicatorView() //makes the circular 'loading' indicator
-            indicator.style = .large
-            indicator.center = view.center
-            indicator.color = .white
-            
-            let label = UILabel()
-            label.text = message
-            label.font = UIFont.systemFont(ofSize: 20)
-            label.textColor = .white
-            label.alpha = 0.87
-            label.textAlignment = .center
-            
-            view.addSubview(loadingView)
-            loadingView.addSubview(indicator)
-            loadingView.addSubview(label)
-            
-            label.centerX(inView: view)
-            label.anchor(top: indicator.bottomAnchor, paddingTop: 35)
-            
-            indicator.startAnimating() //makes the 'loading' animation
-            
-            UIView.animate(withDuration: 0.3) {
-                loadingView.alpha = 0.7
-            }
-            
-          
-        } else {
-            view.subviews.forEach { (subview) in
-                if subview.tag == 1 {
-                    UIView.animate(withDuration: 0.3, animations: {
-                        subview.alpha = 0
-                    }) { (_) in
-                        subview.removeFromSuperview()
-                    }
-                }
-            }
-        }
+    static func rgbColor(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {
+        
+        return UIColor.init(red: red/255, green: green/255, blue: blue/255, alpha: 1.0)
     }
     
+    static func colorFromHex(_ hex: String) -> UIColor {
+        
+        var hexString = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
+        
+        if hexString.hasPrefix("#") {
+            
+            hexString.remove(at: hexString.startIndex)
+        }
+        
+        if hexString.count != 6 {
+            
+            return UIColor.magenta
+        }
+        
+        var rgb: UInt32 = 0
+        Scanner.init(string: hexString).scanHexInt32(&rgb)
+        
+        return UIColor.init(red: CGFloat((rgb & 0xFF0000) >> 16)/255,
+                            green: CGFloat((rgb & 0x00FF00) >> 8)/255,
+                            blue: CGFloat(rgb & 0x0000FF)/255,
+                            alpha: 1.0)
+    }
+   
 }
+extension UIView {
+
+   func roundCorners(corners:CACornerMask, radius: CGFloat) {
+      self.layer.cornerRadius = radius
+      self.layer.maskedCorners = corners
+   }
+}
+extension UIView {
+    func dropShadow(scale: Bool = true) {
+        layer.masksToBounds = false
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.2
+        layer.shadowOffset = .zero
+        layer.shadowRadius = 1
+        layer.shouldRasterize = true
+        layer.rasterizationScale = scale ? UIScreen.main.scale : 1
+    }
+}
+
+public extension UIView {
+    
+    func fadeIn(duration: TimeInterval = 0.4) {
+         UIView.animate(withDuration: duration, animations: {
+            self.alpha = 1.0
+         })
+     }
+    func fadeOut(duration: TimeInterval = 0.4) {
+        UIView.animate(withDuration: duration, animations: {
+            self.alpha = 0.0
+        })
+      }
+  }

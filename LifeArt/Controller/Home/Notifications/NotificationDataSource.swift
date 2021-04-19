@@ -8,6 +8,34 @@
 
 import UIKit
 
-class NotificationDataSource: NSObject {
+class NotificationDataSource: NSObject ,UITableViewDataSource{
+    var loadingCell  :  loadCell!
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        switch loadingCell {
+        case .AnnouncmentsCell:
+            let cell = tableView.dequeueReusableCell(withIdentifier: loadCell.AnnouncmentsCell.rawValue , for: indexPath)
+            return cell
+            
+        case .NotificationCell:
+            let cell = tableView.dequeueReusableCell(withIdentifier: loadCell.NotificationCell.rawValue , for: indexPath)
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: loadCell.AnnouncmentsCell.rawValue, for: indexPath)
+            return cell
+        }
+    }
+    
+    
+    
+}
 
+
+enum loadCell : String{
+    case AnnouncmentsCell
+    case NotificationCell
 }

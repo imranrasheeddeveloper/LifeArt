@@ -10,21 +10,42 @@ import UIKit
 
 class NotificationVC: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
+    @IBOutlet weak var tabelView : UITableView!
+    @IBOutlet weak var segment: UISegmentedControl!
+    
+    let datasorce = NotificationDataSource()
+    let delegate = NotificationDelegate()
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setStatusBar()
+        hideKeyboard()
+        tabelView.dataSource =  datasorce
+        tabelView.delegate = delegate
+        tabelView.register(UINib(nibName: "NotificationCell", bundle: nil), forCellReuseIdentifier: "NotificationCell")
+        tabelView.register(UINib(nibName: "AnnouncmentsCell", bundle: nil), forCellReuseIdentifier: "AnnouncmentsCell")
+        datasorce.loadingCell = .AnnouncmentsCell
+        delegate.loadingCell = .AnnouncmentsCell
+        
     }
-    */
-
+    @IBAction func sengmentValueCheangeAction(_ sender: UISegmentedControl) {
+        if segment.selectedSegmentIndex == 0{
+            datasorce.loadingCell = .AnnouncmentsCell
+            delegate.loadingCell = .AnnouncmentsCell
+            DispatchQueue.main.async {
+                self.tabelView.reloadData()
+            }
+            
+        }
+        else if segment.selectedSegmentIndex == 1{
+            datasorce.loadingCell = .NotificationCell
+            delegate.loadingCell = .NotificationCell
+            DispatchQueue.main.async {
+                self.tabelView.reloadData()
+            }
+        }
+    }
+  
+    
 }

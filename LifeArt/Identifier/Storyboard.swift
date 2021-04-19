@@ -13,6 +13,7 @@ let mainBundle = Bundle.main
 enum Storyboard: String {
     case main = "Main"
     case Home = "Home"
+    case Payment = "Payment"
 }
 
 extension Storyboard {

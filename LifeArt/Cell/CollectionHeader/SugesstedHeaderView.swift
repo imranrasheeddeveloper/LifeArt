@@ -11,51 +11,39 @@ import UIKit
 
 class SugesstedHeaderView: UICollectionReusableView {
     static let reuseIdentifierHeader = "SugesstedHeaderView"
-    let titleLabel = UILabel()
-        let viewAllButton = UIButton()
+    let label = UILabel()
+    var selectButton =  UIButton()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
-        // Callback closure to handle info button tap
-        var infoButtonDidTappedCallback: (() -> Void)?
-
-        override init(frame: CGRect) {
-            super.init(frame: frame)
-            configure()
-        }
+        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        label.text = "Trending"
+        label.textColor = .white
         
-        required init?(coder: NSCoder) {
-            fatalError("Not implemented")
-        }
-    func configure() {
-            
-            // Add a stack view to section container
-            let stackView = UIStackView()
-            stackView.axis = .horizontal
-            stackView.distribution = .fill
-            addSubview(stackView)
-            stackView.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                stackView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
-                stackView.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor),
-                stackView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
-                stackView.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor),
-            ])
-
-            // Setup label and add to stack view
-            titleLabel.font = UIFont.preferredFont(forTextStyle: .headline)
-            stackView.addArrangedSubview(titleLabel)
-
-            // Set button image
-           viewAllButton.setTitle("View all", for: .normal)
-        viewAllButton.titleLabel?.textColor = .black
-            
-            // Set button action
-          viewAllButton.addAction(UIAction(handler: { [unowned self] (_) in
-                // Trigger callback when button tapped
-                self.infoButtonDidTappedCallback?()
-            }), for: .touchUpInside)
-            
-            // Add button to stack view
-            stackView.addArrangedSubview(viewAllButton)
-            
-        }
+        selectButton.frame = CGRect(x: frame.size.width - 85, y: frame.size.height - 28, width: 77, height: 26)
+        selectButton.setTitle("View All", for: .normal)
+        selectButton.titleLabel?.textColor =  .white
+        selectButton.contentHorizontalAlignment = .right;
+        selectButton.addTarget(self, action: #selector(viewAll), for: .touchUpInside)
+        addSubview(label)
+        
+        addSubview(selectButton)
+       
+      
+    }
+    
+    
+    @objc func viewAll(_ sender: UIButton){
+        print(sender.tag)
+        //parentViewController?.pushToRoot(from: .main, identifier: .)
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        label.frame = bounds
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }

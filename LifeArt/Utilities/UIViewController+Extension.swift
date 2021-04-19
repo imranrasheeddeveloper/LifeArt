@@ -70,3 +70,71 @@ extension UINavigationController
     return .lightContent
      }
  }
+extension UIViewController {
+    
+    func presentAlertController(withTitle title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
+    func shouldPresentLoadingView(_ present: Bool, message: String? = nil){
+        if present {
+            let loadingView = UIView()
+            loadingView.frame = self.view.frame //the view will take up whole screen
+            loadingView.backgroundColor = .black
+            loadingView.alpha = 0
+            loadingView.tag = 1
+            
+            let indicator = UIActivityIndicatorView() //makes the circular 'loading' indicator
+            if #available(iOS 13.0, *){
+                indicator.style = .large
+            }
+            indicator.style = .gray
+            indicator.center = view.center
+            indicator.color = .white
+            
+            let label = UILabel()
+            label.text = message
+            label.font = UIFont.systemFont(ofSize: 20)
+            label.textColor = .white
+            label.alpha = 0.87
+            label.textAlignment = .center
+            
+            view.addSubview(loadingView)
+            loadingView.addSubview(indicator)
+            loadingView.addSubview(label)
+            
+            label.centerX(inView: view)
+            label.anchor(top: indicator.bottomAnchor, paddingTop: 35)
+            
+            indicator.startAnimating() //makes the 'loading' animation
+            
+            UIView.animate(withDuration: 0.3) {
+                loadingView.alpha = 0.7
+            }
+            
+          
+        } else {
+            view.subviews.forEach { (subview) in
+                if subview.tag == 1 {
+                    UIView.animate(withDuration: 0.3, animations: {
+                        subview.alpha = 0
+                    }) { (_) in
+                        subview.removeFromSuperview()
+                    }
+                }
+            }
+        }
+    }
+    func PaymentAlert() {
+        let customAlert = self.storyboard?.instantiateViewController(withIdentifier: "PaymentAlert") as! SubscriptionAlertVC
+        customAlert.providesPresentationContextTransitionStyle = true
+        customAlert.definesPresentationContext = true
+        customAlert.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        customAlert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        //customAlert.delegate = self
+        self.present(customAlert, animated: true, completion: nil)
+    }
+}

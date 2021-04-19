@@ -43,6 +43,10 @@ extension SuggestedParentCell :  UICollectionViewDelegate, UICollectionViewDataS
         }
     
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.parentViewController?.pushToController(from: .Home, identifier: .ProfessionalProfileVC)
+    }
+    
 //    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
 //
 //        let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SugesstedHeaderView", for: indexPath as IndexPath)
@@ -52,7 +56,7 @@ extension SuggestedParentCell :  UICollectionViewDelegate, UICollectionViewDataS
 }
 class CustomLayout: UICollectionViewFlowLayout {
 
-    let activeDistance: CGFloat = 200
+    let activeDistance: CGFloat = 150
     let zoomFactor: CGFloat = 0.3
 
     override init() {

@@ -1,0 +1,6 @@
+framework module Pods_LifeArtTests {
+  umbrella header "Pods-LifeArtTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

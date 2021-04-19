@@ -10,6 +10,9 @@ import UIKit
 
 class NotificationCell: UITableViewCell {
 
+    @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var discriptionText: UILabel!
+    @IBOutlet weak var dateTimeText: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

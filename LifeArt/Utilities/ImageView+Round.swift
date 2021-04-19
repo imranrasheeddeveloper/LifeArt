@@ -37,3 +37,42 @@ public class ImageRoundedView: UIImageView {
     }
 }
 
+var imageCahce = [String: UIImage]()
+extension UIImageView {
+    
+    func loadProfileImage(with urlString: String) {
+        
+        //check if image exists within the image cahce
+        
+        if let cachedImage = imageCahce[urlString] {
+            self.image = cachedImage
+            return
+        }
+        
+        //check if image does not exist in cache
+        
+        //url for image location
+        guard let url = URL(string: urlString) else {return}
+        
+        //fetch contents of url
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            //STEP 1: handle error
+            if let error = error {
+                print("DEBUG: failed to load image with error \(error.localizedDescription)")
+            }
+            //STEP 2: image data
+            guard let imageData = data else {return}
+            
+            //STEP 3: set image using data
+            let photoImage = UIImage(data: imageData)
+            
+            //STEP 4: set key and value for image cache
+            imageCahce[url.absoluteString] = photoImage
+            
+            //STEP 5: set image
+            DispatchQueue.main.async {
+                self.image = photoImage
+            }
+        }.resume()
+    }
+}

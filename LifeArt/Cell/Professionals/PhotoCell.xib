@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="PhotoCell" customModule="CheckMe" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="126" height="162"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="126" height="162"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sdj-6N-UjM">
+                        <rect key="frame" x="0.0" y="0.0" width="126" height="162"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="4" translatesAutoresizingMaskIntoConstraints="NO" id="3aZ-Zd-JU9" customClass="ImageRoundedView" customModule="CheckMe" customModuleProvider="target">
+                                <rect key="frame" x="5" y="5" width="116" height="152"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topLeft" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topRight" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomLeft" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="bottomRight" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="3aZ-Zd-JU9" firstAttribute="top" secondItem="Sdj-6N-UjM" secondAttribute="top" constant="5" id="2hh-im-eNu"/>
+                            <constraint firstAttribute="bottom" secondItem="3aZ-Zd-JU9" secondAttribute="bottom" constant="5" id="PhP-KN-mic"/>
+                            <constraint firstAttribute="trailing" secondItem="3aZ-Zd-JU9" secondAttribute="trailing" constant="5" id="ViU-pH-rhx"/>
+                            <constraint firstItem="3aZ-Zd-JU9" firstAttribute="leading" secondItem="Sdj-6N-UjM" secondAttribute="leading" constant="5" id="boC-35-BuA"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="Sdj-6N-UjM" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="H51-uP-ddW"/>
+                <constraint firstAttribute="bottom" secondItem="Sdj-6N-UjM" secondAttribute="bottom" id="i5F-aq-492"/>
+                <constraint firstAttribute="trailing" secondItem="Sdj-6N-UjM" secondAttribute="trailing" id="i5O-Ji-4ff"/>
+                <constraint firstItem="Sdj-6N-UjM" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="zli-qM-SDw"/>
+            </constraints>
+            <size key="customSize" width="126" height="162"/>
+            <connections>
+                <outlet property="userImage" destination="3aZ-Zd-JU9" id="wd7-xF-KHe"/>
+            </connections>
+            <point key="canvasLocation" x="195.6521739130435" y="115.84821428571428"/>
+        </collectionViewCell>
+    </objects>
+    <designables>
+        <designable name="3aZ-Zd-JU9">
+            <size key="intrinsicContentSize" width="500" height="628"/>
+        </designable>
+    </designables>
+    <resources>
+        <image name="4" width="500" height="628"/>
+    </resources>
+</document>

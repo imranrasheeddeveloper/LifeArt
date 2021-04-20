@@ -18,10 +18,10 @@ class ProfessionalProfileVC: UIViewController, UICollectionViewDelegate, UITable
     let photosDataSource = PhotosDataSource()
     let photoDelegate = PhotosDelegate()
     let tableDataSource = UserPostDataSource()
-    let maxHeaderHeight: CGFloat = 450
-    let minHeaderHeight: CGFloat = 20
+    let maxHeaderHeight: CGFloat = 400
+    let minHeaderHeight: CGFloat = 0
     var previousScrollOffset: CGFloat = 0
-   
+    
     private let collectionViewLayout: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -56,7 +56,7 @@ class ProfessionalProfileVC: UIViewController, UICollectionViewDelegate, UITable
             collectionViewLayout.dataSource = photosDataSource
             collectionViewLayout.delegate = self
         }
-    
+        
         
     }
     
@@ -84,7 +84,7 @@ class ProfessionalProfileVC: UIViewController, UICollectionViewDelegate, UITable
             setupConstrainsofTableView()
             tableviewLayout.delegate = self
             tableviewLayout.dataSource = tableDataSource
-        
+            
             setupConstrainsofTableView()
             DispatchQueue.main.async {
                 self.tableviewLayout.reloadData()
@@ -103,7 +103,7 @@ class ProfessionalProfileVC: UIViewController, UICollectionViewDelegate, UITable
         }
     }
     
- 
+    
 }
 
 
@@ -113,12 +113,12 @@ extension ProfessionalProfileVC {
         return scrollView.contentSize.height > scrollViewMaxHeight
     }
     func setScrollPosition() {
-        if selectedIndex == 1{
+        if selectedIndex == 0{
             self.tableviewLayout.contentOffset = CGPoint(x:0, y: 0)
             
         }
-       else if selectedIndex == 1{
-        self.collectionViewLayout.contentOffset = CGPoint(x:0, y: 0)
+        else if selectedIndex == 1{
+            self.collectionViewLayout.contentOffset = CGPoint(x:0, y: 0)
         }
     }
 }
@@ -131,38 +131,37 @@ extension ProfessionalProfileVC : UICollectionViewDelegateFlowLayout{
             var newHeight = heightConstrains.constant
             if isScrollingDown {
                 newHeight = max(minHeaderHeight, heightConstrains.constant - abs(scrollDiff))
-
-
+                
             } else if isScrollingUp {
                 newHeight = min(maxHeaderHeight, heightConstrains.constant + abs(scrollDiff))
-                headerView.fadeIn()
+               // headerView.fadeIn()
             }
             if newHeight != heightConstrains.constant {
                 heightConstrains.constant = newHeight
                 setScrollPosition()
                 previousScrollOffset = scrollView.contentOffset.y
             }
-            if heightConstrains.constant <= 20 {
-                headerView.fadeOut()
-            }
+//            if heightConstrains.constant <= 20 {
+//                headerView.fadeOut()
+//            }
         }
     }
-   
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
+        
         let noOfCellsInRow = 2
-
+        
         let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
-
+        
         let totalSpace = flowLayout.sectionInset.left
             + flowLayout.sectionInset.right
             + (flowLayout.minimumInteritemSpacing * CGFloat(noOfCellsInRow - 1))
-
+        
         let size = Int((collectionView.bounds.width - totalSpace) / CGFloat(noOfCellsInRow))
-
+        
         return CGSize(width: size, height: size)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return  5
     }

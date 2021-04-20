@@ -14,11 +14,12 @@ class SuggestedParentCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         let flowLayout = CustomLayout()
+        //flowLayout.headerReferenceSize = CGSize(width: self.collectionView.frame.size.width, height: 100)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "SuggestedCell", bundle: nil), forCellWithReuseIdentifier: "SuggestedCell")
-    
-//        collectionView.register(SugesstedHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SugesstedHeaderView")
+//
+//        collectionView.register(SugesstedHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
         collectionView.collectionViewLayout = flowLayout
         
     
@@ -47,11 +48,17 @@ extension SuggestedParentCell :  UICollectionViewDelegate, UICollectionViewDataS
         self.parentViewController?.pushToController(from: .Home, identifier: .ProfessionalProfileVC)
     }
     
-//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//
-//        let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SugesstedHeaderView", for: indexPath as IndexPath)
-//        return view
-//    }
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+
+        let view = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId, for: indexPath as IndexPath)
+        return view
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+            if section == 0 {
+                return .zero
+            }
+            return CGSize(width: collectionView.frame.width, height: 12)
+        }
     
 }
 class CustomLayout: UICollectionViewFlowLayout {

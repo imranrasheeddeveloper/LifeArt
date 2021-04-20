@@ -14,12 +14,14 @@ class MyProfileVC: UIViewController, UICollectionViewDelegate {
     @IBOutlet weak var followAction: UIButton!
     @IBOutlet weak var heightConstrains: NSLayoutConstraint!
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var topConstrainsOfHeader: NSLayoutConstraint!
+    
     var selectedIndex = 0
     let photosDataSource = PhotosDataSource()
     let photoDelegate = PhotosDelegate()
     let tableDataSource = UserPostDataSource()
-    let maxHeaderHeight: CGFloat = 450
-    let minHeaderHeight: CGFloat = 20
+    let maxHeaderHeight: CGFloat = 410
+    let minHeaderHeight: CGFloat = 0
     var previousScrollOffset: CGFloat = 0
    
     private let collectionViewLayout: UICollectionView = {
@@ -43,6 +45,7 @@ class MyProfileVC: UIViewController, UICollectionViewDelegate {
     
     override func viewDidLoad() {
         setStatusBar()
+       
         hideKeyboard()
         if selectedIndex == 0{
             self.contentView.addSubview(tableviewLayout)
@@ -113,7 +116,7 @@ extension MyProfileVC {
         return scrollView.contentSize.height > scrollViewMaxHeight
     }
     func setScrollPosition() {
-        if selectedIndex == 1{
+        if selectedIndex == 0{
             self.tableviewLayout.contentOffset = CGPoint(x:0, y: 0)
             
         }
@@ -124,6 +127,8 @@ extension MyProfileVC {
 }
 extension MyProfileVC : UICollectionViewDelegateFlowLayout{
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        
         let scrollDiff = (scrollView.contentOffset.y - previousScrollOffset)
         let isScrollingDown = scrollDiff > 0
         let isScrollingUp = scrollDiff < 0
@@ -131,21 +136,21 @@ extension MyProfileVC : UICollectionViewDelegateFlowLayout{
             var newHeight = heightConstrains.constant
             if isScrollingDown {
                 newHeight = max(minHeaderHeight, heightConstrains.constant - abs(scrollDiff))
-
-
             } else if isScrollingUp {
                 newHeight = min(maxHeaderHeight, heightConstrains.constant + abs(scrollDiff))
-                headerView.fadeIn()
+               // headerView.fadeIn()
             }
             if newHeight != heightConstrains.constant {
                 heightConstrains.constant = newHeight
+
                 setScrollPosition()
                 previousScrollOffset = scrollView.contentOffset.y
             }
-            if heightConstrains.constant <= 20 {
-                headerView.fadeOut()
-            }
+//            if heightConstrains.constant <= 20 {
+//                headerView.fadeOut()
+//            }
         }
+        
     }
    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

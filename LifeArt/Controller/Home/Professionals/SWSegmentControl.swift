@@ -13,7 +13,7 @@ open class SWSegmentedControl: UIControl {
     
     private var selectionIndicatorView: UIView!
     private var buttons: [UIButton]?
-    private var items: [String] = ["Posts", "Photo"]
+    private var items: [String] = ["Posts", "Photo"]    
     
     
     @IBInspectable open var font: UIFont = UIFont.systemFont(ofSize: 16) {

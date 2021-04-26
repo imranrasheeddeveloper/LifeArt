@@ -73,7 +73,7 @@ class ProfessionalProfileVC: UIViewController, UICollectionViewDelegate, UITable
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func followAction(_ sender: UIButton) {
-        self.PaymentAlert()
+        //self.PaymentAlert()
     }
     @IBAction func ValueChanged(_ sender: SWSegmentedControl) {
         

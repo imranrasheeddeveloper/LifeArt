@@ -48,6 +48,12 @@
 		4F20CE96261CF9EC00F8EE6F /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F20CE95261CF9EC00F8EE6F /* Home.storyboard */; };
 		4F20CE9B261CFF9900F8EE6F /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F20CE9A261CFF9900F8EE6F /* CustomAlertView.swift */; };
 		4F20CEA0261D020C00F8EE6F /* GalleryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F20CE9F261D020C00F8EE6F /* GalleryVC.swift */; };
+		4F2EA9F92635F14000C34820 /* SettingVCTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2EA9F72635F14000C34820 /* SettingVCTableViewCell.swift */; };
+		4F2EA9FA2635F14000C34820 /* SettingVCTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F2EA9F82635F14000C34820 /* SettingVCTableViewCell.xib */; };
+		4F3D6D152632B912008A8C5E /* CommentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3D6D142632B912008A8C5E /* CommentsVC.swift */; };
+		4F3D6D212632C5EF008A8C5E /* StandardBottomSheetChromeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3D6D1F2632C5EE008A8C5E /* StandardBottomSheetChromeViewController.swift */; };
+		4F3D6D222632C5EF008A8C5E /* BottomSheetContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3D6D202632C5EF008A8C5E /* BottomSheetContainerViewController.swift */; };
+		4F3D6D272632C64A008A8C5E /* CountriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3D6D262632C64A008A8C5E /* CountriesTableViewController.swift */; };
 		4F597C63261E3E8E00E980C1 /* GalleryHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F597C61261E3E8E00E980C1 /* GalleryHeaderCell.swift */; };
 		4F597C64261E3E8E00E980C1 /* GalleryHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F597C62261E3E8E00E980C1 /* GalleryHeaderCell.xib */; };
 		4F597C6F261E413C00E980C1 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F597C6D261E413C00E980C1 /* PostCell.swift */; };
@@ -57,6 +63,7 @@
 		4F62334C2628C8F10031987E /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F62334A2628C8F10031987E /* PhotoCell.xib */; };
 		4F7B5F5D262AC52800F61136 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7B5F5B262AC52800F61136 /* AlertView.swift */; };
 		4F7B5F5E262AC52800F61136 /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7B5F5C262AC52800F61136 /* AlertView.xib */; };
+		4F7BFD9A2634B648002F8ECE /* PresentSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7BFD992634B648002F8ECE /* PresentSheet.swift */; };
 		4F7D788B262CC06A001C2290 /* SWSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7D788A262CC069001C2290 /* SWSegmentControl.swift */; };
 		4F7D7897262CC4FA001C2290 /* Constrains+Extension .swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7D7896262CC4FA001C2290 /* Constrains+Extension .swift */; };
 		4F7D789D262CC66D001C2290 /* PhotosDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7D789C262CC66D001C2290 /* PhotosDataSource.swift */; };
@@ -65,6 +72,9 @@
 		4F8B1BA1262AF5AE0082C46A /* CommentsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F8B1B9F262AF5AE0082C46A /* CommentsCell.xib */; };
 		4F96C7052626F08B00DDACB2 /* TabarController + Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F96C7042626F08B00DDACB2 /* TabarController + Animations.swift */; };
 		4F96C70A2626F32700DDACB2 /* ProfessionalProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F96C7092626F32700DDACB2 /* ProfessionalProfileVC.swift */; };
+		4F9A1F5C263581A700DB8AAD /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9A1F5B263581A700DB8AAD /* EditProfile.swift */; };
+		4F9A1F63263581D900DB8AAD /* EditViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9A1F61263581D900DB8AAD /* EditViewCell.swift */; };
+		4F9A1F64263581D900DB8AAD /* EditViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F9A1F62263581D900DB8AAD /* EditViewCell.xib */; };
 		4FB24495261DD60E00441E6B /* PresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB24494261DD60E00441E6B /* PresentationController.swift */; };
 		4FB2449D261DD63C00441E6B /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FB2449B261DD63C00441E6B /* OverlayView.xib */; };
 		4FB2449E261DD63C00441E6B /* OverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB2449C261DD63C00441E6B /* OverlayView.swift */; };
@@ -150,6 +160,12 @@
 		4F20CE95261CF9EC00F8EE6F /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		4F20CE9A261CFF9900F8EE6F /* CustomAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		4F20CE9F261D020C00F8EE6F /* GalleryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryVC.swift; sourceTree = "<group>"; };
+		4F2EA9F72635F14000C34820 /* SettingVCTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVCTableViewCell.swift; sourceTree = "<group>"; };
+		4F2EA9F82635F14000C34820 /* SettingVCTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingVCTableViewCell.xib; sourceTree = "<group>"; };
+		4F3D6D142632B912008A8C5E /* CommentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsVC.swift; sourceTree = "<group>"; };
+		4F3D6D1F2632C5EE008A8C5E /* StandardBottomSheetChromeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardBottomSheetChromeViewController.swift; sourceTree = "<group>"; };
+		4F3D6D202632C5EF008A8C5E /* BottomSheetContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomSheetContainerViewController.swift; sourceTree = "<group>"; };
+		4F3D6D262632C64A008A8C5E /* CountriesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountriesTableViewController.swift; sourceTree = "<group>"; };
 		4F597C61261E3E8E00E980C1 /* GalleryHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryHeaderCell.swift; sourceTree = "<group>"; };
 		4F597C62261E3E8E00E980C1 /* GalleryHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GalleryHeaderCell.xib; sourceTree = "<group>"; };
 		4F597C6D261E413C00E980C1 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
@@ -159,6 +175,7 @@
 		4F62334A2628C8F10031987E /* PhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
 		4F7B5F5B262AC52800F61136 /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		4F7B5F5C262AC52800F61136 /* AlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
+		4F7BFD992634B648002F8ECE /* PresentSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentSheet.swift; sourceTree = "<group>"; };
 		4F7D788A262CC069001C2290 /* SWSegmentControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWSegmentControl.swift; sourceTree = "<group>"; };
 		4F7D7896262CC4FA001C2290 /* Constrains+Extension .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constrains+Extension .swift"; sourceTree = "<group>"; };
 		4F7D789C262CC66D001C2290 /* PhotosDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosDataSource.swift; sourceTree = "<group>"; };
@@ -167,6 +184,9 @@
 		4F8B1B9F262AF5AE0082C46A /* CommentsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentsCell.xib; sourceTree = "<group>"; };
 		4F96C7042626F08B00DDACB2 /* TabarController + Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TabarController + Animations.swift"; sourceTree = "<group>"; };
 		4F96C7092626F32700DDACB2 /* ProfessionalProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessionalProfileVC.swift; sourceTree = "<group>"; };
+		4F9A1F5B263581A700DB8AAD /* EditProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
+		4F9A1F61263581D900DB8AAD /* EditViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewCell.swift; sourceTree = "<group>"; };
+		4F9A1F62263581D900DB8AAD /* EditViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditViewCell.xib; sourceTree = "<group>"; };
 		4FB24494261DD60E00441E6B /* PresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationController.swift; sourceTree = "<group>"; };
 		4FB2449B261DD63C00441E6B /* OverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OverlayView.xib; sourceTree = "<group>"; };
 		4FB2449C261DD63C00441E6B /* OverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayView.swift; sourceTree = "<group>"; };
@@ -319,6 +339,7 @@
 		4F15478D261C98B40092C2AE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4F3D6D132632B8FC008A8C5E /* Comments */,
 				4F1ACBE9262E3022004B372E /* MyProfile */,
 				4FB368A4262B2A9400BA31B3 /* Payment */,
 				4F8B1BA5262AFE420082C46A /* Messages */,
@@ -352,6 +373,7 @@
 				4F96C7042626F08B00DDACB2 /* TabarController + Animations.swift */,
 				4FB3689F262B282100BA31B3 /* CheckBoxButton.swift */,
 				4F7D7896262CC4FA001C2290 /* Constrains+Extension .swift */,
+				4F7BFD992634B648002F8ECE /* PresentSheet.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -386,6 +408,7 @@
 			isa = PBXGroup;
 			children = (
 				4F1ACBEA262E3041004B372E /* MyProfileVC.swift */,
+				4F9A1F5B263581A700DB8AAD /* EditProfile.swift */,
 			);
 			path = MyProfile;
 			sourceTree = "<group>";
@@ -473,6 +496,33 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		4F2EA9F62635F11D00C34820 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				4F2EA9F72635F14000C34820 /* SettingVCTableViewCell.swift */,
+				4F2EA9F82635F14000C34820 /* SettingVCTableViewCell.xib */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		4F3D6D132632B8FC008A8C5E /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				4F3D6D142632B912008A8C5E /* CommentsVC.swift */,
+			);
+			path = Comments;
+			sourceTree = "<group>";
+		};
+		4F3D6D1E2632C5D8008A8C5E /* Comments Sheet */ = {
+			isa = PBXGroup;
+			children = (
+				4F3D6D262632C64A008A8C5E /* CountriesTableViewController.swift */,
+				4F3D6D202632C5EF008A8C5E /* BottomSheetContainerViewController.swift */,
+				4F3D6D1F2632C5EE008A8C5E /* StandardBottomSheetChromeViewController.swift */,
+			);
+			path = "Comments Sheet";
+			sourceTree = "<group>";
+		};
 		4F597C68261E3E9300E980C1 /* Gallery */ = {
 			isa = PBXGroup;
 			children = (
@@ -542,6 +592,15 @@
 			path = Messages;
 			sourceTree = "<group>";
 		};
+		4F9A1F60263581C500DB8AAD /* EditProfileCell */ = {
+			isa = PBXGroup;
+			children = (
+				4F9A1F61263581D900DB8AAD /* EditViewCell.swift */,
+				4F9A1F62263581D900DB8AAD /* EditViewCell.xib */,
+			);
+			path = EditProfileCell;
+			sourceTree = "<group>";
+		};
 		4FB24499261DD62A00441E6B /* Xib */ = {
 			isa = PBXGroup;
 			children = (
@@ -554,6 +613,7 @@
 		4FB2449A261DD63200441E6B /* sheet */ = {
 			isa = PBXGroup;
 			children = (
+				4F3D6D1E2632C5D8008A8C5E /* Comments Sheet */,
 				4FB2449C261DD63C00441E6B /* OverlayView.swift */,
 				4FB2449B261DD63C00441E6B /* OverlayView.xib */,
 			);
@@ -563,6 +623,8 @@
 		4FB244A2261DE13E00441E6B /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				4F2EA9F62635F11D00C34820 /* Setting */,
+				4F9A1F60263581C500DB8AAD /* EditProfileCell */,
 				4F1ACBCB262E1D64004B372E /* Profile */,
 				4F8B1B9D262AF5900082C46A /* Comments */,
 				4F1DF30F262AD49C0001A65B /* Notifications */,
@@ -762,7 +824,9 @@
 				4FB5B679262A5EDB00BC4F10 /* GoogleService-Info.plist in Resources */,
 				4FB244A7261DE1BC00441E6B /* ArtistCategories.xib in Resources */,
 				4FB3689B262B262C00BA31B3 /* Payment.storyboard in Resources */,
+				4F9A1F64263581D900DB8AAD /* EditViewCell.xib in Resources */,
 				4F597C70261E413C00E980C1 /* PostCell.xib in Resources */,
+				4F2EA9FA2635F14000C34820 /* SettingVCTableViewCell.xib in Resources */,
 				4FB2449D261DD63C00441E6B /* OverlayView.xib in Resources */,
 				4F7B5F5E262AC52800F61136 /* AlertView.xib in Resources */,
 				4F597C64261E3E8E00E980C1 /* GalleryHeaderCell.xib in Resources */,
@@ -898,11 +962,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F9A1F63263581D900DB8AAD /* EditViewCell.swift in Sources */,
 				4F20CE91261CF4DA00F8EE6F /* CreateProfileVC.swift in Sources */,
 				4F96C70A2626F32700DDACB2 /* ProfessionalProfileVC.swift in Sources */,
 				4FD3D547261FA171006C0CCE /* ProfessionalVC.swift in Sources */,
 				4F8B1BA0262AF5AE0082C46A /* CommentsCell.swift in Sources */,
 				4FB368A9262B2AAB00BA31B3 /* AddVC.swift in Sources */,
+				4F3D6D222632C5EF008A8C5E /* BottomSheetContainerViewController.swift in Sources */,
 				4F20CE86261CE90B00F8EE6F /* UIViewController+Extension.swift in Sources */,
 				4F1547A4261C9ED00092C2AE /* UIView+Round.swift in Sources */,
 				4F1DF32B262AE8030001A65B /* NotificationVC.swift in Sources */,
@@ -910,6 +976,9 @@
 				4FB2449E261DD63C00441E6B /* OverlayView.swift in Sources */,
 				4F0CCE6E261F377B00BC0469 /* GalleryDataSource.swift in Sources */,
 				4F7D788B262CC06A001C2290 /* SWSegmentControl.swift in Sources */,
+				4F9A1F5C263581A700DB8AAD /* EditProfile.swift in Sources */,
+				4F3D6D212632C5EF008A8C5E /* StandardBottomSheetChromeViewController.swift in Sources */,
+				4F3D6D152632B912008A8C5E /* CommentsVC.swift in Sources */,
 				4F154799261C9EB40092C2AE /* Storyboard.swift in Sources */,
 				4F7D78A5262CC733001C2290 /* PhotosDelegate.swift in Sources */,
 				4FB244A6261DE1BC00441E6B /* ArtistCategories.swift in Sources */,
@@ -921,6 +990,7 @@
 				4F1547A3261C9ED00092C2AE /* ImageView+Round.swift in Sources */,
 				4FB368A0262B282100BA31B3 /* CheckBoxButton.swift in Sources */,
 				4F20CEA0261D020C00F8EE6F /* GalleryVC.swift in Sources */,
+				4F7BFD9A2634B648002F8ECE /* PresentSheet.swift in Sources */,
 				4F1DF335262AE8700001A65B /* NotificationDelegate.swift in Sources */,
 				4F1547C5261CB01C0092C2AE /* OTPTextField.swift in Sources */,
 				4F597C63261E3E8E00E980C1 /* GalleryHeaderCell.swift in Sources */,
@@ -935,7 +1005,9 @@
 				4F1547C4261CB01C0092C2AE /* OTPStackView.swift in Sources */,
 				4FD03748261E58BB00C5E576 /* SuggestedCell.swift in Sources */,
 				4F154758261C94D80092C2AE /* SceneDelegate.swift in Sources */,
+				4F3D6D272632C64A008A8C5E /* CountriesTableViewController.swift in Sources */,
 				4F154760261C94D80092C2AE /* LifeArt.xcdatamodeld in Sources */,
+				4F2EA9F92635F14000C34820 /* SettingVCTableViewCell.swift in Sources */,
 				4F597C6F261E413C00E980C1 /* PostCell.swift in Sources */,
 				4F1DF31B262AD7EF0001A65B /* NotificationCell.swift in Sources */,
 				4F1DF330262AE85E0001A65B /* NotificationDataSource.swift in Sources */,

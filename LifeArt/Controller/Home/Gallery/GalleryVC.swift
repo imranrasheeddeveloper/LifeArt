@@ -6,34 +6,39 @@
 //
 
 import UIKit
+import FittedSheets
 
-class GalleryVC: UIViewController {
+class GalleryVC: UIViewController , postCellDelegate{
+    func comments(tag: Int) {
+        presenttSheet(tag: tag, view: self.view, controller: self, Identifier: .CommentsVC, storyBoard: .Home)
+    }
 
     
     @IBOutlet weak var tableview : UITableView!
     @IBOutlet weak var topSearchView: UIView!
-    let dataSource = GalleryDataSource()
     let delegate = GalleryDelegate()
+    let post = PostCell()
     var pageIndex: Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
-       showAlert()
+        showAlert()
         hideKeyboard()
         setStatusBar()
         regiesterNibs()
-        tableview.dataSource = dataSource
+        tableview.dataSource = self
         tableview.delegate = delegate
         tableview.separatorStyle = .none
+        self.sheetViewController?.allowGestureThroughOverlay = true
+        self.sheetViewController?.handleScrollView(tableview)
         topSearchView.roundCorners(corners: .layerMinXMaxYCorner, radius: 30)
         topSearchView.dropShadow()
-//        AlertView.instance.showAlert()
+     
         
+    
     }
-    
 
-    
-    
+
     //MARK:- functions
     
     func showAlert() {
@@ -51,5 +56,6 @@ class GalleryVC: UIViewController {
         tableview.register(UINib(nibName: "PostCell", bundle: nil), forCellReuseIdentifier: "PostCell")
     }
     
-
 }
+
+

@@ -6,21 +6,30 @@
 //
 
 import UIKit
+import FittedSheets
+
+protocol postCellDelegate {
+    func comments(tag : Int)
+}
 
 class PostCell: UITableViewCell {
  
     @IBOutlet weak var bgView : UIView!
+    var delegate : postCellDelegate!
     override func awakeFromNib() {
         super.awakeFromNib()
         bgView.viewShadow()
-        
         
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+    }
+    
+    @IBAction func commentsSheet(_ sender : UIButton){
+        let indexPath = sender.tag
+        delegate!.comments(tag: indexPath)
     }
     
 }

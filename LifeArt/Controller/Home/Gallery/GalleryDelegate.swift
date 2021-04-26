@@ -19,5 +19,4 @@ class GalleryDelegate : NSObject , UITableViewDelegate{
             return 450
         }
     }
-    
 }

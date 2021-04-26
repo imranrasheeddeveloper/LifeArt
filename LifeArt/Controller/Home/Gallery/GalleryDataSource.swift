@@ -8,10 +8,9 @@
 
 import Foundation
 import UIKit
-
-class GalleryDataSource : NSObject , UITableViewDataSource{
-    //private var tableView: UITableView
-    let array = [Any]()
+import FittedSheets
+extension GalleryVC : UITableViewDataSource{
+    
   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 5
@@ -24,10 +23,11 @@ class GalleryDataSource : NSObject , UITableViewDataSource{
             let cell = tableView.dequeueReusableCell(withIdentifier: "GalleryHeaderCell", for: indexPath)
             return cell
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
+            cell.delegate = self
+            cell.selectionStyle = .none
             return cell
         }
     }
-    
 }
 

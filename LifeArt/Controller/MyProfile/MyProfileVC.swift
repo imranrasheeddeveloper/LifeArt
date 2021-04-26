@@ -71,12 +71,13 @@ class MyProfileVC: UIViewController, UICollectionViewDelegate {
         self.tableviewLayout.anchor(top: self.contentView.topAnchor, left: self.contentView.leftAnchor, bottom: self.contentView.bottomAnchor, right: self.contentView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
     }
     
-    
+    //MARK:- Acctions
     @IBAction func popViewController(_ sender : UIButton){
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func followAction(_ sender: UIButton) {
-        self.PaymentAlert()
+        let vc = EditProfile()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     @IBAction func ValueChanged(_ sender: SWSegmentedControl) {
         
@@ -155,7 +156,7 @@ extension MyProfileVC : UICollectionViewDelegateFlowLayout{
    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        let noOfCellsInRow = 2
+        let noOfCellsInRow = 3
 
         let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
 

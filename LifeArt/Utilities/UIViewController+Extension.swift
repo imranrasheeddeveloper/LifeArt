@@ -128,13 +128,8 @@ extension UIViewController {
             }
         }
     }
-    func PaymentAlert() {
-        let customAlert = self.storyboard?.instantiateViewController(withIdentifier: "PaymentAlert") as! SubscriptionAlertVC
-        customAlert.providesPresentationContextTransitionStyle = true
-        customAlert.definesPresentationContext = true
-        customAlert.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-        customAlert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-        //customAlert.delegate = self
-        self.present(customAlert, animated: true, completion: nil)
-    }
+//    func PaymentAlert() {
+//        let vc = EditProfile()
+//        storyboard?.instantiateViewController(identifier:)
+//    }
 }

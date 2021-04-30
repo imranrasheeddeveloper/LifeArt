@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import FittedSheets
 
 class ProfessionalProfileVC: UIViewController, UICollectionViewDelegate, UITableViewDelegate {
     @IBOutlet weak var headerView: UIView!
@@ -101,6 +101,10 @@ class ProfessionalProfileVC: UIViewController, UICollectionViewDelegate, UITable
                 self.collectionViewLayout.reloadData()
             }
         }
+    }
+    
+    @IBAction func seeMoreInfo(sender : UIButton){
+        presenttSheet(tag: 0, view: self.view, controller: self, Identifier: .PesonalDetailVC, storyBoard: .Settings)
     }
     
     

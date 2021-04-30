@@ -307,6 +307,9 @@
                                         <state key="normal" title="See More Info">
                                             <color key="titleColor" name="colorPrimary"/>
                                         </state>
+                                        <connections>
+                                            <action selector="seeMoreInfoWithSender:" destination="XPh-FS-cqN" eventType="touchUpInside" id="C3g-0l-C41"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kht-wE-qG5" customClass="ButtonRounded" customModule="LifeArt" customModuleProvider="target">
                                         <rect key="frame" x="50" y="346" width="314" height="40"/>
@@ -653,7 +656,7 @@
                                     <constraint firstAttribute="trailing" secondItem="W73-P8-isI" secondAttribute="trailing" constant="20" id="phK-yo-BsP"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CF8-mb-0BJ">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="CF8-mb-0BJ">
                                 <rect key="frame" x="0.0" y="164" width="414" height="649"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
@@ -1142,6 +1145,9 @@
                                 </constraints>
                                 <color key="tintColor" name="colorPrimary"/>
                                 <state key="normal" image="menu"/>
+                                <connections>
+                                    <action selector="openBottomSheet:" destination="IEL-IH-73q" eventType="touchUpInside" id="Pd3-xN-BfV"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="UQ0-TD-ayb"/>

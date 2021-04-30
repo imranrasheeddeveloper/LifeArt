@@ -51,59 +51,50 @@ extension ProfessionalVC :  UITableViewDataSource , UITableViewDelegate{
        
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 500
+        return 300
     }
     
 //    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 //        return UIView()
 //    }
     
-    func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
     }
-    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-      
-     let header:UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
-      header.textLabel!.textColor = .black
-      
-      let headerLabelFont: UIFont = header.textLabel!.font
-
-      var selectButton: UIButton? = nil
     
-      for i in 0..<view.subviews.count {
-        if view.subviews[i] is UIButton {
-          let tempButton = view.subviews[i] as? UIButton
-          if (tempButton?.currentTitle != "") {
-            selectButton = view.subviews[i] as? UIButton
-          }
-        }
-      }
-      
-      // No buttons exist, create new ones
-      if selectButton == nil {
-        selectButton = UIButton(type: .system)
-        header.addSubview(selectButton!)
-      }
-      
-      // Configure buttons
-      selectButton?.frame = CGRect(x: view.frame.size.width - 85, y: view.frame.size.height - 28, width: 77, height: 26)
-      selectButton?.tag = section
-      selectButton?.setTitle("View All", for: .normal)
-      selectButton?.titleLabel?.font = UIFont(descriptor: headerLabelFont.fontDescriptor, size: 11)
-      selectButton?.contentHorizontalAlignment = .right;
-      selectButton?.setTitleColor(self.view.tintColor, for: .normal)
-      selectButton?.addTarget(self, action: #selector(self.selectAllInSection), for: .touchUpInside)
-      
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+       let frame: CGRect = tableView.frame
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("View All", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 14)
+        button.backgroundColor = .clear
+        button.setTitleColor(.black, for: .normal)
+        button.addTarget(self, action: #selector(pressed(_:)), for: .touchUpInside)
+        
+        let lable = UILabel()
+        lable.text = "Suggessted Model"
+        lable.translatesAutoresizingMaskIntoConstraints = false
+        
+        let headerView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: frame.size.height, height: frame.size.width))
+        
+        
+        headerView.addSubview(lable)
+        headerView.addSubview(button)
+        
+        lable.anchor(left: headerView.leftAnchor,  paddingLeft: 20)
+        button.anchor(right: headerView.rightAnchor,  paddingRight: 20, width: 100, height: 30)
+        button.centerY(inView: headerView)
+        lable.centerY(inView: button)
+        
+        
+
+       return headerView
     }
     
-      @objc func selectAllInSection(_ sender: UIButton) {
+      @objc func pressed(_ sender: UIButton) {
           _ = sender.tag
-      // change button title to reflect status
-      if (sender.titleLabel?.text == "SELECT ALL") {
-        sender.setTitle("SELECT NONE", for: .normal)
-      } else {
-        sender.setTitle("SELECT ALL", for: .normal)
-      }
+    
     }
 
 }

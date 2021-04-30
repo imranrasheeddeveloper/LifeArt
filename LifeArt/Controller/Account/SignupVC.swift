@@ -11,16 +11,22 @@ class SignupVC: UIViewController {
 
     //MARK:-Outlets
     
+    @IBOutlet weak var loginLbl: UILabel!
     var heightConstraint:NSLayoutConstraint!
-    public fileprivate(set) var blackOverlay: UIControl = UIControl()
     //MARK:- Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         hideKeyboard()
         setStatusBar()
+        loginLbl.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(login))
+        loginLbl.addGestureRecognizer(tap)
     }
     
+    @objc func login(){
+        self.pushToController(from: .main, identifier: .LoginVC)
+    }
       func showSheet() {
         let slideVC = OverlayView()
         slideVC.modalPresentationStyle = .custom
@@ -44,3 +50,5 @@ extension SignupVC:  UIViewControllerTransitioningDelegate {
         PresentationController(presentedViewController: presented, presenting: presenting)
     }
 }
+
+

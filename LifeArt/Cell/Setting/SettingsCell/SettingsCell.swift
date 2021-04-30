@@ -1,15 +1,17 @@
 //
-//  SettingVCTableViewCell.swift
-//  LifeArt
+//  SettingsCell.swift
+//  LifeArtCopy
 //
-//  Created by Muhammad Imran on 25/04/2021.
-//  Copyright © 2021 Itrid Technologies. All rights reserved.
+//  Created by macbook on 4/26/21.
 //
 
 import UIKit
 
-class SettingVCTableViewCell: UITableViewCell {
+class SettingsCell: UITableViewCell {
 
+    @IBOutlet weak var iconImg: UIImageView!
+    @IBOutlet weak var detailLbl: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

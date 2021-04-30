@@ -16,7 +16,14 @@ enum ControllerIdentifier: String {
     case ProfessionalProfileVC
     case AddVC
     case CommentsVC
-    
+    case SettingsVC
+    case ClassesVC
+    case NewclassesVC
+    case PesonalDetailVC
+    case SubscritionsVC
+    case AccountSettingVC
+    case LoginVC
+    case ForgetPasswordVC
 }
 
 extension UIViewController{

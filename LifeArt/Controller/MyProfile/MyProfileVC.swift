@@ -9,7 +9,7 @@
 import UIKit
 
 
-class MyProfileVC: UIViewController, UICollectionViewDelegate {
+class MyProfileVC: UIViewController, UICollectionViewDelegate, UIViewControllerTransitioningDelegate {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var followAction: UIButton!
     @IBOutlet weak var heightConstrains: NSLayoutConstraint!
@@ -105,6 +105,17 @@ class MyProfileVC: UIViewController, UICollectionViewDelegate {
                 self.collectionViewLayout.reloadData()
             }
         }
+    }
+    
+    @IBAction func openBottomSheet(_ sender : UIButton){
+        let slideVC = MenuSheet()
+        slideVC.modalPresentationStyle = .custom
+        slideVC.transitioningDelegate = self
+        self.present(slideVC, animated: true, completion: nil)
+    }
+    
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        MenuPresentationController(presentedViewController: presented, presenting: presenting)
     }
     
  

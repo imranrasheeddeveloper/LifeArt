@@ -154,7 +154,7 @@
         </designable>
     </designables>
     <resources>
-        <image name="creditcard.fill" catalog="system" width="128" height="88"/>
+        <image name="creditcard.fill" catalog="system" width="32" height="32"/>
         <image name="left-arrow" width="512" height="512"/>
         <image name="unchecked" width="48" height="48"/>
         <namedColor name="colorPrimary">

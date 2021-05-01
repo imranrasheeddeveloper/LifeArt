@@ -11,8 +11,8 @@ target 'LifeArt' do
 	pod 'Firebase/Storage'
 	pod 'Firebase/Auth'
         pod 'FittedSheets'
-
-
+        pod 'Firebase/Auth'
+        pod 'CodableFirebase'
 
   target 'LifeArtTests' do
     inherit! :search_paths

@@ -104,6 +104,14 @@
 		4FD3D551261FA25E006C0CCE /* SuggestedParentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD3D54F261FA25E006C0CCE /* SuggestedParentCell.swift */; };
 		4FD3D552261FA25E006C0CCE /* SuggestedParentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FD3D550261FA25E006C0CCE /* SuggestedParentCell.xib */; };
 		4FD3D564261FA99E006C0CCE /* SugesstedHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD3D563261FA99E006C0CCE /* SugesstedHeaderView.swift */; };
+		4FD5E9AC263C9A6B007E0AB4 /* CountryCallingCodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD5E9AB263C9A6B007E0AB4 /* CountryCallingCodeCell.swift */; };
+		4FD5E9B5263C9AA5007E0AB4 /* CallingCodesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD5E9B4263C9AA5007E0AB4 /* CallingCodesVC.swift */; };
+		4FD5E9BB263C9B0E007E0AB4 /* CountryCallingCode.json in Resources */ = {isa = PBXBuildFile; fileRef = 4FD5E9BA263C9B0E007E0AB4 /* CountryCallingCode.json */; };
+		4FD5E9EF263CA6E9007E0AB4 /* GestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD5E9EE263CA6E9007E0AB4 /* GestureRecognizer.swift */; };
+		4FFE8EA2263DFA0F00CE85CC /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFE8EA1263DFA0F00CE85CC /* FirebaseStorageManager.swift */; };
+		4FFE8EA7263DFEA300CE85CC /* UIWindow+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFE8EA6263DFEA300CE85CC /* UIWindow+Extension.swift */; };
+		4FFE8EAC263E012000CE85CC /* AppDelegate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFE8EAB263E012000CE85CC /* AppDelegate+Extension.swift */; };
+		4FFE8EB1263E077000CE85CC /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFE8EB0263E077000CE85CC /* Reachability.swift */; };
 		91304EF7FEFAE0EA01D3E8F8 /* Pods_LifeArtTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEFD2B13ED1E6E8EB03734BE /* Pods_LifeArtTests.framework */; };
 		958FB75A12F80C69E9FAE079 /* Pods_LifeArt_LifeArtUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1A9C9DDBCC5166337F04AE1 /* Pods_LifeArt_LifeArtUITests.framework */; };
 /* End PBXBuildFile section */
@@ -229,6 +237,14 @@
 		4FD3D54F261FA25E006C0CCE /* SuggestedParentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedParentCell.swift; sourceTree = "<group>"; };
 		4FD3D550261FA25E006C0CCE /* SuggestedParentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestedParentCell.xib; sourceTree = "<group>"; };
 		4FD3D563261FA99E006C0CCE /* SugesstedHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SugesstedHeaderView.swift; sourceTree = "<group>"; };
+		4FD5E9AB263C9A6B007E0AB4 /* CountryCallingCodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCallingCodeCell.swift; sourceTree = "<group>"; };
+		4FD5E9B4263C9AA5007E0AB4 /* CallingCodesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallingCodesVC.swift; sourceTree = "<group>"; };
+		4FD5E9BA263C9B0E007E0AB4 /* CountryCallingCode.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CountryCallingCode.json; sourceTree = "<group>"; };
+		4FD5E9EE263CA6E9007E0AB4 /* GestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureRecognizer.swift; sourceTree = "<group>"; };
+		4FFE8EA1263DFA0F00CE85CC /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
+		4FFE8EA6263DFEA300CE85CC /* UIWindow+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+Extension.swift"; sourceTree = "<group>"; };
+		4FFE8EAB263E012000CE85CC /* AppDelegate+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Extension.swift"; sourceTree = "<group>"; };
+		4FFE8EB0263E077000CE85CC /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		68C317AC0F17B358B22872E0 /* Pods-LifeArt-LifeArtUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LifeArt-LifeArtUITests.debug.xcconfig"; path = "Target Support Files/Pods-LifeArt-LifeArtUITests/Pods-LifeArt-LifeArtUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		83B13EF3164B65E354B4D4F5 /* Pods_LifeArt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LifeArt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE85AA3A5C250B402B66D750 /* Pods-LifeArtTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LifeArtTests.release.xcconfig"; path = "Target Support Files/Pods-LifeArtTests/Pods-LifeArtTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -315,6 +331,7 @@
 		4F154754261C94D80092C2AE /* LifeArt */ = {
 			isa = PBXGroup;
 			children = (
+				4FD5E9B9263C9AEE007E0AB4 /* JSON */,
 				4F1ACC07262E3D5E004B372E /* Firebase */,
 				4F15478C261C988A0092C2AE /* View */,
 				4F15478D261C98B40092C2AE /* Controller */,
@@ -366,6 +383,7 @@
 		4F15478D261C98B40092C2AE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				4FD5E9B3263C9A90007E0AB4 /* CallingCode */,
 				4F9BF5162637F7C4007E386E /* Settings */,
 				4F3D6D132632B8FC008A8C5E /* Comments */,
 				4F1ACBE9262E3022004B372E /* MyProfile */,
@@ -403,6 +421,10 @@
 				4FB3689F262B282100BA31B3 /* CheckBoxButton.swift */,
 				4F7D7896262CC4FA001C2290 /* Constrains+Extension .swift */,
 				4F7BFD992634B648002F8ECE /* PresentSheet.swift */,
+				4FD5E9EE263CA6E9007E0AB4 /* GestureRecognizer.swift */,
+				4FFE8EA6263DFEA300CE85CC /* UIWindow+Extension.swift */,
+				4FFE8EAB263E012000CE85CC /* AppDelegate+Extension.swift */,
+				4FFE8EB0263E077000CE85CC /* Reachability.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -446,6 +468,7 @@
 			isa = PBXGroup;
 			children = (
 				4F1ACC0B262E3D72004B372E /* FirebaseConstant.swift */,
+				4FFE8EA1263DFA0F00CE85CC /* FirebaseStorageManager.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -694,6 +717,7 @@
 		4FB244A2261DE13E00441E6B /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				4FD5E9AA263C9A52007E0AB4 /* Calling Code */,
 				4F2EA9F62635F11D00C34820 /* Setting */,
 				4F9A1F60263581C500DB8AAD /* EditProfileCell */,
 				4F1ACBCB262E1D64004B372E /* Profile */,
@@ -764,6 +788,30 @@
 				4FD3D563261FA99E006C0CCE /* SugesstedHeaderView.swift */,
 			);
 			path = CollectionHeader;
+			sourceTree = "<group>";
+		};
+		4FD5E9AA263C9A52007E0AB4 /* Calling Code */ = {
+			isa = PBXGroup;
+			children = (
+				4FD5E9AB263C9A6B007E0AB4 /* CountryCallingCodeCell.swift */,
+			);
+			path = "Calling Code";
+			sourceTree = "<group>";
+		};
+		4FD5E9B3263C9A90007E0AB4 /* CallingCode */ = {
+			isa = PBXGroup;
+			children = (
+				4FD5E9B4263C9AA5007E0AB4 /* CallingCodesVC.swift */,
+			);
+			path = CallingCode;
+			sourceTree = "<group>";
+		};
+		4FD5E9B9263C9AEE007E0AB4 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				4FD5E9BA263C9B0E007E0AB4 /* CountryCallingCode.json */,
+			);
+			path = JSON;
 			sourceTree = "<group>";
 		};
 		AE27D13FDBDBE5D1ACD9C1BB /* Frameworks */ = {
@@ -893,6 +941,7 @@
 				4F62334C2628C8F10031987E /* PhotoCell.xib in Resources */,
 				4F8B1BA1262AF5AE0082C46A /* CommentsCell.xib in Resources */,
 				4FD3D552261FA25E006C0CCE /* SuggestedParentCell.xib in Resources */,
+				4FD5E9BB263C9B0E007E0AB4 /* CountryCallingCode.json in Resources */,
 				4FB5B679262A5EDB00BC4F10 /* GoogleService-Info.plist in Resources */,
 				4FB244A7261DE1BC00441E6B /* ArtistCategories.xib in Resources */,
 				4FB3689B262B262C00BA31B3 /* Payment.storyboard in Resources */,
@@ -1039,6 +1088,7 @@
 			files = (
 				4F9A1F63263581D900DB8AAD /* EditViewCell.swift in Sources */,
 				4F20CE91261CF4DA00F8EE6F /* CreateProfileVC.swift in Sources */,
+				4FFE8EB1263E077000CE85CC /* Reachability.swift in Sources */,
 				4F96C70A2626F32700DDACB2 /* ProfessionalProfileVC.swift in Sources */,
 				4F9BF5352637F970007E386E /* SettingsCell.swift in Sources */,
 				4FD3D547261FA171006C0CCE /* ProfessionalVC.swift in Sources */,
@@ -1070,18 +1120,23 @@
 				4FB368A0262B282100BA31B3 /* CheckBoxButton.swift in Sources */,
 				4F20CEA0261D020C00F8EE6F /* GalleryVC.swift in Sources */,
 				4F9BF51F2637F864007E386E /* NewclassesVC.swift in Sources */,
+				4FD5E9EF263CA6E9007E0AB4 /* GestureRecognizer.swift in Sources */,
 				4F7BFD9A2634B648002F8ECE /* PresentSheet.swift in Sources */,
 				4F1DF335262AE8700001A65B /* NotificationDelegate.swift in Sources */,
 				4F1547C5261CB01C0092C2AE /* OTPTextField.swift in Sources */,
+				4FFE8EA7263DFEA300CE85CC /* UIWindow+Extension.swift in Sources */,
 				4F597C63261E3E8E00E980C1 /* GalleryHeaderCell.swift in Sources */,
 				4F1547A6261C9ED00092C2AE /* Button+Round.swift in Sources */,
+				4FFE8EAC263E012000CE85CC /* AppDelegate+Extension.swift in Sources */,
 				4F51FEEA2638A84F00D7C215 /* LoginVC.swift in Sources */,
 				4F15479A261C9EB40092C2AE /* ControllerIdentifier.swift in Sources */,
 				4F1DF322262AE4D90001A65B /* CreatePostVC.swift in Sources */,
+				4FD5E9B5263C9AA5007E0AB4 /* CallingCodesVC.swift in Sources */,
 				4F1ACBDE262E251E004B372E /* UserPostDataSource.swift in Sources */,
 				4F0CCE73261F3A7500BC0469 /* GalleryDelegate.swift in Sources */,
 				4F20CE81261CE6A300F8EE6F /* SignupVC.swift in Sources */,
 				4FB24495261DD60E00441E6B /* PresentationController.swift in Sources */,
+				4FFE8EA2263DFA0F00CE85CC /* FirebaseStorageManager.swift in Sources */,
 				4F154756261C94D80092C2AE /* AppDelegate.swift in Sources */,
 				4F1547C4261CB01C0092C2AE /* OTPStackView.swift in Sources */,
 				4FD03748261E58BB00C5E576 /* SuggestedCell.swift in Sources */,
@@ -1089,6 +1144,7 @@
 				4F154760261C94D80092C2AE /* LifeArt.xcdatamodeld in Sources */,
 				4F597C6F261E413C00E980C1 /* PostCell.swift in Sources */,
 				4F1DF31B262AD7EF0001A65B /* NotificationCell.swift in Sources */,
+				4FD5E9AC263C9A6B007E0AB4 /* CountryCallingCodeCell.swift in Sources */,
 				4F1DF330262AE85E0001A65B /* NotificationDataSource.swift in Sources */,
 				4F20CE9B261CFF9900F8EE6F /* CustomAlertView.swift in Sources */,
 				4F70EC6926387B81001919F1 /* AccountSettingVC.swift in Sources */,

@@ -11,7 +11,7 @@ class OverlayView: UIViewController {
     
     var hasSetPointOrigin = false
     var pointOrigin: CGPoint?
-    
+    var dict = [String : Interest]()
     @IBOutlet weak var slideIdicator: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
 
@@ -64,13 +64,16 @@ extension OverlayView: UICollectionViewDelegate, UICollectionViewDataSource, UIC
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
     }
+    
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell : ArtistCategories = collectionView.dequeueReusableCell(withReuseIdentifier: "ArtistCategories", for: indexPath) as! ArtistCategories
 
         return cell
     }
-
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+     
+    }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.row == 3 || indexPath.row == 4{
             return CGSize(width: 100, height: 30)

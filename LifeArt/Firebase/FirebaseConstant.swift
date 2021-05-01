@@ -10,8 +10,7 @@ import Foundation
 import Firebase
 
 let STORAGE_REF = Storage.storage().reference()
-let STORAGE_PROFILE_IMAGES = STORAGE_REF.child("Clasess")
-
+let STORAGE_PROFILE_IMAGES = STORAGE_REF.child("profile_images")
 let DB_REF = Database.database().reference()
 let REF_Models = DB_REF.child("Models")
 let REF_Likes = DB_REF.child("Likes")
@@ -22,6 +21,7 @@ let REF_Artists = DB_REF.child("Artists")
 let REF_Announcements = DB_REF.child("Announcements")
 let REF_Posts = DB_REF.child("Posts")
 let REF_messages = DB_REF.child("messages")
+
 
 
 typealias DatabaseCompletion = ((Error?, DatabaseReference) -> Void)

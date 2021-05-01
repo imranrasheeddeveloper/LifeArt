@@ -77,7 +77,7 @@
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WBM-xN-SGC">
                                                         <rect key="frame" x="0.0" y="0.0" width="183" height="40"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" returnKeyType="next" textContentType="honorifix-prefix"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MMf-Vr-epb">
                                                         <rect key="frame" x="191" y="0.0" width="183" height="40"/>
@@ -85,7 +85,7 @@
                                                             <constraint firstAttribute="height" constant="40" id="jLT-Um-2wn"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" returnKeyType="next" textContentType="honorifix-suffix"/>
                                                     </textField>
                                                 </subviews>
                                             </stackView>
@@ -95,7 +95,7 @@
                                                     <constraint firstAttribute="height" constant="40" id="qNj-Ej-OJY"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WKw-9F-XC8">
                                                 <rect key="frame" x="20" y="270.33333333333331" width="374" height="40"/>
@@ -103,7 +103,7 @@
                                                     <constraint firstAttribute="height" constant="40" id="JSo-dJ-qF5"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES" textContentType="password"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HvD-b4-e5d">
                                                 <rect key="frame" x="20" y="330.33333333333331" width="374" height="40"/>
@@ -111,7 +111,7 @@
                                                     <constraint firstAttribute="height" constant="40" id="rAn-Ne-Yce"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="next" textContentType="tel"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Who You Are?" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NBi-UP-wmZ">
                                                 <rect key="frame" x="20" y="390.33333333333331" width="374" height="40"/>
@@ -197,7 +197,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="ECq-Fn-Pqw"/>
                     <connections>
+                        <outlet property="emailTF" destination="lxP-vF-Hv8" id="hmG-QN-cXT"/>
+                        <outlet property="firstNameTF" destination="WBM-xN-SGC" id="Ze6-Of-P1b"/>
+                        <outlet property="lastNameTF" destination="MMf-Vr-epb" id="8A7-JG-fhD"/>
                         <outlet property="loginLbl" destination="FYH-rY-TJk" id="ffB-Dt-Z5G"/>
+                        <outlet property="passwordTF" destination="WKw-9F-XC8" id="9Kc-K1-MeD"/>
+                        <outlet property="phoneTF" destination="HvD-b4-e5d" id="9Un-vk-DiQ"/>
+                        <outlet property="userType" destination="s7R-eg-Jxx" id="Jfz-za-qjJ"/>
+                        <outlet property="whoAreYou" destination="NBi-UP-wmZ" id="0Lr-UK-Kbm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -500,7 +507,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eXJ-l6-3aX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1784.057971014493" y="63.616071428571423"/>
+            <point key="canvasLocation" x="1870" y="742"/>
         </scene>
         <!--Create ProfileVC-->
         <scene sceneID="DkI-ZN-XKM">
@@ -535,7 +542,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eaF-Rc-jCC">
                                         <rect key="frame" x="0.0" y="0.0" width="398" height="896"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="ukW-nV-rZi" customClass="ImageRoundedView" customModule="LifeArt" customModuleProvider="target">
+                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1" translatesAutoresizingMaskIntoConstraints="NO" id="ukW-nV-rZi" customClass="ImageRoundedView" customModule="LifeArt" customModuleProvider="target">
                                                 <rect key="frame" x="139" y="80.333333333333343" width="120" height="120"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="120" id="2zB-2s-vRG"/>
@@ -600,7 +607,7 @@
                                                     <constraint firstAttribute="height" constant="40" id="DSF-Tl-5hr"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" textContentType="country-name"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sWm-8d-23T">
                                                 <rect key="frame" x="20" y="370.33333333333331" width="358" height="40"/>
@@ -608,7 +615,7 @@
                                                     <constraint firstAttribute="height" constant="40" id="ACj-KP-7cd"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" textContentType="address-level2"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Website" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dsB-Or-YLX">
                                                 <rect key="frame" x="20" y="470.33333333333337" width="358" height="40"/>
@@ -616,7 +623,7 @@
                                                     <constraint firstAttribute="height" constant="40" id="ZXv-47-XvU"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" textContentType="url"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhq-br-MPL" customClass="ButtonRounded" customModule="LifeArt" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="530.33333333333337" width="358" height="50"/>
@@ -711,12 +718,20 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cityTF" destination="sWm-8d-23T" id="HPx-ni-VNV"/>
+                        <outlet property="countryTF" destination="etI-eG-x9a" id="Ov9-Ob-Iwj"/>
+                        <outlet property="emailTF" destination="Ipd-og-Dag" id="eQv-BM-3gl"/>
+                        <outlet property="firstNameTF" destination="yHE-5A-Faf" id="LWL-z3-djT"/>
+                        <outlet property="lastNameTF" destination="Srf-y7-6kZ" id="dGH-no-cyu"/>
+                        <outlet property="phoneNoTF" destination="Z6z-K6-gja" id="f7s-Jy-lyy"/>
+                        <outlet property="profileImage" destination="ukW-nV-rZi" id="HSb-eO-6tP"/>
                         <outlet property="topHeaderView" destination="8on-FR-W0R" id="1Qa-I3-nss"/>
+                        <outlet property="websiteTF" destination="dsB-Or-YLX" id="rGY-U0-1hE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7qb-Nj-XOL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2602.898550724638" y="63.616071428571423"/>
+            <point key="canvasLocation" x="1870" y="64"/>
         </scene>
         <!--Forget PasswordVC-->
         <scene sceneID="5my-xc-AbA">

@@ -13,6 +13,10 @@ target 'LifeArt' do
         pod 'FittedSheets'
         pod 'Firebase/Auth'
         pod 'CodableFirebase'
+        pod "FlagPhoneNumber"
+        pod 'SDWebImage', '~> 5.0'
+        pod 'SkeletonView'
+        
 
   target 'LifeArtTests' do
     inherit! :search_paths

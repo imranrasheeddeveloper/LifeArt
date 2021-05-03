@@ -8,7 +8,8 @@
 import UIKit
 
 class GalleryHeaderCell: UITableViewCell {
-
+   
+    @IBOutlet weak var fullNameLbl: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

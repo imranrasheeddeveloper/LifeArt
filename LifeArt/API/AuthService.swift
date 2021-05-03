@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 import CodableFirebase
-
+import FirebaseAuth
 //MARK:-
 
 struct AuthCredentials {
@@ -32,9 +32,6 @@ enum AccountType {
 struct AuthService {
     static let shared = AuthService()
     
-    var isHeicSupported: Bool {
-        (CGImageDestinationCopyTypeIdentifiers() as! [String]).contains("public.heic")
-    }
     func logUserIn(email: String, password: String, completion: AuthDataResultCallback?) {
         Auth.auth().signIn(withEmail: email, password: password, completion: completion)
     }

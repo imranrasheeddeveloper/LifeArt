@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 @available(iOS 13.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
@@ -19,21 +20,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         if Auth.auth().currentUser != nil {
             
-            guard let winScene = (scene as? UIWindowScene) else { return }
-            window = UIWindow(windowScene: winScene)
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            if Auth.auth().currentUser != nil {
-                let storyBoard = UIStoryboard(name: "Home", bundle: nil)
-                let rootVC = storyBoard.instantiateViewController(identifier: "TabBar")
-                window?.rootViewController = rootVC
-                window?.makeKeyAndVisible()
-            }
-            
-            else {
-                let rootVC = storyboard.instantiateViewController(identifier: "SignupVC")
-                window?.rootViewController = rootVC
-                window?.makeKeyAndVisible()
-            }
+//            guard let winScene = (scene as? UIWindowScene) else { return }
+//            window = UIWindow(windowScene: winScene)
+//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//            if Auth.auth().currentUser != nil {
+//                let storyBoard = UIStoryboard(name: "Home", bundle: nil)
+//                let rootVC = storyBoard.instantiateViewController(identifier: "TabBar")
+//                window?.rootViewController = rootVC
+//                window?.makeKeyAndVisible()
+//            }
+//            
+//            else {
+//                let rootVC = storyboard.instantiateViewController(identifier: "SignupVC")
+//                window?.rootViewController = rootVC
+//                window?.makeKeyAndVisible()
+//            }
         }
         guard let _ = (scene as? UIWindowScene) else { return }
     }

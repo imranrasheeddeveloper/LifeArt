@@ -22,12 +22,12 @@ class CustomAlertView: UIViewController {
     }
     
     func animateView() {
-    
-        UIView.animate(withDuration: 1, delay: 0.25,options: UIView.AnimationOptions.curveEaseOut,animations: {
-            self.alertView.frame = CGRect(x: self.alertView.frame.origin.x, y: 20, width: self.alertView.frame.width, height: self.alertView.frame.height)
-
-
-               },completion: nil)
+        print(centerVeticalyConstrains.constant)
+        DispatchQueue.main.async { [self] in
+            UIView.animate(withDuration: 0.2, delay: 1,options: UIView.AnimationOptions.curveEaseOut,animations: {
+                self.centerVeticalyConstrains.constant = 0
+                   },completion: nil)
+        }
         
     }
     @IBAction func onTapClose(_ sender: Any) {

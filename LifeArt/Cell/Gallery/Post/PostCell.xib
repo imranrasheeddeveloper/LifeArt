@@ -91,16 +91,16 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="art1" translatesAutoresizingMaskIntoConstraints="NO" id="DUv-bO-q1y">
-                                <rect key="frame" x="20" y="75" width="218" height="150"/>
+                                <rect key="frame" x="20" y="75" width="218" height="200"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="yfG-Cd-zsD"/>
+                                    <constraint firstAttribute="height" constant="200" id="yfG-Cd-zsD"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EJG-5i-JcI">
-                                <rect key="frame" x="20" y="230" width="20" height="16"/>
+                                <rect key="frame" x="20" y="280" width="20" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="9OE-tw-Qvy"/>
                                     <constraint firstAttribute="width" constant="20" id="tgZ-Fq-4rn"/>
@@ -112,7 +112,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9bg-xY-H0I">
-                                <rect key="frame" x="222" y="230" width="16" height="16"/>
+                                <rect key="frame" x="222" y="280" width="16" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="WLS-01-HSz"/>
                                     <constraint firstAttribute="width" constant="16" id="uy3-w9-e7Y"/>
@@ -121,7 +121,7 @@
                                 <state key="normal" image="bookmark" catalog="system"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8 Likes . 12 comments . 12 shares " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D6n-dx-AFx">
-                                <rect key="frame" x="20" y="251" width="218" height="12"/>
+                                <rect key="frame" x="20" y="301" width="218" height="12"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
                                 <color key="textColor" systemColor="placeholderTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -129,9 +129,8 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ivi-Kv-2mz">
-                                <rect key="frame" x="20" y="273" width="218" height="126"/>
-                                <string key="text">Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book</string>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ivi-Kv-2mz">
+                                <rect key="frame" x="20" y="323" width="218" height="56"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                 <color key="textColor" systemColor="placeholderTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -140,7 +139,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZTF-8I-xZJ">
-                                <rect key="frame" x="20" y="409" width="158" height="27"/>
+                                <rect key="frame" x="20" y="389" width="158" height="27"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                                 <state key="normal" title="View all 170 comments">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -150,7 +149,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RIj-zG-9y6">
-                                <rect key="frame" x="50" y="230" width="20" height="16"/>
+                                <rect key="frame" x="50" y="280" width="20" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="D4C-rr-61S"/>
                                     <constraint firstAttribute="height" constant="16" id="yuF-Pp-1Kd"/>
@@ -220,6 +219,7 @@
                 <outlet property="artImaeView" destination="DUv-bO-q1y" id="Tfk-XY-9Id"/>
                 <outlet property="bgView" destination="KAR-3J-A2z" id="Tl9-7P-uqZ"/>
                 <outlet property="discriptionLbl" destination="Ivi-Kv-2mz" id="8KB-gF-d5q"/>
+                <outlet property="followedDate" destination="S6M-4g-ok4" id="e4o-FP-D4K"/>
                 <outlet property="likesCommentsShare" destination="D6n-dx-AFx" id="LFj-tp-iWd"/>
                 <outlet property="postCountryLbl" destination="zz7-wk-PPT" id="5Sv-Xk-YLk"/>
                 <outlet property="postProfileImage" destination="krc-AA-L2X" id="Mf3-dv-KEz"/>

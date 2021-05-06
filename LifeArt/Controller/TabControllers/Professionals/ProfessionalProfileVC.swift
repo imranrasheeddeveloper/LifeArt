@@ -14,6 +14,8 @@ class ProfessionalProfileVC: UIViewController, UICollectionViewDelegate, UITable
     @IBOutlet weak var followAction: UIButton!
     @IBOutlet weak var heightConstrains: NSLayoutConstraint!
     @IBOutlet weak var contentView: UIView!
+    
+    
     var selectedIndex = 0
     let photosDataSource = PhotosDataSource()
     let photoDelegate = PhotosDelegate()
@@ -56,8 +58,10 @@ class ProfessionalProfileVC: UIViewController, UICollectionViewDelegate, UITable
             collectionViewLayout.dataSource = photosDataSource
             collectionViewLayout.delegate = self
         }
-        
-        
+    
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     

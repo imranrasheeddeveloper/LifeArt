@@ -9,7 +9,7 @@
 import UIKit
 
 class EditProfile: UIViewController {
-    
+    var user : User?
     //MARK:- Delration
     var tableView : UITableView = {
         let tv = UITableView()
@@ -48,6 +48,7 @@ class EditProfile: UIViewController {
     //MARK:-LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.isHidden = true
         self.view.backgroundColor = .white
         tableView.dataSource = self
         tableView.delegate = self
@@ -84,15 +85,13 @@ class EditProfile: UIViewController {
     }
 
     func loadData() {
-        data.append(Model(firstLblText: "First Name", secondLblText: "Jonh duo", buttonText: "Change"))
-        data.append(Model(firstLblText: "Email", secondLblText: "email.com.com", buttonText: "Change"))
-        data.append(Model(firstLblText: "Bio", secondLblText: "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua", buttonText: "Change"))
-        data.append(Model(firstLblText: "First Name", secondLblText: "Jonh duo", buttonText: "Change"))
-        data.append(Model(firstLblText: "First Name", secondLblText: "Jonh duo", buttonText: "Change"))
-        data.append(Model(firstLblText: "First Name", secondLblText: "Jonh duo", buttonText: "Change"))
-        data.append(Model(firstLblText: "First Name", secondLblText: "Jonh duo", buttonText: "Change"))
-        data.append(Model(firstLblText: "First Name", secondLblText: "Jonh duo", buttonText: "Change"))
-        
+        data.append(Model(firstLblText: "First Name", secondLblText: "\(user?.firstname ?? "") \(user?.lastname ?? "")", buttonText: "Change"))
+        data.append(Model(firstLblText: "Email", secondLblText: user?.email ?? "", buttonText: "Change"))
+        data.append(Model(firstLblText: "Bio", secondLblText: user?.bio ?? "", buttonText: "Change"))
+        data.append(Model(firstLblText: "Contact", secondLblText: user?.country ?? "", buttonText: "Change"))
+        data.append(Model(firstLblText: "Country", secondLblText: user?.country ?? "", buttonText: "Change"))
+        data.append(Model(firstLblText: "Website", secondLblText: user?.website ?? "", buttonText: "Change"))
+
     }
     
 }
@@ -106,6 +105,7 @@ extension EditProfile: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EditViewCell", for: indexPath) as! EditViewCell
         cell.headingLbl.text = data[indexPath.row].firstLblText
         cell.detailLbl.text = data[indexPath.row].secondLblText
+        cell.selectionStyle = .none
         if indexPath.row == 2 && indexPath.row == 4 && indexPath.row == 6 && indexPath.row == 7 {
             cell.changeButton.isHidden = true
         }
@@ -119,6 +119,10 @@ extension EditProfile: UITableViewDataSource, UITableViewDelegate {
             return height + 44
         }
         return 60
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
     }
     
     func cellSize(forWidth width: CGFloat, text : String) -> CGSize {

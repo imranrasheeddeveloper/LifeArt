@@ -71,6 +71,10 @@
 		4F7D78A5262CC733001C2290 /* PhotosDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7D78A4262CC733001C2290 /* PhotosDelegate.swift */; };
 		4F8B1BA0262AF5AE0082C46A /* CommentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8B1B9E262AF5AE0082C46A /* CommentsCell.swift */; };
 		4F8B1BA1262AF5AE0082C46A /* CommentsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F8B1B9F262AF5AE0082C46A /* CommentsCell.xib */; };
+		4F8D33592643308800A695DD /* ClassesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8D33582643308800A695DD /* ClassesService.swift */; };
+		4F8D335E2643365100A695DD /* Classess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8D335D2643365100A695DD /* Classess.swift */; };
+		4F8D3363264341BA00A695DD /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8D3362264341BA00A695DD /* Constant.swift */; };
+		4F8D33682643488100A695DD /* MYProfilePostDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8D33672643488100A695DD /* MYProfilePostDataSource.swift */; };
 		4F96C7052626F08B00DDACB2 /* TabarController + Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F96C7042626F08B00DDACB2 /* TabarController + Animations.swift */; };
 		4F96C70A2626F32700DDACB2 /* ProfessionalProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F96C7092626F32700DDACB2 /* ProfessionalProfileVC.swift */; };
 		4F9A1F5C263581A700DB8AAD /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9A1F5B263581A700DB8AAD /* EditProfile.swift */; };
@@ -110,6 +114,9 @@
 		4FD5E9B5263C9AA5007E0AB4 /* CallingCodesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD5E9B4263C9AA5007E0AB4 /* CallingCodesVC.swift */; };
 		4FD5E9BB263C9B0E007E0AB4 /* CountryCallingCode.json in Resources */ = {isa = PBXBuildFile; fileRef = 4FD5E9BA263C9B0E007E0AB4 /* CountryCallingCode.json */; };
 		4FD5E9EF263CA6E9007E0AB4 /* GestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD5E9EE263CA6E9007E0AB4 /* GestureRecognizer.swift */; };
+		4FE5AE4E2641372500EF4B8C /* UITextView+Designable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE5AE4D2641372500EF4B8C /* UITextView+Designable.swift */; };
+		4FF24BD026408C3F00BBCD53 /* SuggestedArtistCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF24BCE26408C3F00BBCD53 /* SuggestedArtistCell.swift */; };
+		4FF24BD126408C3F00BBCD53 /* SuggestedArtistCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FF24BCF26408C3F00BBCD53 /* SuggestedArtistCell.xib */; };
 		4FFD39DA263E90B70030FFDC /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFD39D9263E90B60030FFDC /* UserService.swift */; };
 		4FFD39E0263E91CE0030FFDC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFD39DF263E91CE0030FFDC /* User.swift */; };
 		4FFD3A0A263E972C0030FFDC /* TabbarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFD3A09263E972C0030FFDC /* TabbarVC.swift */; };
@@ -214,6 +221,10 @@
 		4F7D78A4262CC733001C2290 /* PhotosDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosDelegate.swift; sourceTree = "<group>"; };
 		4F8B1B9E262AF5AE0082C46A /* CommentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsCell.swift; sourceTree = "<group>"; };
 		4F8B1B9F262AF5AE0082C46A /* CommentsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentsCell.xib; sourceTree = "<group>"; };
+		4F8D33582643308800A695DD /* ClassesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassesService.swift; sourceTree = "<group>"; };
+		4F8D335D2643365100A695DD /* Classess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classess.swift; sourceTree = "<group>"; };
+		4F8D3362264341BA00A695DD /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		4F8D33672643488100A695DD /* MYProfilePostDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MYProfilePostDataSource.swift; sourceTree = "<group>"; };
 		4F96C7042626F08B00DDACB2 /* TabarController + Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TabarController + Animations.swift"; sourceTree = "<group>"; };
 		4F96C7092626F32700DDACB2 /* ProfessionalProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessionalProfileVC.swift; sourceTree = "<group>"; };
 		4F9A1F5B263581A700DB8AAD /* EditProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
@@ -253,6 +264,9 @@
 		4FD5E9B4263C9AA5007E0AB4 /* CallingCodesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallingCodesVC.swift; sourceTree = "<group>"; };
 		4FD5E9BA263C9B0E007E0AB4 /* CountryCallingCode.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CountryCallingCode.json; sourceTree = "<group>"; };
 		4FD5E9EE263CA6E9007E0AB4 /* GestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureRecognizer.swift; sourceTree = "<group>"; };
+		4FE5AE4D2641372500EF4B8C /* UITextView+Designable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Designable.swift"; sourceTree = "<group>"; };
+		4FF24BCE26408C3F00BBCD53 /* SuggestedArtistCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestedArtistCell.swift; sourceTree = "<group>"; };
+		4FF24BCF26408C3F00BBCD53 /* SuggestedArtistCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestedArtistCell.xib; sourceTree = "<group>"; };
 		4FFD39D9263E90B60030FFDC /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		4FFD39DF263E91CE0030FFDC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4FFD3A09263E972C0030FFDC /* TabbarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarVC.swift; sourceTree = "<group>"; };
@@ -447,6 +461,8 @@
 				4FFE8EA6263DFEA300CE85CC /* UIWindow+Extension.swift */,
 				4FFE8EAB263E012000CE85CC /* AppDelegate+Extension.swift */,
 				4FFE8EB0263E077000CE85CC /* Reachability.swift */,
+				4FE5AE4D2641372500EF4B8C /* UITextView+Designable.swift */,
+				4F8D3362264341BA00A695DD /* Constant.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -482,6 +498,7 @@
 			children = (
 				4F1ACBEA262E3041004B372E /* MyProfileVC.swift */,
 				4F9A1F5B263581A700DB8AAD /* EditProfile.swift */,
+				4F8D33672643488100A695DD /* MYProfilePostDataSource.swift */,
 			);
 			path = MyProfile;
 			sourceTree = "<group>";
@@ -502,6 +519,7 @@
 				4FFD3A74263EBF480030FFDC /* PostService.swift */,
 				4FFD39D9263E90B60030FFDC /* UserService.swift */,
 				4F27BB25263ECE430075F68C /* AnnouncmentService.swift */,
+				4F8D33582643308800A695DD /* ClassesService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -776,6 +794,7 @@
 		4FD03745261E588200C5E576 /* Professionals */ = {
 			isa = PBXGroup;
 			children = (
+				4FF24BCD26408C0B00BBCD53 /* SugesstedArtist */,
 				4F6233492628C8F00031987E /* PhotoCell.swift */,
 				4F62334A2628C8F10031987E /* PhotoCell.xib */,
 				4FD3D54E261FA226006C0CCE /* SugesstedParentCell */,
@@ -839,12 +858,22 @@
 			path = JSON;
 			sourceTree = "<group>";
 		};
+		4FF24BCD26408C0B00BBCD53 /* SugesstedArtist */ = {
+			isa = PBXGroup;
+			children = (
+				4FF24BCE26408C3F00BBCD53 /* SuggestedArtistCell.swift */,
+				4FF24BCF26408C3F00BBCD53 /* SuggestedArtistCell.xib */,
+			);
+			path = SugesstedArtist;
+			sourceTree = "<group>";
+		};
 		4FFD39DE263E91BC0030FFDC /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				4FFD39DF263E91CE0030FFDC /* User.swift */,
 				4FFD3A6C263EBEC80030FFDC /* Post.swift */,
 				4F27BB20263ECD300075F68C /* Announcements.swift */,
+				4F8D335D2643365100A695DD /* Classess.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1010,6 +1039,7 @@
 				4FD03749261E58BB00C5E576 /* SuggestedCell.xib in Resources */,
 				4F62334C2628C8F10031987E /* PhotoCell.xib in Resources */,
 				4F8B1BA1262AF5AE0082C46A /* CommentsCell.xib in Resources */,
+				4FF24BD126408C3F00BBCD53 /* SuggestedArtistCell.xib in Resources */,
 				4FD3D552261FA25E006C0CCE /* SuggestedParentCell.xib in Resources */,
 				4FD5E9BB263C9B0E007E0AB4 /* CountryCallingCode.json in Resources */,
 				4FB5B679262A5EDB00BC4F10 /* GoogleService-Info.plist in Resources */,
@@ -1162,11 +1192,13 @@
 				4F96C70A2626F32700DDACB2 /* ProfessionalProfileVC.swift in Sources */,
 				4F9BF5352637F970007E386E /* SettingsCell.swift in Sources */,
 				4FD3D547261FA171006C0CCE /* ProfessionalVC.swift in Sources */,
+				4F8D33592643308800A695DD /* ClassesService.swift in Sources */,
 				4F8B1BA0262AF5AE0082C46A /* CommentsCell.swift in Sources */,
 				4FB368A9262B2AAB00BA31B3 /* AddVC.swift in Sources */,
 				4F9BF5322637F970007E386E /* PersonalDetailCell.swift in Sources */,
 				4F20CE86261CE90B00F8EE6F /* UIViewController+Extension.swift in Sources */,
 				4F9BF5492638136E007E386E /* MenuSheet.swift in Sources */,
+				4FF24BD026408C3F00BBCD53 /* SuggestedArtistCell.swift in Sources */,
 				4F1547A4261C9ED00092C2AE /* UIView+Round.swift in Sources */,
 				4FFD3A0A263E972C0030FFDC /* TabbarVC.swift in Sources */,
 				4F1DF32B262AE8030001A65B /* NotificationVC.swift in Sources */,
@@ -1178,6 +1210,7 @@
 				4F3D6D152632B912008A8C5E /* CommentsVC.swift in Sources */,
 				4F154799261C9EB40092C2AE /* Storyboard.swift in Sources */,
 				4F7D78A5262CC733001C2290 /* PhotosDelegate.swift in Sources */,
+				4F8D33682643488100A695DD /* MYProfilePostDataSource.swift in Sources */,
 				4FB244A6261DE1BC00441E6B /* ArtistCategories.swift in Sources */,
 				4FFD3A17263E994E0030FFDC /* UserDefaults.swift in Sources */,
 				4F9BF51D2637F864007E386E /* PesonalDetailVC.swift in Sources */,
@@ -1189,6 +1222,7 @@
 				4F1ACBCE262E1D8F004B372E /* ProfilePostCell.swift in Sources */,
 				4FFD3A16263E994E0030FFDC /* KeychainWrapper.swift in Sources */,
 				4F96C7052626F08B00DDACB2 /* TabarController + Animations.swift in Sources */,
+				4F8D3363264341BA00A695DD /* Constant.swift in Sources */,
 				4FFD3A6D263EBEC80030FFDC /* Post.swift in Sources */,
 				4FFD39DA263E90B70030FFDC /* UserService.swift in Sources */,
 				4F9BF5302637F970007E386E /* ClassesCell.swift in Sources */,
@@ -1208,6 +1242,7 @@
 				4F1547A6261C9ED00092C2AE /* Button+Round.swift in Sources */,
 				4FFE8EAC263E012000CE85CC /* AppDelegate+Extension.swift in Sources */,
 				4F51FEEA2638A84F00D7C215 /* LoginVC.swift in Sources */,
+				4F8D335E2643365100A695DD /* Classess.swift in Sources */,
 				4F15479A261C9EB40092C2AE /* ControllerIdentifier.swift in Sources */,
 				4F1DF322262AE4D90001A65B /* CreatePostVC.swift in Sources */,
 				4FD5E9B5263C9AA5007E0AB4 /* CallingCodesVC.swift in Sources */,
@@ -1232,6 +1267,7 @@
 				4F9BF51C2637F864007E386E /* SettingsVC.swift in Sources */,
 				4F51FEEF2638AB4000D7C215 /* ForgetPasswordVC.swift in Sources */,
 				4F42454326382B8D0026E1EF /* MenuPresentationController.swift in Sources */,
+				4FE5AE4E2641372500EF4B8C /* UITextView+Designable.swift in Sources */,
 				4F7D789D262CC66D001C2290 /* PhotosDataSource.swift in Sources */,
 				4F20CE79261CE4CB00F8EE6F /* VerifyNumberVC.swift in Sources */,
 				4F1DF313262AD4F80001A65B /* AnnouncmentsCell.swift in Sources */,

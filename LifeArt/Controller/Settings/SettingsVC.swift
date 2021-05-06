@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import  Firebase
 
 struct SettingsModel {
 var detailLbl : String
@@ -87,9 +87,21 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
             self.pushToController(from: .Settings, identifier: .AccountSettingVC )
         case 1:
             self.pushToController(from: .Settings, identifier: .ClassesVC )
+        case 6:
+            logoutUser()
         default:
             break
         }
+    }
+    
+    func logoutUser() {
+        // call from any screen
+        
+        do { try Auth.auth().signOut() }
+        catch { print("already logged out") }
+        
+        self.pushToRoot(from: .main, identifier: .LoginVC)
+        
     }
 
 }

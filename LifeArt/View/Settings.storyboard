@@ -104,14 +104,14 @@
             <objects>
                 <viewController storyboardIdentifier="NewclassesVC" id="uBt-hg-1SE" customClass="NewclassesVC" customModule="LifeArt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="u9c-Um-Ewr">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Cs-9h-evu">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Cs-9h-evu">
+                                <rect key="frame" x="0.0" y="44" width="414" height="922"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hjn-Tu-TRi" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UlI-vd-reb">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
@@ -215,6 +215,10 @@
                                                         <real key="value" value="20"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="backButtonWithSender:" destination="uBt-hg-1SE" eventType="touchUpInside" id="g8Q-za-OZg"/>
+                                                    <action selector="saveClass:" destination="uBt-hg-1SE" eventType="touchUpInside" id="IB7-xC-ErT"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -254,7 +258,6 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Hjn-Tu-TRi" secondAttribute="trailing" id="BkG-lc-zUD"/>
                                     <constraint firstItem="Hjn-Tu-TRi" firstAttribute="leading" secondItem="7Cs-9h-evu" secondAttribute="leading" id="RoX-FQ-fAN"/>
-                                    <constraint firstAttribute="bottom" secondItem="Hjn-Tu-TRi" secondAttribute="bottom" id="Sfm-w4-7fX"/>
                                     <constraint firstItem="Hjn-Tu-TRi" firstAttribute="top" secondItem="7Cs-9h-evu" secondAttribute="top" id="zyI-RV-bfa"/>
                                 </constraints>
                             </scrollView>
@@ -262,21 +265,29 @@
                         <viewLayoutGuide key="safeArea" id="623-Qm-dBs"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Hjn-Tu-TRi" firstAttribute="height" secondItem="u9c-Um-Ewr" secondAttribute="height" id="6yB-FU-2NC"/>
                             <constraint firstItem="7Cs-9h-evu" firstAttribute="top" secondItem="623-Qm-dBs" secondAttribute="top" id="BQV-1X-Tws"/>
                             <constraint firstItem="7Cs-9h-evu" firstAttribute="leading" secondItem="623-Qm-dBs" secondAttribute="leading" id="KLw-6q-uzV"/>
-                            <constraint firstItem="Hjn-Tu-TRi" firstAttribute="height" secondItem="u9c-Um-Ewr" secondAttribute="height" id="QGR-QR-Pn8"/>
                             <constraint firstItem="7Cs-9h-evu" firstAttribute="bottom" secondItem="623-Qm-dBs" secondAttribute="bottom" id="egt-T2-KUL"/>
                             <constraint firstItem="Hjn-Tu-TRi" firstAttribute="width" secondItem="u9c-Um-Ewr" secondAttribute="width" id="fXX-fZ-BoZ"/>
                             <constraint firstItem="7Cs-9h-evu" firstAttribute="trailing" secondItem="623-Qm-dBs" secondAttribute="trailing" id="pJa-MV-oh5"/>
                         </constraints>
                     </view>
+                    <size key="freeformSize" width="414" height="1000"/>
                     <connections>
+                        <outlet property="address" destination="Exp-oL-F5X" id="65Y-sy-0rp"/>
+                        <outlet property="discription" destination="a6K-j1-pWE" id="2uW-yA-mgq"/>
+                        <outlet property="imageView" destination="rHM-HN-zxo" id="lfB-LZ-cIt"/>
+                        <outlet property="nameOfInsitutue" destination="IrR-sQ-WWZ" id="UOA-Go-wcb"/>
                         <outlet property="navigationView" destination="UlI-vd-reb" id="ge6-a4-69E"/>
+                        <outlet property="ownerName" destination="et1-KL-0Ot" id="GUN-89-kJV"/>
+                        <outlet property="phoneNumber" destination="fc4-Dt-tZl" id="Gba-1s-Usj"/>
+                        <outlet property="website" destination="Nzs-4z-IRp" id="QV0-hL-hol"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Fl-YQ-uxo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1271" y="64"/>
+            <point key="canvasLocation" x="1269.5652173913045" y="63.616071428571423"/>
         </scene>
         <!--Pesonal DetailVC-->
         <scene sceneID="NbU-yG-PBE">

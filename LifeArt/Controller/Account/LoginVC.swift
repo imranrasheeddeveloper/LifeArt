@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Firebase
 class LoginVC: UIViewController {
 
     //MARK:- outlets
@@ -25,6 +25,10 @@ class LoginVC: UIViewController {
         navigationBarView.roundCorners(corners: .layerMinXMaxYCorner, radius: 30)
         navigationBarView.dropShadow()
     
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     //MARK:- Actions

@@ -9,10 +9,10 @@
 import Foundation
 
 struct Post {
-    var date, desc: String?
-    var image: String?
-    var medium, size, time, title: String?
-    var user: String?
+    var date, desc: String
+    var image: String
+    var medium, size, time, title: String
+    var user: String
     
     init(dictionary: [String: Any]) {
         self.user = dictionary["user"] as? String ?? ""

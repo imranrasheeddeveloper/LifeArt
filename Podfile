@@ -16,6 +16,7 @@ target 'LifeArt' do
         pod "FlagPhoneNumber"
         pod 'SDWebImage', '~> 5.0'
         pod 'SkeletonView'
+        pod 'Stripe'
         
 
   target 'LifeArtTests' do

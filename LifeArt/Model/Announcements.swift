@@ -11,9 +11,9 @@ struct Announcements {
     let date, des, name, salary: String
     let time, title, user: String
     
-    init(uid: String, dictionary: [String: Any]) {
-        self.date = dictionary["date"] as! String
-        self.des = dictionary["des"] as! String
+    init(dictionary: [String: Any]) {
+        self.date = dictionary["date"] as? String ?? ""
+        self.des = dictionary["des"] as? String ?? ""
         self.name = dictionary["name"] as! String
         self.salary = dictionary["salary"] as! String
         self.time = dictionary["time"] as! String

@@ -10,14 +10,20 @@ import UIKit
 
 class NotificationDataSource: NSObject ,UITableViewDataSource{
     var loadingCell  :  loadCell!
+    var arrayOfAnnouncements = [Announcements]()
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return arrayOfAnnouncements.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch loadingCell {
         case .AnnouncmentsCell:
-            let cell = tableView.dequeueReusableCell(withIdentifier: loadCell.AnnouncmentsCell.rawValue , for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: loadCell.AnnouncmentsCell.rawValue , for: indexPath) as! AnnouncmentsCell
+            cell.time.text = arrayOfAnnouncements[indexPath.row].time
+            cell.insituteName.text = arrayOfAnnouncements[indexPath.row].name
+            cell.salaryLbl.text = arrayOfAnnouncements[indexPath.row].salary
+            cell.titleLbl.text = arrayOfAnnouncements[indexPath.row].title
+            cell.titleOfType.text = arrayOfAnnouncements[indexPath.row].title
             cell.selectionStyle = .none
             return cell
             
@@ -29,6 +35,8 @@ class NotificationDataSource: NSObject ,UITableViewDataSource{
             return UITableViewCell()
         }
     }
+    
+    
     
     
     

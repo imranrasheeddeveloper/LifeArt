@@ -20,4 +20,8 @@ class NotificationDelegate: NSObject , UITableViewDelegate {
            return  210
         }
     }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
+    }
 }

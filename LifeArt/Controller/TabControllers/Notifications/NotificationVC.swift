@@ -12,7 +12,8 @@ class NotificationVC: UIViewController {
 
     @IBOutlet weak var tabelView : UITableView!
     @IBOutlet weak var segment: UISegmentedControl!
-    
+    var arrayOfAnnouncment = [Announcements]()
+    var announcements : Announcements?
     let datasorce = NotificationDataSource()
     let delegate = NotificationDelegate()
     
@@ -27,15 +28,18 @@ class NotificationVC: UIViewController {
         tabelView.register(UINib(nibName: "AnnouncmentsCell", bundle: nil), forCellReuseIdentifier: "AnnouncmentsCell")
         datasorce.loadingCell = .AnnouncmentsCell
         delegate.loadingCell = .AnnouncmentsCell
-        
+        apiCalling()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    
     @IBAction func sengmentValueCheangeAction(_ sender: UISegmentedControl) {
         if segment.selectedSegmentIndex == 0{
             datasorce.loadingCell = .AnnouncmentsCell
             delegate.loadingCell = .AnnouncmentsCell
-            DispatchQueue.main.async {
-                self.tabelView.reloadData()
-            }
+            apiCalling()
             
         }
         else if segment.selectedSegmentIndex == 1{
@@ -48,4 +52,16 @@ class NotificationVC: UIViewController {
     }
   
     
+    //MARK:- Api Calling
+    
+    func apiCalling() {
+        AnnouncmentService.shared.fetchAnnouncmentServices { [self] (announcements) in
+            arrayOfAnnouncment  = announcements
+            dump(arrayOfAnnouncment)
+            datasorce.arrayOfAnnouncements = arrayOfAnnouncment
+            DispatchQueue.main.async {
+                self.tabelView.reloadData()
+            }
+        }
+    }
 }

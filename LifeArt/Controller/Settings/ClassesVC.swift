@@ -4,45 +4,45 @@ import UIKit
 
 
 
-struct ClassesModel {
-    var nameOfInstitueLbl : String
-    var addressOfInstituteLbl : String
-    var nameOfDirectorLbl  : String
-    var imgView : [UIImage]
-}
-
 class ClassesVC: UIViewController {
     
     //MARK:-Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var navigationView : UIView!
     //MARK:-Variables
-    var classesData = [ClassesModel]()
-    
+    var classesData = [Classess]()
+
     
     //MARK:-LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
         registerNib()
-        loadData()
         setStatusBar()
         hideKeyboard()
         navigationView.dropShadow()
         navigationView.roundCorners(corners: .layerMinXMaxYCorner, radius: 30)
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        apiCalling()
+    }
     //MARK:-Helper Functions
     func registerNib(){
         tableView.register(UINib(nibName: "ClassesCell", bundle: nil), forCellReuseIdentifier: "ClassesCell")
     }
     
+    //MARK:- Apis
     
-    func loadData(){
-        classesData.append(ClassesModel(nameOfInstitueLbl: "Institute Of Art $ Gallery", addressOfInstituteLbl: "Keas 69 str. 15624, Chalendri Athens,Greece", nameOfDirectorLbl: "Directed By:John William", imgView: []))
-        
-        classesData.append(ClassesModel(nameOfInstitueLbl: "Institute Of Art $ Gallery", addressOfInstituteLbl: "Keas 69 str. 15624, Chalendri Athens,Greece", nameOfDirectorLbl: "Directed By:John William", imgView: []))
+    func apiCalling() {
+        ClassesService.shared.fetchClassess { (clases) in
+            self.classesData = clases
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
     
+
+    //MARK-: Actions
     @IBAction func addnewClass(sender : UIButton){
         self.pushToRoot(from: .Settings, identifier: .NewclassesVC)
     }
@@ -60,9 +60,10 @@ extension ClassesVC : UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ClassesCell", for: indexPath) as! ClassesCell
-        cell.nameOfInstitueLbl.text = classesData[indexPath.row].nameOfInstitueLbl
-        cell.addressOfInstituteLbl.text = classesData[indexPath.row].addressOfInstituteLbl
-        cell.nameOfDirectorLbl.text = classesData[indexPath.row].nameOfDirectorLbl
+        cell.nameOfInstitueLbl.text = classesData[indexPath.row].name
+        cell.addressOfInstituteLbl.text = classesData[indexPath.row].address
+        cell.nameOfDirectorLbl.text = classesData[indexPath.row].owner
+        cell.selectionStyle = .none
         return cell
     }
     

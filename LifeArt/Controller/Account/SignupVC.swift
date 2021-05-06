@@ -40,6 +40,9 @@ class SignupVC: UIViewController , UITextFieldDelegate{
         loginLbl.addGestureRecognizer(tap)
         
     }
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
+    }
     
     
     //MARK:- Actions

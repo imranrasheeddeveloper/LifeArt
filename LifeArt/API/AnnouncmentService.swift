@@ -12,13 +12,19 @@ import Firebase
 import FirebaseAuth
 struct AnnouncmentService{
     typealias DatabaseCompletion = ((Error?, DatabaseReference) -> Void)
-    static let shared = UserService()
-    func fetchAnnouncmentServices(uid: String, completion: @escaping(User) -> Void) {
+    static let shared = AnnouncmentService()
+    func fetchAnnouncmentServices(completion: @escaping([Announcements]) -> Void) {
+        var announcmentArray = [Announcements]()
         REF_Announcements.observeSingleEvent(of: .value) { (snapshot) in
-            guard let dictionary = snapshot.value as? [String: Any] else {return}
-            let uid = snapshot.key
-            let user = User(uid: uid, dictionary: dictionary)
-            completion(user)
+            for snap in snapshot.children {
+                let userSnap = snap as! DataSnapshot
+                let announcmentDict = userSnap.value as! [String:AnyObject]
+                let user = Announcements(dictionary: announcmentDict)
+                announcmentArray.append(user)
+            }
+            DispatchQueue.main.async {
+                completion(announcmentArray)
+            }
         }
     }
 }

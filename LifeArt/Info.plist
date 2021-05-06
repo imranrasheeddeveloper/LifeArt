@@ -62,5 +62,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>LifeArt want to USe Your Camera</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>LifeArt Want to Access your Photos</string>
 </dict>
 </plist>

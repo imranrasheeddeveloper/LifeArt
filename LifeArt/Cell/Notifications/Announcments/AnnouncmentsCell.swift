@@ -11,9 +11,18 @@ import UIKit
 class AnnouncmentsCell: UITableViewCell {
 
     @IBOutlet weak var discriptionView: UIView!
+    @IBOutlet weak var insituteName: UILabel!
+    @IBOutlet weak var priceLbl: UILabel!
+    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var desLbl: UILabel!
     @IBOutlet weak var typeView: UIView!
+    @IBOutlet weak var time: UILabel!
     @IBOutlet weak var clockView: UIView!
     @IBOutlet weak var amountView: UIView!
+    
+    @IBOutlet weak var salaryLbl: UILabel!
+    @IBOutlet weak var titleOfType: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         discriptionView.dropShadow()

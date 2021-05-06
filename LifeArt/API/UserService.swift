@@ -18,11 +18,50 @@ struct UserService{
     //MARK: - Fetch user
     
     func fetchUser(uid: String, completion: @escaping(User) -> Void) {
+        print(uid)
         REF_Artists.child(uid).observeSingleEvent(of: .value) { (snapshot) in
             guard let dictionary = snapshot.value as? [String: Any] else {return}
             let uid = snapshot.key
             let user = User(uid: uid, dictionary: dictionary)
+            dump(user)
             completion(user)
+            
+        }
+    }
+    
+    func fetchArtist(completion: @escaping([User]) -> Void) {
+        var artistArray = [User]()
+        REF_Artists.observeSingleEvent(of: .value) { (snapshot) in
+            //guard let dictionary = snapshot.value as? [String: Any] else {return}
+            for snap in snapshot.children {
+                let userSnap = snap as! DataSnapshot
+                //let uid = userSnap.key //the uid of each user
+                let userDict = userSnap.value as! [String:AnyObject]
+                let user = User(uid: "", dictionary: userDict)
+                artistArray.append(user)
+            }
+            DispatchQueue.main.async {
+                completion(artistArray)
+            }
+           
+        }
+    }
+    
+    func fetchModels(completion: @escaping([User]) -> Void) {
+        var postArray = [User]()
+        REF_Models.observeSingleEvent(of: .value) { (snapshot) in
+            //guard let dictionary = snapshot.value as? [String: Any] else {return}
+            for snap in snapshot.children {
+                let userSnap = snap as! DataSnapshot
+                //let uid = userSnap.key //the uid of each user
+                let userDict = userSnap.value as! [String:AnyObject]
+                let post = User(uid: "", dictionary: userDict)
+                postArray.append(post)
+            }
+            DispatchQueue.main.async {
+                completion(postArray)
+            }
+           
         }
     }
     
@@ -45,6 +84,10 @@ struct UserService{
                 }
             }
         }
+    }
+    
+    func updateProfile() {
+       
     }
 }
 

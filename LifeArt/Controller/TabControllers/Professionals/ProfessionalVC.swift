@@ -25,6 +25,10 @@ class ProfessionalVC: UIViewController {
         topHeaderView.dropShadow()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    
     func loadData() {
         
     }
@@ -42,10 +46,12 @@ extension ProfessionalVC :  UITableViewDataSource , UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "SuggestedParentCell", for: indexPath) as! SuggestedParentCell
+            cell.cellNumber = 0
             return cell
         }
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SuggestedParentCell", for: indexPath) as! SuggestedParentCell
+            cell.cellNumber = 1
             return cell
         }
        
@@ -53,10 +59,7 @@ extension ProfessionalVC :  UITableViewDataSource , UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 300
     }
-    
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        return UIView()
-//    }
+
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
@@ -73,7 +76,13 @@ extension ProfessionalVC :  UITableViewDataSource , UITableViewDelegate{
         button.addTarget(self, action: #selector(pressed(_:)), for: .touchUpInside)
         
         let lable = UILabel()
-        lable.text = "Suggessted Model"
+        switch section {
+        case 0:
+            lable.text = "Suggessted Model"
+        default:
+            lable.text = "Suggessted Artist"
+        }
+       
         lable.translatesAutoresizingMaskIntoConstraints = false
         
         let headerView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: frame.size.height, height: frame.size.width))

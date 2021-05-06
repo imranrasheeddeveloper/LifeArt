@@ -21,7 +21,7 @@ let REF_Artists = DB_REF.child("Artists")
 let REF_Announcements = DB_REF.child("Announcements")
 let REF_Posts = DB_REF.child("Posts")
 let REF_messages = DB_REF.child("messages")
-
+let REF_Reported_Posts = DB_REF.child("Reported_posts")
 
 
 typealias DatabaseCompletion = ((Error?, DatabaseReference) -> Void)

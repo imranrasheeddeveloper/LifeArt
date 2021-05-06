@@ -18,12 +18,17 @@ class TabbarVC: UITabBarController {
        
     }
     override func viewWillAppear(_ animated: Bool) {
-        if Auth.auth().currentUser == nil {
-            self.pushToController(from: .main, identifier: .LoginVC)
-        }
-        else {
+//        if Auth.auth().currentUser == nil {
+//            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+//            let vc = storyBoard.instantiateViewController(withIdentifier: "LoginVC")
+//            let nav = UINavigationController(rootViewController:vc)
+//            nav.modalPresentationStyle = .fullScreen
+//            self.present(nav, animated: true, completion: nil)
+//        }
+        //else {
             fetchUser()
-        }
+        //}
+        
     }
     
     func fetchUser() {
@@ -45,9 +50,6 @@ class TabbarVC: UITabBarController {
         KeychainWrapper.standard.set(user?.password ?? "", forKey: "password")
         KeychainWrapper.standard.set(user?.phone ?? "", forKey: "phone")
         KeychainWrapper.standard.set(user?.website ?? "", forKey: "website")
-        
+        UserDefaults.standard.setValue(true, forKey: "isLogedIn")
     }
-    
-  
-
 }

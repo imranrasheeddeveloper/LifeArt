@@ -8,10 +8,18 @@
 
 import Foundation
 import  Firebase
+
+struct CreatePost {
+    var date, desc: String
+    var image: UIImage
+    var medium, size, time, title: String
+    var user: String
+}
 struct PostService{
    
     typealias DatabaseCompletion = ((Error?, DatabaseReference) -> Void)
     static var shared = PostService()
+    public var user: User?
    
     
     //MARK: - Fetch Post
@@ -29,8 +37,49 @@ struct PostService{
             DispatchQueue.main.async {
                 completion(postArray)
             }
-           
         }
     }
     
+    func creatPost(account : AccountType , post: CreatePost , completion: @escaping(Error?, DatabaseReference) -> (Void)) {
+        AppDelegate.shared.loadindIndicator(title: "Uploading Post")
+        if let data = post.image.pngData() {
+            FirebaseStorageManager().uploadImageData(data: data, serverFileName: UUID().uuidString) { (isSuccess, url) in
+                guard let url = url else {return}
+                guard let uid = Auth.auth().currentUser?.uid else {return}
+                let date =  post.date
+                let desc = post.desc
+                let medium = post.medium
+                let size = post.size
+                let time = post.time
+                let title = post.title
+                let values = ["date": date,
+                              "desc": desc,
+                              "image": url,
+                              "medium": medium,
+                              "size": size,
+                              "time" :  time ,
+                              "title" : title ,
+                              "user" : uid ,
+                ]
+                as [String : Any]
+                //check if the user is 'Artist' or 'Model'
+                switch account {
+                case .artist :
+                    REF_Posts.child("artists").childByAutoId().updateChildValues(values, withCompletionBlock: completion)
+                case .moodels:
+                    REF_Posts.child("mooels").childByAutoId().updateChildValues(values, withCompletionBlock: completion)
+                }
+                AppDelegate.shared.removeLoadIndIndicator()
+            }
+        }
+    }
+    
+    
+    func reportPost(postUserId : String,  completion: @escaping(Error?, DatabaseReference) -> (Void)) {
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        let values = [UUID().uuidString: postUserId]
+        as [String : Any]
+      
+            REF_Reported_Posts.child(uid).updateChildValues(values, withCompletionBlock: completion)
+    }
 }

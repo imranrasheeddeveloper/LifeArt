@@ -7,23 +7,38 @@
 //
 
 import UIKit
-
-
+import Firebase
+import SDWebImage
 class MyProfileVC: UIViewController, UICollectionViewDelegate, UIViewControllerTransitioningDelegate {
+    
+    //MARK:- Outlets
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var followAction: UIButton!
     @IBOutlet weak var heightConstrains: NSLayoutConstraint!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var topConstrainsOfHeader: NSLayoutConstraint!
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var fullName: UILabel!
+    @IBOutlet weak var bioLbl: UILabel!
+    @IBOutlet weak var userName: UILabel!
+    //MARK:- DataHolders
+    public var postArray = [Post]()
+    public var userArray = [User]()
+    public var imageArray = [String]()
     
+    //MARK:- Scrollview Helper
     var selectedIndex = 0
-    let photosDataSource = PhotosDataSource()
-    let photoDelegate = PhotosDelegate()
-    let tableDataSource = UserPostDataSource()
     let maxHeaderHeight: CGFloat = 410
     let minHeaderHeight: CGFloat = 0
     var previousScrollOffset: CGFloat = 0
    
+    //MARK:-Objects
+    public var user: User?
+    let photosDataSource = PhotosDataSource()
+    let photoDelegate = PhotosDelegate()
+    
+    
+    //MARK:- Creating Views
     private let collectionViewLayout: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -39,18 +54,37 @@ class MyProfileVC: UIViewController, UICollectionViewDelegate, UIViewControllerT
         let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
         table.backgroundColor = UIColor.white
-        table.register(UINib(nibName: "ProfilePostCell", bundle: nil), forCellReuseIdentifier: "ProfilePostCell")
+        table.register(UINib(nibName: "PostCell", bundle: nil), forCellReuseIdentifier: "PostCell")
+        table.separatorStyle = .none
         return table
     }()
     
+    
+    //MARK:- Life Cycle
     override func viewDidLoad() {
         setStatusBar()
-       
         hideKeyboard()
+        fetchUser()
+        fetchFeeds()
+        setupViews()
+
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    //MARK:- Setup Views
+    func setupConstrainsofCollectionView() {
+        self.collectionViewLayout.anchor(top: self.contentView.topAnchor, left: self.contentView.leftAnchor, bottom: self.contentView.bottomAnchor, right: self.contentView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
+    }
+    func setupConstrainsofTableView() {
+        self.tableviewLayout.anchor(top: self.contentView.topAnchor, left: self.contentView.leftAnchor, bottom: self.contentView.bottomAnchor, right: self.contentView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
+    }
+    
+    func setupViews() {
         if selectedIndex == 0{
             self.contentView.addSubview(tableviewLayout)
             tableviewLayout.delegate = self
-            tableviewLayout.dataSource = tableDataSource
+            tableviewLayout.dataSource = self
             setupConstrainsofTableView()
         }
         else{
@@ -59,16 +93,45 @@ class MyProfileVC: UIViewController, UICollectionViewDelegate, UIViewControllerT
             collectionViewLayout.dataSource = photosDataSource
             collectionViewLayout.delegate = self
         }
-    
-        
     }
     
     
-    func setupConstrainsofCollectionView() {
-        self.collectionViewLayout.anchor(top: self.contentView.topAnchor, left: self.contentView.leftAnchor, bottom: self.contentView.bottomAnchor, right: self.contentView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
+    //MARK:- Api Calling
+    func fetchFeeds(){
+        PostService.shared.fetchPost { [self] (post) in
+        self.postArray = post
+        for post in postArray{
+            UserService.shared.fetchUser(uid: post.user ) { (user) in
+                self.userArray.append(user)
+                self.imageArray.append(post.image)
+                DispatchQueue.main.async {
+                    self.tableviewLayout.reloadData()
+                }
+            }
+        }
     }
-    func setupConstrainsofTableView() {
-        self.tableviewLayout.anchor(top: self.contentView.topAnchor, left: self.contentView.leftAnchor, bottom: self.contentView.bottomAnchor, right: self.contentView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
+  }
+    
+    func fetchUser() {
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        UserService.shared.fetchUser(uid: uid) { [self] (user) in
+            self.user = user
+            
+            if let firstName = self.user?.firstname {
+                if let lastName = self.user?.lastname{
+                    if let bio = self.user?.bio {
+                        if let image = self.user?.image{
+                            fullName.text = "\(firstName) \(lastName)"
+                            userName.text = "@\(firstName)"
+                            bioLbl.text = bio
+                            profileImage.sd_setImage(with:URL(string: image),
+                                                     placeholderImage: UIImage(named: "placeholder.png"))
+                        }
+                    }
+                }
+            }
+            
+        }
     }
     
     //MARK:- Acctions
@@ -77,6 +140,7 @@ class MyProfileVC: UIViewController, UICollectionViewDelegate, UIViewControllerT
     }
     @IBAction func followAction(_ sender: UIButton) {
         let vc = EditProfile()
+        vc.user = user
         self.navigationController?.pushViewController(vc, animated: true)
     }
     @IBAction func ValueChanged(_ sender: SWSegmentedControl) {
@@ -87,12 +151,9 @@ class MyProfileVC: UIViewController, UICollectionViewDelegate, UIViewControllerT
             self.contentView.addSubview(tableviewLayout)
             setupConstrainsofTableView()
             tableviewLayout.delegate = self
-            tableviewLayout.dataSource = tableDataSource
-        
+            tableviewLayout.dataSource = self
             setupConstrainsofTableView()
-            DispatchQueue.main.async {
-                self.tableviewLayout.reloadData()
-            }
+            fetchFeeds()
         }
         else if sender.selectedSegmentIndex == 1 {
             selectedIndex = 1
@@ -101,6 +162,7 @@ class MyProfileVC: UIViewController, UICollectionViewDelegate, UIViewControllerT
             setupConstrainsofCollectionView()
             collectionViewLayout.dataSource = photosDataSource
             collectionViewLayout.delegate = self
+            photosDataSource.arrayOfImage = imageArray
             DispatchQueue.main.async {
                 self.collectionViewLayout.reloadData()
             }
@@ -117,6 +179,7 @@ class MyProfileVC: UIViewController, UICollectionViewDelegate, UIViewControllerT
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         MenuPresentationController(presentedViewController: presented, presenting: presenting)
     }
+    
     
  
 }
@@ -191,7 +254,17 @@ extension MyProfileVC : UICollectionViewDelegateFlowLayout{
 //MARK:- TabelView delegate
 extension MyProfileVC :  UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 320
+        return 400
     }
+}
+
+//MARK : - postCellDelegate
+extension MyProfileVC : postCellDelegate
+{
+    func comments(tag: Int) {
+        presenttSheet(tag: tag, view: self.view, controller: self, Identifier: .CommentsVC, storyBoard: .Home)
+    }
+    
+    
 }
 

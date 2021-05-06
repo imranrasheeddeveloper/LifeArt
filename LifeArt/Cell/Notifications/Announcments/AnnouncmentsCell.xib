@@ -166,7 +166,14 @@
             <connections>
                 <outlet property="amountView" destination="eh7-MQ-x90" id="PCJ-MI-65M"/>
                 <outlet property="clockView" destination="5LA-lo-6fv" id="BXR-2O-rDw"/>
+                <outlet property="desLbl" destination="kof-n4-YVX" id="elA-j5-qvL"/>
                 <outlet property="discriptionView" destination="n3z-pv-eTR" id="rgV-xT-ZlV"/>
+                <outlet property="insituteName" destination="rqp-LC-o2T" id="qff-11-JJq"/>
+                <outlet property="priceLbl" destination="LYT-E1-ZeS" id="UbS-6z-mBl"/>
+                <outlet property="salaryLbl" destination="LYT-E1-ZeS" id="gCK-tF-5oR"/>
+                <outlet property="time" destination="tlK-Dw-Rgu" id="01D-oF-kjz"/>
+                <outlet property="titleLbl" destination="Ek9-28-VN2" id="UnT-BZ-qYV"/>
+                <outlet property="titleOfType" destination="ELe-TX-wrE" id="NJD-oE-cNx"/>
                 <outlet property="typeView" destination="T7b-Uy-6fW" id="3Pj-pK-bPH"/>
             </connections>
             <point key="canvasLocation" x="-5.7971014492753632" y="132.92410714285714"/>

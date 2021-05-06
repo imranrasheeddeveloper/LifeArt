@@ -22,12 +22,14 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var likesCommentsShare: UILabel!
     @IBOutlet weak var artImaeView: UIImageView!
     @IBOutlet weak var discriptionLbl: UILabel!
+    @IBOutlet weak var followedDate: UILabel!
     var delegate : postCellDelegate!
     static let  CellIndentifier = "PostCell"
     override func awakeFromNib() {
         super.awakeFromNib()
         bgView.viewShadow()
-        
+//        postProfileImage.showSkeleton()
+//        postUserNameLbl.showSkeleton()
       
         
         

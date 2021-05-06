@@ -1,8 +1,8 @@
 //
-//  GalleryDataSource.swift
+//  MYProfilePostDataSource.swift
 //  LifeArt
 //
-//  Created by Muhammad Imran on 08/04/2021.
+//  Created by Muhammad Imran on 06/05/2021.
 //  Copyright © 2021 Itrid Technologies. All rights reserved.
 //
 
@@ -11,28 +11,17 @@ import UIKit
 import SDWebImage
 import FittedSheets
 import SkeletonView
-extension GalleryVC : UITableViewDataSource{
+extension MyProfileVC : UITableViewDataSource{
     
-  
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(postArray.count)
-        print(userArray.count)
-        return postArray.count  + 1
+
+        return postArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        switch indexPath.row {
-        
-        case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "GalleryHeaderCell", for: indexPath) as! GalleryHeaderCell
-            cell.selectionStyle = .none
-            cell.fullNameLbl.text = ("\(KeychainWrapper.standard.string(forKey: "firstname") ?? "Jon") \(KeychainWrapper.standard.string(forKey: "lastname") ?? "Doe")")
-            return cell
-        default:
-            let row = indexPath.row - 1
+        let row = indexPath.row
             let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
-            cell.delegate = self
+        cell.delegate = self
             cell.artImaeView.sd_setImage(with:URL(string:postArray[row].image),
                                               placeholderImage: UIImage(named: "placeholder.png"))
             cell.discriptionLbl.text = postArray[row].desc
@@ -46,15 +35,8 @@ extension GalleryVC : UITableViewDataSource{
             
             cell.selectionStyle = .none
             return cell
-        }
     }
     func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
         return PostCell.CellIndentifier
     }
-    
-    
-    
-    
-    
 }
-

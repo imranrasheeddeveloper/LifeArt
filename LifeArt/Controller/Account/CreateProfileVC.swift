@@ -52,6 +52,10 @@ class CreateProfileVC: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    
     @IBAction func continueButtonAction(_ sender : UIButton){
         createAccount()
     }

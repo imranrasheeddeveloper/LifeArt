@@ -22,7 +22,6 @@ func presenttSheet(tag: Int , view : UIView , controller : UIViewController , Id
         }
 
     let sheetController = SheetViewController(controller: vc, sizes: [.percent(0.5), .marginFromTop(21)], options: options)
-    
         sheetController.allowGestureThroughOverlay = true
         sheetController.cornerRadius = 0
         sheetController.animateIn(to: view, in: controller)

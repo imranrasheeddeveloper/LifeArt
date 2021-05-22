@@ -25,8 +25,8 @@ struct Interest: Codable {
 }
 
 enum AccountType {
-    case artist
-    case moodels
+    case Artist
+    case Model
 }
 
 struct AuthService {
@@ -56,35 +56,47 @@ struct AuthService {
                     let passwrod = credentials.password
                     let phone = credentials.phone
                     let website =  credentials.website
-                    let values = ["bio": bio,
-                                  "city": city,
-                                  "country": country,
-                                  "email": email,
-                                  "firstname": firstname,
-                                  "image" :  url ,
-                                  "lastname" :  lastname ,
-                                  "passwrod" : passwrod ,
-                                  "phone" : phone ,
-                                  "website" : website
-                    ]
-                    as [String : Any]
+                  
                     
                     let value = ["port","port","port"]
                     
                     
                     //check if the user is 'Artist' or 'Model'
                     switch account {
-                    case .artist :
+                    case .Artist :
+                        let values = dictionry(bio: bio, city: city, country: country, email: email, firstname: firstname, lastName: lastname, url: url, lastname: lastname, passwrod: passwrod, phone: phone, website: website, type: "Artist")
                         REF_Artists.child(uid).updateChildValues(values, withCompletionBlock: completion)
-                    case .moodels:
+                        for v in value {
+                            REF_Artists.child(uid).child("Interest").childByAutoId().updateChildValues(["name" : v])
+                        }
+                    case .Model:
+                        let values = dictionry(bio: bio, city: city, country: country, email: email, firstname: firstname, lastName: lastname, url: url, lastname: lastname, passwrod: passwrod, phone: phone, website: website, type: "Model")
+                        
                         REF_Models.child(uid).updateChildValues(values, withCompletionBlock: completion)
+                        for v in value {
+                            REF_Models.child(uid).child("Interest").childByAutoId().updateChildValues(["name" : v])
+                        }
                     }
-                    for v in value {
-                        REF_Artists.child(uid).child("Interest").childByAutoId().updateChildValues(["name" : v])
-                    }
+                   
                   
                 }
             }
         }
+    }
+    
+    func dictionry(bio : String , city : String , country : String, email :  String , firstname : String , lastName : String , url : String , lastname : String , passwrod : String , phone : String , website : String , type : String) -> [String : Any] {
+       return ["bio": bio,
+                      "city": city,
+                      "country": country,
+                      "email": email,
+                      "firstname": firstname,
+                      "image" :  url ,
+                      "lastname" :  lastname ,
+                      "passwrod" : passwrod ,
+                      "phone" : phone ,
+                      "website" : website ,
+                      "type" : type
+        ]
+        as [String : Any]
     }
 }

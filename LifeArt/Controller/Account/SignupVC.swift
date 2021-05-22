@@ -20,13 +20,14 @@ class SignupVC: UIViewController , UITextFieldDelegate{
     @IBOutlet weak var phoneTF  : UITextField!
     @IBOutlet weak var whoAreYou  : UITextField!
     
+    //MARK:- Variables
     var heightConstraint:NSLayoutConstraint!
-    
+    let storyBoard = UIStoryboard(name: "Main", bundle: nil)
     
     //MARK:- variables
     
     private let imagePicker = UIImagePickerController()
-  
+    
     //MARK:- Life Cycles
     
     override func viewDidLoad() {
@@ -38,7 +39,7 @@ class SignupVC: UIViewController , UITextFieldDelegate{
         loginLbl.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(login))
         loginLbl.addGestureRecognizer(tap)
-        
+        //self.whoAreYou.inputView = UIView()
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
@@ -47,64 +48,50 @@ class SignupVC: UIViewController , UITextFieldDelegate{
     
     //MARK:- Actions
     @IBAction func signUPAction(_ sender : UIButton){
-      
-        guard let firstName = firstNameTF.text else {
-            self.presentAlert(withTitle: "Error", message: "First Name is Empty")
-            return}
-        guard let lastName = lastNameTF.text else {
-            self.presentAlert(withTitle: "Error", message: "Last Name is Empty")
-            return}
-        guard let email = emailTF.text else {
-            self.presentAlert(withTitle: "Error", message: "email is Empty")
-            return }
-        guard let password = passwordTF.text else {
-            self.presentAlert(withTitle: "Error", message: "password is Empty")
-            return }
-        guard let phone = phoneTF.text else {return}
-        let accountType = userType.selectedSegmentIndex
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        if #available(iOS 13.0, *) {
-            let vc = storyBoard.instantiateViewController(identifier: "CreateProfileVC") as! CreateProfileVC
-            vc.firstName = firstName
-            vc.lastName = lastName
-            vc.email = email
-            vc.password = password
-            vc.phoneNo = phone
-            if accountType == 0{
-                vc.accountType = .artist
+        
+        if validation(){
+            let accountType = userType.selectedSegmentIndex
+            if #available(iOS 13.0, *) {
+                let vc = storyBoard.instantiateViewController(identifier: "CreateProfileVC") as! CreateProfileVC
+                vc.firstName = firstNameTF.text!
+                vc.lastName = lastNameTF.text!
+                vc.email = emailTF.text!
+                vc.password = passwordTF.text!
+                vc.phoneNo = phoneTF.text!
+                if accountType == 0{
+                    vc.accountType = .Model
+                }
+                else{
+                    vc.accountType = .Artist
+                }
+                self.navigationController?.pushViewController(vc, animated: true)
+            } else {
+                let vc = storyBoard.instantiateViewController(withIdentifier: "CreateProfileVC") as! CreateProfileVC
+                vc.firstNameTF.text = firstNameTF.text!
+                vc.lastNameTF.text = lastNameTF.text!
+                vc.emailTF.text = emailTF.text!
+                vc.password = passwordTF.text!
+                if accountType == 0{
+                    vc.accountType = .Model
+                }
+                else{
+                    vc.accountType = .Artist
+                }
+                self.navigationController?.pushViewController(vc, animated: true)
             }
-            else{
-                vc.accountType = .moodels
-            }
-            self.navigationController?.pushViewController(vc, animated: true)
-        } else {
-           let vc = storyBoard.instantiateViewController(withIdentifier: "CreateProfileVC") as! CreateProfileVC
-            vc.firstNameTF.text = firstName
-            vc.lastNameTF.text = lastName
-            vc.emailTF.text = email
-            vc.password = password
-            if accountType == 0{
-                vc.accountType = .moodels
-            }
-            else{
-                vc.accountType = .artist
-            }
-            self.navigationController?.pushViewController(vc, animated: true)
+            
         }
-        
-       
-        
-    }
-    @IBAction func whoAreYou(_ sender: UITextField) {
         
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-            if textField == whoAreYou {
+        if textField == whoAreYou {
+            DispatchQueue.main.async { [self] in
                 self.view.endEditing(true)
-                showSheet()
             }
+            showSheet()
         }
+    }
     
     //MARK:- Helper Functions
     func showSheet() {
@@ -112,6 +99,33 @@ class SignupVC: UIViewController , UITextFieldDelegate{
         slideVC.modalPresentationStyle = .custom
         slideVC.transitioningDelegate = self
         self.present(slideVC, animated: true, completion: nil)
+    }
+    
+    
+    func validation() -> Bool {
+        if firstNameTF.text!.isEmpty {
+            self.presentAlert(withTitle: "Error", message: "First Name is Empty")
+            return false
+        }
+        if lastNameTF.text!.isEmpty {
+            self.presentAlert(withTitle: "Error", message: "Last Name is Empty")
+            return false
+        }
+        if emailTF.text!.isEmpty {
+            self.presentAlert(withTitle: "Error", message: "email is Empty")
+            return false
+        }
+        if passwordTF.text!.isEmpty {
+            self.presentAlert(withTitle: "Error", message: "password is Empty")
+            return false
+        }
+        if phoneTF.text!.isEmpty {
+            self.presentAlert(withTitle: "Error", message: "phone is Empty")
+            return false
+        }
+        
+        return true
+        
     }
     
     //MARK:- Selectors
@@ -125,4 +139,5 @@ extension SignupVC:  UIViewControllerTransitioningDelegate {
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         PresentationController(presentedViewController: presented, presenting: presenting)
     }
+    
 }

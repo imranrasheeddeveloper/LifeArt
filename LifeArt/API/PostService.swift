@@ -30,8 +30,9 @@ struct PostService{
             for snap in snapshot.children {
                 let userSnap = snap as! DataSnapshot
                 //let uid = userSnap.key //the uid of each user
+                print(userSnap.key)
                 let userDict = userSnap.value as! [String:AnyObject]
-                let post = Post(dictionary: userDict)
+                let post = Post(key: userSnap.key, postData: PostData(dictionary: userDict))
                 postArray.append(post)
             }
             DispatchQueue.main.async {
@@ -64,10 +65,10 @@ struct PostService{
                 as [String : Any]
                 //check if the user is 'Artist' or 'Model'
                 switch account {
-                case .artist :
+                case .Artist :
                     REF_Posts.child("artists").childByAutoId().updateChildValues(values, withCompletionBlock: completion)
-                case .moodels:
-                    REF_Posts.child("mooels").childByAutoId().updateChildValues(values, withCompletionBlock: completion)
+                case .Model:
+                    REF_Posts.child("models").childByAutoId().updateChildValues(values, withCompletionBlock: completion)
                 }
                 AppDelegate.shared.removeLoadIndIndicator()
             }

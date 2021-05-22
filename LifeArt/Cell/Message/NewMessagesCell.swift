@@ -1,9 +1,9 @@
 //
 //  NewMessagesCell.swift
-//  GigimotApp
+//  LifeArt
 //
-//  Created by Arseni Santashev on 20.10.2020.
-//  Copyright © 2020 Numin Consulting. All rights reserved.
+//  Created by Muhammad Imran on 27/04/2021.
+//  Copyright © 2021 Itrid Technologies. All rights reserved.
 //
 
 import UIKit
@@ -14,14 +14,7 @@ class NewMessagesCell: UITableViewCell {
     
     //MARK: - Properties
     
-    var user: User? {
-        didSet {
-            guard let fullname = user?.fullname else {return}
-            
-            userFullnameLabel.text = fullname
-            profileImageView.sd_setImage(with: user?.profileImageUrl)
-        }
-    }
+ 
     
     lazy var profileImageView: UIImageView = {
         let view = UIImageView()
@@ -31,7 +24,7 @@ class NewMessagesCell: UITableViewCell {
         return view
     }()
     
-    private lazy var userFullnameLabel: UILabel = {
+     lazy var userFullnameLabel: UILabel = {
         let label = UILabel()
         label.text = "Sonic the Hedgehog"
         label.font = UIFont.boldSystemFont(ofSize: 14)
@@ -39,7 +32,7 @@ class NewMessagesCell: UITableViewCell {
         return label
     }()
     
-    private lazy var messageLabel: UILabel = {
+     lazy var messageLabel: UILabel = {
         let label = UILabel()
         label.text = "Hey! I can be there in 5 seconds"
         label.font = UIFont.systemFont(ofSize: 14)
@@ -47,13 +40,14 @@ class NewMessagesCell: UITableViewCell {
         return label
     }()
     
-    private let timeLabel: UILabel = {
+     let timeLabel: UILabel = {
         let label = UILabel()
         label.text = String("1h ago")
         label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = .gray
         return label
     }()
+ 
     
     
     

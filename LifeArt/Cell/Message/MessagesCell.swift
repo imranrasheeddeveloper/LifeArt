@@ -1,9 +1,9 @@
 //
 //  MessagesCell.swift
-//  GigimotApp
+//  LifeArt
 //
-//  Created by Arseni Santashev on 20.10.2020.
-//  Copyright © 2020 Numin Consulting. All rights reserved.
+//  Created by Muhammad Imran on 27/04/2021.
+//  Copyright © 2021 Itrid Technologies. All rights reserved.
 //
 
 import UIKit
@@ -117,8 +117,8 @@ class MessagesCell: UITableViewCell {
         guard let chatPartnerID = message?.getChatPartnerID() else {return}
         
         UserService.shared.fetchUser(uid: chatPartnerID) { (user) in
-            self.profileImageView.sd_setImage(with: user.profileImageUrl)
-            self.userFullnameLabel.text = user.fullname
+            self.profileImageView.sd_setImage(with:  URL(string:user.image))
+            self.userFullnameLabel.text = user.firstname
             self.messageLabel.text = self.message?.messageText
         }
     }

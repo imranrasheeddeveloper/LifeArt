@@ -28,7 +28,7 @@ class MyProfileVC: UIViewController, UICollectionViewDelegate, UIViewControllerT
     
     //MARK:- Scrollview Helper
     var selectedIndex = 0
-    let maxHeaderHeight: CGFloat = 410
+    let maxHeaderHeight: CGFloat = 320
     let minHeaderHeight: CGFloat = 0
     var previousScrollOffset: CGFloat = 0
    
@@ -62,14 +62,14 @@ class MyProfileVC: UIViewController, UICollectionViewDelegate, UIViewControllerT
     
     //MARK:- Life Cycle
     override func viewDidLoad() {
-        setStatusBar()
-        hideKeyboard()
-        fetchUser()
-        fetchFeeds()
         setupViews()
 
     }
     override func viewWillAppear(_ animated: Bool) {
+        setStatusBar()
+        hideKeyboard()
+        fetchUser()
+        fetchFeeds()
         self.navigationController?.navigationBar.isHidden = true
     }
     //MARK:- Setup Views
@@ -101,9 +101,9 @@ class MyProfileVC: UIViewController, UICollectionViewDelegate, UIViewControllerT
         PostService.shared.fetchPost { [self] (post) in
         self.postArray = post
         for post in postArray{
-            UserService.shared.fetchUser(uid: post.user ) { (user) in
+            UserService.shared.fetchUser(uid: post.postData.user ) { (user) in
                 self.userArray.append(user)
-                self.imageArray.append(post.image)
+                self.imageArray.append(post.postData.image)
                 DispatchQueue.main.async {
                     self.tableviewLayout.reloadData()
                 }
@@ -139,10 +139,25 @@ class MyProfileVC: UIViewController, UICollectionViewDelegate, UIViewControllerT
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func followAction(_ sender: UIButton) {
-        let vc = EditProfile()
-        vc.user = user
-        self.navigationController?.pushViewController(vc, animated: true)
+      
+        let storyBoard  = UIStoryboard(name: "Home", bundle: nil)
+        if #available(iOS 13.0, *) {
+            let vc =  storyBoard.instantiateViewController(identifier: "EditProfile") as! EditProfile
+           // vc.user = user
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            let vc =  storyBoard.instantiateViewController(withIdentifier: "EditProfile") as! EditProfile
+           // vc.user = user
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+       
     }
+    
+    @IBAction func seeMoreInfo(sender : UIButton){
+        GlobaluserID = Auth.auth().currentUser!.uid
+        presenttSheet(tag: 0, view: self.view, controller: self, Identifier: .PesonalDetailVC, storyBoard: .Settings)
+    }
+    
     @IBAction func ValueChanged(_ sender: SWSegmentedControl) {
         
         if sender.selectedSegmentIndex == 0{
@@ -261,6 +276,14 @@ extension MyProfileVC :  UITableViewDelegate{
 //MARK : - postCellDelegate
 extension MyProfileVC : postCellDelegate
 {
+    func report(tag: Int) {
+        //
+    }
+    
+    func likePost(tag: Int) {
+        //
+    }
+    
     func comments(tag: Int) {
         presenttSheet(tag: tag, view: self.view, controller: self, Identifier: .CommentsVC, storyBoard: .Home)
     }

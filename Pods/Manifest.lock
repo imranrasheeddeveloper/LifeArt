@@ -93,6 +93,9 @@ PODS:
     - SDWebImage/Core (= 5.11.1)
   - SDWebImage/Core (5.11.1)
   - SkeletonView (1.15.0)
+  - Stripe (21.4.0):
+    - Stripe/Stripe3DS2 (= 21.4.0)
+  - Stripe/Stripe3DS2 (21.4.0)
 
 DEPENDENCIES:
   - CodableFirebase
@@ -104,6 +107,7 @@ DEPENDENCIES:
   - FlagPhoneNumber
   - SDWebImage (~> 5.0)
   - SkeletonView
+  - Stripe
 
 SPEC REPOS:
   trunk:
@@ -127,6 +131,7 @@ SPEC REPOS:
     - PromisesObjC
     - SDWebImage
     - SkeletonView
+    - Stripe
 
 SPEC CHECKSUMS:
   CodableFirebase: 0bf201991eeec35eb9fcd987d271ea463cf34a80
@@ -149,7 +154,8 @@ SPEC CHECKSUMS:
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SkeletonView: cac18a3ac4f893b09d99e65072d806ef08377aae
+  Stripe: 7c594b943abb65cf7bc28e37fd5124e65db3ce9e
 
-PODFILE CHECKSUM: 95efc198d843f864ed9bba3758e9619f0e508930
+PODFILE CHECKSUM: ebac5f627691fbcdd47c2d252d1ccf8a92fec102
 
 COCOAPODS: 1.10.1

@@ -7,12 +7,24 @@
 //
 
 import Foundation
+
+var commentsTag : String = ""
+var GlobaluserID : String = ""
  func currentTime() -> String {
     let date = Date()
     let calendar = Calendar.current
     let hour = calendar.component(.hour, from: date)
     let minutes = calendar.component(.minute, from: date)
-    return "\(hour):\(minutes)"
+    let seconds = calendar.component(.second, from: date)
+    return "\(hour):\(minutes) :\(seconds)"
+}
+
+func currentTimeInInteger() -> String {
+   let date = Date()
+   let calendar = Calendar.current
+   let hour = calendar.component(.hour, from: date)
+   let minutes = calendar.component(.minute, from: date)
+   return "\(hour)\(minutes)"
 }
  func currentDate() -> String {
     let date = Date()

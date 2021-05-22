@@ -26,7 +26,7 @@ class PesonalDetailVC: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         registerNib()
-        loadData()
+        ApiCalling()
         hideKeyboard()
         navigationView.roundCorners(corners: .layerMinXMaxYCorner, radius: 30)
     }
@@ -37,14 +37,39 @@ class PesonalDetailVC: UIViewController {
         tableView.register(UINib(nibName: "PersonalDetailCell", bundle: nil), forCellReuseIdentifier: "PersonalDetailCell")
         
     }
-    func loadData(){
-        personalDetailData.append(PersonalDetailModel(detailLbl: "Full Name", detailAnswerLbl: "John Duo", iconImg: ""))
-        personalDetailData.append(PersonalDetailModel(detailLbl: "Email", detailAnswerLbl: "JohnDo@gmail.com", iconImg: ""))
-        personalDetailData.append(PersonalDetailModel(detailLbl: "Country", detailAnswerLbl: "Pakistan", iconImg: ""))
-        personalDetailData.append(PersonalDetailModel(detailLbl: "Gender", detailAnswerLbl: "Mail", iconImg: ""))
-        personalDetailData.append(PersonalDetailModel(detailLbl: "Website", detailAnswerLbl: "www.bbc.com", iconImg: ""))
-        personalDetailData.append(PersonalDetailModel(detailLbl: "Youtube", detailAnswerLbl: "Lorem Ibs", iconImg: ""))
+    
+    func ApiCalling() {
+        UserService.shared.checkArtistExist(uid: GlobaluserID) { (result) in
+            if result{
+                UserService.shared.fetchArtistUser(uid: GlobaluserID) { [self] (user) in
+                   
+                    personalDetailData.append(PersonalDetailModel(detailLbl: "Full Name", detailAnswerLbl: "\(user.firstname) \(user.lastname)", iconImg: ""))
+                    personalDetailData.append(PersonalDetailModel(detailLbl: "Email", detailAnswerLbl: user.email, iconImg: ""))
+                    personalDetailData.append(PersonalDetailModel(detailLbl: "Country", detailAnswerLbl: user.country, iconImg: ""))
+                    personalDetailData.append(PersonalDetailModel(detailLbl: "Bio", detailAnswerLbl: user.bio, iconImg: ""))
+                    personalDetailData.append(PersonalDetailModel(detailLbl: "Website", detailAnswerLbl: user.website, iconImg: ""))
+                    personalDetailData.append(PersonalDetailModel(detailLbl: "Phone", detailAnswerLbl: user.phone, iconImg: ""))
+                    tableView.reloadData()
+                    
+
+                }
+            }
+            else{
+                UserService.shared.fetchModelsUser(uid: GlobaluserID) { [self] (user) in
+                 
+                    personalDetailData.append(PersonalDetailModel(detailLbl: "Full Name", detailAnswerLbl: "\(user.firstname) \(user.lastname)", iconImg: ""))
+                    personalDetailData.append(PersonalDetailModel(detailLbl: "Email", detailAnswerLbl: user.email, iconImg: ""))
+                    personalDetailData.append(PersonalDetailModel(detailLbl: "Country", detailAnswerLbl: user.country, iconImg: ""))
+                    personalDetailData.append(PersonalDetailModel(detailLbl: "Bio", detailAnswerLbl: user.bio, iconImg: ""))
+                    personalDetailData.append(PersonalDetailModel(detailLbl: "Website", detailAnswerLbl: user.website, iconImg: ""))
+                    personalDetailData.append(PersonalDetailModel(detailLbl: "Phone", detailAnswerLbl: user.phone, iconImg: ""))
+                    tableView.reloadData()
+                }
+            }
+        }
     }
+    
+
 
 }
 extension PesonalDetailVC:UITableViewDataSource, UITableViewDelegate {
@@ -62,4 +87,7 @@ extension PesonalDetailVC:UITableViewDataSource, UITableViewDelegate {
         return 80
     }
     
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
+    }
 }

@@ -1,9 +1,9 @@
 //
 //  MessagesVC.swift
-//  GigimotApp
+//  LifeArt
 //
-//  Created by Arseni Santashev on 20.10.2020.
-//  Copyright © 2020 Numin Consulting. All rights reserved.
+//  Created by Muhammad Imran on 27/04/2021.
+//  Copyright © 2021 Itrid Technologies. All rights reserved.
 //
 
 import UIKit
@@ -40,11 +40,11 @@ class MessagesVC: UITableViewController {
             self.messagesDictionary.removeAll()
             self.tableView.reloadData()
     
-            REF_USER_MESSAGES.child(currentUid).observe(.childAdded) { (snapshot) in
+            REF_messages.child(currentUid).observe(.childAdded) { (snapshot) in
                 //print("DEBUG: The message is -> \(snapshot)")
                 let uid = snapshot.key
     
-                REF_USER_MESSAGES.child(currentUid).child(uid).observe(.childAdded) { (snapshot) in
+                REF_messages.child(currentUid).child(uid).observe(.childAdded) { (snapshot) in
                     //print("DEBUG: The snapshot is -> \(snapshot)")
                     let messageID = snapshot.key
                     self.fetchMessage(withMessageID: messageID)
@@ -53,7 +53,7 @@ class MessagesVC: UITableViewController {
         }
     
         func fetchMessage(withMessageID messageID: String) {
-            REF_MESSAGES.child(messageID).observeSingleEvent(of: .value) { (snapshot) in
+            REF_messages.child(messageID).observeSingleEvent(of: .value) { (snapshot) in
     
                 guard let dictionary = snapshot.value as? Dictionary<String, AnyObject> else {return}
                 let message = Message(dictionary: dictionary)

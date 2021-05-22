@@ -1,11 +1,10 @@
 //
 //  ChatController.swift
-//  GigimotApp
+//  LifeArt
 //
-//  Created by Arseni Santashev on 14.10.2020.
-//  Copyright © 2020 Numin Consulting. All rights reserved.
+//  Created by Muhammad Imran on 27/04/2021.
+//  Copyright © 2021 Itrid Technologies. All rights reserved.
 //
-
 import UIKit
 import Firebase
 
@@ -119,14 +118,14 @@ class ChatController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         properties.forEach({values[$0] = $1})
         
-        let messageRef = REF_MESSAGES.childByAutoId()
+        let messageRef = REF_messages.childByAutoId()
         
         // UPDATE: - Safely unwrapped messageKey to work with Firebase 5
         guard let messageKey = messageRef.key else { return }
         
         messageRef.updateChildValues(values) { (err, ref) in
-            REF_USER_MESSAGES.child(currentUid).child(uid).updateChildValues([messageKey: 1])
-            REF_USER_MESSAGES.child(uid).child(currentUid).updateChildValues([messageKey: 1])
+            REF_messages.child(currentUid).child(uid).updateChildValues([messageKey: 1])
+            REF_messages.child(uid).child(currentUid).updateChildValues([messageKey: 1])
         }
     }
     
@@ -134,7 +133,7 @@ class ChatController: UICollectionViewController, UICollectionViewDelegateFlowLa
         guard let currentUid = Auth.auth().currentUser?.uid else {return}
         guard let chatPartnerID = self.user?.uid else {return}
         
-        REF_USER_MESSAGES.child(currentUid).child(chatPartnerID).observe(.childAdded) { (snapshot) in
+        REF_messages.child(currentUid).child(chatPartnerID).observe(.childAdded) { (snapshot) in
             let messageID = snapshot.key
             
             self.fetchMessage(withMessageID: messageID)
@@ -180,14 +179,14 @@ class ChatController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     func configureNavigationBar() {
         guard let user = user else {return}
-        navigationItem.title = user.fullname
+        navigationItem.title = user.firstname
         
         //not needed anymore
 //        navigationItem.rightBarButtonItem = UIBarButtonItem.init(barButtonSystemItem: .add, target: self, action: #selector(handleExpertProfile))
     }
     
     func fetchMessage(withMessageID messageID: String) {
-        REF_MESSAGES.child(messageID).observeSingleEvent(of: .value) { (snapshot) in
+        REF_messages.child(messageID).observeSingleEvent(of: .value) { (snapshot) in
             guard let dictionary = snapshot.value as? Dictionary<String, AnyObject> else {return}
             
             let message = Message(dictionary: dictionary)
@@ -261,9 +260,7 @@ class ChatController: UICollectionViewController, UICollectionViewDelegateFlowLa
 extension ChatController: ChatCellDelegate {
     func handleProfileImageTapped(_ cell: ChatCell) {
        //TODO: fetch user from message -> fromID
-        let expertProfileController = ExpertProfileController()
-        navigationController?.pushViewController(expertProfileController, animated: true)
+        //let expertProfileController = ExpertProfileController()
+        //navigationController?.pushViewController(expertProfileController, animated: true)
     }
-    
-    
 }

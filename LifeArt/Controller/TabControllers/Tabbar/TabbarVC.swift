@@ -18,25 +18,33 @@ class TabbarVC: UITabBarController {
        
     }
     override func viewWillAppear(_ animated: Bool) {
-//        if Auth.auth().currentUser == nil {
-//            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-//            let vc = storyBoard.instantiateViewController(withIdentifier: "LoginVC")
-//            let nav = UINavigationController(rootViewController:vc)
-//            nav.modalPresentationStyle = .fullScreen
-//            self.present(nav, animated: true, completion: nil)
-//        }
-        //else {
+
             fetchUser()
-        //}
-        
     }
     
     func fetchUser() {
+        
+        
         guard let uid = Auth.auth().currentUser?.uid else {return}
-        UserService.shared.fetchUser(uid: uid) { [self] (user) in
-            self.user = user
-            saveUserDataInLocal()
+        
+        UserService.shared.checkArtistExist(uid: uid) { (result) in
+            if result{
+                UserService.shared.fetchUser(uid: uid) { [self] (user) in
+                    self.user = user
+                    saveUserDataInLocal()
+                }
+            }
+            else{
+                UserService.shared.fetchMyModelUser(uid: uid) { [self] (user) in
+                    self.user = user
+                    saveUserDataInLocal()
+                }
+            }
+           
         }
+        
+        
+       
     }
     
     func saveUserDataInLocal() {
@@ -50,6 +58,8 @@ class TabbarVC: UITabBarController {
         KeychainWrapper.standard.set(user?.password ?? "", forKey: "password")
         KeychainWrapper.standard.set(user?.phone ?? "", forKey: "phone")
         KeychainWrapper.standard.set(user?.website ?? "", forKey: "website")
+        
+        KeychainWrapper.standard.set(user?.website ?? "", forKey: "currentUserType")
         UserDefaults.standard.setValue(true, forKey: "isLogedIn")
     }
 }

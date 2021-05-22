@@ -7,18 +7,22 @@
 
 import UIKit
 
-class OverlayView: UIViewController {
+ 
+struct interstedModel {
+    var intrestData = [String]()
+}
+
+
+class OverlayView: UIViewController  {
     
     var hasSetPointOrigin = false
     var pointOrigin: CGPoint?
-    var dict = [String : Interest]()
     @IBOutlet weak var slideIdicator: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
 
-    var arrData = [String]()
     var arrSelectedIndex = [IndexPath]()
-    var arrSelectedData = [String]()
-    
+    var arrData : [String] = ["Figure" , "Portraits" , "Art Groups" , "Art Education" , "Photo Sets" , "Private Sitting" , "Online Figure" , "Online Clothed"]
+    var selectData = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerAction))
@@ -28,6 +32,10 @@ class OverlayView: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.allowsMultipleSelection = true
+        
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+       _ = interstedModel.init(intrestData: selectData)
     }
     
     override func viewDidLayoutSubviews() {
@@ -62,17 +70,17 @@ class OverlayView: UIViewController {
 extension OverlayView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return arrData.count
     }
     
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell : ArtistCategories = collectionView.dequeueReusableCell(withReuseIdentifier: "ArtistCategories", for: indexPath) as! ArtistCategories
-
+        cell.categoriesLbl.text = arrData[indexPath.row]
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-     
+        selectData.append(arrData[indexPath.row])
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.row == 3 || indexPath.row == 4{
@@ -91,3 +99,5 @@ extension OverlayView: UICollectionViewDelegate, UICollectionViewDataSource, UIC
 
     }
 }
+
+

@@ -10,17 +10,24 @@ import UIKit
 import FittedSheets
 
 class ProfessionalProfileVC: UIViewController, UICollectionViewDelegate, UITableViewDelegate {
+    
+    var user : User?
+    
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var followAction: UIButton!
     @IBOutlet weak var heightConstrains: NSLayoutConstraint!
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var profileimageView: ImageRoundedView!
+    @IBOutlet weak var fullName: UILabel!
+    @IBOutlet weak var bioLbl: UILabel!
     
     
     var selectedIndex = 0
     let photosDataSource = PhotosDataSource()
     let photoDelegate = PhotosDelegate()
     let tableDataSource = UserPostDataSource()
-    let maxHeaderHeight: CGFloat = 400
+    let maxHeaderHeight: CGFloat = 350
     let minHeaderHeight: CGFloat = 0
     var previousScrollOffset: CGFloat = 0
     
@@ -59,6 +66,7 @@ class ProfessionalProfileVC: UIViewController, UICollectionViewDelegate, UITable
             collectionViewLayout.delegate = self
         }
     
+        ApiCalling()
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
@@ -74,10 +82,12 @@ class ProfessionalProfileVC: UIViewController, UICollectionViewDelegate, UITable
     
     
     @IBAction func popViewController(_ sender : UIButton){
-        self.navigationController?.popViewController(animated: true)
+        //self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
     @IBAction func followAction(_ sender: UIButton) {
-        //self.PaymentAlert()
+        let vc = NewMessagesVC()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     @IBAction func ValueChanged(_ sender: SWSegmentedControl) {
         
@@ -109,6 +119,27 @@ class ProfessionalProfileVC: UIViewController, UICollectionViewDelegate, UITable
     
     @IBAction func seeMoreInfo(sender : UIButton){
         presenttSheet(tag: 0, view: self.view, controller: self, Identifier: .PesonalDetailVC, storyBoard: .Settings)
+    }
+    
+    func ApiCalling() {
+        UserService.shared.checkArtistExist(uid: GlobaluserID) { (result) in
+            if result{
+                UserService.shared.fetchArtistUser(uid: GlobaluserID) { (user) in
+                    self.profileimageView.sd_setImage(with:URL(string: user.image),
+                                                      placeholderImage: UIImage(named: "placeholder.png"))
+                    self.bioLbl.text = user.bio
+                    self.fullName.text = "\(user.firstname) \(user.lastname)"
+                }
+            }
+            else{
+                UserService.shared.fetchModelsUser(uid: GlobaluserID) { (user) in
+                    self.profileimageView.sd_setImage(with:URL(string: user.image),
+                                                      placeholderImage: UIImage(named: "placeholder.png"))
+                    self.bioLbl.text = user.bio
+                    self.fullName.text = "\(user.firstname) \(user.lastname)"
+                }
+            }
+        }
     }
     
     

@@ -9,6 +9,13 @@
 import Foundation
 import Firebase
 import FirebaseAuth
+
+struct updateMyProfile {
+    let city, country, email: String
+    let firstname: String
+    let lastname , phone, website: String
+}
+
 struct UserService{
     typealias DatabaseCompletion = ((Error?, DatabaseReference) -> Void)
     
@@ -18,26 +25,57 @@ struct UserService{
     //MARK: - Fetch user
     
     func fetchUser(uid: String, completion: @escaping(User) -> Void) {
-        print(uid)
         REF_Artists.child(uid).observeSingleEvent(of: .value) { (snapshot) in
             guard let dictionary = snapshot.value as? [String: Any] else {return}
             let uid = snapshot.key
             let user = User(uid: uid, dictionary: dictionary)
             dump(user)
             completion(user)
-            
         }
     }
     
-    func fetchArtist(completion: @escaping([User]) -> Void) {
-        var artistArray = [User]()
+    func fetchMyModelUser(uid: String, completion: @escaping(User) -> Void) {
+        REF_Models.child(uid).observeSingleEvent(of: .value) { (snapshot) in
+            guard let dictionary = snapshot.value as? [String: Any] else {return}
+            let uid = snapshot.key
+            let user = User(uid: uid, dictionary: dictionary)
+            dump(user)
+            completion(user)
+        }
+    }
+    
+    
+    func fetchModelsUser(uid: String, completion: @escaping(User) -> Void) {
+
+        REF_Models.child(uid).observeSingleEvent(of: .value) { (snapshot) in
+            guard let dictionary = snapshot.value as? [String: Any] else {return}
+            let uid = snapshot.key
+            let user = User(uid: uid, dictionary: dictionary)
+            dump(user)
+            completion(user)
+
+        }
+    }
+    
+    func fetchArtistUser(uid: String, completion: @escaping(User) -> Void) {
+        REF_Artists.child(uid).observeSingleEvent(of: .value) { (snapshot) in
+            snapshot.exists()
+            guard let dictionary = snapshot.value as? [String: Any] else {return}
+            let uid = snapshot.key
+            let user = User(uid: uid, dictionary: dictionary)
+            dump(user)
+            completion(user)
+        }
+    }
+    func fetchArtist(completion: @escaping([UserModel]) -> Void) {
+        var artistArray = [UserModel]()
         REF_Artists.observeSingleEvent(of: .value) { (snapshot) in
             //guard let dictionary = snapshot.value as? [String: Any] else {return}
             for snap in snapshot.children {
                 let userSnap = snap as! DataSnapshot
                 //let uid = userSnap.key //the uid of each user
                 let userDict = userSnap.value as! [String:AnyObject]
-                let user = User(uid: "", dictionary: userDict)
+                let user = UserModel(dictionary: userDict)
                 artistArray.append(user)
             }
             DispatchQueue.main.async {
@@ -47,15 +85,15 @@ struct UserService{
         }
     }
     
-    func fetchModels(completion: @escaping([User]) -> Void) {
-        var postArray = [User]()
+    func fetchModels(completion: @escaping([UserModel]) -> Void) {
+        var postArray = [UserModel]()
         REF_Models.observeSingleEvent(of: .value) { (snapshot) in
             //guard let dictionary = snapshot.value as? [String: Any] else {return}
             for snap in snapshot.children {
                 let userSnap = snap as! DataSnapshot
                 //let uid = userSnap.key //the uid of each user
                 let userDict = userSnap.value as! [String:AnyObject]
-                let post = User(uid: "", dictionary: userDict)
+                let post = UserModel(dictionary: userDict)
                 postArray.append(post)
             }
             DispatchQueue.main.async {
@@ -85,9 +123,60 @@ struct UserService{
             }
         }
     }
-    
-    func updateProfile() {
-       
+    func checkArtistExist(uid: String, completion: @escaping(Bool) -> Void) {
+        REF_Artists.child(uid).observe(.value) {(snapshot) in
+            print(uid)
+            if snapshot.exists() {
+                completion(true)
+            }
+            else{
+                completion(false)
+            }
+        }
     }
-}
+    
+    
+    
+    
+    func updateProfile(account : AccountType , updateProfile: updateMyProfile, completion: @escaping(Error?, DatabaseReference) -> (Void)) {
+        
+        let uid = Auth.auth().currentUser!.uid
+                    let city = updateProfile.city
+                    let country = updateProfile.country
+                    let email = updateProfile.email
+                    let firstname = updateProfile.firstname
+                    let lastname = updateProfile.lastname
+                    let phone = updateProfile.phone
+                    let website =  updateProfile.website
+                  
+                    
+                    //check if the user is 'Artist' or 'Model'
+                    switch account {
+                    case .Artist :
+                        let value  = valuesDictionry(city: city, country: country, email: email, firstname: firstname, lastName: lastname, phone: phone, website: website)
+                        
+                        REF_Artists.child(uid).updateChildValues(value, withCompletionBlock: completion)
+                   
+                    case .Model:
+                        let value  = valuesDictionry(city: city, country: country, email: email, firstname: firstname, lastName: lastname, phone: phone, website: website)
+                        
+                        REF_Models.child(uid).updateChildValues(value, withCompletionBlock: completion)
+                        
+        }
+
+    }
+    
+    func valuesDictionry(city : String , country : String, email :  String , firstname : String , lastName : String , phone : String , website : String) -> [String : Any] {
+       return [
+                      "city": city,
+                      "country": country,
+                      "email": email,
+                      "firstname": firstname,
+                      "lastname" :  lastName ,
+                      "phone" : phone ,
+                      "website" : website ,
+        ]
+        as [String : Any]
+    }
+ }
 

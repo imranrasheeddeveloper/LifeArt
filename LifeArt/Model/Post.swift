@@ -8,12 +8,11 @@
 
 import Foundation
 
-struct Post {
+struct PostData {
     var date, desc: String
     var image: String
     var medium, size, time, title: String
     var user: String
-    
     init(dictionary: [String: Any]) {
         self.user = dictionary["user"] as? String ?? ""
         self.date = dictionary["date"] as? String ?? ""
@@ -24,16 +23,9 @@ struct Post {
         self.time = dictionary["time"] as? String ?? ""
         self.title = dictionary["title"] as? String ?? ""
     }
-    
-    
-//    init (date :  String , desc : String , image :  String , medium : String , size :  String, time : String, title :  String , user : String) {
-//        self.user = user
-//        self.date = date
-//        self.desc = desc
-//        self.image = image
-//        self.medium = medium
-//        self.size = size
-//        self.time = time
-//        self.title = title
-//    }
+}
+
+struct Post {
+    var key : String
+    var postData : PostData
 }

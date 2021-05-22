@@ -46,12 +46,14 @@ extension ProfessionalVC :  UITableViewDataSource , UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "SuggestedParentCell", for: indexPath) as! SuggestedParentCell
+            cell.collectionView.tag = 0
             cell.cellNumber = 0
             return cell
         }
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SuggestedParentCell", for: indexPath) as! SuggestedParentCell
             cell.cellNumber = 1
+            cell.collectionView.tag = 1
             return cell
         }
        

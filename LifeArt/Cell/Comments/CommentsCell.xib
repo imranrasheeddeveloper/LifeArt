@@ -59,6 +59,9 @@
                                 </constraints>
                                 <color key="tintColor" red="0.86274509799999999" green="0.20784313730000001" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" image="heart.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="likeButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="hFK-bW-IaJ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LNx-YX-ST8">
                                 <rect key="frame" x="193" y="378.5" width="16" height="16"/>
@@ -116,6 +119,10 @@
             <connections>
                 <outlet property="bubble" destination="sPu-DU-jIv" id="K99-Rt-mtu"/>
                 <outlet property="commentText" destination="3wV-Lo-Sea" id="gXo-iw-MVT"/>
+                <outlet property="fullname" destination="Lyi-N2-e0m" id="hER-CT-dpD"/>
+                <outlet property="likeButton" destination="JwA-rx-Y1f" id="A7J-Yi-DQT"/>
+                <outlet property="likeandSharesLbl" destination="p1a-I7-wNG" id="Rtz-54-gMn"/>
+                <outlet property="userImage" destination="v5P-J5-9Tx" id="OuU-tI-DQC"/>
             </connections>
             <point key="canvasLocation" x="531.15942028985512" y="247.76785714285714"/>
         </tableViewCell>

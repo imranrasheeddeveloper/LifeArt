@@ -9,19 +9,96 @@
 import UIKit
 
 class CommentsVC: UIViewController {
+    
+    //MARK:- Outlets
     @IBOutlet weak var tableView : UITableView!
+    @IBOutlet weak var commentsView : UIView!
+    @IBOutlet weak var commentsTF: UITextField!
     
-    let array = ["Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book", "this is the vire"]
+    //MARK:- Variables
+    var users = [User]()
+    var array = [Comments]()
+    var exist : Bool = false
+    var uIDArray = [String]()
     
+    //MARK:- LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        commentsView.dropShadow()
         tableView.dataSource  = self
         tableView.delegate = self
         tableView.separatorStyle  = .none
         tableView.register(UINib(nibName: "CommentsCell", bundle: nil), forCellReuseIdentifier: "CommentsCell")
+        fetchComments()
+        commentsView.layer.borderWidth = 0.5
     }
     
+    //MARK:- Helper functions
+    func fetchComments() {
+        array.removeAll()
+        CommentsService.shared.fetchCommentstServices { [self] (comments) in
+            self.array.append(contentsOf: comments)
+            for (index , _) in array.enumerated(){
+                self.uIDArray.append(array[index].commentsData.from)
+            }
+            getUser()
+        }
+    }
+    
+    //MARK:- Actions
+    @IBAction func sendComment(_ sender: UIButton) {
+        if commentsTF.text != ""{
+            apiCalling()
+        }
+        
+    }
+    
+    
+    //MARK:- APIs
+    func apiCalling() {
+        let comment = CreateComment(comment: commentsTF.text!, date: currentDate(), time: Int(currentTimeInInteger())!)
+        CommentsService.shared.creatComment(key: commentsTag, comment: comment) { [self] (error, ref) -> (Void) in
+            commentsTF.text = ""
+            fetchComments()
+        }
+    }
+    
+    func checkArtistExist(uid: String, completion: @escaping(Bool) -> Void) {
+        REF_Artists.child(uid).observe(.value) {(snapshot) in
+            print(uid)
+            if snapshot.exists() {
+                completion(true)
+            }
+            else{
+                completion(true)
+            }
+        }
+    }
+    
+    func getUser(){
+        for userId in uIDArray{
+            
+            checkArtistExist(uid: userId) { (result) in
+                if result{
+                    UserService.shared.fetchArtistUser(uid: userId) { (user) in
+                        self.users.append(user)
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
+                    }
+                }
+                else{
+                    UserService.shared.fetchModelsUser(uid: userId) { (user) in
+                        self.users.append(user)
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                        }
+                    }
+                }
+            }
+            
+        }
+    }
 }
 
 extension CommentsVC : UITableViewDataSource , UITableViewDelegate {
@@ -31,13 +108,16 @@ extension CommentsVC : UITableViewDataSource , UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CommentsCell", for: indexPath) as! CommentsCell
-        cell.commentText.text = array[indexPath.row]
+        cell.commentText.text = array[indexPath.row].commentsData.comment
+        cell.userImage.sd_setImage(with:URL(string:users[indexPath.row].image),
+                                   placeholderImage: UIImage(named: "placeholder.png"))
+        cell.fullname.text = "\(users[indexPath.row].firstname) \(users[indexPath.row].lastname)"
         cell.selectionStyle = .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120 + cellSize(forWidth: self.view.frame.size.width, text: array[indexPath.row]).height
+        return 120 + cellSize(forWidth: self.view.frame.size.width, text: array[indexPath.row].commentsData.comment).height
     }
     func cellSize(forWidth width: CGFloat, text : String) -> CGSize {
         let measurmentLabel = UILabel()

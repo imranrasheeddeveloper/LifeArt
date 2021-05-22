@@ -17,7 +17,7 @@ class AccountSettingVC: UIViewController {
     
     //MARK:- Varibales
     var settingsData = [SettingsModel]()
-    
+    public var user: User?
     
     //MARK:- LifeCycles
     override func viewDidLoad() {
@@ -66,6 +66,7 @@ extension AccountSettingVC: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsCell", for: indexPath) as! SettingsCell
         cell.detailLbl.text = settingsData[indexPath.row].detailLbl
         cell.iconImg.image = settingsData[indexPath.row].iconImg
+        cell.selectionStyle = .none
         return cell
     }
     
@@ -79,8 +80,16 @@ extension AccountSettingVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            let vc = EditProfile()
-            self.navigationController?.pushViewController(vc, animated: true)
+            let storyBoard  = UIStoryboard(name: "Home", bundle: nil)
+            if #available(iOS 13.0, *) {
+                let vc =  storyBoard.instantiateViewController(identifier: "EditProfile") as! EditProfile
+
+                self.navigationController?.pushViewController(vc, animated: true)
+            } else {
+                let vc =  storyBoard.instantiateViewController(withIdentifier: "EditProfile") as! EditProfile
+    
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
             
         case 5:
             self.pushToController(from: .Settings, identifier: .SubscritionsVC )

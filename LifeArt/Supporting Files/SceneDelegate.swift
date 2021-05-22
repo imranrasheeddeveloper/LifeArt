@@ -16,26 +16,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
-        
-        
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        guard let winScene = (scene as? UIWindowScene) else { return }
+        let win = UIWindow(windowScene: winScene)
         if Auth.auth().currentUser != nil {
-            
-//            guard let winScene = (scene as? UIWindowScene) else { return }
-//            window = UIWindow(windowScene: winScene)
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            if Auth.auth().currentUser != nil {
-//                let storyBoard = UIStoryboard(name: "Home", bundle: nil)
-//                let rootVC = storyBoard.instantiateViewController(identifier: "TabBar")
-//                window?.rootViewController = rootVC
-//                window?.makeKeyAndVisible()
-//            }
-//            
-//            else {
-//                let rootVC = storyboard.instantiateViewController(identifier: "SignupVC")
-//                window?.rootViewController = rootVC
-//                window?.makeKeyAndVisible()
-//            }
+            let storyboard =  UIStoryboard(name: "Home", bundle: nil)
+            let startMainVC = storyboard.instantiateViewController(withIdentifier: "TabBar")
+            let nc = UINavigationController(rootViewController: startMainVC)
+            win.rootViewController = nc
+            win.makeKeyAndVisible()
         }
+        else
+        {
+            let storyboard =  UIStoryboard(name: "Main", bundle: nil)
+            let startSignUPVC = storyboard.instantiateViewController(withIdentifier: "SignupVC")
+            let nc = UINavigationController(rootViewController: startSignUPVC)
+            win.rootViewController = nc
+            win.makeKeyAndVisible()
+        }
+        window = win
+        
         guard let _ = (scene as? UIWindowScene) else { return }
     }
     

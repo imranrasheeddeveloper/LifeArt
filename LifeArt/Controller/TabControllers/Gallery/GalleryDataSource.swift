@@ -33,17 +33,17 @@ extension GalleryVC : UITableViewDataSource{
             let row = indexPath.row - 1
             let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
             cell.delegate = self
-            cell.artImaeView.sd_setImage(with:URL(string:postArray[row].image),
+            cell.artImaeView.sd_setImage(with:URL(string:postArray[row].postData.image),
                                               placeholderImage: UIImage(named: "placeholder.png"))
-            cell.discriptionLbl.text = postArray[row].desc
+            cell.discriptionLbl.text = postArray[row].postData.desc
             cell.postUserNameLbl.text = "\(userArray[row].firstname) \(userArray[row].lastname)"
-            cell.postTimeLbl.text = postArray[row].time
-            cell.followedDate.text = "Followed on \(postArray[row].time)"
-            cell.postTimeLbl.text = postArray[row].date
+            cell.postTimeLbl.text = postArray[row].postData.time
+            cell.followedDate.text = "Followed on \(postArray[row].postData.time)"
+            cell.postTimeLbl.text = postArray[row].postData.date
             cell.postProfileImage.sd_setImage(with:URL(string:userArray[row].image),
                                               placeholderImage: UIImage(named: "placeholder.png"))
             cell.postCountryLbl.text = userArray[row].country
-            
+            cell.viewAllcomments.tag = indexPath.row
             cell.selectionStyle = .none
             return cell
         }

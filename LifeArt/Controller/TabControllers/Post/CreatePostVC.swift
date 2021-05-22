@@ -9,12 +9,25 @@
 import UIKit
 import Firebase
 class CreatePostVC: UIViewController {
+    
+    
+    //MARK:- Outlets
     @IBOutlet weak var postTitleTF: UITextField!
     @IBOutlet weak var textView : UITextView!
     @IBOutlet weak var NavigationBarView : UIView!
     @IBOutlet weak var bottomView : UIView!
     @IBOutlet weak var selectedImage : UIImageView!
+    @IBOutlet weak var meduimTF: UITextField!
+    @IBOutlet weak var sizeTF: UITextField!
     
+    
+    //MARK:- variable declaration
+    
+    var accountType : AccountType = .Artist
+    
+    
+    
+    //MARK:- lifeCyscles
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,10 +43,25 @@ class CreatePostVC: UIViewController {
         } else {
             textView.layer.borderColor = UIColor.gray.cgColor
         }
-        // Do any additional setup after loading the view.
+        checkUserType()
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
+        
+    }
+    
+    
+    //MARK:- Helper Functions
+    
+    func checkUserType() {
+        REF_Artists.child(Auth.auth().currentUser!.uid).observe(.value) { [self] (snapshot) in
+            if snapshot.exists() {
+                accountType = .Artist
+            }
+            else{
+                accountType = .Model
+            }
+        }
     }
     
     @IBAction func addPost(_ sender: UIButton) {
@@ -60,17 +88,22 @@ class CreatePostVC: UIViewController {
     func apiCalling(date :  String , time : String) {
         if textView.text != "" {
             if postTitleTF.text != ""{
-                let post = CreatePost(date: date, desc: textView.text ?? "test", image: selectedImage.image ?? #imageLiteral(resourceName: "art2"), medium: "Oild", size: "3x1", time: time, title: postTitleTF.text ?? "Test" , user: Auth.auth().currentUser!.uid)
-                
-                PostService.shared.creatPost(account: .artist, post: post) { [self] (eror, ref) -> (Void) in
-                    if eror == nil{
-                        self.presentAlert(withTitle: "Success", message: "Post Uploaded")
-                        postTitleTF.text = ""
-                        textView.text = ""
-                        selectedImage.image = nil
-                    }
-                    else{
-                        print(eror?.localizedDescription as Any)
+                if meduimTF.text != ""{
+                    if sizeTF.text != ""{
+                        let post = CreatePost(date: date, desc: textView.text ?? "test", image: selectedImage.image ?? #imageLiteral(resourceName: "art2"), medium: meduimTF.text!, size: sizeTF.text!, time: time, title: postTitleTF.text ?? "Test" , user: Auth.auth().currentUser!.uid)
+                        PostService.shared.creatPost(account: accountType , post: post) { [self] (eror, ref) -> (Void) in
+                            if eror == nil{
+                                self.presentAlert(withTitle: "Success", message: "Post Uploaded")
+                                postTitleTF.text = ""
+                                textView.text = ""
+                                meduimTF.text = ""
+                                sizeTF.text = ""
+                                selectedImage.image = nil
+                            }
+                            else{
+                                print(eror?.localizedDescription as Any)
+                            }
+                        }
                     }
                 }
             }
@@ -84,7 +117,6 @@ class CreatePostVC: UIViewController {
 
 
 extension CreatePostVC :UIImagePickerControllerDelegate,UINavigationControllerDelegate{
-    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }

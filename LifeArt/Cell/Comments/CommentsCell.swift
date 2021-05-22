@@ -10,8 +10,12 @@ import UIKit
 
 class CommentsCell: UITableViewCell {
     
+    @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var likeandSharesLbl: UILabel!
+    @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var bubble : UIView!
     @IBOutlet weak var commentText : UILabel!
+    @IBOutlet weak var fullname: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -23,6 +27,8 @@ class CommentsCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func likeButtonAction(_ sender: UIButton) {
+    }
     
     
 }

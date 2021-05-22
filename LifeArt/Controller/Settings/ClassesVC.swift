@@ -63,6 +63,8 @@ extension ClassesVC : UITableViewDataSource,UITableViewDelegate {
         cell.nameOfInstitueLbl.text = classesData[indexPath.row].name
         cell.addressOfInstituteLbl.text = classesData[indexPath.row].address
         cell.nameOfDirectorLbl.text = classesData[indexPath.row].owner
+        cell.imgView.sd_setImage(with:URL(string: classesData[indexPath.row].image),
+                                placeholderImage: UIImage(named: "placeholder.png"))
         cell.selectionStyle = .none
         return cell
     }

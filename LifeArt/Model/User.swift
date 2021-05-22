@@ -15,7 +15,7 @@ struct User {
     let bio, city, country, email: String
     let firstname: String
     let image: String
-    let lastname, password, phone, website: String
+    let lastname, password, phone, website , type: String
     
     var isCurrentUser: Bool {
         return Auth.auth().currentUser?.uid == uid
@@ -33,11 +33,33 @@ struct User {
         self.phone = dictionary["phone"] as? String ?? ""
         self.website = dictionary["website"] as? String ?? ""
         self.image = dictionary["image"] as? String ?? ""
+        self.type = dictionary["type"] as? String ?? ""
         
+    }
+}
+
+
+struct UserModel {
+    let user: String
+    let bio, city, country, email: String
+    let firstname: String
+    let image: String
+    let lastname, password, phone, website , type: String
+    
+
+    init(dictionary: [String: Any]) {
+        self.user = dictionary["user"] as? String ?? ""
+        self.bio = dictionary["bio"] as? String ?? ""
+        self.city = dictionary["city"] as? String ?? ""
+        self.country = dictionary["country"] as? String ?? ""
+        self.email = dictionary["email"] as? String ?? ""
+        self.firstname = dictionary["firstname"] as? String ?? ""
+        self.lastname = dictionary["lastname"] as? String ?? ""
+        self.password = dictionary["password"] as? String ?? ""
+        self.phone = dictionary["phone"] as? String ?? ""
+        self.website = dictionary["website"] as? String ?? ""
+        self.image = dictionary["image"] as? String ?? ""
+        self.type = dictionary["type"] as? String ?? ""
         
-//        if let profileImageUrlString = dictionary["profileImageUrl"] as? String {
-//            guard let url = URL(string: profileImageUrlString) else {return}
-//            self.image = url
-//        }
     }
 }

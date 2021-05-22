@@ -1,9 +1,9 @@
 //
 //  ChatCell.swift
-//  GigimotApp
+//  LifeArt
 //
-//  Created by Arseni Santashev on 09.10.2020.
-//  Copyright © 2020 Numin Consulting. All rights reserved.
+//  Created by Muhammad Imran on 27/04/2021.
+//  Copyright © 2021 Itrid Technologies. All rights reserved.
 //
 
 import UIKit
@@ -25,8 +25,7 @@ class ChatCell: UICollectionViewCell {
             
             guard let chatPartnerID = message?.getChatPartnerID() else {return}
             UserService.shared.fetchUser(uid: chatPartnerID) { (user) in
-                guard let profileImageUrl = user.profileImageUrl else {return}
-                self.profileImageView.sd_setImage(with: profileImageUrl)
+                self.profileImageView.sd_setImage(with: URL(string:user.image))
             }
         }
     }

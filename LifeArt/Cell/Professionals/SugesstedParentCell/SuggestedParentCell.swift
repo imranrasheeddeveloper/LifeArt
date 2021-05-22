@@ -12,8 +12,8 @@ class SuggestedParentCell: UITableViewCell {
     
     @IBOutlet weak var collectionView: UICollectionView!
     var cellNumber : Int?
-    var arrayofModel = [User]()
-    var arrayofArtisr = [User]()
+    var arrayofModel = [UserModel]()
+    var arrayofArtisr = [UserModel]()
     override func awakeFromNib() {
         super.awakeFromNib()
         collectionView.delegate = self
@@ -31,7 +31,6 @@ class SuggestedParentCell: UITableViewCell {
             }
         }
     }
-    
 }
 
 //MARK:- UICollectionView Delegate & DataSource
@@ -71,8 +70,16 @@ extension SuggestedParentCell :  UICollectionViewDelegate, UICollectionViewDataS
         return CGSize(width: 200, height: 300)
     }
     
-    
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if collectionView.tag == 0{
+            GlobaluserID = arrayofModel[indexPath.row].user
+        }
+        else{
+            GlobaluserID = arrayofArtisr[indexPath.row].user
+        }
+        
         self.parentViewController?.pushToRoot(from: .Home, identifier: .ProfessionalProfileVC)
     }
     func collectionView(_ collectionView: UICollectionView,

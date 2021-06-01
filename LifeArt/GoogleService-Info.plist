@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>522878798722-ebg270dembgqrb0ogs1qd8702r1jntfk.apps.googleusercontent.com</string>
+	<string>522878798722-sr6penn064v5oh2hb3ijqi2qjdiiba9s.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.522878798722-ebg270dembgqrb0ogs1qd8702r1jntfk</string>
+	<string>com.googleusercontent.apps.522878798722-sr6penn064v5oh2hb3ijqi2qjdiiba9s</string>
 	<key>API_KEY</key>
 	<string>AIzaSyD7ILDBuCWhYDEReb3VnwpQ9wQusiFGaKU</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.itridtechnologies.LifeArt</string>
+	<string>com.life.LifeArt</string>
 	<key>PROJECT_ID</key>
 	<string>lifeart-d3799</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:522878798722:ios:f428c92a1b1c19f8c01d9b</string>
+	<string>1:522878798722:ios:d7c2076a0819534cc01d9b</string>
 	<key>DATABASE_URL</key>
 	<string>https://lifeart-d3799-default-rtdb.firebaseio.com</string>
 </dict>

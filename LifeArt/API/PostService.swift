@@ -41,6 +41,26 @@ struct PostService{
         }
     }
     
+    mutating func fetchPostOfModel(completion: @escaping([Post]) -> Void) {
+        var postArray = [Post]()
+        REF_Posts.child("models").observeSingleEvent(of: .value) { (snapshot) in
+            //guard let dictionary = snapshot.value as? [String: Any] else {return}
+            for snap in snapshot.children {
+                let userSnap = snap as! DataSnapshot
+                //let uid = userSnap.key //the uid of each user
+                print(userSnap.key)
+                let userDict = userSnap.value as! [String:AnyObject]
+                let post = Post(key: userSnap.key, postData: PostData(dictionary: userDict))
+                postArray.append(post)
+            }
+            DispatchQueue.main.async {
+                completion(postArray)
+            }
+        }
+    }
+    
+
+    
     func creatPost(account : AccountType , post: CreatePost , completion: @escaping(Error?, DatabaseReference) -> (Void)) {
         AppDelegate.shared.loadindIndicator(title: "Uploading Post")
         if let data = post.image.pngData() {
@@ -58,9 +78,9 @@ struct PostService{
                               "image": url,
                               "medium": medium,
                               "size": size,
-                              "time" :  time ,
-                              "title" : title ,
-                              "user" : uid ,
+                              "time" :  time,
+                              "title" : title,
+                              "user" : uid,
                 ]
                 as [String : Any]
                 //check if the user is 'Artist' or 'Model'
@@ -83,4 +103,30 @@ struct PostService{
       
             REF_Reported_Posts.child(uid).updateChildValues(values, withCompletionBlock: completion)
     }
+    
+    
+    func likePost(postId : String,  completion: @escaping(Error?, DatabaseReference) -> (Void)) {
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        let values = [uid: true]
+        as [String : Any]
+        REF_Likes.child(postId).updateChildValues(values, withCompletionBlock: completion)
+    }
+    
+    func unLikePost(postId : String,  completion: @escaping(Error?, DatabaseReference) -> (Void)) {
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        REF_Likes.child(postId).child(uid).removeValue()
+    }
+    
+    func fetchLikesOnPost(postId : String , completion: @escaping(UInt) -> Void) {
+        REF_Likes.child(postId).observeSingleEvent(of: .value) { (snapshot) in
+            completion(snapshot.childrenCount)
+        }
+    }
+    
+    func fetchNumberOfComments(postId : String , completion: @escaping(UInt) -> Void) {
+        REF_Comments.child(postId).observeSingleEvent(of: .value) { (snapshot) in
+            completion(snapshot.childrenCount)
+        }
+    }
+    
 }

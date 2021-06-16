@@ -34,19 +34,11 @@ class CommentsVC: UIViewController {
     }
     
     //MARK:- Helper functions
-    func fetchComments() {
-        array.removeAll()
-        CommentsService.shared.fetchCommentstServices { [self] (comments) in
-            self.array.append(contentsOf: comments)
-            for (index , _) in array.enumerated(){
-                self.uIDArray.append(array[index].commentsData.from)
-            }
-            getUser()
-        }
-    }
+
     
     //MARK:- Actions
     @IBAction func sendComment(_ sender: UIButton) {
+        array.removeAll()
         if commentsTF.text != ""{
             apiCalling()
         }
@@ -56,28 +48,29 @@ class CommentsVC: UIViewController {
     
     //MARK:- APIs
     func apiCalling() {
+        uIDArray.removeAll()
+        array.removeAll()
+        users.removeAll()
         let comment = CreateComment(comment: commentsTF.text!, date: currentDate(), time: Int(currentTimeInInteger())!)
         CommentsService.shared.creatComment(key: commentsTag, comment: comment) { [self] (error, ref) -> (Void) in
             commentsTF.text = ""
+            PushNotificationSender.shared.sendPushNotification(to: postOwner, title: "Comment", body: "Someone comment on your Post")
             fetchComments()
         }
     }
-    
-    func checkArtistExist(uid: String, completion: @escaping(Bool) -> Void) {
-        REF_Artists.child(uid).observe(.value) {(snapshot) in
-            print(uid)
-            if snapshot.exists() {
-                completion(true)
+
+    func fetchComments() {
+        CommentsService.shared.fetchCommentstServices { [self] (comments) in
+            self.array.append(contentsOf: comments)
+            for (index , _) in array.enumerated(){
+                self.uIDArray.append(array[index].commentsData.from)
             }
-            else{
-                completion(true)
-            }
+            getUser()
         }
     }
     
     func getUser(){
         for userId in uIDArray{
-            
             checkArtistExist(uid: userId) { (result) in
                 if result{
                     UserService.shared.fetchArtistUser(uid: userId) { (user) in
@@ -96,14 +89,26 @@ class CommentsVC: UIViewController {
                     }
                 }
             }
+            print(uIDArray.count)
+            print(array.count)
             
+        }
+    }
+    func checkArtistExist(uid: String, completion: @escaping(Bool) -> Void) {
+        REF_Artists.child(uid).observe(.value) {(snapshot) in
+            if snapshot.exists() {
+                completion(true)
+            }
+            else{
+                completion(true)
+            }
         }
     }
 }
 
 extension CommentsVC : UITableViewDataSource , UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return array.count
+        return users.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -117,8 +122,8 @@ extension CommentsVC : UITableViewDataSource , UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120 + cellSize(forWidth: self.view.frame.size.width, text: array[indexPath.row].commentsData.comment).height
-    }
+        return 90 + cellSize(forWidth: self.view.frame.size.width, text: array[indexPath.row].commentsData.comment).height
+        }
     func cellSize(forWidth width: CGFloat, text : String) -> CGSize {
         let measurmentLabel = UILabel()
         measurmentLabel.text = text
@@ -129,16 +134,4 @@ extension CommentsVC : UITableViewDataSource , UITableViewDelegate {
         return measurmentLabel.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
     }
     
-    func calculateHeight(inString:String) -> CGFloat
-    {
-        let messageString = inString
-        let attributes : [NSAttributedString.Key : Any] = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 15.0)]
-
-        let attributedString : NSAttributedString = NSAttributedString(string: messageString, attributes: attributes)
-
-        let rect : CGRect = attributedString.boundingRect(with: CGSize(width: 222.0, height: CGFloat.greatestFiniteMagnitude), options: .usesLineFragmentOrigin, context: nil)
-
-        let requredSize:CGRect = rect
-        return requredSize.height
-    }
 }

@@ -6,18 +6,22 @@ target 'LifeArt' do
   use_frameworks!
 
   # Pods for LifeArt
-        pod 'Firebase/Core'
-	pod 'Firebase/Database'
-	pod 'Firebase/Storage'
-	pod 'Firebase/Auth'
-        pod 'FittedSheets'
-        pod 'Firebase/Auth'
-        pod 'CodableFirebase'
-        pod "FlagPhoneNumber"
-        pod 'SDWebImage', '~> 5.0'
-        pod 'SkeletonView'
-        pod 'Stripe'
-        
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
+  pod 'Firebase/Storage'
+  pod 'Firebase/Auth'
+  pod 'FittedSheets'
+  pod 'Firebase/Auth'
+  pod 'CodableFirebase'
+  pod 'FlagPhoneNumber'
+  pod 'SDWebImage', '~> 5.0'
+  pod 'SkeletonView'
+  pod 'Stripe'
+  pod 'Firebase/Messaging'
+  pod 'PMAlertController'
+  pod 'ContextMenu'
+
+pod 'BraintreeDropIn'
 
   target 'LifeArtTests' do
     inherit! :search_paths

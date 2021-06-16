@@ -61,5 +61,6 @@ struct UserModel {
         self.image = dictionary["image"] as? String ?? ""
         self.type = dictionary["type"] as? String ?? ""
         
+        
     }
 }

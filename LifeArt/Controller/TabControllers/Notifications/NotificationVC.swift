@@ -10,10 +10,16 @@ import UIKit
 
 class NotificationVC: UIViewController {
 
+    //MARK:- OUTLETS
     @IBOutlet weak var tabelView : UITableView!
     @IBOutlet weak var segment: UISegmentedControl!
+    @IBOutlet weak var headerView: UIView!
+    
+    //MARK:-Variables
     var arrayOfAnnouncment = [Announcements]()
+    var arrayOfNotification = [NotificationModel]()
     var announcements : Announcements?
+    var notification : NotificationModel?
     let datasorce = NotificationDataSource()
     let delegate = NotificationDelegate()
     
@@ -24,6 +30,8 @@ class NotificationVC: UIViewController {
         hideKeyboard()
         tabelView.dataSource =  datasorce
         tabelView.delegate = delegate
+        headerView.dropShadow()
+        headerView.roundCorners(corners: .layerMinXMaxYCorner, radius: 30)
         tabelView.register(UINib(nibName: "NotificationCell", bundle: nil), forCellReuseIdentifier: "NotificationCell")
         tabelView.register(UINib(nibName: "AnnouncmentsCell", bundle: nil), forCellReuseIdentifier: "AnnouncmentsCell")
         datasorce.loadingCell = .AnnouncmentsCell
@@ -45,9 +53,7 @@ class NotificationVC: UIViewController {
         else if segment.selectedSegmentIndex == 1{
             datasorce.loadingCell = .NotificationCell
             delegate.loadingCell = .NotificationCell
-            DispatchQueue.main.async {
-                self.tabelView.reloadData()
-            }
+            apiCallingForNotifications()
         }
     }
   
@@ -64,4 +70,16 @@ class NotificationVC: UIViewController {
             }
         }
     }
+    
+    func apiCallingForNotifications() {
+        AnnouncmentService.shared.fetchNotifications { [self] (noti) in
+            arrayOfNotification  = noti
+            dump(arrayOfNotification)
+            datasorce.arrayOfNotification = arrayOfNotification
+            DispatchQueue.main.async {
+                self.tabelView.reloadData()
+            }
+        }
+    }
+    
 }

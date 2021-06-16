@@ -23,10 +23,15 @@ class ProfessionalProfileVC: UIViewController, UICollectionViewDelegate, UITable
     @IBOutlet weak var bioLbl: UILabel!
     
     
+    public var postArray = [Post]()
+    public var userArray = [User]()
+    public var imageArray = [String]()
+    public var postLikeCount  = [String]()
+    public var postNumberOfComments  = [String]()
+    
     var selectedIndex = 0
     let photosDataSource = PhotosDataSource()
     let photoDelegate = PhotosDelegate()
-    let tableDataSource = UserPostDataSource()
     let maxHeaderHeight: CGFloat = 350
     let minHeaderHeight: CGFloat = 0
     var previousScrollOffset: CGFloat = 0
@@ -46,7 +51,9 @@ class ProfessionalProfileVC: UIViewController, UICollectionViewDelegate, UITable
         let table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
         table.backgroundColor = UIColor.white
-        table.register(UINib(nibName: "ProfilePostCell", bundle: nil), forCellReuseIdentifier: "ProfilePostCell")
+        //table.register(UINib(nibName: "ProfilePostCell", bundle: nil), forCellReuseIdentifier: "ProfilePostCell")
+        table.register(UINib(nibName: "PostCell", bundle: nil), forCellReuseIdentifier: "PostCell")
+        table.separatorStyle = .none
         return table
     }()
     
@@ -56,7 +63,7 @@ class ProfessionalProfileVC: UIViewController, UICollectionViewDelegate, UITable
         if selectedIndex == 0{
             self.contentView.addSubview(tableviewLayout)
             tableviewLayout.delegate = self
-            tableviewLayout.dataSource = tableDataSource
+            tableviewLayout.dataSource = self
             setupConstrainsofTableView()
         }
         else{
@@ -97,12 +104,10 @@ class ProfessionalProfileVC: UIViewController, UICollectionViewDelegate, UITable
             self.contentView.addSubview(tableviewLayout)
             setupConstrainsofTableView()
             tableviewLayout.delegate = self
-            tableviewLayout.dataSource = tableDataSource
-            
+            tableviewLayout.dataSource = self
             setupConstrainsofTableView()
-            DispatchQueue.main.async {
-                self.tableviewLayout.reloadData()
-            }
+            tableviewLayout.separatorStyle = .none
+            fetchFeeds()
         }
         else if sender.selectedSegmentIndex == 1 {
             selectedIndex = 1
@@ -142,6 +147,26 @@ class ProfessionalProfileVC: UIViewController, UICollectionViewDelegate, UITable
         }
     }
     
+    func fetchFeeds(){
+        PostService.shared.fetchPost { [self] (post) in
+            self.postArray = post
+            for post in postArray{
+                UserService.shared.fetchUser(uid: post.postData.user) { (user) in
+                    PostService.shared.fetchLikesOnPost(postId: post.key) { (count) in
+                        PostService.shared.fetchNumberOfComments(postId: post.key) { (commentsCount) in
+                            self.userArray.append(user)
+                            postLikeCount.append(String(count))
+                            postNumberOfComments.append(String(commentsCount))
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                                self.tableviewLayout.reloadData()
+                            })
+                        }
+                       
+                    }
+                }
+            }
+        }
+    }
     
 }
 
@@ -208,8 +233,28 @@ extension ProfessionalProfileVC : UICollectionViewDelegateFlowLayout{
         return  5
     }
 }
-extension ProfessionalProfileVC{
+extension ProfessionalProfileVC : postCellDelegate{
+   
+    func report(tag: Int) {
+        //
+    }
+    
+    func likePost(tag: Int) {
+        PostService.shared.likePost(postId: postArray[tag].key) { (error, ref) -> (Void) in
+            DispatchQueue.main.async { [self] in
+               fetchFeeds()
+            }
+        }
+    }
+    
+    func comments(tag: Int) {
+        commentsTag = postArray[tag].key
+        postOwner   = postArray[tag].postData.user
+        presenttSheet(tag: tag, view: self.view, controller: self, Identifier: .CommentsVC, storyBoard: .Home)
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 320
+        return 400
     }
 }
+

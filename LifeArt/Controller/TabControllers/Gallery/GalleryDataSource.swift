@@ -15,8 +15,6 @@ extension GalleryVC : UITableViewDataSource{
     
   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(postArray.count)
-        print(userArray.count)
         return postArray.count  + 1
     }
     
@@ -29,21 +27,14 @@ extension GalleryVC : UITableViewDataSource{
             cell.selectionStyle = .none
             cell.fullNameLbl.text = ("\(KeychainWrapper.standard.string(forKey: "firstname") ?? "Jon") \(KeychainWrapper.standard.string(forKey: "lastname") ?? "Doe")")
             return cell
+            
+            
         default:
+            
             let row = indexPath.row - 1
             let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
             cell.delegate = self
-            cell.artImaeView.sd_setImage(with:URL(string:postArray[row].postData.image),
-                                              placeholderImage: UIImage(named: "placeholder.png"))
-            cell.discriptionLbl.text = postArray[row].postData.desc
-            cell.postUserNameLbl.text = "\(userArray[row].firstname) \(userArray[row].lastname)"
-            cell.postTimeLbl.text = postArray[row].postData.time
-            cell.followedDate.text = "Followed on \(postArray[row].postData.time)"
-            cell.postTimeLbl.text = postArray[row].postData.date
-            cell.postProfileImage.sd_setImage(with:URL(string:userArray[row].image),
-                                              placeholderImage: UIImage(named: "placeholder.png"))
-            cell.postCountryLbl.text = userArray[row].country
-            cell.viewAllcomments.tag = indexPath.row
+            cell.configureCell(post: postArray[row], user: userArray[row], likeCount: postLikeCount[row], totalComments: postNumberOfComments[row], tag: row)
             cell.selectionStyle = .none
             return cell
         }
@@ -51,10 +42,5 @@ extension GalleryVC : UITableViewDataSource{
     func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
         return PostCell.CellIndentifier
     }
-    
-    
-    
-    
-    
 }
 

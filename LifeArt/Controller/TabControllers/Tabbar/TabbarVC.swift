@@ -18,15 +18,11 @@ class TabbarVC: UITabBarController {
        
     }
     override func viewWillAppear(_ animated: Bool) {
-
-            fetchUser()
+        fetchUser()
     }
     
     func fetchUser() {
-        
-        
         guard let uid = Auth.auth().currentUser?.uid else {return}
-        
         UserService.shared.checkArtistExist(uid: uid) { (result) in
             if result{
                 UserService.shared.fetchUser(uid: uid) { [self] (user) in
@@ -40,11 +36,7 @@ class TabbarVC: UITabBarController {
                     saveUserDataInLocal()
                 }
             }
-           
         }
-        
-        
-       
     }
     
     func saveUserDataInLocal() {

@@ -24,11 +24,21 @@ class LoginVC: UIViewController {
         self.hideKeyboard()
         navigationBarView.roundCorners(corners: .layerMinXMaxYCorner, radius: 30)
         navigationBarView.dropShadow()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(signUP))
+        signUpLbl.addGestureRecognizer(tap)
+        
     
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    //MARK:- Selector
+    
+    @objc func signUP(){
+        self.pushToController(from: .main, identifier: .CreateProfileVC)
     }
     
     //MARK:- Actions

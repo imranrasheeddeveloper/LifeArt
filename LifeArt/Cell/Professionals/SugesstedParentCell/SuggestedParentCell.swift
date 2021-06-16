@@ -14,6 +14,9 @@ class SuggestedParentCell: UITableViewCell {
     var cellNumber : Int?
     var arrayofModel = [UserModel]()
     var arrayofArtisr = [UserModel]()
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         collectionView.delegate = self
@@ -67,7 +70,8 @@ extension SuggestedParentCell :  UICollectionViewDelegate, UICollectionViewDataS
      
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 200, height: 300)
+         return CGSize(width: 220, height: 300)
+   
     }
     
 
@@ -82,6 +86,7 @@ extension SuggestedParentCell :  UICollectionViewDelegate, UICollectionViewDataS
         
         self.parentViewController?.pushToRoot(from: .Home, identifier: .ProfessionalProfileVC)
     }
+    
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {

@@ -1,5 +1,33 @@
 PODS:
+  - Braintree/ApplePay (5.3.2):
+    - Braintree/Core
+  - Braintree/Card (5.3.2):
+    - Braintree/Core
+  - Braintree/Core (5.3.2)
+  - Braintree/PaymentFlow (5.3.2):
+    - Braintree/Core
+    - Braintree/PayPalDataCollector
+  - Braintree/PayPal (5.3.2):
+    - Braintree/Core
+    - Braintree/PayPalDataCollector
+  - Braintree/PayPalDataCollector (5.3.2)
+  - Braintree/ThreeDSecure (5.3.2):
+    - Braintree/Card
+    - Braintree/PaymentFlow
+  - Braintree/UnionPay (5.3.2):
+    - Braintree/Card
+  - Braintree/Venmo (5.3.2):
+    - Braintree/Core
+  - BraintreeDropIn (9.0.2):
+    - Braintree/ApplePay (>= 5.3.2, ~> 5.3)
+    - Braintree/Card (>= 5.3.2, ~> 5.3)
+    - Braintree/Core (>= 5.3.2, ~> 5.3)
+    - Braintree/PayPal (>= 5.3.2, ~> 5.3)
+    - Braintree/ThreeDSecure (>= 5.3.2, ~> 5.3)
+    - Braintree/UnionPay (>= 5.3.2, ~> 5.3)
+    - Braintree/Venmo (>= 5.3.2, ~> 5.3)
   - CodableFirebase (0.2.1)
+  - ContextMenu (0.4.0)
   - Firebase/Auth (7.10.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 7.10.0)
@@ -11,6 +39,9 @@ PODS:
   - Firebase/Database (7.10.0):
     - Firebase/CoreOnly
     - FirebaseDatabase (~> 7.10.0)
+  - Firebase/Messaging (7.10.0):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (~> 7.10.0)
   - Firebase/Storage (7.10.0):
     - Firebase/CoreOnly
     - FirebaseStorage (~> 7.10.0)
@@ -45,6 +76,18 @@ PODS:
     - GoogleUtilities/Environment (~> 7.0)
     - GoogleUtilities/UserDefaults (~> 7.0)
     - PromisesObjC (~> 1.2)
+  - FirebaseInstanceID (7.11.0):
+    - FirebaseCore (~> 7.0)
+    - FirebaseInstallations (~> 7.0)
+    - GoogleUtilities/Environment (~> 7.0)
+    - GoogleUtilities/UserDefaults (~> 7.0)
+  - FirebaseMessaging (7.10.0):
+    - FirebaseCore (~> 7.0)
+    - FirebaseInstanceID (~> 7.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
+    - GoogleUtilities/Environment (~> 7.0)
+    - GoogleUtilities/Reachability (~> 7.0)
+    - GoogleUtilities/UserDefaults (~> 7.0)
   - FirebaseStorage (7.10.0):
     - FirebaseCore (~> 7.0)
     - GTMSessionFetcher/Core (~> 1.4)
@@ -88,6 +131,7 @@ PODS:
     - nanopb/encode (= 2.30908.0)
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
+  - PMAlertController (4.0.1)
   - PromisesObjC (1.2.12)
   - SDWebImage (5.11.1):
     - SDWebImage/Core (= 5.11.1)
@@ -98,20 +142,27 @@ PODS:
   - Stripe/Stripe3DS2 (21.4.0)
 
 DEPENDENCIES:
+  - BraintreeDropIn
   - CodableFirebase
+  - ContextMenu
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
+  - Firebase/Messaging
   - Firebase/Storage
   - FittedSheets
   - FlagPhoneNumber
+  - PMAlertController
   - SDWebImage (~> 5.0)
   - SkeletonView
   - Stripe
 
 SPEC REPOS:
   trunk:
+    - Braintree
+    - BraintreeDropIn
     - CodableFirebase
+    - ContextMenu
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -119,6 +170,8 @@ SPEC REPOS:
     - FirebaseCoreDiagnostics
     - FirebaseDatabase
     - FirebaseInstallations
+    - FirebaseInstanceID
+    - FirebaseMessaging
     - FirebaseStorage
     - FittedSheets
     - FlagPhoneNumber
@@ -128,13 +181,17 @@ SPEC REPOS:
     - GTMSessionFetcher
     - leveldb-library
     - nanopb
+    - PMAlertController
     - PromisesObjC
     - SDWebImage
     - SkeletonView
     - Stripe
 
 SPEC CHECKSUMS:
+  Braintree: d9314d1a97acda74b77e40be5db6aa3e655c6539
+  BraintreeDropIn: 3e666d341e34efb0b5e18221eacd76db469bdab8
   CodableFirebase: 0bf201991eeec35eb9fcd987d271ea463cf34a80
+  ContextMenu: f835e09a93f1c28c631b76ee94396d9570397fd1
   Firebase: fffddd0bab8677d07376538365faa93ff3889b39
   FirebaseAnalytics: 4641d7ae4220174f6ca5626163ffc5de2e90391e
   FirebaseAuth: 675f2c4eb4426e7c58a78a89965a6530e7863535
@@ -142,6 +199,8 @@ SPEC CHECKSUMS:
   FirebaseCoreDiagnostics: 5662a3823ffcc0acbaa9a21ba5ed302fac634705
   FirebaseDatabase: ed9c5fc2568e92a22a40cab1ccaf4e0e9e9c8ae6
   FirebaseInstallations: bf2ec8dbf36ff4c91af6b9a003d15855757680c1
+  FirebaseInstanceID: ad5135045a498d7775903efd39762d2cdfa1be27
+  FirebaseMessaging: 76b3058cef7f339cf10db196e03bbbb2165fb5d7
   FirebaseStorage: d88ef8e9f152c6a17e44540ae2b93c3be74e9b60
   FittedSheets: 470a7740a083156d711ab6ccd37d1d539005e6aa
   FlagPhoneNumber: 3712455b95f66cb0f2016fef7d9e34cddf8c7f9a
@@ -151,11 +210,12 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
+  PMAlertController: ab5fcf4d085b7878c9451466d701449c4bf6efb8
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SkeletonView: cac18a3ac4f893b09d99e65072d806ef08377aae
   Stripe: 7c594b943abb65cf7bc28e37fd5124e65db3ce9e
 
-PODFILE CHECKSUM: ebac5f627691fbcdd47c2d252d1ccf8a92fec102
+PODFILE CHECKSUM: b8624d400dad5edb2756fdf30651a7fc5804c2ee
 
 COCOAPODS: 1.10.1

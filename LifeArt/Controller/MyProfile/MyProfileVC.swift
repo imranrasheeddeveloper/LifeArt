@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import SDWebImage
+import ContextMenu
 class MyProfileVC: UIViewController, UICollectionViewDelegate, UIViewControllerTransitioningDelegate {
     
     //MARK:- Outlets
@@ -23,8 +24,9 @@ class MyProfileVC: UIViewController, UICollectionViewDelegate, UIViewControllerT
     @IBOutlet weak var userName: UILabel!
     //MARK:- DataHolders
     public var postArray = [Post]()
-    public var userArray = [User]()
     public var imageArray = [String]()
+    public var postLikeCount  : [String]?
+    public var postNumberOfComments  : [String]?
     
     //MARK:- Scrollview Helper
     var selectedIndex = 0
@@ -69,7 +71,8 @@ class MyProfileVC: UIViewController, UICollectionViewDelegate, UIViewControllerT
         setStatusBar()
         hideKeyboard()
         fetchUser()
-        fetchFeeds()
+        
+        self.tableviewLayout.separatorStyle = .none
         self.navigationController?.navigationBar.isHidden = true
     }
     //MARK:- Setup Views
@@ -97,26 +100,71 @@ class MyProfileVC: UIViewController, UICollectionViewDelegate, UIViewControllerT
     
     
     //MARK:- Api Calling
+//    func fetchFeeds(){
+//        PostService.shared.fetchPost { [self] (post) in
+//        self.postArray = post
+//        for post in postArray{
+//            UserService.shared.fetchUser(uid: post.postData.user ) { (user) in
+//                self.userArray.append(user)
+//                self.imageArray.append(post.postData.image)
+//                DispatchQueue.main.async {
+//                    self.tableviewLayout.reloadData()
+//                }
+//            }
+//        }
+//    }
+//  }
     func fetchFeeds(){
-        PostService.shared.fetchPost { [self] (post) in
-        self.postArray = post
-        for post in postArray{
-            UserService.shared.fetchUser(uid: post.postData.user ) { (user) in
-                self.userArray.append(user)
-                self.imageArray.append(post.postData.image)
-                DispatchQueue.main.async {
-                    self.tableviewLayout.reloadData()
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+
+        UserService.shared.checkArtistExist(uid: uid) { (result) in
+            
+            if result{
+                PostService.shared.fetchPost { [self] (post) in
+                    let postData = post.filter({$0.postData.user == uid})
+                    self.postArray = postData
+                    for post in postArray{
+                                PostService.shared.fetchLikesOnPost(postId: post.key) { (count) in
+                                    PostService.shared.fetchNumberOfComments(postId: post.key) { (commentsCount) in
+                                        postLikeCount?.append(String(count))
+                                        postNumberOfComments?.append(String(commentsCount))
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                                            self.tableviewLayout.reloadData()
+                                        })
+                                    }
+                                   
+                                }
+                    }
+                }
+            }
+        else{
+            PostService.shared.fetchPostOfModel { [self] (post) in
+                let postData = post.filter({$0.postData.user == uid})
+                self.postArray = postData
+                for post in postArray{
+                            PostService.shared.fetchLikesOnPost(postId: post.key) { (count) in
+                                PostService.shared.fetchNumberOfComments(postId: post.key) { (commentsCount) in
+                                   print(count)
+                                    print(commentsCount)
+                                    postLikeCount?.append(String(count))
+                                    postNumberOfComments?.append(String(commentsCount))
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                                        self.tableviewLayout.reloadData()
+                                    })
+                                }
+                               
+                            }
                 }
             }
         }
+       
     }
-  }
+    }
     
     func fetchUser() {
         guard let uid = Auth.auth().currentUser?.uid else {return}
         UserService.shared.fetchUser(uid: uid) { [self] (user) in
             self.user = user
-            
             if let firstName = self.user?.firstname {
                 if let lastName = self.user?.lastname{
                     if let bio = self.user?.bio {
@@ -130,6 +178,8 @@ class MyProfileVC: UIViewController, UICollectionViewDelegate, UIViewControllerT
                     }
                 }
             }
+            fetchFeeds()
+            
             
         }
     }
@@ -152,6 +202,8 @@ class MyProfileVC: UIViewController, UICollectionViewDelegate, UIViewControllerT
         }
        
     }
+    
+    
     
     @IBAction func seeMoreInfo(sender : UIButton){
         GlobaluserID = Auth.auth().currentUser!.uid
@@ -195,7 +247,16 @@ class MyProfileVC: UIViewController, UICollectionViewDelegate, UIViewControllerT
         MenuPresentationController(presentedViewController: presented, presenting: presenting)
     }
     
+    @IBAction func editProfileAction(_ sender: UIButton) {
+        
+    }
     
+    @IBAction func menuDropDownAction(_ sender: UIButton) {
+       // if let cell = sender.superview as? PostCell{}
+        
+       
+        
+    }
  
 }
 
@@ -271,23 +332,33 @@ extension MyProfileVC :  UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 400
     }
+
 }
 
 //MARK : - postCellDelegate
 extension MyProfileVC : postCellDelegate
 {
+    
+    
     func report(tag: Int) {
-        //
+        
     }
     
     func likePost(tag: Int) {
-        //
+        PostService.shared.likePost(postId: postArray[tag].key) { (error, ref) -> (Void) in
+            DispatchQueue.main.async { [self] in
+               fetchFeeds()
+            }
+        }
     }
     
     func comments(tag: Int) {
+        commentsTag = postArray[tag].key
+        postOwner   = postArray[tag].postData.user
         presenttSheet(tag: tag, view: self.view, controller: self, Identifier: .CommentsVC, storyBoard: .Home)
     }
     
-    
 }
+
+
 

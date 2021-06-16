@@ -10,6 +10,7 @@ import Foundation
 
 var commentsTag : String = ""
 var GlobaluserID : String = ""
+var postOwner :  String = ""
  func currentTime() -> String {
     let date = Date()
     let calendar = Calendar.current
@@ -34,3 +35,13 @@ func currentTimeInInteger() -> String {
     let year = calendar.component(.year, from: date)
     return "\(day)-\(month)-\(year)"
 }
+enum MenuClick {
+    case editPost
+    case deletePost
+    case reportPost
+}
+var menuClick : MenuClick?
+
+var postTag : Int?
+
+var arrayOfPosts = [Post]()

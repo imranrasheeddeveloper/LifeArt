@@ -26,4 +26,23 @@ struct AnnouncmentService{
             }
         }
     }
+    
+    func fetchNotifications(completion: @escaping([NotificationModel]) -> Void) {
+        var notificationArray = [NotificationModel]()
+        let uid = Auth.auth().currentUser!.uid
+        print(uid)
+        REF_Notifications.child(uid).observeSingleEvent(of: .value) { (snapshot) in
+            for snap in snapshot.children {
+                let userSnap = snap as! DataSnapshot
+                let notiDict = userSnap.value as! [String:AnyObject]
+                let user = NotificationModel(dictionary: notiDict)
+                notificationArray.append(user)
+            }
+            DispatchQueue.main.async {
+                completion(notificationArray)
+            }
+        }
+    }
 }
+
+

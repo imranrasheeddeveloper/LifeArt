@@ -103,10 +103,10 @@ class NewMessagesVC: UIViewController {
     func getNewMessages() {
         newMessagesArray.removeAll()
         let currentUid = Auth.auth().currentUser?.uid
-        var userDict :  [String:AnyObject]?
+        //var userDict :  [String:AnyObject]?
         REF_messages.child(currentUid!).observe(.value) { [self]  (snapshot) in
-            userDict = snapshot.value as? [String : AnyObject]
-            for (mykey,values) in userDict!{
+            guard let userDict = snapshot.value as? [String : AnyObject] else {return}
+            for (mykey,values) in userDict{
                 uIDArray.append(mykey)
                  let val = values as? [String : AnyObject]
                 for (key , value ) in  val!{

@@ -74,7 +74,8 @@ struct UserService{
             for snap in snapshot.children {
                 let userSnap = snap as! DataSnapshot
                 //let uid = userSnap.key //the uid of each user
-                let userDict = userSnap.value as! [String:AnyObject]
+                var userDict = userSnap.value as! [String:AnyObject]
+                userDict["user"] = userSnap.key as AnyObject
                 let user = UserModel(dictionary: userDict)
                 artistArray.append(user)
             }
@@ -92,7 +93,8 @@ struct UserService{
             for snap in snapshot.children {
                 let userSnap = snap as! DataSnapshot
                 //let uid = userSnap.key //the uid of each user
-                let userDict = userSnap.value as! [String:AnyObject]
+                var userDict = userSnap.value as! [String:AnyObject]
+                userDict["user"] = userSnap.key as AnyObject
                 let post = UserModel(dictionary: userDict)
                 postArray.append(post)
             }

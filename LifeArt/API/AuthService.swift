@@ -95,7 +95,7 @@ struct AuthService {
                       "passwrod" : passwrod ,
                       "phone" : phone ,
                       "website" : website ,
-                      "type" : type
+                      "type" : type ,
         ]
         as [String : Any]
     }

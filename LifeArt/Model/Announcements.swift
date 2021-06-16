@@ -21,3 +21,17 @@ struct Announcements {
         self.user = dictionary["user"] as! String
     }
 }
+
+struct NotificationModel {
+    let date, from, post , type: String
+    let time : Int
+    
+    init(dictionary: [String: Any]) {
+        self.date = dictionary["date"] as? String ?? ""
+        self.from = dictionary["from"] as? String ?? ""
+        self.post = dictionary["post"] as? String ?? ""
+        self.time = dictionary["time"] as? Int ?? 0
+        self.type = dictionary["type"] as? String ?? ""
+        
+    }
+}

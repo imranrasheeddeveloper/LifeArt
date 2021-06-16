@@ -24,7 +24,7 @@ class CreatePostVC: UIViewController {
     //MARK:- variable declaration
     
     var accountType : AccountType = .Artist
-    
+    var user : User?
     
     
     //MARK:- lifeCyscles
@@ -47,6 +47,7 @@ class CreatePostVC: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
+        fetchUser()
         
     }
     
@@ -54,7 +55,7 @@ class CreatePostVC: UIViewController {
     //MARK:- Helper Functions
     
     func checkUserType() {
-        REF_Artists.child(Auth.auth().currentUser!.uid).observe(.value) { [self] (snapshot) in
+     REF_Artists.child(Auth.auth().currentUser!.uid).observe(.value) { [self] (snapshot) in
             if snapshot.exists() {
                 accountType = .Artist
             }
@@ -93,12 +94,16 @@ class CreatePostVC: UIViewController {
                         let post = CreatePost(date: date, desc: textView.text ?? "test", image: selectedImage.image ?? #imageLiteral(resourceName: "art2"), medium: meduimTF.text!, size: sizeTF.text!, time: time, title: postTitleTF.text ?? "Test" , user: Auth.auth().currentUser!.uid)
                         PostService.shared.creatPost(account: accountType , post: post) { [self] (eror, ref) -> (Void) in
                             if eror == nil{
-                                self.presentAlert(withTitle: "Success", message: "Post Uploaded")
+                                self.showToast(message: "Post Uploaded", seconds: 1.0)
+                                
+                                guard let fullName = user?.firstname else { return }
+                                PushNotificationSender.shared.sendPushNotification(to: "" , title: fullName  , body: textView.text)
                                 postTitleTF.text = ""
                                 textView.text = ""
                                 meduimTF.text = ""
                                 sizeTF.text = ""
                                 selectedImage.image = nil
+                                
                             }
                             else{
                                 print(eror?.localizedDescription as Any)
@@ -112,7 +117,21 @@ class CreatePostVC: UIViewController {
             self.presentAlert(withTitle: "Error", message: "Fill the TextFields")
         }
     }
-    
+    func fetchUser() {
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        UserService.shared.checkArtistExist(uid: uid) { (result) in
+            if result{
+                UserService.shared.fetchUser(uid: uid) { [self] (user) in
+                    self.user = user
+                }
+            }
+            else{
+                UserService.shared.fetchMyModelUser(uid: uid) { [self] (user) in
+                    self.user = user
+                }
+            }
+        }
+    }
 }
 
 

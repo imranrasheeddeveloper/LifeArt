@@ -48,6 +48,7 @@ class EditProfile: UIViewController {
         fetchUser()
     }
     
+  
     func fetchUser() {
         guard let uid = Auth.auth().currentUser?.uid else {return}
         UserService.shared.checkArtistExist(uid: uid) { (result) in
@@ -79,25 +80,23 @@ class EditProfile: UIViewController {
     
     
     func apiCalling() {
-      
+        AppDelegate.shared.loadindIndicator(title: "Profile Updating")
         UserService.shared.checkArtistExist(uid: Auth.auth().currentUser!.uid) {[self] (result) in
-            //AppDelegate.shared.loadindIndicator(title: "Profile Updating")
+            
             let profileObj = updateMyProfile(city: cityTF.text ?? "", country: countryTF.text ?? "", email: emailTF.text ?? "", firstname: firstNameTF.text ?? "", lastname: lastNameTF.text ?? "", phone: phoneTF.text ?? "", website: websiteTF.text ?? "")
             if result {
                 UserService.shared.updateProfile(account: .Artist, updateProfile:profileObj) { (error, ref) -> (Void) in
                     print(error?.localizedDescription as Any)
-                    //AppDelegate.shared.removeLoadIndIndicator()
+                    AppDelegate.shared.removeLoadIndIndicator()
                 }
             }
             else{
                 UserService.shared.updateProfile(account: .Artist, updateProfile:profileObj) { (error, ref) -> (Void) in
-                    //AppDelegate.shared.removeLoadIndIndicator()
+                    AppDelegate.shared.removeLoadIndIndicator()
                     print(error?.localizedDescription as Any)
                 }
             }
         }
-        
-        
     }
     
     @IBAction func updateProfile(_ sender: Any) {

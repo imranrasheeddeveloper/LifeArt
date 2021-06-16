@@ -53,10 +53,10 @@ class SettingsVC: UIViewController {
     func loadData() {
         settingsData.append(SettingsModel(detailLbl: "Account Settings", iconImg: #imageLiteral(resourceName: "setting")))
         settingsData.append(SettingsModel(detailLbl: "Classes", iconImg: #imageLiteral(resourceName: "setting") ))
-        settingsData.append(SettingsModel(detailLbl: "Language", iconImg: #imageLiteral(resourceName: "setting")))
-        settingsData.append(SettingsModel(detailLbl: "Terms and Conditions", iconImg: #imageLiteral(resourceName: "setting")))
+        settingsData.append(SettingsModel(detailLbl: "Announcements", iconImg: #imageLiteral(resourceName: "setting")))
+        settingsData.append(SettingsModel(detailLbl: "Subscrition", iconImg: #imageLiteral(resourceName: "setting")))
+        settingsData.append(SettingsModel(detailLbl: "Terms & Conditions", iconImg: #imageLiteral(resourceName: "setting")))
         settingsData.append(SettingsModel(detailLbl: "Privacy Policy", iconImg: #imageLiteral(resourceName: "setting")))
-        settingsData.append(SettingsModel(detailLbl: "Help & Support", iconImg: #imageLiteral(resourceName: "setting")))
         settingsData.append(SettingsModel(detailLbl: "LogOut", iconImg: #imageLiteral(resourceName: "setting")))
     }
     

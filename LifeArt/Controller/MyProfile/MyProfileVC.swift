@@ -237,10 +237,8 @@ class MyProfileVC: UIViewController, UICollectionViewDelegate, UIViewControllerT
     }
     
     @IBAction func openBottomSheet(_ sender : UIButton){
-        let slideVC = MenuSheet()
-        slideVC.modalPresentationStyle = .custom
-        slideVC.transitioningDelegate = self
-        self.present(slideVC, animated: true, completion: nil)
+        self.pushToRoot(from: .Settings, identifier: .SettingsVC)
+    
     }
     
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {

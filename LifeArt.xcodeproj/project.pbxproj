@@ -34,7 +34,6 @@
 		4F16C86F264495B300CE455F /* MessagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F16C86C264495B300CE455F /* MessagesCell.swift */; };
 		4F16C870264495B300CE455F /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F16C86D264495B300CE455F /* ChatCell.swift */; };
 		4F16C871264495B300CE455F /* NewMessagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F16C86E264495B300CE455F /* NewMessagesCell.swift */; };
-		4F16C8B026449C9700CE455F /* MyAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F16C8AF26449C9700CE455F /* MyAPIClient.swift */; };
 		4F1ACBCE262E1D8F004B372E /* ProfilePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1ACBCC262E1D8F004B372E /* ProfilePostCell.swift */; };
 		4F1ACBCF262E1D8F004B372E /* ProfilePostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F1ACBCD262E1D8F004B372E /* ProfilePostCell.xib */; };
 		4F1ACBDE262E251E004B372E /* UserPostDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1ACBDD262E251E004B372E /* UserPostDataSource.swift */; };
@@ -201,7 +200,6 @@
 		4F16C86C264495B300CE455F /* MessagesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesCell.swift; sourceTree = "<group>"; };
 		4F16C86D264495B300CE455F /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		4F16C86E264495B300CE455F /* NewMessagesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMessagesCell.swift; sourceTree = "<group>"; };
-		4F16C8AF26449C9700CE455F /* MyAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAPIClient.swift; sourceTree = "<group>"; };
 		4F1ACBCC262E1D8F004B372E /* ProfilePostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePostCell.swift; sourceTree = "<group>"; };
 		4F1ACBCD262E1D8F004B372E /* ProfilePostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfilePostCell.xib; sourceTree = "<group>"; };
 		4F1ACBDD262E251E004B372E /* UserPostDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostDataSource.swift; sourceTree = "<group>"; };
@@ -407,7 +405,6 @@
 				4F15478C261C988A0092C2AE /* View */,
 				4F15478D261C98B40092C2AE /* Controller */,
 				4F1ACC10262E3DA3004B372E /* API */,
-				4F16C8AE26449C8000CE455F /* StripPayment */,
 				4FFD3A12263E994E0030FFDC /* KeyChain */,
 				4FD5E9B9263C9AEE007E0AB4 /* JSON */,
 				4F1ACC07262E3D5E004B372E /* Firebase */,
@@ -534,14 +531,6 @@
 				4F16C86E264495B300CE455F /* NewMessagesCell.swift */,
 			);
 			path = Message;
-			sourceTree = "<group>";
-		};
-		4F16C8AE26449C8000CE455F /* StripPayment */ = {
-			isa = PBXGroup;
-			children = (
-				4F16C8AF26449C9700CE455F /* MyAPIClient.swift */,
-			);
-			path = StripPayment;
 			sourceTree = "<group>";
 		};
 		4F1ACBCB262E1D64004B372E /* Profile */ = {
@@ -1333,7 +1322,6 @@
 				4F1547A3261C9ED00092C2AE /* ImageView+Round.swift in Sources */,
 				4F16C871264495B300CE455F /* NewMessagesCell.swift in Sources */,
 				4FB368A0262B282100BA31B3 /* CheckBoxButton.swift in Sources */,
-				4F16C8B026449C9700CE455F /* MyAPIClient.swift in Sources */,
 				4F20CEA0261D020C00F8EE6F /* GalleryVC.swift in Sources */,
 				4F9BF51F2637F864007E386E /* NewclassesVC.swift in Sources */,
 				4F27BB21263ECD300075F68C /* Announcements.swift in Sources */,

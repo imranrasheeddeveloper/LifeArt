@@ -31,9 +31,6 @@ class ShoutsVc: UIViewController {
         headerView.dropShadow()
         headerView.roundCorners(corners: .layerMinXMaxYCorner, radius: 30)
         tabelView.register(UINib(nibName: "AnnouncmentsCell", bundle: nil), forCellReuseIdentifier: "AnnouncmentsCell")
-//        tabelView.register(UINib(nibName: "AnnouncmentsCell", bundle: nil),   forCellReuseIdentifier: "AnnouncmentsCell")
-//        datasorce.loadingCell = .AnnouncmentsCell
-//        delegate.loadingCell = .AnnouncmentsCell
         apiCalling()
 
     }
@@ -44,8 +41,6 @@ class ShoutsVc: UIViewController {
     func apiCalling() {
             AnnouncmentService.shared.fetchAnnouncmentServices { [self] (announcements) in
                 arrayOfAnnouncment  = announcements
-                dump(arrayOfAnnouncment)
-             datasorce.arrayOfAnnouncements = arrayOfAnnouncment
                 DispatchQueue.main.async {
                     self.tabelView.reloadData()
                 }
@@ -60,6 +55,13 @@ extension ShoutsVc: UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AnnouncmentsCell", for: indexPath) as! AnnouncmentsCell
+        cell.desLbl.text = arrayOfAnnouncment[indexPath.row].des
+        cell.insituteName.text = arrayOfAnnouncment[indexPath.row].name
+        cell.priceLbl.text = arrayOfAnnouncment[indexPath.row].salary
+        cell.time.text = arrayOfAnnouncment[indexPath.row].time
+        cell.titleLbl.text = arrayOfAnnouncment[indexPath.row].title
+        
+        cell.salaryLbl.text = arrayOfAnnouncment[indexPath.row].salary
     return cell
     }
     

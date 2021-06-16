@@ -21,7 +21,7 @@ struct CommentsService{
         var commentsArray = [Comments]()
         var commentsDict : [String : AnyObject]?
         REF_Comments.observeSingleEvent(of: .value) { (snapshot) in
-            commentsDict = (snapshot.value as! [String:AnyObject])
+            commentsDict = (snapshot.value as? [String:AnyObject])
             for (commentkey,values) in commentsDict!{
                 let val = values as? [String : AnyObject]
                 for (_ , value) in val! {

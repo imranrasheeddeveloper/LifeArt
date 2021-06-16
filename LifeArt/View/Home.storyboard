@@ -1175,7 +1175,7 @@
                                     <constraint firstAttribute="height" constant="16" id="yEA-mU-Ddf"/>
                                 </constraints>
                                 <color key="tintColor" name="colorPrimary"/>
-                                <state key="normal" image="menu"/>
+                                <state key="normal" image="gearshape" catalog="system"/>
                                 <connections>
                                     <action selector="openBottomSheet:" destination="IEL-IH-73q" eventType="touchUpInside" id="Pd3-xN-BfV"/>
                                 </connections>
@@ -1657,6 +1657,7 @@
         <image name="bell" catalog="system" width="128" height="124"/>
         <image name="camera" catalog="system" width="128" height="94"/>
         <image name="editPhoto" width="174" height="138"/>
+        <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="left-arrow" width="512" height="512"/>
         <image name="menu" width="512" height="512"/>
         <image name="message" catalog="system" width="128" height="113"/>

@@ -8,7 +8,6 @@
 import UIKit
 import CoreData
 import Firebase
-import Stripe
 import FirebaseMessaging
 
 @main
@@ -24,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
-        StripeAPI.defaultPublishableKey = "pk_test_51H85aqHsGrIo8qiTqprpwCWCPJDyzkNgH47qniOK3JKJpUHcwqDTFZwoDj6WBVmwGSgVgbhJ7qw4hDjm9uGa2OZA00yfUa9rOR"
         UNUserNotificationCenter.current().delegate = self
         let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
         UNUserNotificationCenter.current().requestAuthorization(

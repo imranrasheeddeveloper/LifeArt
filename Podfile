@@ -18,6 +18,8 @@ target 'LifeArt' do
   pod 'SkeletonView'
   pod 'Firebase/Messaging'
   pod 'ContextMenu'
+  pod 'MessageKit'
+
   target 'LifeArtTests' do
     inherit! :search_paths
     # Pods for testing

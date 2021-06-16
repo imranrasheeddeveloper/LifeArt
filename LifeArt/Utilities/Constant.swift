@@ -11,6 +11,7 @@ import Foundation
 var commentsTag : String = ""
 var GlobaluserID : String = ""
 var postOwner :  String = ""
+let productID : String = "com.life.LifeArt.subscription"
  func currentTime() -> String {
     let date = Date()
     let calendar = Calendar.current

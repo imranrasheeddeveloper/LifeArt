@@ -7,7 +7,7 @@
 
 import UIKit
 import  Firebase
-
+import StoreKit
 struct SettingsModel {
 var detailLbl : String
 var iconImg : UIImage
@@ -78,6 +78,7 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
     let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsCell", for: indexPath) as! SettingsCell
     cell.detailLbl.text = settingsData[indexPath.row].detailLbl
     cell.iconImg.image = settingsData[indexPath.row].iconImg
+    cell.selectionStyle = .none
     return cell
     }
     
@@ -85,10 +86,15 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
         switch indexPath.row {
         case 0:
             self.pushToController(from: .Settings, identifier: .AccountSettingVC )
+            break
         case 1:
             self.pushToController(from: .Settings, identifier: .ClassesVC )
+            break
         case 6:
             logoutUser()
+            break
+        case 3 :
+            InAppPurchase()
         default:
             break
         }
@@ -104,4 +110,12 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
         
     }
 
+    
+    func InAppPurchase() {
+        if SKPaymentQueue.canMakePayments(){
+            let paymentrequest = SKMutablePayment()
+            paymentrequest.productIdentifier = productID
+            SKPaymentQueue.default().add(paymentrequest)
+        }
+    }
 }

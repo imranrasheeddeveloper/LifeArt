@@ -64,6 +64,8 @@
 		4F4CB0BC2659606F006F9C4C /* Comments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4CB0BB2659606F006F9C4C /* Comments.swift */; };
 		4F51FEEA2638A84F00D7C215 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F51FEE92638A84F00D7C215 /* LoginVC.swift */; };
 		4F51FEEF2638AB4000D7C215 /* ForgetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F51FEEE2638AB4000D7C215 /* ForgetPasswordVC.swift */; };
+		4F54ED88267A634F002F13AC /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F54ED87267A634F002F13AC /* StoreKit.framework */; };
+		4F54ED90267A63AA002F13AC /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F54ED8F267A63AA002F13AC /* IAPHelper.swift */; };
 		4F597C63261E3E8E00E980C1 /* GalleryHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F597C61261E3E8E00E980C1 /* GalleryHeaderCell.swift */; };
 		4F597C64261E3E8E00E980C1 /* GalleryHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F597C62261E3E8E00E980C1 /* GalleryHeaderCell.xib */; };
 		4F597C6F261E413C00E980C1 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F597C6D261E413C00E980C1 /* PostCell.swift */; };
@@ -230,6 +232,8 @@
 		4F4CB0BB2659606F006F9C4C /* Comments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comments.swift; sourceTree = "<group>"; };
 		4F51FEE92638A84F00D7C215 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		4F51FEEE2638AB4000D7C215 /* ForgetPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordVC.swift; sourceTree = "<group>"; };
+		4F54ED87267A634F002F13AC /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		4F54ED8F267A63AA002F13AC /* IAPHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		4F597C61261E3E8E00E980C1 /* GalleryHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryHeaderCell.swift; sourceTree = "<group>"; };
 		4F597C62261E3E8E00E980C1 /* GalleryHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GalleryHeaderCell.xib; sourceTree = "<group>"; };
 		4F597C6D261E413C00E980C1 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
@@ -328,6 +332,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				08255854BCABF29EA1D30E20 /* Pods_LifeArt.framework in Frameworks */,
+				4F54ED88267A634F002F13AC /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +487,7 @@
 		4F154792261C9E380092C2AE /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				4F54ED8F267A63AA002F13AC /* IAPHelper.swift */,
 				4F20CE9A261CFF9900F8EE6F /* CustomAlertView.swift */,
 				4F1547C2261CB01C0092C2AE /* OTPStackView.swift */,
 				4F1547C3261CB01C0092C2AE /* OTPTextField.swift */,
@@ -998,6 +1004,7 @@
 		AE27D13FDBDBE5D1ACD9C1BB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4F54ED87267A634F002F13AC /* StoreKit.framework */,
 				83B13EF3164B65E354B4D4F5 /* Pods_LifeArt.framework */,
 				D1A9C9DDBCC5166337F04AE1 /* Pods_LifeArt_LifeArtUITests.framework */,
 				EEFD2B13ED1E6E8EB03734BE /* Pods_LifeArtTests.framework */,
@@ -1367,6 +1374,7 @@
 				4F7D789D262CC66D001C2290 /* PhotosDataSource.swift in Sources */,
 				4F20CE79261CE4CB00F8EE6F /* VerifyNumberVC.swift in Sources */,
 				4F1DF313262AD4F80001A65B /* AnnouncmentsCell.swift in Sources */,
+				4F54ED90267A63AA002F13AC /* IAPHelper.swift in Sources */,
 				4F7D7897262CC4FA001C2290 /* Constrains+Extension .swift in Sources */,
 				4F9BF5202637F864007E386E /* ClassesVC.swift in Sources */,
 				4FFD3A75263EBF480030FFDC /* PostService.swift in Sources */,
@@ -1555,7 +1563,7 @@
 				CODE_SIGN_ENTITLEMENTS = LifeArt/LifeArt.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = V7RD24A377;
+				DEVELOPMENT_TEAM = NF2GHJKNG8;
 				INFOPLIST_FILE = LifeArt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1563,7 +1571,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.life.LifeArt3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.life.LifeArt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1577,9 +1585,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = LifeArt/LifeArt.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = V7RD24A377;
+				DEVELOPMENT_TEAM = NF2GHJKNG8;
 				INFOPLIST_FILE = LifeArt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1587,8 +1596,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.life.LifeArt3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.life.LifeArt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

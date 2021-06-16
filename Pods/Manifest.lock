@@ -1,31 +1,4 @@
 PODS:
-  - Braintree/ApplePay (5.3.2):
-    - Braintree/Core
-  - Braintree/Card (5.3.2):
-    - Braintree/Core
-  - Braintree/Core (5.3.2)
-  - Braintree/PaymentFlow (5.3.2):
-    - Braintree/Core
-    - Braintree/PayPalDataCollector
-  - Braintree/PayPal (5.3.2):
-    - Braintree/Core
-    - Braintree/PayPalDataCollector
-  - Braintree/PayPalDataCollector (5.3.2)
-  - Braintree/ThreeDSecure (5.3.2):
-    - Braintree/Card
-    - Braintree/PaymentFlow
-  - Braintree/UnionPay (5.3.2):
-    - Braintree/Card
-  - Braintree/Venmo (5.3.2):
-    - Braintree/Core
-  - BraintreeDropIn (9.0.2):
-    - Braintree/ApplePay (>= 5.3.2, ~> 5.3)
-    - Braintree/Card (>= 5.3.2, ~> 5.3)
-    - Braintree/Core (>= 5.3.2, ~> 5.3)
-    - Braintree/PayPal (>= 5.3.2, ~> 5.3)
-    - Braintree/ThreeDSecure (>= 5.3.2, ~> 5.3)
-    - Braintree/UnionPay (>= 5.3.2, ~> 5.3)
-    - Braintree/Venmo (>= 5.3.2, ~> 5.3)
   - CodableFirebase (0.2.1)
   - ContextMenu (0.4.0)
   - Firebase/Auth (7.10.0):
@@ -131,18 +104,13 @@ PODS:
     - nanopb/encode (= 2.30908.0)
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
-  - PMAlertController (4.0.1)
   - PromisesObjC (1.2.12)
   - SDWebImage (5.11.1):
     - SDWebImage/Core (= 5.11.1)
   - SDWebImage/Core (5.11.1)
   - SkeletonView (1.15.0)
-  - Stripe (21.4.0):
-    - Stripe/Stripe3DS2 (= 21.4.0)
-  - Stripe/Stripe3DS2 (21.4.0)
 
 DEPENDENCIES:
-  - BraintreeDropIn
   - CodableFirebase
   - ContextMenu
   - Firebase/Auth
@@ -152,15 +120,11 @@ DEPENDENCIES:
   - Firebase/Storage
   - FittedSheets
   - FlagPhoneNumber
-  - PMAlertController
   - SDWebImage (~> 5.0)
   - SkeletonView
-  - Stripe
 
 SPEC REPOS:
   trunk:
-    - Braintree
-    - BraintreeDropIn
     - CodableFirebase
     - ContextMenu
     - Firebase
@@ -181,15 +145,11 @@ SPEC REPOS:
     - GTMSessionFetcher
     - leveldb-library
     - nanopb
-    - PMAlertController
     - PromisesObjC
     - SDWebImage
     - SkeletonView
-    - Stripe
 
 SPEC CHECKSUMS:
-  Braintree: d9314d1a97acda74b77e40be5db6aa3e655c6539
-  BraintreeDropIn: 3e666d341e34efb0b5e18221eacd76db469bdab8
   CodableFirebase: 0bf201991eeec35eb9fcd987d271ea463cf34a80
   ContextMenu: f835e09a93f1c28c631b76ee94396d9570397fd1
   Firebase: fffddd0bab8677d07376538365faa93ff3889b39
@@ -210,12 +170,10 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
-  PMAlertController: ab5fcf4d085b7878c9451466d701449c4bf6efb8
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SkeletonView: cac18a3ac4f893b09d99e65072d806ef08377aae
-  Stripe: 7c594b943abb65cf7bc28e37fd5124e65db3ce9e
 
-PODFILE CHECKSUM: b8624d400dad5edb2756fdf30651a7fc5804c2ee
+PODFILE CHECKSUM: 06c3950997d551101b5c6c5e8dc20552b164f0bc
 
 COCOAPODS: 1.10.1

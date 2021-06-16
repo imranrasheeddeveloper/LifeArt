@@ -28,49 +28,18 @@ class NotificationVC: UIViewController {
         super.viewDidLoad()
         setStatusBar()
         hideKeyboard()
-        tabelView.dataSource =  datasorce
-        tabelView.delegate = delegate
-        headerView.dropShadow()
-        headerView.roundCorners(corners: .layerMinXMaxYCorner, radius: 30)
-        tabelView.register(UINib(nibName: "NotificationCell", bundle: nil), forCellReuseIdentifier: "NotificationCell")
-        tabelView.register(UINib(nibName: "AnnouncmentsCell", bundle: nil), forCellReuseIdentifier: "AnnouncmentsCell")
-        datasorce.loadingCell = .AnnouncmentsCell
-        delegate.loadingCell = .AnnouncmentsCell
-        apiCalling()
+         tabelView.register(UINib(nibName: "NotificationCell", bundle: nil), forCellReuseIdentifier: "NotificationCell")
+         tabelView.dataSource =  NotificationDataSource()
+         tabelView.delegate = NotificationDelegate()
+         headerView.dropShadow()
+         headerView.roundCorners(corners: .layerMinXMaxYCorner, radius: 30)
+          apiCallingForNotifications()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
     }
-    
-    @IBAction func sengmentValueCheangeAction(_ sender: UISegmentedControl) {
-        if segment.selectedSegmentIndex == 0{
-            datasorce.loadingCell = .AnnouncmentsCell
-            delegate.loadingCell = .AnnouncmentsCell
-            apiCalling()
-            
-        }
-        else if segment.selectedSegmentIndex == 1{
-            datasorce.loadingCell = .NotificationCell
-            delegate.loadingCell = .NotificationCell
-            apiCallingForNotifications()
-        }
-    }
-  
-    
-    //MARK:- Api Calling
-    
-    func apiCalling() {
-        AnnouncmentService.shared.fetchAnnouncmentServices { [self] (announcements) in
-            arrayOfAnnouncment  = announcements
-            dump(arrayOfAnnouncment)
-            datasorce.arrayOfAnnouncements = arrayOfAnnouncment
-            DispatchQueue.main.async {
-                self.tabelView.reloadData()
-            }
-        }
-    }
-    
+
     func apiCallingForNotifications() {
         AnnouncmentService.shared.fetchNotifications { [self] (noti) in
             arrayOfNotification  = noti
@@ -82,4 +51,12 @@ class NotificationVC: UIViewController {
         }
     }
     
+    
+    
+    //MARK:-Actions
+    
+    @IBAction func backBtnActions(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
 }
+

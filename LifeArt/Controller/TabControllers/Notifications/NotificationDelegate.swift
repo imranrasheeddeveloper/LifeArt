@@ -9,16 +9,10 @@
 import UIKit
 
 class NotificationDelegate: NSObject , UITableViewDelegate {
-    var loadingCell : loadCell!
+   
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch loadingCell {
-        case .AnnouncmentsCell:
-            return 210
-        case .NotificationCell:
             return 100
-        case .none:
-           return  210
-        }
+
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {

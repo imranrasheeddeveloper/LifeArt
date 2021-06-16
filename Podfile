@@ -16,13 +16,8 @@ target 'LifeArt' do
   pod 'FlagPhoneNumber'
   pod 'SDWebImage', '~> 5.0'
   pod 'SkeletonView'
-  pod 'Stripe'
   pod 'Firebase/Messaging'
-  pod 'PMAlertController'
   pod 'ContextMenu'
-
-pod 'BraintreeDropIn'
-
   target 'LifeArtTests' do
     inherit! :search_paths
     # Pods for testing

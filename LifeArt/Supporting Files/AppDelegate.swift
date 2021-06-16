@@ -9,6 +9,8 @@ import UIKit
 import CoreData
 import Firebase
 import Stripe
+import FirebaseMessaging
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
     

@@ -24,7 +24,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n3z-pv-eTR">
-                        <rect key="frame" x="10" y="10" width="320" height="89"/>
+                        <rect key="frame" x="10" y="10" width="303" height="89"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Art Bussniess" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ek9-28-VN2">
                                 <rect key="frame" x="10" y="10" width="98.5" height="19"/>
@@ -33,14 +33,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Painter Requierd For Painting some Crafts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kof-n4-YVX">
-                                <rect key="frame" x="10" y="39" width="300" height="17.5"/>
+                                <rect key="frame" x="10" y="39" width="283" height="17.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lista Institude of Art $ Gallery" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rqp-LC-o2T">
-                                <rect key="frame" x="10" y="64" width="170" height="15"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lista Institude of Art $ Gallery" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rqp-LC-o2T">
+                                <rect key="frame" x="10" y="66.5" width="170" height="15"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="12"/>
                                 <color key="textColor" systemColor="opaqueSeparatorColor"/>
                                 <nil key="highlightedColor"/>
@@ -53,6 +52,8 @@
                             <constraint firstAttribute="trailing" secondItem="kof-n4-YVX" secondAttribute="trailing" constant="10" id="5f2-q4-nDE"/>
                             <constraint firstItem="Ek9-28-VN2" firstAttribute="leading" secondItem="n3z-pv-eTR" secondAttribute="leading" constant="10" id="8mn-v9-Dvp"/>
                             <constraint firstItem="Ek9-28-VN2" firstAttribute="top" secondItem="n3z-pv-eTR" secondAttribute="top" constant="10" id="BeX-Bx-5pB"/>
+                            <constraint firstItem="rqp-LC-o2T" firstAttribute="leading" secondItem="kof-n4-YVX" secondAttribute="leading" id="OKI-GT-6Qs"/>
+                            <constraint firstItem="rqp-LC-o2T" firstAttribute="top" secondItem="kof-n4-YVX" secondAttribute="bottom" constant="10" id="fW5-bx-CHf"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T7b-Uy-6fW">
@@ -145,15 +146,16 @@
                     </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="eh7-MQ-x90" firstAttribute="top" secondItem="n3z-pv-eTR" secondAttribute="bottom" constant="10" id="2hl-uc-x1w"/>
                     <constraint firstItem="5LA-lo-6fv" firstAttribute="leading" secondItem="T7b-Uy-6fW" secondAttribute="trailing" constant="10" id="3rO-dT-R8d"/>
                     <constraint firstItem="eh7-MQ-x90" firstAttribute="leading" secondItem="5LA-lo-6fv" secondAttribute="trailing" constant="10" id="4Dr-dr-JJf"/>
-                    <constraint firstItem="T7b-Uy-6fW" firstAttribute="leading" secondItem="n3z-pv-eTR" secondAttribute="leading" id="6dQ-cu-oqX"/>
+                    <constraint firstItem="T7b-Uy-6fW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="7wL-gQ-L13"/>
                     <constraint firstItem="n3z-pv-eTR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="8vt-On-r4b"/>
                     <constraint firstItem="5LA-lo-6fv" firstAttribute="bottom" secondItem="T7b-Uy-6fW" secondAttribute="bottom" id="BLl-GQ-FuF"/>
                     <constraint firstItem="eh7-MQ-x90" firstAttribute="top" secondItem="5LA-lo-6fv" secondAttribute="top" id="FRN-tm-z3P"/>
                     <constraint firstItem="5LA-lo-6fv" firstAttribute="top" secondItem="n3z-pv-eTR" secondAttribute="bottom" constant="10" id="ObM-sJ-72a"/>
                     <constraint firstAttribute="trailing" secondItem="n3z-pv-eTR" secondAttribute="trailing" constant="10" id="Uyl-NM-6fj"/>
-                    <constraint firstItem="eh7-MQ-x90" firstAttribute="trailing" secondItem="n3z-pv-eTR" secondAttribute="trailing" id="ZZl-XH-AD2"/>
+                    <constraint firstAttribute="trailing" secondItem="eh7-MQ-x90" secondAttribute="trailing" constant="20" id="bS5-c3-3nh"/>
                     <constraint firstItem="T7b-Uy-6fW" firstAttribute="top" secondItem="n3z-pv-eTR" secondAttribute="bottom" constant="10" id="fuP-1M-gAE"/>
                     <constraint firstItem="eh7-MQ-x90" firstAttribute="bottom" secondItem="5LA-lo-6fv" secondAttribute="bottom" id="hGW-g0-wUB"/>
                     <constraint firstItem="n3z-pv-eTR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="qcH-UM-tP2"/>
@@ -176,7 +178,7 @@
                 <outlet property="titleOfType" destination="ELe-TX-wrE" id="NJD-oE-cNx"/>
                 <outlet property="typeView" destination="T7b-Uy-6fW" id="3Pj-pK-bPH"/>
             </connections>
-            <point key="canvasLocation" x="-5.7971014492753632" y="132.92410714285714"/>
+            <point key="canvasLocation" x="-14" y="136"/>
         </tableViewCell>
     </objects>
     <resources>

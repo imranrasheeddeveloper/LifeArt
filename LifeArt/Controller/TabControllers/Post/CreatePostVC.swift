@@ -132,6 +132,12 @@ class CreatePostVC: UIViewController {
             }
         }
     }
+
+
+    @IBAction func backbtnAction(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
 }
 
 

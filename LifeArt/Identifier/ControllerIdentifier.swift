@@ -25,6 +25,9 @@ enum ControllerIdentifier: String {
     case LoginVC
     case ForgetPasswordVC
     case EditProfile
+    case NotificationVC
+    case MyProfileVC
+    case CreatePostVC
 }
 
 extension UIViewController{

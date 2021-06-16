@@ -33,6 +33,8 @@ class GalleryVC: UIViewController , postCellDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
+        setStatusBar()
+        hideKeyboard()
         showAlert()
         ConfigureViews()
         refreshControl = UIRefreshControl()
@@ -43,7 +45,10 @@ class GalleryVC: UIViewController , postCellDelegate{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setStatusBar()
+        hideKeyboard()
         fetchFeeds()
+        
     }
     @objc func refresh(_ sender: Any) {
         self.postArray.removeAll()
@@ -78,7 +83,6 @@ class GalleryVC: UIViewController , postCellDelegate{
         topSearchView.dropShadow()
     }
     func regiesterNibs() {
-        tableview.register(UINib(nibName: "GalleryHeaderCell", bundle: nil), forCellReuseIdentifier: "GalleryHeaderCell")
         tableview.register(UINib(nibName: "PostCell", bundle: nil), forCellReuseIdentifier: "PostCell")
     }
     //MARK:- Actions
@@ -87,6 +91,24 @@ class GalleryVC: UIViewController , postCellDelegate{
         self.navigationController?.pushViewController(message, animated: true)
     }
     
+    
+    @IBAction func notificationBtn(_ sender: Any) {
+        self.pushToController(from: .Home, identifier: .NotificationVC)
+    }
+    
+    @IBAction func profileBtn(_ sender: Any) {
+        self.pushToController(from: .Home, identifier: .MyProfileVC)
+
+    }
+    
+    
+    @IBAction func messageBtn(_ sender: Any) {
+    }
+    
+    
+    @IBAction func postYourArtHere(_ sender: Any) {
+        self.pushToController(from: .Home, identifier: .CreatePostVC)
+    }
     //MARK:-API
     
     func fetchFeeds(){

@@ -9,6 +9,8 @@ class ClassesVC: UIViewController {
     //MARK:-Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var navigationView : UIView!
+    
+    
     //MARK:-Variables
     var classesData = [Classess]()
 
@@ -41,6 +43,7 @@ class ClassesVC: UIViewController {
         }
     }
     
+    
 
     //MARK-: Actions
     @IBAction func addnewClass(sender : UIButton){
@@ -50,6 +53,9 @@ class ClassesVC: UIViewController {
     @IBAction func backButton(sender : UIButton){
         self.navigationController?.popViewController(animated: true)
     }
+    
+    
+   
     
     
 }
@@ -74,8 +80,6 @@ extension ClassesVC : UITableViewDataSource,UITableViewDelegate {
     }
     
 }
-
-
 
 
 

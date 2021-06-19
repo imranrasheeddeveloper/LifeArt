@@ -28,6 +28,8 @@ enum ControllerIdentifier: String {
     case NotificationVC
     case MyProfileVC
     case CreatePostVC
+    case AnnouncementsVC
+    case AddAnnouncementsVC
 }
 
 extension UIViewController{

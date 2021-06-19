@@ -20,15 +20,17 @@ class AnnouncmentsCell: UITableViewCell {
     @IBOutlet weak var clockView: UIView!
     @IBOutlet weak var amountView: UIView!
     
+    @IBOutlet weak var secondView: UIView!
     @IBOutlet weak var salaryLbl: UILabel!
     @IBOutlet weak var titleOfType: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        discriptionView.dropShadow()
-        typeView.dropShadow()
-        clockView.dropShadow()
-        amountView.dropShadow()
+          discriptionView.dropShadow()
+//        typeView.dropShadow()
+       clockView.dropShadow()
+amountView.dropShadow()
+          secondView.dropShadow()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

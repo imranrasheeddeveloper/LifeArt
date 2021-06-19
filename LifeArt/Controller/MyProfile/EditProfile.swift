@@ -16,22 +16,24 @@ class EditProfile: UIViewController {
             lastNameTF.text = user?.lastname
             emailTF.text = user?.email
             countryTF.text = user?.country
-            cityTF.text = user?.city
-            phoneTF.text = user?.phone
+           // cityTF.text = user?.city
+          //   phoneTF.text = user?.phone
             websiteTF.text  = user?.website
+            contractNoTF.text = user?.contractNo
+            bioTF.text = user?.bio
         }
     }
  
-    @IBOutlet weak var navBarView: UIView!
-    @IBOutlet weak var firstNameTF: UITextField!
-    @IBOutlet weak var lastNameTF: UITextField!
-    @IBOutlet weak var emailTF: UITextField!
-    @IBOutlet weak var countryTF: UITextField!
-    @IBOutlet weak var cityTF: UITextField!
-    @IBOutlet weak var phoneTF: UITextField!
-    @IBOutlet weak var websiteTF: UITextField!
-    
-    
+    @IBOutlet weak var navBarView:   UIView!
+    @IBOutlet weak var firstNameTF:  UITextField!
+    @IBOutlet weak var lastNameTF:   UITextField!
+    @IBOutlet weak var emailTF:      UITextField!
+    @IBOutlet weak var countryTF:    UITextField!
+   // @IBOutlet weak var cityTF:       UITextField!
+    @IBOutlet weak var phoneTF:      UITextField!
+    @IBOutlet weak var websiteTF:    UITextField!
+    @IBOutlet weak var bioTF:        UITextField!
+    @IBOutlet weak var contractNoTF: UITextField!
     
     //MARK:- LifeCycle
     
@@ -83,7 +85,7 @@ class EditProfile: UIViewController {
         AppDelegate.shared.loadindIndicator(title: "Profile Updating")
         UserService.shared.checkArtistExist(uid: Auth.auth().currentUser!.uid) {[self] (result) in
             
-            let profileObj = updateMyProfile(city: cityTF.text ?? "", country: countryTF.text ?? "", email: emailTF.text ?? "", firstname: firstNameTF.text ?? "", lastname: lastNameTF.text ?? "", phone: phoneTF.text ?? "", website: websiteTF.text ?? "")
+            let profileObj = updateMyProfile(contractNo: contractNoTF.text ?? "", email: emailTF.text ?? "", firstname: firstNameTF.text ?? "", lastname: lastNameTF.text ?? "", country: countryTF.text ?? "", bio: bioTF.text ?? "", website: websiteTF.text ?? "")
             if result {
                 UserService.shared.updateProfile(account: .Artist, updateProfile:profileObj) { (error, ref) -> (Void) in
                     print(error?.localizedDescription as Any)

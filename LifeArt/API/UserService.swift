@@ -11,9 +11,10 @@ import Firebase
 import FirebaseAuth
 
 struct updateMyProfile {
-    let city, country, email: String
+    let contractNo, email: String
     let firstname: String
-    let lastname , phone, website: String
+    let lastname ,country, bio, website: String
+    
 }
 
 struct UserService{
@@ -141,26 +142,27 @@ struct UserService{
     
     
     func updateProfile(account : AccountType , updateProfile: updateMyProfile, completion: @escaping(Error?, DatabaseReference) -> (Void)) {
-        
+      
         let uid = Auth.auth().currentUser!.uid
-                    let city = updateProfile.city
+                  
                     let country = updateProfile.country
                     let email = updateProfile.email
                     let firstname = updateProfile.firstname
                     let lastname = updateProfile.lastname
-                    let phone = updateProfile.phone
+                    //let phone = updateProfile.phone
                     let website =  updateProfile.website
-                  
+                    let contractNo = updateProfile.contractNo
+                    let bio = updateProfile.bio
                     
                     //check if the user is 'Artist' or 'Model'
                     switch account {
                     case .Artist :
-                        let value  = valuesDictionry(city: city, country: country, email: email, firstname: firstname, lastName: lastname, phone: phone, website: website)
+                        let value  = valuesDictionry(country: country, email: email, firstname: firstname, lastName: lastname, website: website, bio: bio, contractNo: contractNo)
                         
                         REF_Artists.child(uid).updateChildValues(value, withCompletionBlock: completion)
                    
                     case .Model:
-                        let value  = valuesDictionry(city: city, country: country, email: email, firstname: firstname, lastName: lastname, phone: phone, website: website)
+                        let value  = valuesDictionry(country: country, email: email, firstname: firstname, lastName: lastname, website: website, bio: bio, contractNo: contractNo)
                         
                         REF_Models.child(uid).updateChildValues(value, withCompletionBlock: completion)
                         
@@ -168,14 +170,14 @@ struct UserService{
 
     }
     
-    func valuesDictionry(city : String , country : String, email :  String , firstname : String , lastName : String , phone : String , website : String) -> [String : Any] {
+    func valuesDictionry(country : String, email :  String , firstname : String , lastName : String ,website : String, bio : String, contractNo : String) -> [String : Any] {
        return [
-                      "city": city,
+                     "contractNo" : contractNo,
                       "country": country,
                       "email": email,
                       "firstname": firstname,
                       "lastname" :  lastName ,
-                      "phone" : phone ,
+                      "bio" : bio,
                       "website" : website ,
         ]
         as [String : Any]

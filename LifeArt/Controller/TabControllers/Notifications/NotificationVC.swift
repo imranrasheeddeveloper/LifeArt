@@ -29,8 +29,8 @@ class NotificationVC: UIViewController {
         setStatusBar()
         hideKeyboard()
          tabelView.register(UINib(nibName: "NotificationCell", bundle: nil), forCellReuseIdentifier: "NotificationCell")
-         tabelView.dataSource =  NotificationDataSource()
-         tabelView.delegate = NotificationDelegate()
+        tabelView.dataSource =  datasorce
+         tabelView.delegate = delegate
          headerView.dropShadow()
          headerView.roundCorners(corners: .layerMinXMaxYCorner, radius: 30)
           apiCallingForNotifications()
@@ -59,4 +59,3 @@ class NotificationVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
 }
-

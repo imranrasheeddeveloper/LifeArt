@@ -7,11 +7,6 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="HelveticaNeue.ttc">
-            <string>HelveticaNeue</string>
-        </array>
-    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -55,23 +50,32 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Directed By:John William" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HfM-82-lof">
-                                <rect key="frame" x="79" y="93" width="180" height="19"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Directed By:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r9m-Ut-vGh">
+                                <rect key="frame" x="79" y="93" width="81.5" height="19"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Waqar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HfM-82-lof">
+                                <rect key="frame" x="162.5" y="93" width="43.5" height="19"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6hQ-Ac-5Np" firstAttribute="top" secondItem="UjR-mN-pIZ" secondAttribute="bottom" constant="10" id="7Hx-Oa-ghK"/>
-                            <constraint firstItem="HfM-82-lof" firstAttribute="leading" secondItem="6hQ-Ac-5Np" secondAttribute="leading" id="9Uf-ZR-6rA"/>
-                            <constraint firstItem="HfM-82-lof" firstAttribute="top" secondItem="6hQ-Ac-5Np" secondAttribute="bottom" constant="10" id="HaZ-qu-frV"/>
+                            <constraint firstItem="HfM-82-lof" firstAttribute="leading" secondItem="r9m-Ut-vGh" secondAttribute="trailing" constant="2" id="IY8-Cu-1s4"/>
+                            <constraint firstItem="r9m-Ut-vGh" firstAttribute="top" secondItem="6hQ-Ac-5Np" secondAttribute="bottom" constant="10" id="Lz2-Fk-7Tf"/>
                             <constraint firstItem="Ygo-CP-JZu" firstAttribute="top" secondItem="eql-A1-RO0" secondAttribute="top" constant="10" id="Qbx-TI-RoN"/>
                             <constraint firstAttribute="trailing" secondItem="UjR-mN-pIZ" secondAttribute="trailing" constant="25" id="T69-bi-4Bm"/>
+                            <constraint firstItem="HfM-82-lof" firstAttribute="centerY" secondItem="r9m-Ut-vGh" secondAttribute="centerY" id="TMz-lo-yR0"/>
                             <constraint firstItem="Ygo-CP-JZu" firstAttribute="leading" secondItem="eql-A1-RO0" secondAttribute="leading" constant="5" id="VUH-ub-eur"/>
                             <constraint firstItem="6hQ-Ac-5Np" firstAttribute="leading" secondItem="UjR-mN-pIZ" secondAttribute="leading" id="dvi-hj-Txk"/>
                             <constraint firstItem="UjR-mN-pIZ" firstAttribute="leading" secondItem="Ygo-CP-JZu" secondAttribute="trailing" constant="10" id="esQ-V1-CIu"/>
+                            <constraint firstItem="r9m-Ut-vGh" firstAttribute="leading" secondItem="6hQ-Ac-5Np" secondAttribute="leading" id="lVD-6m-kHa"/>
                             <constraint firstAttribute="trailing" secondItem="6hQ-Ac-5Np" secondAttribute="trailing" constant="5" id="n0U-o3-Xba"/>
                             <constraint firstItem="UjR-mN-pIZ" firstAttribute="top" secondItem="eql-A1-RO0" secondAttribute="top" constant="15" id="wkv-Ok-zPm"/>
                         </constraints>
@@ -81,6 +85,9 @@
                             <userDefinedRuntimeAttribute type="boolean" keyPath="topRight" value="YES"/>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="bottomRight" value="YES"/>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusValue">
                                 <real key="value" value="20"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
@@ -95,14 +102,15 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="addressOfInstituteLbl" destination="6hQ-Ac-5Np" id="7aG-uR-vTS"/>
-                <outlet property="bgView" destination="eql-A1-RO0" id="uAP-tp-CrC"/>
+                <outlet property="bgView" destination="eql-A1-RO0" id="XNc-LF-L7w"/>
                 <outlet property="imgView" destination="Ygo-CP-JZu" id="Sko-Xw-RgG"/>
                 <outlet property="nameOfDirectorLbl" destination="HfM-82-lof" id="C3y-TT-7W3"/>
                 <outlet property="nameOfInstitueLbl" destination="UjR-mN-pIZ" id="bQv-yc-U0S"/>
             </connections>
-            <point key="canvasLocation" x="141" y="80"/>
+            <point key="canvasLocation" x="140.57971014492756" y="79.6875"/>
         </tableViewCell>
     </objects>
     <designables>

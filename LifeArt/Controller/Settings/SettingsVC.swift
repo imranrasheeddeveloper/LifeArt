@@ -85,10 +85,13 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            self.pushToController(from: .Settings, identifier: .AccountSettingVC )
+            self.pushToController(from: .Home, identifier: .EditProfile )
             break
         case 1:
-            self.pushToController(from: .Settings, identifier: .ClassesVC )
+            self.pushToController(from: .Settings, identifier: .NewclassesVC )
+            break
+        case 2:
+            self.pushToController(from: .Home, identifier: .AnnouncementsVC )
             break
         case 6:
             logoutUser()

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		08255854BCABF29EA1D30E20 /* Pods_LifeArt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B13EF3164B65E354B4D4F5 /* Pods_LifeArt.framework */; };
 		152314C2267A12AC00409B1B /* ShoutsVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152314C1267A12AC00409B1B /* ShoutsVc.swift */; };
+		153D53BA267DF98400E52C14 /* View Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153D53B9267DF98400E52C14 /* View Extension.swift */; };
+		15BA5069267B4C13007BF00F /* AnnouncementsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BA5068267B4C13007BF00F /* AnnouncementsVC.swift */; };
+		15BA506F267B50E7007BF00F /* AddAnnouncementsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BA506E267B50E7007BF00F /* AddAnnouncementsVC.swift */; };
 		4F0CCE6E261F377B00BC0469 /* GalleryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0CCE6D261F377B00BC0469 /* GalleryDataSource.swift */; };
 		4F0CCE73261F3A7500BC0469 /* GalleryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0CCE72261F3A7500BC0469 /* GalleryDelegate.swift */; };
 		4F154756261C94D80092C2AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F154755261C94D80092C2AE /* AppDelegate.swift */; };
@@ -170,6 +173,9 @@
 
 /* Begin PBXFileReference section */
 		152314C1267A12AC00409B1B /* ShoutsVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoutsVc.swift; sourceTree = "<group>"; };
+		153D53B9267DF98400E52C14 /* View Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View Extension.swift"; sourceTree = "<group>"; };
+		15BA5068267B4C13007BF00F /* AnnouncementsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsVC.swift; sourceTree = "<group>"; };
+		15BA506E267B50E7007BF00F /* AddAnnouncementsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAnnouncementsVC.swift; sourceTree = "<group>"; };
 		3EB1D11DCCCE1A2E1B60C813 /* Pods-LifeArt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LifeArt.release.xcconfig"; path = "Target Support Files/Pods-LifeArt/Pods-LifeArt.release.xcconfig"; sourceTree = "<group>"; };
 		4F0CCE6D261F377B00BC0469 /* GalleryDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryDataSource.swift; sourceTree = "<group>"; };
 		4F0CCE72261F3A7500BC0469 /* GalleryDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryDelegate.swift; sourceTree = "<group>"; };
@@ -355,6 +361,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		153D53AD267DF86300E52C14 /* View Extension */ = {
+			isa = PBXGroup;
+			children = (
+				153D53B9267DF98400E52C14 /* View Extension.swift */,
+			);
+			path = "View Extension";
+			sourceTree = "<group>";
+		};
+		15BA506D267B50A4007BF00F /* Announcements */ = {
+			isa = PBXGroup;
+			children = (
+				15BA5068267B4C13007BF00F /* AnnouncementsVC.swift */,
+				152314C1267A12AC00409B1B /* ShoutsVc.swift */,
+				15BA506E267B50E7007BF00F /* AddAnnouncementsVC.swift */,
+			);
+			path = Announcements;
+			sourceTree = "<group>";
+		};
 		1C3EC60CBFEF4B282D2CE351 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -403,6 +427,7 @@
 		4F154754261C94D80092C2AE /* LifeArt */ = {
 			isa = PBXGroup;
 			children = (
+				153D53AD267DF86300E52C14 /* View Extension */,
 				4F4666D5266B9D86005DB79A /* Menu */,
 				4F61333F265A806100DB7142 /* LifeArt.entitlements */,
 				4F613337265A7EC900DB7142 /* PushNotifications */,
@@ -460,6 +485,7 @@
 		4F15478D261C98B40092C2AE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				15BA506D267B50A4007BF00F /* Announcements */,
 				4F16C8562644949900CE455F /* Message */,
 				4FFD3A04263E968D0030FFDC /* PresenetationControllers */,
 				4FFD3A00263E964C0030FFDC /* Alerts Controller */,
@@ -631,7 +657,6 @@
 				4F1DF32A262AE8030001A65B /* NotificationVC.swift */,
 				4F1DF32F262AE85E0001A65B /* NotificationDataSource.swift */,
 				4F1DF334262AE8700001A65B /* NotificationDelegate.swift */,
-				152314C1267A12AC00409B1B /* ShoutsVc.swift */,
 			);
 			path = Notifications;
 			sourceTree = "<group>";
@@ -1292,6 +1317,7 @@
 				4F9BF5492638136E007E386E /* MenuSheet.swift in Sources */,
 				4FF24BD026408C3F00BBCD53 /* SuggestedArtistCell.swift in Sources */,
 				4F16C8622644950900CE455F /* ChatController.swift in Sources */,
+				15BA5069267B4C13007BF00F /* AnnouncementsVC.swift in Sources */,
 				4F1547A4261C9ED00092C2AE /* UIView+Round.swift in Sources */,
 				4F16C86F264495B300CE455F /* MessagesCell.swift in Sources */,
 				4FFD3A0A263E972C0030FFDC /* TabbarVC.swift in Sources */,
@@ -1304,6 +1330,7 @@
 				4F4CB0BC2659606F006F9C4C /* Comments.swift in Sources */,
 				4F9A1F5C263581A700DB8AAD /* EditProfile.swift in Sources */,
 				4F3D6D152632B912008A8C5E /* CommentsVC.swift in Sources */,
+				15BA506F267B50E7007BF00F /* AddAnnouncementsVC.swift in Sources */,
 				152314C2267A12AC00409B1B /* ShoutsVc.swift in Sources */,
 				4F154799261C9EB40092C2AE /* Storyboard.swift in Sources */,
 				4F7D78A5262CC733001C2290 /* PhotosDelegate.swift in Sources */,
@@ -1344,6 +1371,7 @@
 				4FFE8EAC263E012000CE85CC /* AppDelegate+Extension.swift in Sources */,
 				4F51FEEA2638A84F00D7C215 /* LoginVC.swift in Sources */,
 				4F8D335E2643365100A695DD /* Classess.swift in Sources */,
+				153D53BA267DF98400E52C14 /* View Extension.swift in Sources */,
 				4F16C858264494AD00CE455F /* MessagesVC.swift in Sources */,
 				4F15479A261C9EB40092C2AE /* ControllerIdentifier.swift in Sources */,
 				4F1DF322262AE4D90001A65B /* CreatePostVC.swift in Sources */,
@@ -1563,7 +1591,7 @@
 				CODE_SIGN_ENTITLEMENTS = LifeArt/LifeArt.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = NF2GHJKNG8;
+				DEVELOPMENT_TEAM = V7RD24A377;
 				INFOPLIST_FILE = LifeArt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1571,7 +1599,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.life.LifeArt;
+				PRODUCT_BUNDLE_IDENTIFIER = com.life.LifeArt3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1588,7 +1616,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = NF2GHJKNG8;
+				DEVELOPMENT_TEAM = V7RD24A377;
 				INFOPLIST_FILE = LifeArt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1596,7 +1624,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.life.LifeArt;
+				PRODUCT_BUNDLE_IDENTIFIER = com.life.LifeArt3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

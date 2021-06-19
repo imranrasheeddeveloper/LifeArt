@@ -13,6 +13,7 @@ struct User {
     let uid: String
     //    let interests: [String: Interest]
     let bio, city, country, email: String
+    let contractNo : String
     let firstname: String
     let image: String
     let lastname, password, phone, website , type: String
@@ -34,7 +35,7 @@ struct User {
         self.website = dictionary["website"] as? String ?? ""
         self.image = dictionary["image"] as? String ?? ""
         self.type = dictionary["type"] as? String ?? ""
-        
+        self.contractNo = dictionary["contractNo"] as? String ?? ""
     }
 }
 
@@ -45,7 +46,7 @@ struct UserModel {
     let firstname: String
     let image: String
     let lastname, password, phone, website , type: String
-    
+    let contractNo : String
 
     init(dictionary: [String: Any]) {
         self.user = dictionary["user"] as? String ?? ""
@@ -60,7 +61,7 @@ struct UserModel {
         self.website = dictionary["website"] as? String ?? ""
         self.image = dictionary["image"] as? String ?? ""
         self.type = dictionary["type"] as? String ?? ""
-        
+        self.contractNo = dictionary["contractNo"] as? String ?? ""
         
     }
 }

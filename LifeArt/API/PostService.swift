@@ -30,7 +30,6 @@ struct PostService{
             for snap in snapshot.children {
                 let userSnap = snap as! DataSnapshot
                 //let uid = userSnap.key //the uid of each user
-                print(userSnap.key)
                 let userDict = userSnap.value as! [String:AnyObject]
                 let post = Post(key: userSnap.key, postData: PostData(dictionary: userDict))
                 postArray.append(post)
@@ -129,4 +128,51 @@ struct PostService{
         }
     }
     
+    
+   
+    func fetchLikes(completion: @escaping() -> Void) {
+      // var postLikeArray = [PostLikes]()
+       REF_Likes.observeSingleEvent(of: .value) { (snapshot) in
+          
+           for snap in snapshot.children {
+               let userSnap = snap as! DataSnapshot
+               let userDict = userSnap.value as! [String:AnyObject]
+               let postID = userSnap.key
+            for (key , value) in userDict{
+               let obj = PostLikes(postID: postID, data: postLikeData(userID: key, like: value as? Int))
+//                postLikesArray.append(obj)
+//                dump(postLikesArray)
+            }
+           }
+       }
+   }
+    func fetchLikesGallery(completion: @escaping([PostLikes]) -> Void) {
+       var postLikeArray = [PostLikes]()
+       REF_Likes.observeSingleEvent(of: .value) { (snapshot) in
+          
+           for snap in snapshot.children {
+               let userSnap = snap as! DataSnapshot
+               let userDict = userSnap.value as! [String:AnyObject]
+               let postID = userSnap.key
+            for (key , value) in userDict{
+               let obj = PostLikes(postID: postID, data: postLikeData(userID: key, like: value as? Int))
+                postLikeArray.append(obj)
+                
+            }
+          
+           }
+        completion(postLikeArray)
+       }
+   }
+}
+
+struct PostLikes {
+    let postID : String?
+    let data : postLikeData?
+
+}
+
+struct postLikeData {
+    var userID : String?
+    var like : Int?
 }

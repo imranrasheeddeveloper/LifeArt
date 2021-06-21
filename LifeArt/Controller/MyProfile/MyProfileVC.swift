@@ -27,7 +27,7 @@ class MyProfileVC: UIViewController, UICollectionViewDelegate, UIViewControllerT
     public var imageArray = [String]()
     public var postLikeCount  : [String]?
     public var postNumberOfComments  : [String]?
-    
+   
     //MARK:- Scrollview Helper
     var selectedIndex = 0
     let maxHeaderHeight: CGFloat = 320
@@ -71,7 +71,8 @@ class MyProfileVC: UIViewController, UICollectionViewDelegate, UIViewControllerT
         setStatusBar()
         hideKeyboard()
         fetchUser()
-        
+        PostService.shared.fetchLikes { 
+        }
         self.tableviewLayout.separatorStyle = .none
         self.navigationController?.navigationBar.isHidden = true
     }

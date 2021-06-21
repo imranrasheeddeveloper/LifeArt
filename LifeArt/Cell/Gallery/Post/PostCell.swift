@@ -32,40 +32,22 @@ class PostCell: UITableViewCell{
     var delegate : postCellDelegate!
     @IBOutlet weak var totalCommentsLbl: UILabel!
     @IBOutlet weak var likeButton: UIButton!
-    
     @IBOutlet weak var reportBtn: UIButton!
-    
+    var postLikesArray = [PostLikes]()
     static let  CellIndentifier = "PostCell"
     var menuOpen : Bool = true
     override func awakeFromNib() {
         super.awakeFromNib()
         bgView.viewShadow()
-//        postProfileImage.showSkeleton()
-//        postUserNameLbl.showSkeleton()
-      
-        
+
         
     }
     
     
     
     func configureCell(post : Post , user : User , likeCount :  String? , totalComments : String? , tag : Int) {
+        
 
-        artImaeView.sd_setImage(with:URL(string:post.postData.image),
-                                          placeholderImage: UIImage(named: "placeholder.png"))
-        discriptionLbl.text = post.postData.desc
-        postUserNameLbl.text = "\(user.firstname) \(user.lastname)"
-        postTimeLbl.text = post.postData.time
-        followedDate.text = "Followed on \(post.postData.time)"
-        postTimeLbl.text = post.postData.date
-        postProfileImage.sd_setImage(with:URL(string:user.image),
-                                          placeholderImage: UIImage(named: "placeholder.png"))
-        postCountryLbl.text = user.country
-        likesLbl.text =  "\(likeCount ?? "0") Likes"
-        viewAllcomments.tag = tag
-        likeButton.tag = tag
-        viewAllcomments.setTitle("View all \(totalComments ?? "0") Comments", for: .normal)
-        totalCommentsLbl.text = "\(totalComments ?? "0") Comments"
         
     }
 

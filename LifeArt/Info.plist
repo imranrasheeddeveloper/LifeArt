@@ -23,7 +23,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>LifeArt want to USe Your Camera</string>
+	<string>LifeArt want to Use Your Camera</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>LifeArt Want to Access your Photos</string>
 	<key>UIApplicationSceneManifest</key>

@@ -42,6 +42,8 @@ extension ModelVc :  UICollectionViewDelegate, UICollectionViewDataSource ,UICol
             let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: "SuggestedCell", for: indexPath) as! SuggestedCell
             cell.profileImage.sd_setImage(with:URL(string:arrayofModel[indexPath.row].image),
                                           placeholderImage: UIImage(named: "placeholder.png"))
+            cell.profileImage.sd_imageIndicator?.startAnimatingIndicator()
+
             cell.nameLbl.text = "\(arrayofModel[indexPath.row].firstname) \(arrayofModel[indexPath.row].lastname)"
             
             return cell

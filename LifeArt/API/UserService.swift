@@ -182,5 +182,18 @@ struct UserService{
         ]
         as [String : Any]
     }
+    
+    func searchArtist(name: String) {
+            let databaseRef = Database.database().reference().child("Artist")
+            let query = databaseRef.queryOrdered(byChild: "firstname").queryStarting(atValue: name).queryEnding(atValue: "\(name)\\uf8ff")
+
+            query.observeSingleEvent(of: .value) { (snapshot) in
+                guard snapshot.exists() != false else { return }
+                print(snapshot.value)
+                DispatchQueue.main.async {
+                    // Update TextFields here
+                }
+            }
+    }
  }
 

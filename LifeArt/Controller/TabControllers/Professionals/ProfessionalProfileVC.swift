@@ -28,7 +28,6 @@ class ProfessionalProfileVC: UIViewController, UICollectionViewDelegate, UITable
     public var imageArray = [String]()
     public var postLikeCount  = [String]()
     public var postNumberOfComments  = [String]()
-    
     var selectedIndex = 0
     let photosDataSource = PhotosDataSource()
     let photoDelegate = PhotosDelegate()
@@ -77,6 +76,9 @@ class ProfessionalProfileVC: UIViewController, UICollectionViewDelegate, UITable
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
+        PostService.shared.fetchLikes {
+        }
+        
     }
     
     

@@ -475,12 +475,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Serch for nerest models" translatesAutoresizingMaskIntoConstraints="NO" id="Woe-yT-JLN">
-                                <rect key="frame" x="0.0" y="89" width="414" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cbc-z7-inE">
-                                <rect key="frame" x="0.0" y="155" width="414" height="658"/>
+                                <rect key="frame" x="0.0" y="143" width="414" height="670"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ds6-Qm-aNh">
                                     <size key="itemSize" width="128" height="128"/>
@@ -490,17 +486,31 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search for Artists" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2tR-3w-qap" customClass="DesignableUITextField" customModule="LifeArt" customModuleProvider="target">
+                                <rect key="frame" x="20" y="89" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="magnifyingglass" catalog="system"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="searchTFChange:" destination="JDA-Bp-JpF" eventType="editingChanged" id="fS5-ya-gtj"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rTA-JZ-Bcl"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="o8n-WT-NrE" firstAttribute="top" secondItem="rTA-JZ-Bcl" secondAttribute="top" id="F56-BH-jNj"/>
-                            <constraint firstItem="Woe-yT-JLN" firstAttribute="top" secondItem="o8n-WT-NrE" secondAttribute="bottom" constant="20" id="M8L-hI-NDu"/>
+                            <constraint firstItem="2tR-3w-qap" firstAttribute="leading" secondItem="rTA-JZ-Bcl" secondAttribute="leading" constant="20" id="SD7-T1-Kbs"/>
+                            <constraint firstItem="cbc-z7-inE" firstAttribute="top" secondItem="2tR-3w-qap" secondAttribute="bottom" constant="20" id="U9g-7w-gKV"/>
                             <constraint firstItem="cbc-z7-inE" firstAttribute="leading" secondItem="rTA-JZ-Bcl" secondAttribute="leading" id="WDe-xZ-6BJ"/>
-                            <constraint firstItem="Woe-yT-JLN" firstAttribute="leading" secondItem="rTA-JZ-Bcl" secondAttribute="leading" id="WsL-fm-4eY"/>
+                            <constraint firstItem="rTA-JZ-Bcl" firstAttribute="trailing" secondItem="2tR-3w-qap" secondAttribute="trailing" constant="20" id="XAz-PF-Pf2"/>
                             <constraint firstItem="o8n-WT-NrE" firstAttribute="centerX" secondItem="dJV-6z-cYS" secondAttribute="centerX" id="bFw-cp-bQQ"/>
-                            <constraint firstItem="Woe-yT-JLN" firstAttribute="trailing" secondItem="rTA-JZ-Bcl" secondAttribute="trailing" id="hps-a6-Cmg"/>
-                            <constraint firstItem="cbc-z7-inE" firstAttribute="top" secondItem="Woe-yT-JLN" secondAttribute="bottom" constant="10" id="o0F-Rl-Pv9"/>
+                            <constraint firstItem="2tR-3w-qap" firstAttribute="top" secondItem="o8n-WT-NrE" secondAttribute="bottom" constant="20" id="j2Y-6F-0ZO"/>
                             <constraint firstItem="rTA-JZ-Bcl" firstAttribute="trailing" secondItem="cbc-z7-inE" secondAttribute="trailing" id="rBc-iX-SKE"/>
                             <constraint firstItem="rTA-JZ-Bcl" firstAttribute="bottom" secondItem="cbc-z7-inE" secondAttribute="bottom" id="x6G-32-6w3"/>
                         </constraints>
@@ -508,6 +518,7 @@
                     <tabBarItem key="tabBarItem" title="Artist" image="person.3" catalog="system" selectedImage="person.3.fill" id="dTs-wr-AVs"/>
                     <connections>
                         <outlet property="collectionView" destination="cbc-z7-inE" id="zCt-cO-ZED"/>
+                        <outlet property="searchTF" destination="2tR-3w-qap" id="nLt-Yw-Rfw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ztr-w2-DzK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1913,6 +1924,9 @@
         </scene>
     </scenes>
     <designables>
+        <designable name="2tR-3w-qap">
+            <size key="intrinsicContentSize" width="181" height="34"/>
+        </designable>
         <designable name="SSc-Xv-PtQ">
             <size key="intrinsicContentSize" width="770" height="309"/>
         </designable>
@@ -1939,6 +1953,7 @@
         <image name="editPhoto" width="174" height="138"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="left-arrow" width="512" height="512"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="menu" width="512" height="512"/>
         <image name="message" catalog="system" width="128" height="113"/>
         <image name="multiply.circle" catalog="system" width="128" height="121"/>

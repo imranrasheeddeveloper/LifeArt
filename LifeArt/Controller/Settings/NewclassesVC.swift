@@ -58,6 +58,7 @@ class NewclassesVC: UIViewController, UINavigationControllerDelegate {
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func saveClass(_ sender: UIButton) {
+        apiCalling()
     }
     
     

@@ -9,7 +9,7 @@ import UIKit
 import FittedSheets
 import SkeletonView
 import Firebase
-
+import CoreLocation
 protocol GalleryVCDelegate {
     func reportThePost()
 }
@@ -25,10 +25,11 @@ class GalleryVC: UIViewController , postCellDelegate{
     public var userArray = [User]()
     public var postLikeCount  = [String]()
     public var postNumberOfComments  = [String]()
+    public var postLikesArray = [PostLikes]()
     let group = DispatchGroup()
-//    let serialQueue = DispatchQueue(label: "serialQueueWork" )
-//    let semaphore = DispatchSemaphore(value: 1)
+    var locationManager:CLLocationManager!
     var refreshControl: UIRefreshControl!
+   
     //MARK:- LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,19 +42,24 @@ class GalleryVC: UIViewController , postCellDelegate{
         refreshControl.attributedTitle = NSAttributedString(string: "Updating")
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         tableview.addSubview(refreshControl)
+        
+       
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setStatusBar()
         hideKeyboard()
-        fetchFeeds()
-        
+        PostService.shared.fetchLikesGallery { [self] (array) in
+            postLikesArray = array
+            fetchFeeds()
+        }
     }
     @objc func refresh(_ sender: Any) {
-        self.postArray.removeAll()
-        fetchFeeds()
-        
+        PostService.shared.fetchLikes { [self] in
+            fetchFeeds()
+        }
+  
     }
     
     
@@ -85,6 +91,18 @@ class GalleryVC: UIViewController , postCellDelegate{
     func regiesterNibs() {
         tableview.register(UINib(nibName: "PostCell", bundle: nil), forCellReuseIdentifier: "PostCell")
     }
+    
+    func locationManagerSetup(){
+        locationManager = CLLocationManager()
+        //locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled(){
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
     //MARK:- Actions
     @IBAction func openMessages(_ sender: UIButton) {
         let message = NewMessagesVC()
@@ -112,6 +130,11 @@ class GalleryVC: UIViewController , postCellDelegate{
     //MARK:-API
     
     func fetchFeeds(){
+        postArray.removeAll()
+        userArray.removeAll()
+        postLikeCount.removeAll()
+        postNumberOfComments.removeAll()
+        postLikesArray.removeAll()
         PostService.shared.fetchPost { [self] (post) in
             self.postArray = post
             arrayOfPosts = post
@@ -122,11 +145,12 @@ class GalleryVC: UIViewController , postCellDelegate{
                             self.userArray.append(user)
                             postLikeCount.append(String(count))
                             postNumberOfComments.append(String(commentsCount))
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                                    self.tableview.reloadData()
+                                    self.refreshControl.endRefreshing()
+                                })
+
                             
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-                                self.tableview.reloadData()
-                                self.refreshControl.endRefreshing()
-                            })
                         }
                        
                     }
@@ -143,20 +167,15 @@ extension GalleryVC {
         print(tag)
         commentsTag = postArray[tag].key
         postOwner   = postArray[tag].postData.user
-        print(postOwner)
         presenttSheet(tag: tag, view: self.view, controller: self, Identifier: .CommentsVC, storyBoard: .Home)
     }
     func report(tag: Int) {
-    
         postTag = tag
-        
-      print(tag)
-        
     }
     func likePost(tag: Int) {
         PostService.shared.likePost(postId: postArray[tag].key) { (error, ref) -> (Void) in
             DispatchQueue.main.async { [self] in
-               fetchFeeds()
+                fetchFeeds()
             }
         }
     }
@@ -165,3 +184,11 @@ extension GalleryVC {
 }
 
 
+//extension GalleryVC : CLLocationManagerDelegate {
+////    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+////        let userLocation :CLLocation = locations[0] as CLLocation
+////      lat =  String(userLocation.coordinate.latitude)
+////      lng =  String(userLocation.coordinate.longitude)
+////
+////    }
+//}

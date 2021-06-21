@@ -50,40 +50,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JwA-rx-Y1f">
-                                <rect key="frame" x="170" y="57.5" width="16" height="16"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="16" id="1vN-9D-sFC"/>
-                                    <constraint firstAttribute="height" constant="16" id="ceg-NQ-IJC"/>
-                                </constraints>
-                                <color key="tintColor" red="0.86274509799999999" green="0.20784313730000001" blue="0.27058823529999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" image="like"/>
-                                <connections>
-                                    <action selector="likeButtonAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="hFK-bW-IaJ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LNx-YX-ST8">
-                                <rect key="frame" x="191" y="57.5" width="16" height="16"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="16" id="Nnr-ns-hH8"/>
-                                    <constraint firstAttribute="height" constant="16" id="Xb3-Sx-2A3"/>
-                                </constraints>
-                                <color key="tintColor" systemColor="opaqueSeparatorColor"/>
-                                <state key="normal" image="reply"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="3wV-Lo-Sea" firstAttribute="top" secondItem="Lyi-N2-e0m" secondAttribute="bottom" constant="8" id="8Db-jU-JFz"/>
                             <constraint firstAttribute="trailing" secondItem="Lyi-N2-e0m" secondAttribute="trailing" constant="10" id="8hc-bf-r97"/>
-                            <constraint firstAttribute="bottom" secondItem="LNx-YX-ST8" secondAttribute="bottom" id="CKz-OT-ttO"/>
                             <constraint firstAttribute="trailing" secondItem="3wV-Lo-Sea" secondAttribute="trailing" constant="10" id="Fpf-z4-ZOI"/>
                             <constraint firstAttribute="bottom" secondItem="3wV-Lo-Sea" secondAttribute="bottom" constant="20" id="Hhr-8z-Bx2"/>
-                            <constraint firstItem="LNx-YX-ST8" firstAttribute="leading" secondItem="JwA-rx-Y1f" secondAttribute="trailing" constant="5" id="LHS-BM-els"/>
                             <constraint firstItem="Lyi-N2-e0m" firstAttribute="leading" secondItem="sPu-DU-jIv" secondAttribute="leading" constant="10" id="MBG-ax-Pta"/>
                             <constraint firstItem="Lyi-N2-e0m" firstAttribute="top" secondItem="sPu-DU-jIv" secondAttribute="top" constant="8" id="MHn-46-YRl"/>
-                            <constraint firstAttribute="trailing" secondItem="LNx-YX-ST8" secondAttribute="trailing" constant="10" id="R82-kS-6yU"/>
-                            <constraint firstAttribute="bottom" secondItem="JwA-rx-Y1f" secondAttribute="bottom" id="saa-p5-TxS"/>
                             <constraint firstItem="3wV-Lo-Sea" firstAttribute="leading" secondItem="Lyi-N2-e0m" secondAttribute="leading" id="vHR-OE-w6y"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
@@ -119,7 +94,6 @@
                 <outlet property="bubble" destination="sPu-DU-jIv" id="K99-Rt-mtu"/>
                 <outlet property="commentText" destination="3wV-Lo-Sea" id="gXo-iw-MVT"/>
                 <outlet property="fullname" destination="Lyi-N2-e0m" id="hER-CT-dpD"/>
-                <outlet property="likeButton" destination="JwA-rx-Y1f" id="A7J-Yi-DQT"/>
                 <outlet property="likeandSharesLbl" destination="p1a-I7-wNG" id="Rtz-54-gMn"/>
                 <outlet property="userImage" destination="v5P-J5-9Tx" id="OuU-tI-DQC"/>
             </connections>
@@ -133,10 +107,8 @@
     </designables>
     <resources>
         <image name="1" width="500" height="628"/>
-        <image name="like" width="320" height="310"/>
-        <image name="reply" width="295" height="239"/>
         <namedColor name="colorPrimary">
-            <color red="0.41960784313725491" green="0.63137254901960782" blue="0.72549019607843135" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.41999998688697815" green="0.63099998235702515" blue="0.72500002384185791" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

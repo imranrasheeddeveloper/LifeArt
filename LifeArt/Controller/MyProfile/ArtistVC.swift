@@ -8,16 +8,23 @@
 
 import UIKit
 
-class ArtistVC: UIViewController {
+class ArtistVC: UIViewController, UITextFieldDelegate {
 
     //MARk:-OUTLETS
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    @IBOutlet weak var searchTF: DesignableUITextField!
+    
+    //MARK:-Variables
     var arrayofModel = [UserModel]()
+    var fillterArray = [UserModel]()
+    var isSearch = false
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        searchTF.delegate = self
         collectionView.delegate = self
         collectionView.dataSource  = self
+        hideKeyboard()
         collectionView.register(UINib(nibName: "SuggestedCell", bundle: nil), forCellWithReuseIdentifier:  "SuggestedCell")
 
         UserService.shared.fetchArtist { [self] (user) in
@@ -28,30 +35,70 @@ class ArtistVC: UIViewController {
         }
     }
     
+    @IBAction func searchTFChange(_ sender: UITextField) {
+        isSearch = true
+        fillterArray.removeAll()
+       fillterArray = arrayofModel.filter({
+            if  $0.firstname.contains(sender.text!) {
+                self.collectionView.reloadData()
+                return true
+            }
+            else{
+               return false
+            }
+        
+        })
+        if sender.text?.count == 0{
+            isSearch = false
+            self.collectionView.reloadData()
+        }
+      
+    }
+   
 }
 
 //MARK:- UICollectionView Delegate & DataSource
 extension ArtistVC :  UICollectionViewDelegate, UICollectionViewDataSource ,UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if isSearch {
+            return fillterArray.count
+        }
+        else{
             return arrayofModel.count
-      
+        }
+
     }
     
     //TODO:- set Collection View
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: "SuggestedCell", for: indexPath) as! SuggestedCell
+        if isSearch {
+           
+            cell.profileImage.sd_setImage(with:URL(string:fillterArray[indexPath.row].image),
+                                          placeholderImage: UIImage(named: "placeholder.png"))
 
-            let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: "SuggestedCell", for: indexPath) as! SuggestedCell
+        cell.nameLbl.text = "\(fillterArray[indexPath.row].firstname) \(fillterArray[indexPath.row].lastname)"
+        }
+        else{
             cell.profileImage.sd_setImage(with:URL(string:arrayofModel[indexPath.row].image),
                                           placeholderImage: UIImage(named: "placeholder.png"))
-            cell.nameLbl.text = "\(arrayofModel[indexPath.row].firstname) \(arrayofModel[indexPath.row].lastname)"
+        cell.profileImage.sd_imageIndicator?.startAnimatingIndicator()
+
+        cell.nameLbl.text = "\(arrayofModel[indexPath.row].firstname) \(arrayofModel[indexPath.row].lastname)"
+        }
+          
             
             return cell
      
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
-        GlobaluserID = arrayofModel[indexPath.row].user
+        if isSearch{
+            GlobaluserID =  fillterArray[indexPath.row].user
+        }else{
+            GlobaluserID = arrayofModel[indexPath.row].user
+        }
+        
         self.parent?.pushToRoot(from: .Home, identifier: .ProfessionalProfileVC)
     }
     

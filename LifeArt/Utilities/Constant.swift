@@ -46,3 +46,5 @@ var menuClick : MenuClick?
 var postTag : Int?
 
 var arrayOfPosts = [Post]()
+
+

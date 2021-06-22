@@ -39,7 +39,6 @@ class ArtistVC: UIViewController, UITextFieldDelegate {
     @IBAction func searchTFChange(_ sender: UITextField) {
         isSearch = true
         fillterArray.removeAll()
-     
         fillterArray = arrayofModel.filter({
             if  $0.firstname.contains(sender.text!) {
                 self.collectionView.reloadData()
@@ -52,10 +51,8 @@ class ArtistVC: UIViewController, UITextFieldDelegate {
         })
         if sender.text?.count == 0{
             isSearch = false
-           // self.arrayofModel = self.fillterArray
             self.collectionView.reloadData()
         }
-       // self.collectionView.reloadData()
     }
    
 }

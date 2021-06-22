@@ -38,17 +38,17 @@ class LoginVC: UIViewController {
     //MARK:- Selector
     
     @objc func signUP(){
-        self.pushToController(from: .main, identifier: .CreateProfileVC)
+        self.pushToController(from: .main, identifier: .SignupVC)
     }
     
     //MARK:- Actions
     @IBAction func loginButtonPressed(_ sender: UIButton) {
-        AppDelegate.shared.loadindIndicator(title: "Loging")
+        
         if validation(){
             loginUser()
         }else{
-            self.presentAlertController(withTitle: "Error", message: "Email or Password is Missing")
-            AppDelegate.shared.removeLoadIndIndicator()
+            snackBar(str: "Email or Password is Missing")
+            removeLottieAnimation()
         }
     }
     @IBAction func backButtonPresed(_ sender: UIButton) {
@@ -69,16 +69,25 @@ class LoginVC: UIViewController {
     }
     //MARK:- API Calling
     func loginUser() {
-        AuthService.shared.logUserIn(email: emailTF.text!, password: passwordTF.text!) { (result, error) in
-            if let error = error {
-                print("DEBUG: Error is -> \(error.localizedDescription)")
-                self.presentAlertController(withTitle: "Error", message: error.localizedDescription)
-                AppDelegate.shared.removeLoadIndIndicator()
-                return
+        addLottieAnimation(string: "log", view: self.view)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: { [self] in
+            AuthService.shared.logUserIn(email: emailTF.text!, password: passwordTF.text!) { (result, error) in
+                if let error = error {
+                    print("DEBUG: Error is -> \(error.localizedDescription)")
+                    self.presentAlertController(withTitle: "Error", message: error.localizedDescription)
+                    removeLottieAnimation()
+                    return
+                }
+                removeLottieAnimation()
+                
+            
+                
+                self.pushToController(from: .Home, identifier: .TabBar)
             }
-            AppDelegate.shared.removeLoadIndIndicator()
-            self.pushToController(from: .Home, identifier: .TabBar)
-        }
+        
+        })
+            
+        
     }
 
     

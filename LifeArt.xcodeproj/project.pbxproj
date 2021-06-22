@@ -10,7 +10,6 @@
 		08255854BCABF29EA1D30E20 /* Pods_LifeArt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B13EF3164B65E354B4D4F5 /* Pods_LifeArt.framework */; };
 		152314C2267A12AC00409B1B /* ShoutsVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152314C1267A12AC00409B1B /* ShoutsVc.swift */; };
 		153D53BA267DF98400E52C14 /* View Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153D53B9267DF98400E52C14 /* View Extension.swift */; };
-		156571DC2681BB340046CFA4 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156571DB2681BB340046CFA4 /* SearchBarView.swift */; };
 		15BA5069267B4C13007BF00F /* AnnouncementsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BA5068267B4C13007BF00F /* AnnouncementsVC.swift */; };
 		15BA506F267B50E7007BF00F /* AddAnnouncementsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BA506E267B50E7007BF00F /* AddAnnouncementsVC.swift */; };
 		4F0CCE6E261F377B00BC0469 /* GalleryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0CCE6D261F377B00BC0469 /* GalleryDataSource.swift */; };
@@ -62,6 +61,7 @@
 		4F20CEA0261D020C00F8EE6F /* GalleryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F20CE9F261D020C00F8EE6F /* GalleryVC.swift */; };
 		4F27BB21263ECD300075F68C /* Announcements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F27BB20263ECD300075F68C /* Announcements.swift */; };
 		4F27BB26263ECE430075F68C /* AnnouncmentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F27BB25263ECE430075F68C /* AnnouncmentService.swift */; };
+		4F295EED268233C100C34163 /* log.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F295EEC268233C100C34163 /* log.json */; };
 		4F3D6D152632B912008A8C5E /* CommentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3D6D142632B912008A8C5E /* CommentsVC.swift */; };
 		4F42454326382B8D0026E1EF /* MenuPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F42454226382B8D0026E1EF /* MenuPresentationController.swift */; };
 		4F4666D1266B9D7F005DB79A /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4666D0266B9D7F005DB79A /* MenuViewController.swift */; };
@@ -80,6 +80,9 @@
 		4F6233452628C8CE0031987E /* PhotosVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6233442628C8CE0031987E /* PhotosVC.swift */; };
 		4F62334B2628C8F10031987E /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6233492628C8F00031987E /* PhotoCell.swift */; };
 		4F62334C2628C8F10031987E /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F62334A2628C8F10031987E /* PhotoCell.xib */; };
+		4F6D3BC426821C6F00A3A0CA /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F6D3BC326821C6F00A3A0CA /* loading.json */; };
+		4F6D3BC626821C7100A3A0CA /* login.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F6D3BC526821C7100A3A0CA /* login.json */; };
+		4F6D3BCB26821C7800A3A0CA /* notfications.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F6D3BCA26821C7800A3A0CA /* notfications.json */; };
 		4F70EC6926387B81001919F1 /* AccountSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F70EC6826387B81001919F1 /* AccountSettingVC.swift */; };
 		4F7B5F5D262AC52800F61136 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F7B5F5B262AC52800F61136 /* AlertView.swift */; };
 		4F7B5F5E262AC52800F61136 /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F7B5F5C262AC52800F61136 /* AlertView.xib */; };
@@ -176,7 +179,6 @@
 /* Begin PBXFileReference section */
 		152314C1267A12AC00409B1B /* ShoutsVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoutsVc.swift; sourceTree = "<group>"; };
 		153D53B9267DF98400E52C14 /* View Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View Extension.swift"; sourceTree = "<group>"; };
-		156571DB2681BB340046CFA4 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		15BA5068267B4C13007BF00F /* AnnouncementsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsVC.swift; sourceTree = "<group>"; };
 		15BA506E267B50E7007BF00F /* AddAnnouncementsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAnnouncementsVC.swift; sourceTree = "<group>"; };
 		3EB1D11DCCCE1A2E1B60C813 /* Pods-LifeArt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LifeArt.release.xcconfig"; path = "Target Support Files/Pods-LifeArt/Pods-LifeArt.release.xcconfig"; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 		4F20CE9F261D020C00F8EE6F /* GalleryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryVC.swift; sourceTree = "<group>"; };
 		4F27BB20263ECD300075F68C /* Announcements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Announcements.swift; sourceTree = "<group>"; };
 		4F27BB25263ECE430075F68C /* AnnouncmentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncmentService.swift; sourceTree = "<group>"; };
+		4F295EEC268233C100C34163 /* log.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = log.json; sourceTree = "<group>"; };
 		4F3D6D142632B912008A8C5E /* CommentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsVC.swift; sourceTree = "<group>"; };
 		4F42454226382B8D0026E1EF /* MenuPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPresentationController.swift; sourceTree = "<group>"; };
 		4F4666D0266B9D7F005DB79A /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -254,6 +257,9 @@
 		4F6233442628C8CE0031987E /* PhotosVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosVC.swift; sourceTree = "<group>"; };
 		4F6233492628C8F00031987E /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		4F62334A2628C8F10031987E /* PhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
+		4F6D3BC326821C6F00A3A0CA /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
+		4F6D3BC526821C7100A3A0CA /* login.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = login.json; sourceTree = "<group>"; };
+		4F6D3BCA26821C7800A3A0CA /* notfications.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = notfications.json; sourceTree = "<group>"; };
 		4F70EC6826387B81001919F1 /* AccountSettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingVC.swift; sourceTree = "<group>"; };
 		4F7B5F5B262AC52800F61136 /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		4F7B5F5C262AC52800F61136 /* AlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
@@ -373,14 +379,6 @@
 			path = "View Extension";
 			sourceTree = "<group>";
 		};
-		156571DA2681BB150046CFA4 /* SearchBar */ = {
-			isa = PBXGroup;
-			children = (
-				156571DB2681BB340046CFA4 /* SearchBarView.swift */,
-			);
-			path = SearchBar;
-			sourceTree = "<group>";
-		};
 		15BA506D267B50A4007BF00F /* Announcements */ = {
 			isa = PBXGroup;
 			children = (
@@ -439,7 +437,7 @@
 		4F154754261C94D80092C2AE /* LifeArt */ = {
 			isa = PBXGroup;
 			children = (
-				156571DA2681BB150046CFA4 /* SearchBar */,
+				4F6D3BB726821AC800A3A0CA /* Lottie */,
 				153D53AD267DF86300E52C14 /* View Extension */,
 				4F4666D5266B9D86005DB79A /* Menu */,
 				4F61333F265A806100DB7142 /* LifeArt.entitlements */,
@@ -759,6 +757,17 @@
 				4F613339265A7EC900DB7142 /* PushNotificationSender.swift */,
 			);
 			path = PushNotifications;
+			sourceTree = "<group>";
+		};
+		4F6D3BB726821AC800A3A0CA /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				4F6D3BCA26821C7800A3A0CA /* notfications.json */,
+				4F6D3BC526821C7100A3A0CA /* login.json */,
+				4F295EEC268233C100C34163 /* log.json */,
+				4F6D3BC326821C6F00A3A0CA /* loading.json */,
+			);
+			path = Lottie;
 			sourceTree = "<group>";
 		};
 		4F7B5F59262AC51200F61136 /* Alerts */ = {
@@ -1166,6 +1175,7 @@
 				4F154762261C94DA0092C2AE /* Assets.xcassets in Resources */,
 				4FD03749261E58BB00C5E576 /* SuggestedCell.xib in Resources */,
 				4F62334C2628C8F10031987E /* PhotoCell.xib in Resources */,
+				4F6D3BCB26821C7800A3A0CA /* notfications.json in Resources */,
 				4F8B1BA1262AF5AE0082C46A /* CommentsCell.xib in Resources */,
 				4FF24BD126408C3F00BBCD53 /* SuggestedArtistCell.xib in Resources */,
 				4FD3D552261FA25E006C0CCE /* SuggestedParentCell.xib in Resources */,
@@ -1174,15 +1184,18 @@
 				4F613350265A8CDF00DB7142 /* GoogleService-Info.plist in Resources */,
 				4FB3689B262B262C00BA31B3 /* Payment.storyboard in Resources */,
 				4F9A1F64263581D900DB8AAD /* EditViewCell.xib in Resources */,
+				4F295EED268233C100C34163 /* log.json in Resources */,
 				4F597C70261E413C00E980C1 /* PostCell.xib in Resources */,
 				4F9BF5122637F793007E386E /* Settings.storyboard in Resources */,
 				4F9BF5332637F970007E386E /* PersonalDetailCell.xib in Resources */,
 				4FB2449D261DD63C00441E6B /* OverlayView.xib in Resources */,
+				4F6D3BC426821C6F00A3A0CA /* loading.json in Resources */,
 				4F7B5F5E262AC52800F61136 /* AlertView.xib in Resources */,
 				4F9BF5482638136E007E386E /* MenuSheet.xib in Resources */,
 				4F597C64261E3E8E00E980C1 /* GalleryHeaderCell.xib in Resources */,
 				4F9BF5342637F970007E386E /* SettingsCell.xib in Resources */,
 				4F1ACBCF262E1D8F004B372E /* ProfilePostCell.xib in Resources */,
+				4F6D3BC626821C7100A3A0CA /* login.json in Resources */,
 				4F1DF31C262AD7EF0001A65B /* NotificationCell.xib in Resources */,
 				4F15475D261C94D80092C2AE /* Main.storyboard in Resources */,
 				4F20CE96261CF9EC00F8EE6F /* Home.storyboard in Resources */,
@@ -1402,7 +1415,6 @@
 				4FFF95BA2680EE4900F128C4 /* Texfield+Designable.swift in Sources */,
 				4F597C6F261E413C00E980C1 /* PostCell.swift in Sources */,
 				4F1DF31B262AD7EF0001A65B /* NotificationCell.swift in Sources */,
-				156571DC2681BB340046CFA4 /* SearchBarView.swift in Sources */,
 				4FD5E9AC263C9A6B007E0AB4 /* CountryCallingCodeCell.swift in Sources */,
 				4F1DF330262AE85E0001A65B /* NotificationDataSource.swift in Sources */,
 				4F20CE9B261CFF9900F8EE6F /* CustomAlertView.swift in Sources */,
@@ -1607,7 +1619,7 @@
 				CODE_SIGN_ENTITLEMENTS = LifeArt/LifeArt.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = 7YC5553WQQ;
+				DEVELOPMENT_TEAM = NF2GHJKNG8;
 				INFOPLIST_FILE = LifeArt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1632,7 +1644,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = 7YC5553WQQ;
+				DEVELOPMENT_TEAM = NF2GHJKNG8;
 				INFOPLIST_FILE = LifeArt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (

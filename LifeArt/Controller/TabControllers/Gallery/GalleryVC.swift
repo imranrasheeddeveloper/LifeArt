@@ -35,7 +35,7 @@ class GalleryVC: UIViewController , postCellDelegate{
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         setStatusBar()
-        hideKeyboard()
+       // hideKeyboard()
         showAlert()
         ConfigureViews()
         refreshControl = UIRefreshControl()

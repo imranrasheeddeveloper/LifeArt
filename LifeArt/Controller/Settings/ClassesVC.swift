@@ -4,19 +4,21 @@ import UIKit
 
 
 
-class ClassesVC: UIViewController {
+class ClassesVC: UIViewController, UITextFieldDelegate {
     
     //MARK:-Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var navigationView : UIView!
     
+    @IBOutlet weak var searchBar: UITextField!
     
     //MARK:-Variables
     var classesData = [Classess]()
-
-    
+    var isSearch = false
+    var fillterArray = [Classess]()
     //MARK:-LifeCycles
     override func viewDidLoad() {
+        searchBar.delegate = self
         super.viewDidLoad()
         registerNib()
         setStatusBar()
@@ -55,23 +57,61 @@ class ClassesVC: UIViewController {
     }
     
     
-   
+    @IBAction func searchBarAction(_ sender: UITextField) {
+        
+            isSearch = true
+            fillterArray.removeAll()
+            fillterArray = classesData.filter({
+                if  $0.address.contains(sender.text!) {
+                    self.tableView.reloadData()
+                    return true
+                }
+                else{
+                   return false
+                }
+            
+            })
+        if sender.text?.count == 0{
+                isSearch = false
+                self.tableView.reloadData()
+            }
+           
+        
+    }
+    
     
     
 }
 extension ClassesVC : UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return classesData.count
+        if isSearch {
+            return fillterArray.count
+        }
+        else{
+            return classesData.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ClassesCell", for: indexPath) as! ClassesCell
-        cell.nameOfInstitueLbl.text = classesData[indexPath.row].name
-        cell.addressOfInstituteLbl.text = classesData[indexPath.row].address
-        cell.nameOfDirectorLbl.text = classesData[indexPath.row].owner
-        cell.imgView.sd_setImage(with:URL(string: classesData[indexPath.row].image),
-                                placeholderImage: UIImage(named: "placeholder.png"))
-        cell.selectionStyle = .none
+        if isSearch {
+            cell.nameOfInstitueLbl.text = fillterArray[indexPath.row].name
+            cell.addressOfInstituteLbl.text = fillterArray[indexPath.row].address
+            cell.nameOfDirectorLbl.text = fillterArray[indexPath.row].owner
+            cell.imgView.sd_setImage(with:URL(string: fillterArray[indexPath.row].image),
+                                    placeholderImage: UIImage(named: "placeholder.png"))
+            cell.selectionStyle = .none
+        }
+        else{
+            cell.nameOfInstitueLbl.text = classesData[indexPath.row].name
+            cell.addressOfInstituteLbl.text = classesData[indexPath.row].address
+            cell.nameOfDirectorLbl.text = classesData[indexPath.row].owner
+            cell.imgView.sd_setImage(with:URL(string: classesData[indexPath.row].image),
+                                    placeholderImage: UIImage(named: "placeholder.png"))
+            cell.selectionStyle = .none
+        }
+       
+       
         return cell
     }
     

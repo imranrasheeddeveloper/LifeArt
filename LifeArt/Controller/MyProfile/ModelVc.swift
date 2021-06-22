@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ModelVc: UIViewController  {
+class ModelVc: UIViewController, UITextFieldDelegate  {
 
     //MARK:-OUTLETS
     @IBOutlet weak var collectionView: UICollectionView!
@@ -23,16 +23,16 @@ class ModelVc: UIViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.searchController.searchBar.autocapitalizationType = UITextAutocapitalizationType.none
+        searchTF.delegate = self
+       self.searchController.searchBar.autocapitalizationType = UITextAutocapitalizationType.none
 //               self.navigationItem.searchController = self.searchController
 //              //if this is set to true, the search bar hides when you scroll.
 //               self.navigationItem.hidesSearchBarWhenScrolling = false
 //               //this is so I'm told of changes to what's typed
 //               self.searchController.searchResultsUpdater = self
 //               self.searchController.searchBar.delegate = self
-
-           
-        
+        setStatusBar()
+        hideKeyboard()
         collectionView.delegate = self
         collectionView.dataSource  = self
         collectionView.register(UINib(nibName: "SuggestedCell", bundle: nil), forCellWithReuseIdentifier:  "SuggestedCell")
@@ -114,7 +114,12 @@ extension ModelVc :  UICollectionViewDelegate, UICollectionViewDataSource ,UICol
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        GlobaluserID = arrayofModel[indexPath.row].user
+        if isSearch{
+            GlobaluserID =  fillterArray[indexPath.row].user
+        }else{
+            GlobaluserID = arrayofModel[indexPath.row].user
+        }
+        
         self.parent?.pushToRoot(from: .Home, identifier: .ProfessionalProfileVC)
     }
     

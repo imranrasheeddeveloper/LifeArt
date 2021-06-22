@@ -19,6 +19,13 @@ target 'LifeArt' do
   pod 'Firebase/Messaging'
   pod 'ContextMenu'
   pod 'MessageKit'
+  pod 'lottie-ios'
+  pod 'IQKeyboardManagerSwift'
+pod 'MaterialComponents/TextControls+FilledTextAreas'
+pod 'MaterialComponents/TextControls+FilledTextFields'
+pod 'MaterialComponents/TextControls+OutlinedTextAreas'
+pod 'MaterialComponents/TextControls+OutlinedTextFields'
+pod 'MaterialComponents/Snackbar'
 
   target 'LifeArtTests' do
     inherit! :search_paths

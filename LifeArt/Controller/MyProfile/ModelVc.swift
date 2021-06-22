@@ -8,31 +8,93 @@
 
 import UIKit
 
-class ModelVc: UIViewController {
+class ModelVc: UIViewController  {
 
+    //MARK:-OUTLETS
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var searchTF: DesignableUITextField!
+
+    //MARK:-VAriables
     var arrayofModel = [UserModel]()
+   // var realArrayofModel = [UserModel]()
+    var isSearch = false
+    var fillterArray = [UserModel]()
+    let searchController = UISearchController(searchResultsController: nil)
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.searchController.searchBar.autocapitalizationType = UITextAutocapitalizationType.none
+//               self.navigationItem.searchController = self.searchController
+//              //if this is set to true, the search bar hides when you scroll.
+//               self.navigationItem.hidesSearchBarWhenScrolling = false
+//               //this is so I'm told of changes to what's typed
+//               self.searchController.searchResultsUpdater = self
+//               self.searchController.searchBar.delegate = self
+
+           
+        
         collectionView.delegate = self
         collectionView.dataSource  = self
         collectionView.register(UINib(nibName: "SuggestedCell", bundle: nil), forCellWithReuseIdentifier:  "SuggestedCell")
 
         UserService.shared.fetchModels { [self] (user) in
                 arrayofModel = user
+           // realArrayofModel = arrayofModel
+
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }
         }
     }
     
+//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//        arrayofModel.removeAll()
+//        for item in realArrayofModel {
+//            if item.firstname.contains(searchBar.text!){
+//                arrayofModel.append(item)
+//            }
+//        }
+//        if (searchBar.text!.isEmpty){
+//           arrayofModel = realArrayofModel
+//        }
+//        self.collectionView.reloadData()
+//    }
+    @IBAction func searchTFChange(_ sender: UITextField) {
+        isSearch = true
+        fillterArray.removeAll()
+     
+        fillterArray = arrayofModel.filter({
+            if  $0.firstname.contains(sender.text!) {
+                self.collectionView.reloadData()
+                return true
+            }
+            else{
+               return false
+            }
+        
+        })
+        if sender.text?.count == 0{
+            isSearch = false
+           // self.arrayofModel = self.fillterArray
+            self.collectionView.reloadData()
+        }
+       // self.collectionView.reloadData()
+    }
 }
 
 //MARK:- UICollectionView Delegate & DataSource
-extension ModelVc :  UICollectionViewDelegate, UICollectionViewDataSource ,UICollectionViewDelegateFlowLayout {
+extension ModelVc :  UICollectionViewDelegate, UICollectionViewDataSource ,UICollectionViewDelegateFlowLayout,UISearchBarDelegate,UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if isSearch {
+            return fillterArray.count
+        }
+        else{
             return arrayofModel.count
+        }
       
     }
     
@@ -80,6 +142,16 @@ extension ModelVc :  UICollectionViewDelegate, UICollectionViewDataSource ,UICol
 
         return CGSize(width: size, height: 300)
     }
-    
-    
+//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+//        let searchView: UICollectionReusableView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader
+//, withReuseIdentifier: "SearchBar", for: indexPath)
+//
+//        return searchView
+//    }
+   
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+    }
+  
+
 }

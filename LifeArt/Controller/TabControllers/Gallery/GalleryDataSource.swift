@@ -11,15 +11,19 @@ import UIKit
 import SDWebImage
 import FittedSheets
 import SkeletonView
-extension GalleryVC : UITableViewDataSource{
-    
-  
+
+
+
+
+extension GalleryVC : UITableViewDataSource , SkeletonTableViewDataSource {
+   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return postArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      
+            
+            
             let row = indexPath.row
             let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
             cell.delegate = self
@@ -27,6 +31,8 @@ extension GalleryVC : UITableViewDataSource{
          cell.artImaeView.sd_setImage(with:URL(string:postArray[indexPath.row].postData.image),
                                           placeholderImage: UIImage(named: "placeholder.png"))
          cell.artImaeView.sd_imageIndicator?.startAnimatingIndicator()
+        cell.artImaeView.isSkeletonable = true
+        cell.artImaeView.showAnimatedGradientSkeleton()
         cell.discriptionLbl.text = postArray[indexPath.row].postData.desc
         cell.postUserNameLbl.text = "\(userArray[indexPath.row].firstname) \(userArray[indexPath.row].lastname)"
         cell.postTimeLbl.text = postArray[indexPath.row].postData.time
@@ -61,8 +67,21 @@ extension GalleryVC : UITableViewDataSource{
             return cell
         
 }
+    
+    
+    
+    func numSections(in collectionSkeletonView: UITableView) -> Int {
+        return 1
+    }
+    
+    func collectionSkeletonView(_ skeletonView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return postArray.count
+    }
+    
     func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
         return PostCell.CellIndentifier
     }
+    
+    
 }
 

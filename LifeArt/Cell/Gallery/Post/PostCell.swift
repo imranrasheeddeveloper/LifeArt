@@ -10,6 +10,13 @@ import FittedSheets
 import SkeletonView
 import ContextMenu
 
+
+public protocol SkeletonTableViewDataSource: UITableViewDataSource {
+    func numSections(in collectionSkeletonView: UITableView) -> Int
+    func collectionSkeletonView(_ skeletonView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier
+}
+
 protocol postCellDelegate {
     func comments(tag : Int)
     func report(tag : Int)
@@ -35,11 +42,13 @@ class PostCell: UITableViewCell{
     @IBOutlet weak var reportBtn: UIButton!
     var postLikesArray = [PostLikes]()
     static let  CellIndentifier = "PostCell"
+    static let  CellIndentifier2 = PostCell()
     var menuOpen : Bool = true
     override func awakeFromNib() {
         super.awakeFromNib()
         bgView.viewShadow()
-
+//        bgView.isSkeletonable = true
+//        bgView.showSkeleton()
         
     }
     
@@ -55,6 +64,7 @@ class PostCell: UITableViewCell{
         super.setSelected(selected, animated: animated)
 
     }
+   
    
     
     @IBAction func commentsSheet(_ sender : UIButton){

@@ -18,6 +18,8 @@ class CreateProfileVC: UIViewController {
     @IBOutlet weak var cityTF  : UITextField!
     @IBOutlet weak var phoneNoTF  : UITextField!
     @IBOutlet weak var websiteTF  : UITextField!
+    @IBOutlet weak var passwordTF: UITextField!
+    
     var password  : String!
     var firstName  : String!
     var lastName  : String!
@@ -67,7 +69,7 @@ class CreateProfileVC: UIViewController {
             
             AppDelegate.shared.loadindIndicator(title: "Creating Account")
             
-            let credentials =   AuthCredentials(bio: "Test", city: cityTF.text!, country: countryTF.text!, email: emailTF.text!, firstname: firstNameTF.text!, profileImage: profileImage.image!, lastname: lastNameTF.text!, password: password, phone: phoneNoTF.text!, website: websiteTF.text!)
+            let credentials =   AuthCredentials(bio: "Test", city: cityTF.text!, country: countryTF.text!, email: emailTF.text!, firstname: firstNameTF.text!, profileImage: profileImage.image!, lastname: lastNameTF.text!, password: passwordTF.text!, phone: phoneNoTF.text!, website: websiteTF.text!)
             
             switch accountType {
             case .Model:

@@ -10,6 +10,7 @@
 		08255854BCABF29EA1D30E20 /* Pods_LifeArt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B13EF3164B65E354B4D4F5 /* Pods_LifeArt.framework */; };
 		152314C2267A12AC00409B1B /* ShoutsVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152314C1267A12AC00409B1B /* ShoutsVc.swift */; };
 		153D53BA267DF98400E52C14 /* View Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153D53B9267DF98400E52C14 /* View Extension.swift */; };
+		156571DC2681BB340046CFA4 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156571DB2681BB340046CFA4 /* SearchBarView.swift */; };
 		15BA5069267B4C13007BF00F /* AnnouncementsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BA5068267B4C13007BF00F /* AnnouncementsVC.swift */; };
 		15BA506F267B50E7007BF00F /* AddAnnouncementsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BA506E267B50E7007BF00F /* AddAnnouncementsVC.swift */; };
 		4F0CCE6E261F377B00BC0469 /* GalleryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0CCE6D261F377B00BC0469 /* GalleryDataSource.swift */; };
@@ -175,6 +176,7 @@
 /* Begin PBXFileReference section */
 		152314C1267A12AC00409B1B /* ShoutsVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoutsVc.swift; sourceTree = "<group>"; };
 		153D53B9267DF98400E52C14 /* View Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View Extension.swift"; sourceTree = "<group>"; };
+		156571DB2681BB340046CFA4 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		15BA5068267B4C13007BF00F /* AnnouncementsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsVC.swift; sourceTree = "<group>"; };
 		15BA506E267B50E7007BF00F /* AddAnnouncementsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAnnouncementsVC.swift; sourceTree = "<group>"; };
 		3EB1D11DCCCE1A2E1B60C813 /* Pods-LifeArt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LifeArt.release.xcconfig"; path = "Target Support Files/Pods-LifeArt/Pods-LifeArt.release.xcconfig"; sourceTree = "<group>"; };
@@ -371,6 +373,14 @@
 			path = "View Extension";
 			sourceTree = "<group>";
 		};
+		156571DA2681BB150046CFA4 /* SearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				156571DB2681BB340046CFA4 /* SearchBarView.swift */,
+			);
+			path = SearchBar;
+			sourceTree = "<group>";
+		};
 		15BA506D267B50A4007BF00F /* Announcements */ = {
 			isa = PBXGroup;
 			children = (
@@ -429,6 +439,7 @@
 		4F154754261C94D80092C2AE /* LifeArt */ = {
 			isa = PBXGroup;
 			children = (
+				156571DA2681BB150046CFA4 /* SearchBar */,
 				153D53AD267DF86300E52C14 /* View Extension */,
 				4F4666D5266B9D86005DB79A /* Menu */,
 				4F61333F265A806100DB7142 /* LifeArt.entitlements */,
@@ -1391,6 +1402,7 @@
 				4FFF95BA2680EE4900F128C4 /* Texfield+Designable.swift in Sources */,
 				4F597C6F261E413C00E980C1 /* PostCell.swift in Sources */,
 				4F1DF31B262AD7EF0001A65B /* NotificationCell.swift in Sources */,
+				156571DC2681BB340046CFA4 /* SearchBarView.swift in Sources */,
 				4FD5E9AC263C9A6B007E0AB4 /* CountryCallingCodeCell.swift in Sources */,
 				4F1DF330262AE85E0001A65B /* NotificationDataSource.swift in Sources */,
 				4F20CE9B261CFF9900F8EE6F /* CustomAlertView.swift in Sources */,
@@ -1595,7 +1607,7 @@
 				CODE_SIGN_ENTITLEMENTS = LifeArt/LifeArt.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = NF2GHJKNG8;
+				DEVELOPMENT_TEAM = 7YC5553WQQ;
 				INFOPLIST_FILE = LifeArt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1620,7 +1632,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = NF2GHJKNG8;
+				DEVELOPMENT_TEAM = 7YC5553WQQ;
 				INFOPLIST_FILE = LifeArt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (

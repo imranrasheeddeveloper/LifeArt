@@ -24,7 +24,7 @@ class LoginVC: UIViewController {
         self.hideKeyboard()
         navigationBarView.roundCorners(corners: .layerMinXMaxYCorner, radius: 30)
         navigationBarView.dropShadow()
-        
+        signUpLbl.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(signUP))
         signUpLbl.addGestureRecognizer(tap)
         
@@ -80,4 +80,6 @@ class LoginVC: UIViewController {
             self.pushToController(from: .Home, identifier: .TabBar)
         }
     }
+
+    
 }

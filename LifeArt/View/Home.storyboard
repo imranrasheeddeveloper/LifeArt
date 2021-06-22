@@ -1263,12 +1263,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Serch for nerest models" translatesAutoresizingMaskIntoConstraints="NO" id="Nlu-FU-9ay">
-                                <rect key="frame" x="0.0" y="89" width="414" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Fcv-XO-MYV">
-                                <rect key="frame" x="0.0" y="155" width="414" height="658"/>
+                                <rect key="frame" x="0.0" y="143" width="414" height="670"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="HCV-41-zWH">
                                     <size key="itemSize" width="128" height="128"/>
@@ -1278,29 +1274,44 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search for Models" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Noc-lu-LLB" customClass="DesignableUITextField" customModule="LifeArt" customModuleProvider="target">
+                                <rect key="frame" x="20" y="89" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="leftPadding">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="image" keyPath="leftImage" value="magnifyingglass" catalog="system"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="searchTFChange:" destination="9iO-fU-n6K" eventType="editingChanged" id="Yib-Qf-G3q"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6zY-EZ-zG2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Nlu-FU-9ay" firstAttribute="trailing" secondItem="6zY-EZ-zG2" secondAttribute="trailing" id="03e-zV-lJo"/>
                             <constraint firstItem="Ahu-Uj-RfP" firstAttribute="centerX" secondItem="3zV-cu-c1c" secondAttribute="centerX" id="H3O-3H-NFZ"/>
-                            <constraint firstItem="Nlu-FU-9ay" firstAttribute="leading" secondItem="6zY-EZ-zG2" secondAttribute="leading" id="OX3-xv-7Fj"/>
-                            <constraint firstItem="Fcv-XO-MYV" firstAttribute="top" secondItem="Nlu-FU-9ay" secondAttribute="bottom" constant="10" id="Px3-rA-UD0"/>
-                            <constraint firstItem="Nlu-FU-9ay" firstAttribute="top" secondItem="Ahu-Uj-RfP" secondAttribute="bottom" constant="20" id="Wps-6a-jkT"/>
                             <constraint firstItem="Fcv-XO-MYV" firstAttribute="leading" secondItem="6zY-EZ-zG2" secondAttribute="leading" id="Ycu-0L-Kr0"/>
+                            <constraint firstItem="Fcv-XO-MYV" firstAttribute="top" secondItem="Noc-lu-LLB" secondAttribute="bottom" constant="20" id="aBX-Hv-j2y"/>
                             <constraint firstItem="6zY-EZ-zG2" firstAttribute="trailing" secondItem="Fcv-XO-MYV" secondAttribute="trailing" id="aTB-EH-719"/>
                             <constraint firstItem="Ahu-Uj-RfP" firstAttribute="top" secondItem="6zY-EZ-zG2" secondAttribute="top" id="erC-QD-2Bo"/>
+                            <constraint firstItem="Noc-lu-LLB" firstAttribute="top" secondItem="Ahu-Uj-RfP" secondAttribute="bottom" constant="20" id="hA6-48-6AJ"/>
                             <constraint firstItem="6zY-EZ-zG2" firstAttribute="bottom" secondItem="Fcv-XO-MYV" secondAttribute="bottom" id="s96-3D-HWZ"/>
+                            <constraint firstItem="6zY-EZ-zG2" firstAttribute="trailing" secondItem="Noc-lu-LLB" secondAttribute="trailing" constant="20" id="ySJ-MI-T06"/>
+                            <constraint firstItem="Noc-lu-LLB" firstAttribute="leading" secondItem="6zY-EZ-zG2" secondAttribute="leading" constant="20" id="yxB-mc-COY"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Model" image="person.3" catalog="system" selectedImage="person.3.fill" id="CME-fZ-MgI"/>
                     <connections>
                         <outlet property="collectionView" destination="Fcv-XO-MYV" id="69v-sa-S4y"/>
+                        <outlet property="searchTF" destination="Noc-lu-LLB" id="rFa-OJ-yPZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RLl-ya-V6E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-604" y="1072"/>
+            <point key="canvasLocation" x="-604.34782608695662" y="1071.4285714285713"/>
         </scene>
         <!--NotificationVC-->
         <scene sceneID="3Wx-su-y3y">
@@ -1925,7 +1936,10 @@
     </scenes>
     <designables>
         <designable name="2tR-3w-qap">
-            <size key="intrinsicContentSize" width="181" height="34"/>
+            <size key="intrinsicContentSize" width="141" height="34"/>
+        </designable>
+        <designable name="Noc-lu-LLB">
+            <size key="intrinsicContentSize" width="145.5" height="34"/>
         </designable>
         <designable name="SSc-Xv-PtQ">
             <size key="intrinsicContentSize" width="770" height="309"/>

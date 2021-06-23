@@ -1948,13 +1948,13 @@
     </scenes>
     <designables>
         <designable name="2tR-3w-qap">
-            <size key="intrinsicContentSize" width="181" height="34"/>
+            <size key="intrinsicContentSize" width="141" height="34"/>
         </designable>
         <designable name="Noc-lu-LLB">
-            <size key="intrinsicContentSize" width="185.5" height="34"/>
+            <size key="intrinsicContentSize" width="145.5" height="34"/>
         </designable>
         <designable name="Os4-Qg-FZW">
-            <size key="intrinsicContentSize" width="181" height="34"/>
+            <size key="intrinsicContentSize" width="141" height="34"/>
         </designable>
         <designable name="SSc-Xv-PtQ">
             <size key="intrinsicContentSize" width="770" height="309"/>

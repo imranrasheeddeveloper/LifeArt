@@ -95,7 +95,7 @@ class ProfessionalProfileVC: UIViewController, UICollectionViewDelegate, UITable
         self.dismiss(animated: true, completion: nil)
     }
     @IBAction func followAction(_ sender: UIButton) {
-        let vc = NewMessagesVC()
+        let vc = ChatViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
     @IBAction func ValueChanged(_ sender: SWSegmentedControl) {

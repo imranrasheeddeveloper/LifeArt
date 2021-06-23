@@ -22,26 +22,27 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setStatusBar()
-        emailTF.label.text = "Email"
-        passwordTF.label.text = "Password"
-        emailTF.sizeToFit()
-        emailTF.leadingAssistiveLabel.isHidden = true
-        emailTF.containerRadius = 10
-        emailTF.preferredContainerHeight = 20	
-        passwordTF.sizeToFit()
         self.hideKeyboard()
         navigationBarView.roundCorners(corners: .layerMinXMaxYCorner, radius: 30)
         navigationBarView.dropShadow()
         signUpLbl.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(signUP))
         signUpLbl.addGestureRecognizer(tap)
+        setupTextFileds()
         
     
     }
     
-//    func setupTextFileds(<#parameters#>) -> <#return type#> {
-//        <#function body#>
-//    }
+    func setupTextFileds() {
+        emailTF.label.text = "Email"
+        passwordTF.label.text = "Password"
+        emailTF.sizeToFit()
+        passwordTF.sizeToFit()
+        emailTF.containerRadius = 10
+        emailTF.verticalDensity = 40
+        passwordTF.containerRadius = 10
+        passwordTF.verticalDensity = 40
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true

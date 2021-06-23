@@ -105,8 +105,8 @@ class GalleryVC: UIViewController , postCellDelegate{
     
     //MARK:- Actions
     @IBAction func openMessages(_ sender: UIButton) {
-        let message = NewMessagesVC()
-        self.navigationController?.pushViewController(message, animated: true)
+        let Chat = ChatViewController()
+        self.navigationController?.pushViewController(Chat, animated: true)
     }
     
     
@@ -149,8 +149,6 @@ class GalleryVC: UIViewController , postCellDelegate{
                                     self.tableview.reloadData()
                                     self.refreshControl.endRefreshing()
                                 })
-
-                            
                         }
                        
                     }

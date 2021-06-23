@@ -19,11 +19,14 @@ extension GalleryVC : UITableViewDataSource , SkeletonTableViewDataSource {
    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return postArray.count
+        
     }
+   
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             
-            
+        
+        
             let row = indexPath.row
             let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
             cell.delegate = self
@@ -43,11 +46,16 @@ extension GalleryVC : UITableViewDataSource , SkeletonTableViewDataSource {
                                           placeholderImage: UIImage(named: "placeholder.png"))
     
         cell.postCountryLbl.text = userArray[indexPath.row].country
-        cell.likesLbl.text =  "\(postLikeCount[indexPath.row] ?? "0") Likes"
+        cell.likesLbl.text =  "\(postLikeCount[indexPath.row] ) Likes"
         cell.viewAllcomments.tag = cell.tag
         cell.likeButton.tag = cell.tag
-        cell.viewAllcomments.setTitle("View all \(postNumberOfComments[indexPath.row] ?? "0") Comments", for: .normal)
-         cell.totalCommentsLbl.text = "\(postNumberOfComments[indexPath.row] ?? "0") Comments"
+        cell.viewAllcomments.setTitle("View all \(postNumberOfComments[indexPath.row] ) Comments", for: .normal)
+        cell.totalCommentsLbl.text = "\(postNumberOfComments[indexPath.row] ) Comments"
+        
+                if postArray.count == indexPath.row {
+                    cell.artImaeView.hideSkeleton(transition: .crossDissolve(.zero))
+                    
+                }
         
         
         for postLike in postLikesArray{

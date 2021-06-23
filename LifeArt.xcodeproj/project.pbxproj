@@ -36,10 +36,7 @@
 		4F1547C4261CB01C0092C2AE /* OTPStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1547C2261CB01C0092C2AE /* OTPStackView.swift */; };
 		4F1547C5261CB01C0092C2AE /* OTPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1547C3261CB01C0092C2AE /* OTPTextField.swift */; };
 		4F15804E2644641900F83A73 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F15804D2644641900F83A73 /* SceneDelegate.swift */; };
-		4F16C858264494AD00CE455F /* MessagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F16C857264494AC00CE455F /* MessagesVC.swift */; };
 		4F16C85D264494C800CE455F /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F16C85C264494C700CE455F /* Message.swift */; };
-		4F16C8622644950900CE455F /* ChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F16C8612644950900CE455F /* ChatController.swift */; };
-		4F16C8672644956100CE455F /* NewMessagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F16C8662644956100CE455F /* NewMessagesVC.swift */; };
 		4F16C86F264495B300CE455F /* MessagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F16C86C264495B300CE455F /* MessagesCell.swift */; };
 		4F16C870264495B300CE455F /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F16C86D264495B300CE455F /* ChatCell.swift */; };
 		4F16C871264495B300CE455F /* NewMessagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F16C86E264495B300CE455F /* NewMessagesCell.swift */; };
@@ -140,6 +137,9 @@
 		4FD3D564261FA99E006C0CCE /* SugesstedHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD3D563261FA99E006C0CCE /* SugesstedHeaderView.swift */; };
 		4FD42E9D2677AB9700A1FB26 /* ModelVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD42E9C2677AB9700A1FB26 /* ModelVc.swift */; };
 		4FD42EA22677AD1B00A1FB26 /* ArtistVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD42EA12677AD1B00A1FB26 /* ArtistVC.swift */; };
+		4FD4CBE42683C9E1008BE395 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD4CBE22683C9E0008BE395 /* ChatViewController.swift */; };
+		4FD4CBE52683C9E1008BE395 /* MockMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD4CBE32683C9E1008BE395 /* MockMessage.swift */; };
+		4FD4CBED2683CE64008BE395 /* FacebookInputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD4CBEC2683CE64008BE395 /* FacebookInputBar.swift */; };
 		4FD5E9AC263C9A6B007E0AB4 /* CountryCallingCodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD5E9AB263C9A6B007E0AB4 /* CountryCallingCodeCell.swift */; };
 		4FD5E9B5263C9AA5007E0AB4 /* CallingCodesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD5E9B4263C9AA5007E0AB4 /* CallingCodesVC.swift */; };
 		4FD5E9BB263C9B0E007E0AB4 /* CountryCallingCode.json in Resources */ = {isa = PBXBuildFile; fileRef = 4FD5E9BA263C9B0E007E0AB4 /* CountryCallingCode.json */; };
@@ -217,10 +217,7 @@
 		4F1547C2261CB01C0092C2AE /* OTPStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPStackView.swift; sourceTree = "<group>"; };
 		4F1547C3261CB01C0092C2AE /* OTPTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPTextField.swift; sourceTree = "<group>"; };
 		4F15804D2644641900F83A73 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4F16C857264494AC00CE455F /* MessagesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessagesVC.swift; path = "LifeArt/Controller/New Group/MessagesVC.swift"; sourceTree = SOURCE_ROOT; };
 		4F16C85C264494C700CE455F /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		4F16C8612644950900CE455F /* ChatController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatController.swift; sourceTree = "<group>"; };
-		4F16C8662644956100CE455F /* NewMessagesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMessagesVC.swift; sourceTree = "<group>"; };
 		4F16C86C264495B300CE455F /* MessagesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesCell.swift; sourceTree = "<group>"; };
 		4F16C86D264495B300CE455F /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		4F16C86E264495B300CE455F /* NewMessagesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMessagesCell.swift; sourceTree = "<group>"; };
@@ -322,6 +319,9 @@
 		4FD3D563261FA99E006C0CCE /* SugesstedHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SugesstedHeaderView.swift; sourceTree = "<group>"; };
 		4FD42E9C2677AB9700A1FB26 /* ModelVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelVc.swift; sourceTree = "<group>"; };
 		4FD42EA12677AD1B00A1FB26 /* ArtistVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistVC.swift; sourceTree = "<group>"; };
+		4FD4CBE22683C9E0008BE395 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		4FD4CBE32683C9E1008BE395 /* MockMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockMessage.swift; sourceTree = "<group>"; };
+		4FD4CBEC2683CE64008BE395 /* FacebookInputBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookInputBar.swift; sourceTree = "<group>"; };
 		4FD5E9AB263C9A6B007E0AB4 /* CountryCallingCodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCallingCodeCell.swift; sourceTree = "<group>"; };
 		4FD5E9B4263C9AA5007E0AB4 /* CallingCodesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallingCodesVC.swift; sourceTree = "<group>"; };
 		4FD5E9BA263C9B0E007E0AB4 /* CountryCallingCode.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CountryCallingCode.json; sourceTree = "<group>"; };
@@ -569,9 +569,9 @@
 		4F16C8562644949900CE455F /* Message */ = {
 			isa = PBXGroup;
 			children = (
-				4F16C8662644956100CE455F /* NewMessagesVC.swift */,
-				4F16C8612644950900CE455F /* ChatController.swift */,
-				4F16C857264494AC00CE455F /* MessagesVC.swift */,
+				4FD4CBEC2683CE64008BE395 /* FacebookInputBar.swift */,
+				4FD4CBE22683C9E0008BE395 /* ChatViewController.swift */,
+				4FD4CBE32683C9E1008BE395 /* MockMessage.swift */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -1349,12 +1349,10 @@
 				4FC04539264D5E5500C174C1 /* MessageModel.swift in Sources */,
 				4F8B1BA0262AF5AE0082C46A /* CommentsCell.swift in Sources */,
 				4FB368A9262B2AAB00BA31B3 /* AddVC.swift in Sources */,
-				4F16C8672644956100CE455F /* NewMessagesVC.swift in Sources */,
 				4F9BF5322637F970007E386E /* PersonalDetailCell.swift in Sources */,
 				4F20CE86261CE90B00F8EE6F /* UIViewController+Extension.swift in Sources */,
 				4F9BF5492638136E007E386E /* MenuSheet.swift in Sources */,
 				4FF24BD026408C3F00BBCD53 /* SuggestedArtistCell.swift in Sources */,
-				4F16C8622644950900CE455F /* ChatController.swift in Sources */,
 				15BA5069267B4C13007BF00F /* AnnouncementsVC.swift in Sources */,
 				4F1547A4261C9ED00092C2AE /* UIView+Round.swift in Sources */,
 				4F16C86F264495B300CE455F /* MessagesCell.swift in Sources */,
@@ -1366,6 +1364,7 @@
 				4F0CCE6E261F377B00BC0469 /* GalleryDataSource.swift in Sources */,
 				4F7D788B262CC06A001C2290 /* SWSegmentControl.swift in Sources */,
 				4F4CB0BC2659606F006F9C4C /* Comments.swift in Sources */,
+				4FD4CBED2683CE64008BE395 /* FacebookInputBar.swift in Sources */,
 				4F9A1F5C263581A700DB8AAD /* EditProfile.swift in Sources */,
 				4F3D6D152632B912008A8C5E /* CommentsVC.swift in Sources */,
 				15BA506F267B50E7007BF00F /* AddAnnouncementsVC.swift in Sources */,
@@ -1406,12 +1405,12 @@
 				4F1547C5261CB01C0092C2AE /* OTPTextField.swift in Sources */,
 				4FFE8EA7263DFEA300CE85CC /* UIWindow+Extension.swift in Sources */,
 				4F597C63261E3E8E00E980C1 /* GalleryHeaderCell.swift in Sources */,
+				4FD4CBE42683C9E1008BE395 /* ChatViewController.swift in Sources */,
 				4F1547A6261C9ED00092C2AE /* Button+Round.swift in Sources */,
 				4FFE8EAC263E012000CE85CC /* AppDelegate+Extension.swift in Sources */,
 				4F51FEEA2638A84F00D7C215 /* LoginVC.swift in Sources */,
 				4F8D335E2643365100A695DD /* Classess.swift in Sources */,
 				153D53BA267DF98400E52C14 /* View Extension.swift in Sources */,
-				4F16C858264494AD00CE455F /* MessagesVC.swift in Sources */,
 				4F15479A261C9EB40092C2AE /* ControllerIdentifier.swift in Sources */,
 				4F1DF322262AE4D90001A65B /* CreatePostVC.swift in Sources */,
 				4FD5E9B5263C9AA5007E0AB4 /* CallingCodesVC.swift in Sources */,
@@ -1432,6 +1431,7 @@
 				4F20CE9B261CFF9900F8EE6F /* CustomAlertView.swift in Sources */,
 				4F70EC6926387B81001919F1 /* AccountSettingVC.swift in Sources */,
 				4F15804E2644641900F83A73 /* SceneDelegate.swift in Sources */,
+				4FD4CBE52683C9E1008BE395 /* MockMessage.swift in Sources */,
 				4F4666D1266B9D7F005DB79A /* MenuViewController.swift in Sources */,
 				4FD3D551261FA25E006C0CCE /* SuggestedParentCell.swift in Sources */,
 				4F1ACBEB262E3041004B372E /* MyProfileVC.swift in Sources */,
@@ -1631,7 +1631,7 @@
 				CODE_SIGN_ENTITLEMENTS = LifeArt/LifeArt.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = 7YC5553WQQ;
+				DEVELOPMENT_TEAM = DGBFBTC9YS;
 				INFOPLIST_FILE = LifeArt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1656,7 +1656,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = 7YC5553WQQ;
+				DEVELOPMENT_TEAM = DGBFBTC9YS;
 				INFOPLIST_FILE = LifeArt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (

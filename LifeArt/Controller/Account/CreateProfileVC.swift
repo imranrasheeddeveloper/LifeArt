@@ -18,7 +18,6 @@ class CreateProfileVC: UIViewController {
     @IBOutlet weak var cityTF  : UITextField!
     @IBOutlet weak var phoneNoTF  : UITextField!
     @IBOutlet weak var websiteTF  : UITextField!
-    @IBOutlet weak var passwordTF: UITextField!
     
     var password  : String!
     var firstName  : String!
@@ -68,71 +67,92 @@ class CreateProfileVC: UIViewController {
         if validation(){
             
             AppDelegate.shared.loadindIndicator(title: "Creating Account")
-            
-            let credentials =   AuthCredentials(bio: "Test", city: cityTF.text!, country: countryTF.text!, email: emailTF.text!, firstname: firstNameTF.text!, profileImage: profileImage.image!, lastname: lastNameTF.text!, password: passwordTF.text!, phone: phoneNoTF.text!, website: websiteTF.text!)
+            let credentials =   AuthCredentials(bio: "Test", city: cityTF.text!, country: countryTF.text!, email: emailTF.text!, firstname: firstNameTF.text!, profileImage: profileImage.image!, lastname: lastNameTF.text!, password: password, phone: phoneNoTF.text!, website: websiteTF.text!)
             
             switch accountType {
             case .Model:
-                AuthService.shared.registerUser(account: .Artist, credentials: credentials) { (error, ref) in
+                AuthService.shared.registerUser(account: .Model, credentials: credentials , value :  array) { (error, ref) in
+                    if error == nil{
+                        
+                        AppDelegate.shared.removeLoadIndIndicator()
+                        DispatchQueue.main.async {
+                            addLottieAnimation(string: "AccountCreatetedSuccess", view: self.view)
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            
+                            self.pushToController(from: .Home , identifier: .TabBar)
+                        }
+                        
+                    }
+                    else{
+                        AppDelegate.shared.removeLoadIndIndicator()
+                        DispatchQueue.main.async {
+                            self.showErrorAlert()
+                        }
+                    }
+                    
+                }
+            case .Artist :
+                AuthService.shared.registerUser(account: .Artist, credentials: credentials ,  value : array) { (error, ref) in
                     if error == nil{
                         AppDelegate.shared.removeLoadIndIndicator()
                         self.pushToController(from: .Home , identifier: .TabBar)
                     }
                     else{
                         AppDelegate.shared.removeLoadIndIndicator()
-                        print(error?.localizedDescription as Any)
+                        DispatchQueue.main.async {
+                            self.showErrorAlert()
+                        }
+                        
                     }
-                    
                 }
-            case .Artist :
-            AuthService.shared.registerUser(account: .Artist, credentials: credentials) { (error, ref) in
-                if error == nil{
-                    AppDelegate.shared.removeLoadIndIndicator()
-                    self.pushToController(from: .Home , identifier: .TabBar)
-                }
-                else{
-                    AppDelegate.shared.removeLoadIndIndicator()
-                    print(error?.localizedDescription as Any)
-                }
-            }
             default:
                 break
             }
         }
         
+        
+    }
+    func showErrorAlert() {
+        let storyBoard = UIStoryboard(name: "Alerts", bundle: nil)
+        let customAlert = storyBoard.instantiateViewController(withIdentifier: "ErrorAlertVC") as! ErrorAlertVC
+        customAlert.providesPresentationContextTransitionStyle = true
+        customAlert.definesPresentationContext = true
+        customAlert.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+        customAlert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        self.present(customAlert, animated: true, completion: nil)
     }
     
     func validation() -> Bool {
         if firstNameTF.text!.isEmpty {
-            self.presentAlert(withTitle: "Error", message: "First Name is Empty")
-            return false
+            snackBar(str: "Please enter your firstname")
         }
         if lastNameTF.text!.isEmpty {
-            self.presentAlert(withTitle: "Error", message: "Last Name is Empty")
+            snackBar(str: "Please enter your lastname")
             return false
         }
         if emailTF.text!.isEmpty {
-            self.presentAlert(withTitle: "Error", message: "email is Empty")
+            snackBar(str: "Please enter valid email")
             return false
         }
         if countryTF.text!.isEmpty {
-            self.presentAlert(withTitle: "Error", message: "password is Empty")
+            snackBar(str: "Please enter your country name")
             return false
         }
         if cityTF.text!.isEmpty {
-            self.presentAlert(withTitle: "Error", message: "phone is Empty")
+            snackBar(str: "Please enter your city name")
             return false
         }
         if websiteTF.text!.isEmpty {
-            self.presentAlert(withTitle: "Error", message: "website is Empty")
+            snackBar(str: "Please enter your website")
             return false
         }
         
         return true
         
     }
-
-
+    
+    
 }
 
 extension CreateProfileVC : UIScrollViewDelegate {

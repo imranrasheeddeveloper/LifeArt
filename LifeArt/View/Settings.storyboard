@@ -374,7 +374,7 @@
                                                             <constraint firstItem="liQ-KO-6Rg" firstAttribute="centerY" secondItem="1Bu-Dn-UXu" secondAttribute="centerY" id="aex-iQ-GAj"/>
                                                         </constraints>
                                                     </view>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="artist1" translatesAutoresizingMaskIntoConstraints="NO" id="F2g-a5-Xxf" customClass="ImageRoundedView" customModule="LifeArt" customModuleProvider="target">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="F2g-a5-Xxf" customClass="ImageRoundedView" customModule="LifeArt" customModuleProvider="target">
                                                         <rect key="frame" x="157" y="80" width="100" height="100"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="100" id="Fo6-Wg-yqO"/>
@@ -416,7 +416,7 @@
                                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description(Optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4L3-G1-Mtm" customClass="MDCOutlinedTextField">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description(Optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4L3-G1-Mtm" customClass="MDCFilledText">
                                                         <rect key="frame" x="20" y="500" width="374" height="120"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="120" id="gNz-LT-Iey"/>
@@ -610,7 +610,7 @@
     </scenes>
     <designables>
         <designable name="F2g-a5-Xxf">
-            <size key="intrinsicContentSize" width="730" height="487"/>
+            <size key="intrinsicContentSize" width="770" height="309"/>
         </designable>
         <designable name="W4O-QY-Js2">
             <size key="intrinsicContentSize" width="30" height="30"/>
@@ -624,7 +624,7 @@
     </designables>
     <resources>
         <image name="arrow.backward" catalog="system" width="128" height="98"/>
-        <image name="artist1" width="730" height="487"/>
+        <image name="placeholder" width="770" height="309"/>
         <namedColor name="AddButton">
             <color red="0.22400000691413879" green="0.6119999885559082" blue="0.74099999666213989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

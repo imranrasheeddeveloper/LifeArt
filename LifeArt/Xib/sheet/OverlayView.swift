@@ -7,10 +7,6 @@
 
 import UIKit
 
- 
-struct interstedModel {
-    var intrestData = [String]()
-}
 
 
 class OverlayView: UIViewController  {
@@ -19,7 +15,7 @@ class OverlayView: UIViewController  {
     var pointOrigin: CGPoint?
     @IBOutlet weak var slideIdicator: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
-
+    var delegate :  whoAreYouDelegate? = nil
     var arrSelectedIndex = [IndexPath]()
     var arrData : [String] = ["Figure" , "Portraits" , "Art Groups" , "Art Education" , "Photo Sets" , "Private Sitting" , "Online Figure" , "Online Clothed"]
     var selectData = [String]()
@@ -34,8 +30,11 @@ class OverlayView: UIViewController  {
         collectionView.allowsMultipleSelection = true
         
     }
-    override func viewDidDisappear(_ animated: Bool) {
-       _ = interstedModel.init(intrestData: selectData)
+
+    override func viewWillDisappear(_ animated: Bool) {
+   
+        delegate?.whoAreYouData(categories: selectData)
+
     }
     
     override func viewDidLayoutSubviews() {
@@ -77,16 +76,31 @@ extension OverlayView: UICollectionViewDelegate, UICollectionViewDataSource, UIC
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell : ArtistCategories = collectionView.dequeueReusableCell(withReuseIdentifier: "ArtistCategories", for: indexPath) as! ArtistCategories
         cell.categoriesLbl.text = arrData[indexPath.row]
+        cell.categoriesLbl.font = UIFont.init(name: "Avenir", size: 13)
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectData.append(arrData[indexPath.row])
+        if selectData.count != 0{
+            for (index, data) in selectData.enumerated() {
+                if arrData[indexPath.row] == data{
+                    arrData.remove(at: index)
+                }
+                else{
+                    selectData.append(arrData[indexPath.row])
+                    
+                }
+            }
+        }
+        else{
+            selectData.append(arrData[indexPath.row])
+        }
+        
+    
+        
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.row == 3 || indexPath.row == 4{
-            return CGSize(width: 100, height: 30)
-        }
-        return CGSize(width: 80, height: 40)
+
+        return CGSize(width: 100, height: 40)
     }
 
 

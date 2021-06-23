@@ -7,7 +7,11 @@
 
 import UIKit
 
-class SignupVC: UIViewController , UITextFieldDelegate{
+protocol whoAreYouDelegate {
+    func whoAreYouData(categories : [String])
+}
+
+class SignupVC: UIViewController , UITextFieldDelegate, whoAreYouDelegate{
     
     //MARK:-Outlets
     
@@ -23,7 +27,7 @@ class SignupVC: UIViewController , UITextFieldDelegate{
     //MARK:- Variables
     var heightConstraint:NSLayoutConstraint!
     let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-    
+    var selectedArray : [String] = []
     //MARK:- variables
     
     private let imagePicker = UIImagePickerController()
@@ -43,6 +47,9 @@ class SignupVC: UIViewController , UITextFieldDelegate{
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
+//        selectData.forEach({
+//            vc.whoAreYou.text = $0
+//        })
     }
     
     
@@ -58,12 +65,15 @@ class SignupVC: UIViewController , UITextFieldDelegate{
                 vc.email = emailTF.text!
                 vc.password = passwordTF.text!
                 vc.phoneNo = phoneTF.text!
+                
                 if accountType == 0{
                     vc.accountType = .Model
                 }
                 else{
                     vc.accountType = .Artist
                 }
+                vc.array = selectedArray
+                dump(selectedArray)
                 self.navigationController?.pushViewController(vc, animated: true)
             } else {
                 let vc = storyBoard.instantiateViewController(withIdentifier: "CreateProfileVC") as! CreateProfileVC
@@ -71,12 +81,15 @@ class SignupVC: UIViewController , UITextFieldDelegate{
                 vc.lastNameTF.text = lastNameTF.text!
                 vc.emailTF.text = emailTF.text!
                 vc.password = passwordTF.text!
+                
                 if accountType == 0{
                     vc.accountType = .Model
                 }
                 else{
                     vc.accountType = .Artist
                 }
+                vc.array = selectedArray
+                dump(selectedArray)
                 self.navigationController?.pushViewController(vc, animated: true)
             }
             
@@ -98,32 +111,33 @@ class SignupVC: UIViewController , UITextFieldDelegate{
         let slideVC = OverlayView()
         slideVC.modalPresentationStyle = .custom
         slideVC.transitioningDelegate = self
+        slideVC.delegate = self
         self.present(slideVC, animated: true, completion: nil)
     }
     
     
     func validation() -> Bool {
         if firstNameTF.text!.isEmpty {
-            self.presentAlert(withTitle: "Error", message: "First Name is Empty")
+          snackBar(str: "Please enter your firstname")
             return false
         }
         if lastNameTF.text!.isEmpty {
-            self.presentAlert(withTitle: "Error", message: "Last Name is Empty")
+            snackBar(str: "Please enter your lastname")
             return false
         }
-        if emailTF.text!.isEmpty {
-            self.presentAlert(withTitle: "Error", message: "email is Empty")
-            return false
-        }
-        if passwordTF.text!.isEmpty {
-            self.presentAlert(withTitle: "Error", message: "password is Empty")
-            return false
-        }
-        if phoneTF.text!.isEmpty {
-            self.presentAlert(withTitle: "Error", message: "phone is Empty")
+        if !(emailTF.text!.isValidEmail()){
+            snackBar(str: "Please enter valid email")
             return false
         }
         
+        if passwordTF.text!.isEmpty {
+            snackBar(str: "Please enter your password")
+            return false
+        }
+        if phoneTF.text!.isEmpty {
+            snackBar(str: "Please enter your phone")
+            return false
+        }
         return true
         
     }
@@ -136,8 +150,22 @@ class SignupVC: UIViewController , UITextFieldDelegate{
     
 }
 extension SignupVC:  UIViewControllerTransitioningDelegate {
-    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        PresentationController(presentedViewController: presented, presenting: presenting)
+    func whoAreYouData(categories : [String] ) {
+       
+        categories.forEach({
+            guard let whoAreYou = whoAreYou.text else {return}
+            let whoAreYouString  = "\(whoAreYou),\($0)"
+            self.whoAreYou.text =  String(whoAreYouString.dropFirst())
+        })
+        selectedArray = categories
     }
     
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
+        whoAreYou.text = ""
+       return PresentationController(presentedViewController: presented, presenting: presenting)
+       
+    }
+  
+    
 }
+

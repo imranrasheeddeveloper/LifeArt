@@ -8,19 +8,27 @@
 
 import UIKit
 import Firebase
+import MaterialComponents.MDCOutlinedTextField
 class LoginVC: UIViewController {
 
     //MARK:- outlets
     
     @IBOutlet weak var navigationBarView: UIView!
-    @IBOutlet weak var emailTF: UITextField!
-    @IBOutlet weak var passwordTF: UITextField!
+    @IBOutlet weak var emailTF: MDCOutlinedTextField!
+    @IBOutlet weak var passwordTF: MDCOutlinedTextField!
     @IBOutlet weak var signUpLbl: UILabel!
     
     //MARK:- LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
         setStatusBar()
+        emailTF.label.text = "Email"
+        passwordTF.label.text = "Password"
+        emailTF.sizeToFit()
+        emailTF.leadingAssistiveLabel.isHidden = true
+        emailTF.containerRadius = 10
+        emailTF.preferredContainerHeight = 20	
+        passwordTF.sizeToFit()
         self.hideKeyboard()
         navigationBarView.roundCorners(corners: .layerMinXMaxYCorner, radius: 30)
         navigationBarView.dropShadow()
@@ -30,6 +38,10 @@ class LoginVC: UIViewController {
         
     
     }
+    
+//    func setupTextFileds(<#parameters#>) -> <#return type#> {
+//        <#function body#>
+//    }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true

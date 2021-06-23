@@ -17,6 +17,7 @@ struct AuthCredentials {
     let firstname: String
     var profileImage: UIImage
     let lastname, password, phone, website: String
+    
 }
 
 // MARK: - Interest
@@ -36,11 +37,11 @@ struct AuthService {
         Auth.auth().signIn(withEmail: email, password: password, completion: completion)
     }
     
-    func registerUser(account : AccountType , credentials: AuthCredentials, completion: @escaping(Error?, DatabaseReference) -> (Void)) {
+    func registerUser(account : AccountType , credentials: AuthCredentials, value :  [String] , completion: @escaping(Error?, DatabaseReference?) -> (Void)) {
         
         Auth.auth().createUser(withEmail: credentials.email, password: credentials.password) { (result, error) in
             if let error = error {
-                print("DEBUG: Error -> \(error)")
+                completion(error , nil)
                 return
             }
             if let data = credentials.profileImage.pngData() {
@@ -57,9 +58,6 @@ struct AuthService {
                     let phone = credentials.phone
                     let website =  credentials.website
                   
-                    
-                    let value = ["port","port","port"]
-                    
                     
                     //check if the user is 'Artist' or 'Model'
                     switch account {

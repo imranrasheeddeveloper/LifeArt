@@ -26,6 +26,8 @@ class ShoutsVc: UIViewController {
         super.viewDidLoad()
         setStatusBar()
         hideKeyboard()
+        tabelView.isHidden = true
+        addLottieAnimation(string: "noannouncement", view: self.view)
         tabelView.dataSource =  self
         tabelView.delegate = self
         headerView.dropShadow()
@@ -41,9 +43,14 @@ class ShoutsVc: UIViewController {
     func apiCalling() {
             AnnouncmentService.shared.fetchAnnouncmentServices { [self] (announcements) in
                 arrayOfAnnouncment  = announcements
-                DispatchQueue.main.async {
-                    self.tabelView.reloadData()
+                if arrayOfAnnouncment.count != 0{
+                    removeLottieAnimation()
+                    tabelView.isHidden = false
+                    DispatchQueue.main.async {
+                        self.tabelView.reloadData()
+                    }
                 }
+                
             }
         }
     

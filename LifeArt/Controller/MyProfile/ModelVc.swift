@@ -89,7 +89,7 @@ extension ModelVc :  UICollectionViewDelegate, UICollectionViewDataSource ,UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if isSearch {
+        if isSearch == true {
             return fillterArray.count
         }
         else{
@@ -102,7 +102,7 @@ extension ModelVc :  UICollectionViewDelegate, UICollectionViewDataSource ,UICol
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: "SuggestedCell", for: indexPath) as! SuggestedCell
-        if isSearch {
+        if isSearch == true {
            
             cell.profileImage.sd_setImage(with:URL(string:fillterArray[indexPath.row].image),
                                           placeholderImage: UIImage(named: "placeholder.png"))

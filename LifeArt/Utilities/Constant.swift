@@ -28,6 +28,20 @@ func  addLottieAnimation(string : String ,view : UIView ) {
 func removeLottieAnimation(){
     animationView.removeFromSuperview()
 }
+func  addLottieAnimationOnAlert(string : String ,view : UIView ) {
+    animationView = .init(name: string)
+    animationView.translatesAutoresizingMaskIntoConstraints = false
+    animationView.contentMode = .scaleAspectFit
+    animationView.loopMode = .loop
+    animationView.animationSpeed = 1
+    view.addSubview(animationView)
+    animationView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
+    animationView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+    animationView.heightAnchor.constraint(equalToConstant: 64).isActive = true
+    animationView.widthAnchor.constraint(equalToConstant: 64).isActive = true
+
+    animationView.play()
+}
 
 func isInternetAvailable() -> Bool
 {

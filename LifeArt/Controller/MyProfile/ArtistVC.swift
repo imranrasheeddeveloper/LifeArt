@@ -12,7 +12,6 @@ class ArtistVC: UIViewController, UITextFieldDelegate {
 
     //MARk:-OUTLETS
     @IBOutlet weak var collectionView: UICollectionView!
-    
     @IBOutlet weak var searchTF: DesignableUITextField!
     
     //MARK:-Variables
@@ -60,7 +59,7 @@ class ArtistVC: UIViewController, UITextFieldDelegate {
 //MARK:- UICollectionView Delegate & DataSource
 extension ArtistVC :  UICollectionViewDelegate, UICollectionViewDataSource ,UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if isSearch {
+        if isSearch == true {
             return fillterArray.count
         }
         else{
@@ -72,7 +71,7 @@ extension ArtistVC :  UICollectionViewDelegate, UICollectionViewDataSource ,UICo
     //TODO:- set Collection View
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: "SuggestedCell", for: indexPath) as! SuggestedCell
-        if isSearch {
+        if isSearch == true {
            
             cell.profileImage.sd_setImage(with:URL(string:fillterArray[indexPath.row].image),
                                           placeholderImage: UIImage(named: "placeholder.png"))
@@ -93,7 +92,7 @@ extension ArtistVC :  UICollectionViewDelegate, UICollectionViewDataSource ,UICo
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if isSearch{
+        if isSearch == true {
             GlobaluserID =  fillterArray[indexPath.row].user
         }else{
             GlobaluserID = arrayofModel[indexPath.row].user

@@ -68,7 +68,8 @@ class NewclassesVC: UIViewController, UINavigationControllerDelegate {
         let classs = ClassModel(address: address.text!, date: currentDate(), desc: discription.text!, image: imageView.image ?? #imageLiteral(resourceName: "art3"), name: nameOfInsitutue.text!, owner: ownerName.text!, phone: phoneNumber.text!, time: currentTime(), user: Auth.auth().currentUser!.uid, web: website.text!)
         ClassesService.shared.creatPost(classModel: classs) { (error, ref) -> (Void) in
             if error == nil {
-                self.presentAlertWithDissmissVC(withTitle: "Success", message: "Class Uploaded")
+//                self.presentAlertWithDissmissVC(withTitle: "Success", message: "Class Uploaded")
+                snackBar(str: "Class Uploaded")
             }
         }
     }

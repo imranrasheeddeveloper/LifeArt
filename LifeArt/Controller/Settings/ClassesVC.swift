@@ -62,11 +62,12 @@ class ClassesVC: UIViewController, UITextFieldDelegate {
             isSearch = true
             fillterArray.removeAll()
             fillterArray = classesData.filter({
-                if  $0.address.contains(sender.text!) {
+                if  $0.name.contains(sender.text!) {
                     self.tableView.reloadData()
                     return true
                 }
                 else{
+                    self.tableView.reloadData()
                    return false
                 }
             
@@ -75,7 +76,7 @@ class ClassesVC: UIViewController, UITextFieldDelegate {
                 isSearch = false
                 self.tableView.reloadData()
             }
-           
+        self.tableView.reloadData()
         
     }
     
@@ -84,7 +85,7 @@ class ClassesVC: UIViewController, UITextFieldDelegate {
 }
 extension ClassesVC : UITableViewDataSource,UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isSearch {
+        if isSearch == true {
             return fillterArray.count
         }
         else{
@@ -94,7 +95,7 @@ extension ClassesVC : UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ClassesCell", for: indexPath) as! ClassesCell
-        if isSearch {
+        if isSearch == true {
             cell.nameOfInstitueLbl.text = fillterArray[indexPath.row].name
             cell.addressOfInstituteLbl.text = fillterArray[indexPath.row].address
             cell.nameOfDirectorLbl.text = fillterArray[indexPath.row].owner

@@ -101,12 +101,22 @@ extension ModelVc :  UICollectionViewDelegate, UICollectionViewDataSource ,UICol
     //TODO:- set Collection View
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-            let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: "SuggestedCell", for: indexPath) as! SuggestedCell
+        let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: "SuggestedCell", for: indexPath) as! SuggestedCell
+        if isSearch {
+           
+            cell.profileImage.sd_setImage(with:URL(string:fillterArray[indexPath.row].image),
+                                          placeholderImage: UIImage(named: "placeholder.png"))
+
+        cell.nameLbl.text = "\(fillterArray[indexPath.row].firstname) \(fillterArray[indexPath.row].lastname)"
+        }
+        else{
             cell.profileImage.sd_setImage(with:URL(string:arrayofModel[indexPath.row].image),
                                           placeholderImage: UIImage(named: "placeholder.png"))
-            cell.profileImage.sd_imageIndicator?.startAnimatingIndicator()
+        cell.profileImage.sd_imageIndicator?.startAnimatingIndicator()
 
-            cell.nameLbl.text = "\(arrayofModel[indexPath.row].firstname) \(arrayofModel[indexPath.row].lastname)"
+        cell.nameLbl.text = "\(arrayofModel[indexPath.row].firstname) \(arrayofModel[indexPath.row].lastname)"
+        }
+          
             
             return cell
      

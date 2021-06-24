@@ -52,9 +52,7 @@ class ClassesVC: UIViewController, UITextFieldDelegate {
         self.pushToRoot(from: .Settings, identifier: .NewclassesVC)
     }
     
-    @IBAction func backButton(sender : UIButton){
-        self.navigationController?.popViewController(animated: true)
-    }
+
     
     
     @IBAction func searchBarAction(_ sender: UITextField) {
@@ -118,6 +116,10 @@ extension ClassesVC : UITableViewDataSource,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let Chat = ChatViewController()
+        self.navigationController?.pushViewController(Chat, animated: true)
     }
     
 }

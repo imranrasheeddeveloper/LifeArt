@@ -42,7 +42,6 @@ class CommentsVC: UIViewController {
         if commentsTF.text != ""{
             apiCalling()
         }
-        
     }
     
     

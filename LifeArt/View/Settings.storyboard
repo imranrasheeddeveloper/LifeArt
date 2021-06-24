@@ -391,49 +391,37 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </imageView>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name Of Institue" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bLb-FS-PLq" customClass="MDCOutlinedTextField">
-                                                        <rect key="frame" x="20" y="220" width="374" height="50"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="FSF-zS-AdZ"/>
-                                                        </constraints>
+                                                        <rect key="frame" x="20" y="220" width="374" height="34"/>
                                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Owner Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZyV-DN-N3D" customClass="MDCOutlinedTextField">
-                                                        <rect key="frame" x="20" y="290" width="374" height="50"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="dWu-Hr-dLu"/>
-                                                        </constraints>
+                                                        <rect key="frame" x="20" y="274" width="374" height="34"/>
                                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HLh-ij-Kd4" customClass="MDCOutlinedTextField">
-                                                        <rect key="frame" x="20" y="360" width="374" height="50"/>
+                                                        <rect key="frame" x="20" y="328" width="374" height="34"/>
                                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hht-wR-rRA" customClass="MDCOutlinedTextField">
-                                                        <rect key="frame" x="20" y="430" width="374" height="50"/>
+                                                        <rect key="frame" x="20" y="382" width="374" height="34"/>
                                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description(Optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4L3-G1-Mtm" customClass="MDCFilledText">
-                                                        <rect key="frame" x="20" y="500" width="374" height="120"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="120" id="gNz-LT-Iey"/>
-                                                        </constraints>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description(Optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4L3-G1-Mtm" customClass="MDCOutlinedTextField">
+                                                        <rect key="frame" x="20" y="436" width="374" height="34"/>
                                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Website" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uXI-I8-Zw5" customClass="MDCOutlinedTextField">
-                                                        <rect key="frame" x="20" y="640" width="374" height="50"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="cDV-1S-a33"/>
-                                                        </constraints>
+                                                        <rect key="frame" x="20" y="490" width="374" height="34"/>
                                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pLo-mM-BrS" customClass="ButtonRounded" customModule="LifeArt" customModuleProvider="target">
-                                                        <rect key="frame" x="20" y="710" width="374" height="50"/>
+                                                        <rect key="frame" x="20" y="544" width="374" height="50"/>
                                                         <color key="backgroundColor" name="colorPrimary"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="sEd-o2-ScJ"/>
@@ -456,7 +444,7 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can update how can we send you infromation in your website account.We never share your details with 3rd parties." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h8f-8P-DV4">
-                                                        <rect key="frame" x="20" y="800" width="374" height="33"/>
+                                                        <rect key="frame" x="20" y="634" width="374" height="33"/>
                                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="12"/>
                                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -464,7 +452,6 @@
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstItem="HLh-ij-Kd4" firstAttribute="height" secondItem="ZyV-DN-N3D" secondAttribute="height" id="1at-vd-ajW"/>
                                                     <constraint firstItem="h8f-8P-DV4" firstAttribute="leading" secondItem="pLo-mM-BrS" secondAttribute="leading" id="25l-dm-Pi2"/>
                                                     <constraint firstItem="pLo-mM-BrS" firstAttribute="top" secondItem="uXI-I8-Zw5" secondAttribute="bottom" constant="20" id="2Gi-Ie-luw"/>
                                                     <constraint firstItem="uXI-I8-Zw5" firstAttribute="trailing" secondItem="4L3-G1-Mtm" secondAttribute="trailing" id="3Qh-4T-2IJ"/>
@@ -495,7 +482,6 @@
                                                     <constraint firstItem="ZyV-DN-N3D" firstAttribute="trailing" secondItem="bLb-FS-PLq" secondAttribute="trailing" id="rL2-GY-q9t"/>
                                                     <constraint firstAttribute="trailing" secondItem="bLb-FS-PLq" secondAttribute="trailing" constant="20" id="smy-FW-YP1"/>
                                                     <constraint firstAttribute="height" constant="950" id="xbp-BI-xRz"/>
-                                                    <constraint firstItem="hht-wR-rRA" firstAttribute="height" secondItem="HLh-ij-Kd4" secondAttribute="height" id="xog-CU-0tQ"/>
                                                 </constraints>
                                             </view>
                                         </subviews>

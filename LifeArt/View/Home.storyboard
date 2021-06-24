@@ -511,7 +511,7 @@
                             <constraint firstItem="rTA-JZ-Bcl" firstAttribute="bottom" secondItem="cbc-z7-inE" secondAttribute="bottom" id="x6G-32-6w3"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Artist" image="person.3" catalog="system" selectedImage="person.3.fill" id="dTs-wr-AVs"/>
+                    <tabBarItem key="tabBarItem" title="Artist" image="person.2.circle" catalog="system" selectedImage="person.2.circle.fill" id="dTs-wr-AVs"/>
                     <connections>
                         <outlet property="collectionView" destination="cbc-z7-inE" id="zCt-cO-ZED"/>
                         <outlet property="searchTF" destination="2tR-3w-qap" id="nLt-Yw-Rfw"/>
@@ -593,15 +593,12 @@
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Post Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="75d-cW-QQ4" customClass="MDCOutlinedTextField">
-                                <rect key="frame" x="20" y="114" width="374" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="kIZ-zp-Akr"/>
-                                </constraints>
+                                <rect key="frame" x="20" y="114" width="374" height="34"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nT8-88-NkI" customClass="UIPlaceholderTextView" customModule="LifeArt" customModuleProvider="target">
-                                <rect key="frame" x="20" y="184" width="374" height="120"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nT8-88-NkI" customClass="MDCBaseTextAreaTextView">
+                                <rect key="frame" x="20" y="168" width="374" height="120"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="b1p-29-eUl"/>
@@ -609,9 +606,6 @@
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Deiscribe What is in your Mind?"/>
-                                </userDefinedRuntimeAttributes>
                             </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KkO-XW-aas">
                                 <rect key="frame" x="0.0" y="782" width="414" height="80"/>
@@ -694,19 +688,12 @@
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Medium e.g oil paint" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mAq-I6-HNI" customClass="MDCOutlinedTextField">
-                                <rect key="frame" x="20" y="324" width="374" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="6hZ-Fl-WcM"/>
-                                </constraints>
+                                <rect key="frame" x="20" y="308" width="374" height="34"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Size e.g 120cm X 23cm" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vBQ-eK-kuL" customClass="MDCOutlinedTextField">
-                                <rect key="frame" x="20" y="394" width="374" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="D9F-om-vZa"/>
-                                    <constraint firstAttribute="height" constant="50" id="qXj-C8-anO"/>
-                                </constraints>
+                                <rect key="frame" x="20" y="362" width="374" height="34"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -1300,7 +1287,7 @@
                             <constraint firstItem="Noc-lu-LLB" firstAttribute="leading" secondItem="6zY-EZ-zG2" secondAttribute="leading" constant="20" id="yxB-mc-COY"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Model" image="person.3" catalog="system" selectedImage="person.3.fill" id="CME-fZ-MgI"/>
+                    <tabBarItem key="tabBarItem" title="Model" image="person.2.circle" catalog="system" selectedImage="person.2.circle.fill" id="CME-fZ-MgI"/>
                     <connections>
                         <outlet property="collectionView" destination="Fcv-XO-MYV" id="69v-sa-S4y"/>
                         <outlet property="searchTF" destination="Noc-lu-LLB" id="rFa-OJ-yPZ"/>
@@ -1948,13 +1935,13 @@
     </scenes>
     <designables>
         <designable name="2tR-3w-qap">
-            <size key="intrinsicContentSize" width="141" height="34"/>
+            <size key="intrinsicContentSize" width="181" height="34"/>
         </designable>
         <designable name="Noc-lu-LLB">
-            <size key="intrinsicContentSize" width="145.5" height="34"/>
+            <size key="intrinsicContentSize" width="185.5" height="34"/>
         </designable>
         <designable name="Os4-Qg-FZW">
-            <size key="intrinsicContentSize" width="141" height="34"/>
+            <size key="intrinsicContentSize" width="181" height="34"/>
         </designable>
         <designable name="SSc-Xv-PtQ">
             <size key="intrinsicContentSize" width="770" height="309"/>
@@ -1990,8 +1977,8 @@
         <image name="paintpalette" catalog="system" width="128" height="105"/>
         <image name="paintpalette.fill" catalog="system" width="128" height="105"/>
         <image name="person" catalog="system" width="128" height="117"/>
-        <image name="person.3" catalog="system" width="128" height="62"/>
-        <image name="person.3.fill" catalog="system" width="128" height="61"/>
+        <image name="person.2.circle" catalog="system" width="128" height="121"/>
+        <image name="person.2.circle.fill" catalog="system" width="128" height="121"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="photo" catalog="system" width="128" height="93"/>
         <image name="placeholder" width="770" height="309"/>

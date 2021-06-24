@@ -7,21 +7,21 @@
 
 import UIKit
 import Firebase
+import MaterialComponents.MDCOutlinedTextField
 class NewclassesVC: UIViewController, UINavigationControllerDelegate {
   
     //MARK:-OUTLETS
     
     @IBOutlet weak var navigationView : UIView!
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var website: UITextField!
-    @IBOutlet weak var discription: UITextField!
-    @IBOutlet weak var phoneNumber: UITextField!
-    @IBOutlet weak var address: UITextField!
-    @IBOutlet weak var ownerName: UITextField!
-    @IBOutlet weak var nameOfInsitutue: UITextField!
+    @IBOutlet weak var website: MDCOutlinedTextField!
+    @IBOutlet weak var discription: MDCOutlinedTextField!
+    @IBOutlet weak var phoneNumber: MDCOutlinedTextField!
+    @IBOutlet weak var address: MDCOutlinedTextField!
+    @IBOutlet weak var ownerName: MDCOutlinedTextField!
+    @IBOutlet weak var nameOfInsitutue: MDCOutlinedTextField!
 
-    
-    
+
     
     //MARK:-Variables
     var flag = false
@@ -37,6 +37,7 @@ class NewclassesVC: UIViewController, UINavigationControllerDelegate {
         addgesture()
         let tap = UITapGestureRecognizer(target: self, action: #selector(imagePickerAction))
         self.imageView.addGestureRecognizer(tap)
+        setupTexfields()
        
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -44,6 +45,39 @@ class NewclassesVC: UIViewController, UINavigationControllerDelegate {
         navigationController?.navigationBar.isHidden = true
     }
     //MARK:-Helper Functions
+    
+    func setupTexfields(){
+        website.label.text = "Website"
+        discription.label.text = "Discription"
+        phoneNumber.label.text = "Contact"
+        address.label.text = "Address"
+        ownerName.label.text = "Owner Name"
+        nameOfInsitutue.label.text = "Name of Insitute"
+        
+        
+        website.sizeToFit()
+        discription.sizeToFit()
+        phoneNumber.sizeToFit()
+        address.sizeToFit()
+        ownerName.sizeToFit()
+        nameOfInsitutue.sizeToFit()
+        
+        website.containerRadius = 10
+        phoneNumber.containerRadius = 10
+        discription.containerRadius = 10
+        address.containerRadius = 10
+        ownerName.containerRadius = 10
+        nameOfInsitutue.containerRadius = 10
+        
+        website.verticalDensity = 40
+        phoneNumber.verticalDensity = 40
+        //discription.verticalDensity = 40
+        address.verticalDensity = 40
+        ownerName.verticalDensity = 40
+        nameOfInsitutue.verticalDensity = 40
+    }
+    
+    
     func addgesture(){
         let tap = UITapGestureRecognizer(target: self, action: #selector(openSheet))
         self.imageView.addGestureRecognizer(tap)

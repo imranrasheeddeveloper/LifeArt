@@ -15,36 +15,29 @@ import SkeletonView
 
 
 
-extension GalleryVC : UITableViewDataSource , SkeletonTableViewDataSource {
-   
+extension GalleryVC : UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return postArray.count
         
     }
-   
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            
+ 
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
+        cell.delegate = self
         
-        
-            let row = indexPath.row
-            let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
-            cell.delegate = self
-        
-         cell.artImaeView.sd_setImage(with:URL(string:postArray[indexPath.row].postData.image),
-                                          placeholderImage: UIImage(named: "placeholder.png"))
-         cell.artImaeView.sd_imageIndicator?.startAnimatingIndicator()
-        cell.artImaeView.isSkeletonable = true
-        cell.artImaeView.showAnimatedGradientSkeleton()
+        cell.artImaeView.sd_setImage(with:URL(string:postArray[indexPath.row].postData.image),
+                                     placeholderImage: UIImage(named: "placeholder.png"))
         cell.discriptionLbl.text = postArray[indexPath.row].postData.desc
         cell.postUserNameLbl.text = "\(userArray[indexPath.row].firstname) \(userArray[indexPath.row].lastname)"
         cell.postTimeLbl.text = postArray[indexPath.row].postData.time
-
+        
         cell.followedDate.text = "Followed on \(postArray[indexPath.row].postData.time)"
         cell.postTimeLbl.text = postArray[indexPath.row].postData.date
         cell.postProfileImage.sd_setImage(with:URL(string:userArray[indexPath.row].image),
                                           placeholderImage: UIImage(named: "placeholder.png"))
-    
+        
         cell.postCountryLbl.text = userArray[indexPath.row].country
         cell.likesLbl.text =  "\(postLikeCount[indexPath.row] ) Likes"
         cell.viewAllcomments.tag = cell.tag
@@ -52,10 +45,10 @@ extension GalleryVC : UITableViewDataSource , SkeletonTableViewDataSource {
         cell.viewAllcomments.setTitle("View all \(postNumberOfComments[indexPath.row] ) Comments", for: .normal)
         cell.totalCommentsLbl.text = "\(postNumberOfComments[indexPath.row] ) Comments"
         
-                if postArray.count == indexPath.row {
-                    cell.artImaeView.hideSkeleton(transition: .crossDissolve(.zero))
-                    
-                }
+        if postArray.count == indexPath.row {
+            cell.artImaeView.hideSkeleton(transition: .crossDissolve(.zero))
+            
+        }
         
         
         for postLike in postLikesArray{
@@ -71,23 +64,9 @@ extension GalleryVC : UITableViewDataSource , SkeletonTableViewDataSource {
                 }
             }
         }
-    
-            return cell
         
-}
-    
-    
-    
-    func numSections(in collectionSkeletonView: UITableView) -> Int {
-        return 1
-    }
-    
-    func collectionSkeletonView(_ skeletonView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return postArray.count
-    }
-    
-    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
-        return PostCell.CellIndentifier
+        return cell
+        
     }
     
     

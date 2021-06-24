@@ -65,7 +65,7 @@ func isInternetAvailable() -> Bool
 var commentsTag : String = ""
 var GlobaluserID : String = ""
 var postOwner :  String = ""
-let productID : String = "com.life.LifeArt.subscription"
+let productID : String = "com.lifeArt.app.sub"
  func currentTime() -> String {
     let date = Date()
     let calendar = Calendar.current

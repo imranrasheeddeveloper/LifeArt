@@ -67,7 +67,6 @@ extension ShoutsVc: UITableViewDelegate,UITableViewDataSource {
         cell.priceLbl.text = arrayOfAnnouncment[indexPath.row].salary
         cell.time.text = arrayOfAnnouncment[indexPath.row].time
         cell.titleLbl.text = arrayOfAnnouncment[indexPath.row].title
-        
         cell.salaryLbl.text = arrayOfAnnouncment[indexPath.row].salary
     return cell
     }

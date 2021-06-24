@@ -46,6 +46,10 @@
 		4F1ACBEB262E3041004B372E /* MyProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1ACBEA262E3041004B372E /* MyProfileVC.swift */; };
 		4F1ACC0C262E3D72004B372E /* FirebaseConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1ACC0B262E3D72004B372E /* FirebaseConstant.swift */; };
 		4F1ACC15262E3E8D004B372E /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1ACC14262E3E8D004B372E /* AuthService.swift */; };
+		4F1DBE6B2685140900623261 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F1DBE6A2685140900623261 /* GoogleService-Info.plist */; };
+		4F1DBE712685228F00623261 /* success.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F1DBE6F2685228F00623261 /* success.json */; };
+		4F1DBE722685228F00623261 /* PostLoading.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F1DBE702685228F00623261 /* PostLoading.json */; };
+		4F1DBE7A2685234100623261 /* log.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F1DBE792685234000623261 /* log.json */; };
 		4F1DF30B262ACFD80001A65B /* Notification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F1DF30A262ACFD80001A65B /* Notification.storyboard */; };
 		4F1DF313262AD4F80001A65B /* AnnouncmentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1DF311262AD4F80001A65B /* AnnouncmentsCell.swift */; };
 		4F1DF314262AD4F80001A65B /* AnnouncmentsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F1DF312262AD4F80001A65B /* AnnouncmentsCell.xib */; };
@@ -64,7 +68,6 @@
 		4F20CEA0261D020C00F8EE6F /* GalleryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F20CE9F261D020C00F8EE6F /* GalleryVC.swift */; };
 		4F27BB21263ECD300075F68C /* Announcements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F27BB20263ECD300075F68C /* Announcements.swift */; };
 		4F27BB26263ECE430075F68C /* AnnouncmentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F27BB25263ECE430075F68C /* AnnouncmentService.swift */; };
-		4F295EED268233C100C34163 /* log.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F295EEC268233C100C34163 /* log.json */; };
 		4F3D6D152632B912008A8C5E /* CommentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3D6D142632B912008A8C5E /* CommentsVC.swift */; };
 		4F42454326382B8D0026E1EF /* MenuPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F42454226382B8D0026E1EF /* MenuPresentationController.swift */; };
 		4F4666D1266B9D7F005DB79A /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4666D0266B9D7F005DB79A /* MenuViewController.swift */; };
@@ -78,7 +81,6 @@
 		4F597C70261E413C00E980C1 /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F597C6E261E413C00E980C1 /* PostCell.xib */; };
 		4F61333A265A7EC900DB7142 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F613338265A7EC900DB7142 /* PushNotificationManager.swift */; };
 		4F61333B265A7EC900DB7142 /* PushNotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F613339265A7EC900DB7142 /* PushNotificationSender.swift */; };
-		4F613350265A8CDF00DB7142 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4F61334F265A8CDF00DB7142 /* GoogleService-Info.plist */; };
 		4F6233452628C8CE0031987E /* PhotosVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6233442628C8CE0031987E /* PhotosVC.swift */; };
 		4F62334B2628C8F10031987E /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F6233492628C8F00031987E /* PhotoCell.swift */; };
 		4F62334C2628C8F10031987E /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F62334A2628C8F10031987E /* PhotoCell.xib */; };
@@ -102,6 +104,7 @@
 		4F8D33682643488100A695DD /* MYProfilePostDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8D33672643488100A695DD /* MYProfilePostDataSource.swift */; };
 		4F96C7052626F08B00DDACB2 /* TabarController + Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F96C7042626F08B00DDACB2 /* TabarController + Animations.swift */; };
 		4F96C70A2626F32700DDACB2 /* ProfessionalProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F96C7092626F32700DDACB2 /* ProfessionalProfileVC.swift */; };
+		4F979B8826847BA000F9795D /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F979B8726847BA000F9795D /* StoreKit.framework */; };
 		4F9A1F5C263581A700DB8AAD /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9A1F5B263581A700DB8AAD /* EditProfile.swift */; };
 		4F9A1F63263581D900DB8AAD /* EditViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9A1F61263581D900DB8AAD /* EditViewCell.swift */; };
 		4F9A1F64263581D900DB8AAD /* EditViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F9A1F62263581D900DB8AAD /* EditViewCell.xib */; };
@@ -227,6 +230,10 @@
 		4F1ACBEA262E3041004B372E /* MyProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileVC.swift; sourceTree = "<group>"; };
 		4F1ACC0B262E3D72004B372E /* FirebaseConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseConstant.swift; sourceTree = "<group>"; };
 		4F1ACC14262E3E8D004B372E /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		4F1DBE6A2685140900623261 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4F1DBE6F2685228F00623261 /* success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = success.json; sourceTree = "<group>"; };
+		4F1DBE702685228F00623261 /* PostLoading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PostLoading.json; sourceTree = "<group>"; };
+		4F1DBE792685234000623261 /* log.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = log.json; sourceTree = "<group>"; };
 		4F1DF30A262ACFD80001A65B /* Notification.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Notification.storyboard; sourceTree = "<group>"; };
 		4F1DF311262AD4F80001A65B /* AnnouncmentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncmentsCell.swift; sourceTree = "<group>"; };
 		4F1DF312262AD4F80001A65B /* AnnouncmentsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnnouncmentsCell.xib; sourceTree = "<group>"; };
@@ -245,7 +252,6 @@
 		4F20CE9F261D020C00F8EE6F /* GalleryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryVC.swift; sourceTree = "<group>"; };
 		4F27BB20263ECD300075F68C /* Announcements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Announcements.swift; sourceTree = "<group>"; };
 		4F27BB25263ECE430075F68C /* AnnouncmentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncmentService.swift; sourceTree = "<group>"; };
-		4F295EEC268233C100C34163 /* log.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = log.json; sourceTree = "<group>"; };
 		4F3D6D142632B912008A8C5E /* CommentsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsVC.swift; sourceTree = "<group>"; };
 		4F42454226382B8D0026E1EF /* MenuPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuPresentationController.swift; sourceTree = "<group>"; };
 		4F4666D0266B9D7F005DB79A /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -260,7 +266,6 @@
 		4F613338265A7EC900DB7142 /* PushNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
 		4F613339265A7EC900DB7142 /* PushNotificationSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationSender.swift; sourceTree = "<group>"; };
 		4F61333F265A806100DB7142 /* LifeArt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LifeArt.entitlements; sourceTree = "<group>"; };
-		4F61334F265A8CDF00DB7142 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4F6233442628C8CE0031987E /* PhotosVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosVC.swift; sourceTree = "<group>"; };
 		4F6233492628C8F00031987E /* PhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		4F62334A2628C8F10031987E /* PhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
@@ -284,6 +289,7 @@
 		4F8D33672643488100A695DD /* MYProfilePostDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MYProfilePostDataSource.swift; sourceTree = "<group>"; };
 		4F96C7042626F08B00DDACB2 /* TabarController + Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TabarController + Animations.swift"; sourceTree = "<group>"; };
 		4F96C7092626F32700DDACB2 /* ProfessionalProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessionalProfileVC.swift; sourceTree = "<group>"; };
+		4F979B8726847BA000F9795D /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		4F9A1F5B263581A700DB8AAD /* EditProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
 		4F9A1F61263581D900DB8AAD /* EditViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditViewCell.swift; sourceTree = "<group>"; };
 		4F9A1F62263581D900DB8AAD /* EditViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditViewCell.xib; sourceTree = "<group>"; };
@@ -358,6 +364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				08255854BCABF29EA1D30E20 /* Pods_LifeArt.framework in Frameworks */,
+				4F979B8826847BA000F9795D /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,8 +473,8 @@
 				4F154763261C94DA0092C2AE /* LaunchScreen.storyboard */,
 				4F154761261C94DA0092C2AE /* Assets.xcassets */,
 				4F154766261C94DA0092C2AE /* Info.plist */,
+				4F1DBE6A2685140900623261 /* GoogleService-Info.plist */,
 				4F15475E261C94D80092C2AE /* LifeArt.xcdatamodeld */,
-				4F61334F265A8CDF00DB7142 /* GoogleService-Info.plist */,
 			);
 			path = LifeArt;
 			sourceTree = "<group>";
@@ -771,12 +778,14 @@
 		4F6D3BB726821AC800A3A0CA /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
+				4F1DBE792685234000623261 /* log.json */,
+				4F1DBE702685228F00623261 /* PostLoading.json */,
+				4F1DBE6F2685228F00623261 /* success.json */,
 				15E9D920268387AC004C0F05 /* noannouncement.json */,
 				15A64D3B268384E000EE07B1 /* notificationEmpty.json */,
 				15A64D3626837FB200EE07B1 /* AccountCreatetedSuccess.json */,
 				4F6D3BCA26821C7800A3A0CA /* notfications.json */,
 				4F6D3BC526821C7100A3A0CA /* login.json */,
-				4F295EEC268233C100C34163 /* log.json */,
 				4F6D3BC326821C6F00A3A0CA /* loading.json */,
 				15A64D2126835ECD00EE07B1 /* error.json */,
 			);
@@ -1059,6 +1068,7 @@
 		AE27D13FDBDBE5D1ACD9C1BB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4F979B8726847BA000F9795D /* StoreKit.framework */,
 				83B13EF3164B65E354B4D4F5 /* Pods_LifeArt.framework */,
 				D1A9C9DDBCC5166337F04AE1 /* Pods_LifeArt_LifeArtUITests.framework */,
 				EEFD2B13ED1E6E8EB03734BE /* Pods_LifeArtTests.framework */,
@@ -1183,16 +1193,15 @@
 				15A64D3726837FB200EE07B1 /* AccountCreatetedSuccess.json in Resources */,
 				4F62334C2628C8F10031987E /* PhotoCell.xib in Resources */,
 				4F6D3BCB26821C7800A3A0CA /* notfications.json in Resources */,
+				4F1DBE7A2685234100623261 /* log.json in Resources */,
 				4F8B1BA1262AF5AE0082C46A /* CommentsCell.xib in Resources */,
 				4FF24BD126408C3F00BBCD53 /* SuggestedArtistCell.xib in Resources */,
 				4FD3D552261FA25E006C0CCE /* SuggestedParentCell.xib in Resources */,
 				4FD5E9BB263C9B0E007E0AB4 /* CountryCallingCode.json in Resources */,
 				4FB244A7261DE1BC00441E6B /* ArtistCategories.xib in Resources */,
-				4F613350265A8CDF00DB7142 /* GoogleService-Info.plist in Resources */,
 				4FB3689B262B262C00BA31B3 /* Payment.storyboard in Resources */,
 				15A64D2226835ECD00EE07B1 /* error.json in Resources */,
 				4F9A1F64263581D900DB8AAD /* EditViewCell.xib in Resources */,
-				4F295EED268233C100C34163 /* log.json in Resources */,
 				4F597C70261E413C00E980C1 /* PostCell.xib in Resources */,
 				4F9BF5122637F793007E386E /* Settings.storyboard in Resources */,
 				4F9BF5332637F970007E386E /* PersonalDetailCell.xib in Resources */,
@@ -1202,12 +1211,15 @@
 				4F7B5F5E262AC52800F61136 /* AlertView.xib in Resources */,
 				4F9BF5482638136E007E386E /* MenuSheet.xib in Resources */,
 				4F597C64261E3E8E00E980C1 /* GalleryHeaderCell.xib in Resources */,
+				4F1DBE712685228F00623261 /* success.json in Resources */,
 				4F9BF5342637F970007E386E /* SettingsCell.xib in Resources */,
 				4F1ACBCF262E1D8F004B372E /* ProfilePostCell.xib in Resources */,
 				4F6D3BC626821C7100A3A0CA /* login.json in Resources */,
+				4F1DBE6B2685140900623261 /* GoogleService-Info.plist in Resources */,
 				4F1DF31C262AD7EF0001A65B /* NotificationCell.xib in Resources */,
 				15A64D3C268384E000EE07B1 /* notificationEmpty.json in Resources */,
 				4F15475D261C94D80092C2AE /* Main.storyboard in Resources */,
+				4F1DBE722685228F00623261 /* PostLoading.json in Resources */,
 				4F20CE96261CF9EC00F8EE6F /* Home.storyboard in Resources */,
 				4F1DF30B262ACFD80001A65B /* Notification.storyboard in Resources */,
 				15A64D2A268360F600EE07B1 /* Alerts.storyboard in Resources */,
@@ -1631,7 +1643,7 @@
 				CODE_SIGN_ENTITLEMENTS = LifeArt/LifeArt.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = DGBFBTC9YS;
+				DEVELOPMENT_TEAM = NF2GHJKNG8;
 				INFOPLIST_FILE = LifeArt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1639,7 +1651,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.life.LifeArt212;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lifeArt.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1656,7 +1668,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = DGBFBTC9YS;
+				DEVELOPMENT_TEAM = NF2GHJKNG8;
 				INFOPLIST_FILE = LifeArt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1664,7 +1676,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.life.LifeArt212;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lifeArt.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

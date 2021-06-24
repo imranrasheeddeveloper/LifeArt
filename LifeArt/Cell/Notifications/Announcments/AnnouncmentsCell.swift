@@ -15,11 +15,10 @@ class AnnouncmentsCell: UITableViewCell {
     @IBOutlet weak var priceLbl: UILabel!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var desLbl: UILabel!
-    @IBOutlet weak var typeView: UIView!
+  //  @IBOutlet weak var typeView: UIView!
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var clockView: UIView!
-    @IBOutlet weak var amountView: UIView!
-    
+   // @IBOutlet weak var amountView: UIView!
     @IBOutlet weak var secondView: UIView!
     @IBOutlet weak var salaryLbl: UILabel!
     @IBOutlet weak var titleOfType: UILabel!
@@ -29,7 +28,7 @@ class AnnouncmentsCell: UITableViewCell {
           discriptionView.dropShadow()
 //        typeView.dropShadow()
        clockView.dropShadow()
-amountView.dropShadow()
+//amountView.dropShadow()
           secondView.dropShadow()
     }
 

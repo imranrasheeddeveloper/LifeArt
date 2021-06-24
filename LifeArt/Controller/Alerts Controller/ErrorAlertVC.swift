@@ -12,11 +12,13 @@ class ErrorAlertVC: UIViewController {
  
     @IBOutlet weak var alertView : UIView!
     @IBOutlet weak var errorAnmationView : UIView!
+    @IBOutlet weak var errorLbl : UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         addLottieAnimationOnAlert(string: "error", view: errorAnmationView)
-       
+        
     }
     override func viewWillDisappear(_ animated: Bool) {
         removeLottieAnimation()

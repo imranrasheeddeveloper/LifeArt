@@ -47,8 +47,6 @@ class PostCell: UITableViewCell{
     override func awakeFromNib() {
         super.awakeFromNib()
         bgView.viewShadow()
-//        bgView.isSkeletonable = true
-//        bgView.showSkeleton()
         
     }
     

@@ -35,7 +35,8 @@ class GalleryVC: UIViewController , postCellDelegate{
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         setStatusBar()
-       // hideKeyboard()
+        tableview.isHidden = true
+        addLottieAnimation(string: "PostLoading", view: self.view)
         showAlert()
         ConfigureViews()
         refreshControl = UIRefreshControl()
@@ -120,10 +121,6 @@ class GalleryVC: UIViewController , postCellDelegate{
     }
     
     
-    @IBAction func messageBtn(_ sender: Any) {
-    }
-    
-    
     @IBAction func postYourArtHere(_ sender: Any) {
         self.pushToController(from: .Home, identifier: .CreatePostVC)
     }
@@ -146,6 +143,8 @@ class GalleryVC: UIViewController , postCellDelegate{
                             postLikeCount.append(String(count))
                             postNumberOfComments.append(String(commentsCount))
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                                    tableview.isHidden = false
+                                    removeLottieAnimation()
                                     self.tableview.reloadData()
                                     self.refreshControl.endRefreshing()
                                 })

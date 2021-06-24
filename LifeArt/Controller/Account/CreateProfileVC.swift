@@ -6,18 +6,20 @@
 //
 
 import UIKit
-
+import MaterialComponents.MDCOutlinedTextField
 class CreateProfileVC: UIViewController {
     
     @IBOutlet weak var topHeaderView : UIView!
     @IBOutlet weak var profileImage  : UIImageView!
-    @IBOutlet weak var firstNameTF  : UITextField!
-    @IBOutlet weak var lastNameTF  : UITextField!
-    @IBOutlet weak var emailTF  : UITextField!
-    @IBOutlet weak var countryTF  : UITextField!
-    @IBOutlet weak var cityTF  : UITextField!
-    @IBOutlet weak var phoneNoTF  : UITextField!
-    @IBOutlet weak var websiteTF  : UITextField!
+    @IBOutlet weak var firstNameTF  : MDCOutlinedTextField!
+    @IBOutlet weak var lastNameTF  : MDCOutlinedTextField!
+    @IBOutlet weak var emailTF  : MDCOutlinedTextField!
+    @IBOutlet weak var countryTF  : MDCOutlinedTextField!
+    @IBOutlet weak var cityTF  : MDCOutlinedTextField!
+    @IBOutlet weak var phoneNoTF  : MDCOutlinedTextField!
+    @IBOutlet weak var websiteTF  : MDCOutlinedTextField!
+    
+    
     
     var password  : String!
     var firstName  : String!
@@ -49,12 +51,54 @@ class CreateProfileVC: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleAddProfileImage))
         profileImage.addGestureRecognizer(tap)
         imagePicker.delegate = self
-        
+        setupTextFileds()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
     }
+    
+    
+    //MARK:- Helper Functions
+    
+    func setupTextFileds() {
+        emailTF.label.text = "Email"
+        firstNameTF.label.text = "First Name"
+        lastNameTF.label.text = "Last Name"
+        phoneNoTF.label.text = "Contact"
+        countryTF.label.text = "Country"
+        cityTF.label.text = "City"
+        websiteTF.label.text = "Website"
+        
+        
+        emailTF.sizeToFit()
+        firstNameTF.sizeToFit()
+        lastNameTF.sizeToFit()
+        phoneNoTF.sizeToFit()
+        countryTF.sizeToFit()
+        cityTF.sizeToFit()
+        websiteTF.sizeToFit()
+        
+        
+        emailTF.containerRadius = 10
+        firstNameTF.containerRadius = 10
+        lastNameTF.containerRadius = 10
+        phoneNoTF.containerRadius = 10
+        countryTF.containerRadius = 10
+        cityTF.containerRadius = 10
+        websiteTF.containerRadius = 10
+        
+        emailTF.verticalDensity = 40
+        phoneNoTF.verticalDensity = 40
+        firstNameTF.verticalDensity = 40
+        lastNameTF.verticalDensity = 40
+        countryTF.verticalDensity = 40
+        cityTF.verticalDensity = 40
+        websiteTF.verticalDensity = 40
+        
+    }
+    
+    
     
     @IBAction func continueButtonAction(_ sender : UIButton){
         createAccount()
@@ -76,9 +120,9 @@ class CreateProfileVC: UIViewController {
                         
                         AppDelegate.shared.removeLoadIndIndicator()
                         DispatchQueue.main.async {
-                            addLottieAnimation(string: "AccountCreatetedSuccess", view: self.view)
+                            addLottieAnimation(string: "success", view: self.view)
                         }
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                             
                             self.pushToController(from: .Home , identifier: .TabBar)
                         }

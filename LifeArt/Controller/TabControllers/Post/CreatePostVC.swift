@@ -8,17 +8,21 @@
 
 import UIKit
 import Firebase
+import MaterialComponents.MDCOutlinedTextField
+
 class CreatePostVC: UIViewController {
     
     
     //MARK:- Outlets
-    @IBOutlet weak var postTitleTF: UITextField!
+    @IBOutlet weak var postTitleTF: MDCOutlinedTextField!
     @IBOutlet weak var textView : UITextView!
     @IBOutlet weak var NavigationBarView : UIView!
     @IBOutlet weak var bottomView : UIView!
     @IBOutlet weak var selectedImage : UIImageView!
-    @IBOutlet weak var meduimTF: UITextField!
-    @IBOutlet weak var sizeTF: UITextField!
+    @IBOutlet weak var meduimTF: MDCOutlinedTextField!
+    @IBOutlet weak var sizeTF: MDCOutlinedTextField!
+    
+    
     
     
     //MARK:- variable declaration
@@ -44,13 +48,29 @@ class CreatePostVC: UIViewController {
             textView.layer.borderColor = UIColor.gray.cgColor
         }
         checkUserType()
+        setupTextfileds()
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
         fetchUser()
         
     }
-    
+    func setupTextfileds() {
+        postTitleTF.label.text = "Title"
+        meduimTF.label.text = "Meduim"
+        sizeTF.label.text  = "Size"
+        postTitleTF.sizeToFit()
+        meduimTF.sizeToFit()
+        sizeTF.sizeToFit()
+        postTitleTF.containerRadius = 10
+        sizeTF.containerRadius  = 10
+        postTitleTF.containerRadius = 10
+        
+        
+        postTitleTF.verticalDensity = 40
+        meduimTF.verticalDensity = 40
+        sizeTF.verticalDensity = 40
+    }
     
     //MARK:- Helper Functions
     

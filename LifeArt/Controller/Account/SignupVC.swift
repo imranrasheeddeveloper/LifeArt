@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import MaterialComponents.MDCOutlinedTextField
 protocol whoAreYouDelegate {
     func whoAreYouData(categories : [String])
 }
@@ -17,12 +17,13 @@ class SignupVC: UIViewController , UITextFieldDelegate, whoAreYouDelegate{
     
     @IBOutlet weak var loginLbl: UILabel!
     @IBOutlet weak var userType : UISegmentedControl!
-    @IBOutlet weak var firstNameTF  : UITextField!
-    @IBOutlet weak var lastNameTF  : UITextField!
-    @IBOutlet weak var emailTF  : UITextField!
-    @IBOutlet weak var passwordTF  : UITextField!
-    @IBOutlet weak var phoneTF  : UITextField!
-    @IBOutlet weak var whoAreYou  : UITextField!
+    @IBOutlet weak var firstNameTF  : MDCOutlinedTextField!
+    @IBOutlet weak var lastNameTF  : MDCOutlinedTextField!
+    @IBOutlet weak var emailTF  : MDCOutlinedTextField!
+    @IBOutlet weak var passwordTF  : MDCOutlinedTextField!
+    @IBOutlet weak var phoneTF  : MDCOutlinedTextField!
+    @IBOutlet weak var whoAreYou  : MDCOutlinedTextField!
+    
     
     //MARK:- Variables
     var heightConstraint:NSLayoutConstraint!
@@ -39,18 +40,56 @@ class SignupVC: UIViewController , UITextFieldDelegate, whoAreYouDelegate{
         self.navigationController?.navigationBar.isHidden = true
         hideKeyboard()
         setStatusBar()
+        setupTextFileds()
         whoAreYou.delegate = self
         loginLbl.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: self, action: #selector(login))
         loginLbl.addGestureRecognizer(tap)
-        //self.whoAreYou.inputView = UIView()
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
-//        selectData.forEach({
-//            vc.whoAreYou.text = $0
-//        })
+
     }
+    
+    
+    //MARK:- Helper Function
+    
+    func setupTextFileds() {
+        emailTF.label.text = "Email"
+        passwordTF.label.text = "Password"
+        firstNameTF.label.text = "First Name"
+        lastNameTF.label.text = "Last Name"
+        phoneTF.label.text = "Contact"
+        whoAreYou.label.text = "Who you Are?"
+        
+        
+        emailTF.sizeToFit()
+        passwordTF.sizeToFit()
+        firstNameTF.sizeToFit()
+        lastNameTF.sizeToFit()
+        phoneTF.sizeToFit()
+        whoAreYou.sizeToFit()
+        
+        
+        emailTF.containerRadius = 10
+        passwordTF.containerRadius = 10
+        firstNameTF.containerRadius = 10
+        lastNameTF.containerRadius = 10
+        phoneTF.containerRadius = 10
+        whoAreYou.containerRadius = 10
+        
+        
+        emailTF.verticalDensity = 40
+        passwordTF.verticalDensity = 40
+        phoneTF.verticalDensity = 40
+        firstNameTF.verticalDensity = 40
+        lastNameTF.verticalDensity = 40
+        whoAreYou.verticalDensity = 40
+        
+        
+    }
+    
     
     
     //MARK:- Actions

@@ -164,6 +164,19 @@ struct PostService{
         completion(postLikeArray)
        }
    }
+    
+    func deletePost(childID : String , completional : @escaping(Bool) -> Void) {
+    
+        REF_Posts.child("artists").child(childID).removeValue { error, _ in
+            if error != nil {
+                print(error)
+                completional(false)
+            }
+            else{
+                completional(true)
+            }
+        }
+    }
 }
 
 struct PostLikes {

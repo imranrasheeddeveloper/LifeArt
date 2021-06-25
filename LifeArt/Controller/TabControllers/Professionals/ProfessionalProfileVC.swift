@@ -236,6 +236,10 @@ extension ProfessionalProfileVC : UICollectionViewDelegateFlowLayout{
     }
 }
 extension ProfessionalProfileVC : postCellDelegate{
+    func delete() {
+        fetchFeeds()
+    }
+    
    
     func report(tag: Int) {
         //
@@ -258,5 +262,9 @@ extension ProfessionalProfileVC : postCellDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 400
     }
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
+    }
+    
 }
 

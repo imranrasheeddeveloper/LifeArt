@@ -25,7 +25,12 @@ class ArtistVC: UIViewController, UITextFieldDelegate {
         collectionView.dataSource  = self
         hideKeyboard()
         collectionView.register(UINib(nibName: "SuggestedCell", bundle: nil), forCellWithReuseIdentifier:  "SuggestedCell")
-
+        initiateRefreshData()
+        fetchData()
+       
+    }
+    
+    func fetchData() {
         UserService.shared.fetchArtist { [self] (user) in
                 arrayofModel = user
                 DispatchQueue.main.async {
@@ -128,10 +133,20 @@ extension ArtistVC :  UICollectionViewDelegate, UICollectionViewDataSource ,UICo
     
     
     
-    func searchBarSearchButtonClicked(_ searchBar: UITextField){
-        
-        
-    }
-    
+    func initiateRefreshData()-> Void {
+           let refreshControl = UIRefreshControl()
+           let title = NSLocalizedString("Refreshing Artist...", comment: "Pull to refresh")
+           refreshControl.attributedTitle = NSAttributedString(string: title)
+           refreshControl.tintColor = UIColor(named: "colorPrimary")
+           refreshControl.addTarget(self, action: #selector(refreshOptions(sender:)),
+                                    for: .valueChanged)
+        self.collectionView.refreshControl = refreshControl
+       }
+
+       @objc private func refreshOptions(sender: UIRefreshControl) {
+           arrayofModel.removeAll()
+           fetchData()
+           sender.endRefreshing()
+       }
 }
 

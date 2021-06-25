@@ -26,7 +26,7 @@ struct User {
         self.uid = uid
         self.bio = dictionary["bio"] as? String ?? ""
         self.city = dictionary["city"] as? String ?? ""
-        self.country = dictionary["country"] as? String ?? ""
+        self.country = dictionary[" "] as? String ?? ""
         self.email = dictionary["email"] as? String ?? ""
         self.firstname = dictionary["firstname"] as? String ?? ""
         self.lastname = dictionary["lastname"] as? String ?? ""
@@ -35,7 +35,7 @@ struct User {
         self.website = dictionary["website"] as? String ?? ""
         self.image = dictionary["image"] as? String ?? ""
         self.type = dictionary["type"] as? String ?? ""
-        self.contractNo = dictionary["contractNo"] as? String ?? ""
+        self.contractNo = dictionary["phone"] as? String ?? ""
     }
 }
 
@@ -47,6 +47,7 @@ struct UserModel {
     let image: String
     let lastname, password, phone, website , type: String
     let contractNo : String
+    let lat , lon : Double
 
     init(dictionary: [String: Any]) {
         self.user = dictionary["user"] as? String ?? ""
@@ -62,6 +63,8 @@ struct UserModel {
         self.image = dictionary["image"] as? String ?? ""
         self.type = dictionary["type"] as? String ?? ""
         self.contractNo = dictionary["contractNo"] as? String ?? ""
+        self.lat = dictionary["lat"] as? Double ??  0.00
+        self.lon = dictionary["lon"] as? Double ?? 0.00
         
     }
 }

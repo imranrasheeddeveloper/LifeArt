@@ -27,7 +27,5 @@ extension MyProfileVC : UITableViewDataSource{
         cell.selectionStyle = .none
         return cell
     }
-    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
-        return PostCell.CellIndentifier
-    }
+
 }

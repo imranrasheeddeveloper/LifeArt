@@ -26,19 +26,18 @@ extension GalleryVC : UITableViewDataSource {
  
         let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
         cell.delegate = self
-        
+        cell.selectionStyle = .none
         cell.artImaeView.sd_setImage(with:URL(string:postArray[indexPath.row].postData.image),
                                      placeholderImage: UIImage(named: "placeholder.png"))
         cell.discriptionLbl.text = postArray[indexPath.row].postData.desc
         cell.postUserNameLbl.text = "\(userArray[indexPath.row].firstname) \(userArray[indexPath.row].lastname)"
         cell.postTimeLbl.text = postArray[indexPath.row].postData.time
         
-        cell.followedDate.text = "Followed on \(postArray[indexPath.row].postData.time)"
-        cell.postTimeLbl.text = postArray[indexPath.row].postData.date
+        cell.followedDate.text = (postArray[indexPath.row].postData.medium)
+        cell.postTimeLbl.text = "\(postArray[indexPath.row].postData.date)  at \(postArray[indexPath.row].postData.time)"
         cell.postProfileImage.sd_setImage(with:URL(string:userArray[indexPath.row].image),
                                           placeholderImage: UIImage(named: "placeholder.png"))
-        
-        cell.postCountryLbl.text = userArray[indexPath.row].country
+        cell.postCountryLbl.text = (postArray[indexPath.row].postData.size)
         cell.likesLbl.text =  "\(postLikeCount[indexPath.row] ) Likes"
         cell.viewAllcomments.tag = cell.tag
         cell.likeButton.tag = cell.tag

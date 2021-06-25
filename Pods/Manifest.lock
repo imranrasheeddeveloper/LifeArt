@@ -256,6 +256,7 @@ DEPENDENCIES:
   - "MaterialComponents/TextControls+FilledTextFields"
   - "MaterialComponents/TextControls+OutlinedTextAreas"
   - "MaterialComponents/TextControls+OutlinedTextFields"
+  - MDFInternationalization
   - MessageKit
   - SDWebImage (~> 5.0)
   - SkeletonView
@@ -325,6 +326,6 @@ SPEC CHECKSUMS:
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SkeletonView: cac18a3ac4f893b09d99e65072d806ef08377aae
 
-PODFILE CHECKSUM: 8d64949ac8f09b33751da7b9baf09729764f7f16
+PODFILE CHECKSUM: b376cbb261f4cbe636ae6568e52f7a56d3bd1147
 
 COCOAPODS: 1.10.1

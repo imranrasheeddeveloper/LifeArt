@@ -61,19 +61,8 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mappin.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="7ed-oW-z5v">
-                                <rect key="frame" x="168.5" y="36" width="16" height="15"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="16" id="KQn-q8-OTU"/>
-                                    <constraint firstAttribute="width" constant="16" id="OHX-V0-RWU"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Germany" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zz7-wk-PPT">
-                                <rect key="frame" x="189.5" y="36" width="51" height="14.5"/>
+                                <rect key="frame" x="193.5" y="36" width="51" height="14.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" systemColor="placeholderTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -219,13 +208,11 @@
                         <constraints>
                             <constraint firstItem="9bg-xY-H0I" firstAttribute="centerY" secondItem="RIj-zG-9y6" secondAttribute="centerY" id="2TB-Pq-a8O"/>
                             <constraint firstItem="NWS-mB-t3z" firstAttribute="leading" secondItem="9bg-xY-H0I" secondAttribute="leading" id="3R4-Jt-kXv"/>
-                            <constraint firstItem="zz7-wk-PPT" firstAttribute="leading" secondItem="7ed-oW-z5v" secondAttribute="trailing" constant="5" id="3g5-7k-nKb"/>
-                            <constraint firstItem="7ed-oW-z5v" firstAttribute="centerY" secondItem="RhJ-Mr-xCO" secondAttribute="centerY" id="53A-xz-TfV"/>
                             <constraint firstItem="bAU-V2-1DM" firstAttribute="leading" secondItem="krc-AA-L2X" secondAttribute="trailing" constant="10" id="8os-IB-ExE"/>
                             <constraint firstItem="DUv-bO-q1y" firstAttribute="top" secondItem="S6M-4g-ok4" secondAttribute="bottom" constant="8" id="9AK-HR-puR"/>
                             <constraint firstItem="krc-AA-L2X" firstAttribute="top" secondItem="KAR-3J-A2z" secondAttribute="top" constant="10" id="9NV-uf-0Tq"/>
-                            <constraint firstItem="zz7-wk-PPT" firstAttribute="centerY" secondItem="7ed-oW-z5v" secondAttribute="centerY" id="BWj-mK-JgJ"/>
                             <constraint firstItem="DUv-bO-q1y" firstAttribute="leading" secondItem="KAR-3J-A2z" secondAttribute="leading" constant="20" id="DaS-MC-KTe"/>
+                            <constraint firstItem="zz7-wk-PPT" firstAttribute="centerY" secondItem="RhJ-Mr-xCO" secondAttribute="centerY" id="Hfo-RM-qou"/>
                             <constraint firstItem="RhJ-Mr-xCO" firstAttribute="top" secondItem="bAU-V2-1DM" secondAttribute="bottom" constant="10" id="ISU-fh-9BU"/>
                             <constraint firstItem="RIj-zG-9y6" firstAttribute="leading" secondItem="EJG-5i-JcI" secondAttribute="trailing" constant="10" id="PCe-m1-4q5"/>
                             <constraint firstItem="ZTF-8I-xZJ" firstAttribute="top" secondItem="Ivi-Kv-2mz" secondAttribute="bottom" constant="5" id="QGQ-lw-izR"/>
@@ -233,6 +220,7 @@
                             <constraint firstItem="krc-AA-L2X" firstAttribute="leading" secondItem="KAR-3J-A2z" secondAttribute="leading" constant="20" id="SLL-zg-nMg"/>
                             <constraint firstItem="Ern-Ux-KHS" firstAttribute="top" secondItem="NWS-mB-t3z" secondAttribute="bottom" constant="8" id="SZC-dg-UeG"/>
                             <constraint firstItem="ZTF-8I-xZJ" firstAttribute="leading" secondItem="Ivi-Kv-2mz" secondAttribute="leading" id="TTk-mh-9gB"/>
+                            <constraint firstItem="S6M-4g-ok4" firstAttribute="top" secondItem="RhJ-Mr-xCO" secondAttribute="bottom" constant="6" id="UQr-me-gc6"/>
                             <constraint firstItem="RIj-zG-9y6" firstAttribute="centerY" secondItem="EJG-5i-JcI" secondAttribute="centerY" id="Uia-fc-Z2g"/>
                             <constraint firstItem="qb6-vc-ikQ" firstAttribute="top" secondItem="EJG-5i-JcI" secondAttribute="bottom" constant="10" id="hWS-od-PGN"/>
                             <constraint firstItem="Ivi-Kv-2mz" firstAttribute="leading" secondItem="D6n-dx-AFx" secondAttribute="leading" id="lED-wc-t6S"/>
@@ -240,6 +228,7 @@
                             <constraint firstItem="bAU-V2-1DM" firstAttribute="top" secondItem="krc-AA-L2X" secondAttribute="top" id="o0P-2R-q4M"/>
                             <constraint firstAttribute="bottom" secondItem="NWS-mB-t3z" secondAttribute="bottom" constant="38" id="ozn-J2-yB9"/>
                             <constraint firstItem="9bg-xY-H0I" firstAttribute="top" secondItem="DUv-bO-q1y" secondAttribute="bottom" constant="5" id="pbe-c7-eDC"/>
+                            <constraint firstItem="zz7-wk-PPT" firstAttribute="leading" secondItem="RhJ-Mr-xCO" secondAttribute="trailing" constant="30" id="qlY-sJ-ac5"/>
                             <constraint firstItem="Ern-Ux-KHS" firstAttribute="trailing" secondItem="NWS-mB-t3z" secondAttribute="trailing" id="rAH-Fh-zXS"/>
                             <constraint firstItem="Ivi-Kv-2mz" firstAttribute="top" secondItem="qb6-vc-ikQ" secondAttribute="bottom" constant="10" id="rUw-wH-pem"/>
                             <constraint firstItem="EJG-5i-JcI" firstAttribute="leading" secondItem="DUv-bO-q1y" secondAttribute="leading" id="tMZ-HI-LaJ"/>
@@ -248,9 +237,7 @@
                             <constraint firstItem="9bg-xY-H0I" firstAttribute="trailing" secondItem="DUv-bO-q1y" secondAttribute="trailing" id="x2K-Ib-VGp"/>
                             <constraint firstItem="EJG-5i-JcI" firstAttribute="top" secondItem="DUv-bO-q1y" secondAttribute="bottom" constant="5" id="xVr-5D-su7"/>
                             <constraint firstAttribute="trailing" secondItem="ZTF-8I-xZJ" secondAttribute="trailing" constant="80" id="yJA-SU-uTy"/>
-                            <constraint firstItem="7ed-oW-z5v" firstAttribute="leading" secondItem="RhJ-Mr-xCO" secondAttribute="trailing" constant="5" id="yJZ-ng-FUl"/>
                             <constraint firstAttribute="trailing" secondItem="Ivi-Kv-2mz" secondAttribute="trailing" constant="20" id="ycI-of-Hmg"/>
-                            <constraint firstItem="S6M-4g-ok4" firstAttribute="top" secondItem="7ed-oW-z5v" secondAttribute="bottom" constant="5" id="z3r-kt-qTy"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
@@ -301,7 +288,6 @@
         <image name="art1" width="1140" height="641"/>
         <image name="bookmark" catalog="system" width="112" height="128"/>
         <image name="heart" catalog="system" width="128" height="109"/>
-        <image name="mappin.circle" catalog="system" width="128" height="121"/>
         <image name="message" catalog="system" width="128" height="113"/>
         <image name="report" width="512" height="512"/>
         <systemColor name="labelColor">

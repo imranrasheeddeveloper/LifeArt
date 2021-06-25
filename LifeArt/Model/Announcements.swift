@@ -10,6 +10,7 @@ import Foundation
 struct Announcements {
     let date, des, name, salary: String
     let time, title, user: String
+    let lat , lon : Double
     
     init(dictionary: [String: Any]) {
         self.date = dictionary["date"] as? String ?? ""
@@ -19,7 +20,9 @@ struct Announcements {
         self.time = dictionary["time"] as! String
         self.title = dictionary["title"] as! String
         self.user = dictionary["user"] as! String
-    }
+        self.lat = dictionary["lat"] as! Double
+        self.lon = dictionary["lon"] as! Double
+     }
 }
 
 struct NotificationModel {

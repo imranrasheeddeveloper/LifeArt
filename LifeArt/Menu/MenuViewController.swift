@@ -10,7 +10,7 @@ import UIKit
 
 class MenuViewController: UITableViewController {
 
-    var array = ["Edit Post" , "Delete Post" , "Report Post"]
+    var array = ["Delete Post"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +33,6 @@ class MenuViewController: UITableViewController {
         cell.textLabel?.font = .boldSystemFont(ofSize: 17)
         cell.textLabel?.textColor = .black
         cell.backgroundColor = .clear
-        //cell.accessoryType = .disclosureIndicator
         cell.selectionStyle = .none
         return cell
     }
@@ -44,14 +43,7 @@ class MenuViewController: UITableViewController {
         switch indexPath.row {
         case 0:
             self.dismiss(animated: true, completion: nil)
-            menuClick = .editPost
-        case 1:
-            self.dismiss(animated: true, completion: nil)
             menuClick = .deletePost
-           
-        case 2:
-            self.dismiss(animated: true, completion: nil)
-            menuClick = .reportPost
         default:
             return
         }

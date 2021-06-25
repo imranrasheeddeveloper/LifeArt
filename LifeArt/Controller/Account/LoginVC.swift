@@ -82,19 +82,28 @@ class LoginVC: UIViewController {
     }
     //MARK:- API Calling
     func loginUser() {
+        
+       let  dimmedView = UIView()
+     
+        dimmedView.backgroundColor = .black
+        dimmedView.alpha = 0.0
+        self.view.addSubview(dimmedView)
+        dimmedView.frame = self.view.bounds
+        dimmedView.alpha = 0.4
         addLottieAnimation(string: "log", view: self.view)
+        
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: { [self] in
             AuthService.shared.logUserIn(email: emailTF.text!, password: passwordTF.text!) { (result, error) in
                 if let error = error {
                     print("DEBUG: Error is -> \(error.localizedDescription)")
                     self.presentAlertController(withTitle: "Error", message: error.localizedDescription)
+                    dimmedView.removeFromSuperview()
                     removeLottieAnimation()
+                    
                     return
                 }
                 removeLottieAnimation()
-                
-            
-                
                 self.pushToController(from: .Home, identifier: .TabBar)
             }
         

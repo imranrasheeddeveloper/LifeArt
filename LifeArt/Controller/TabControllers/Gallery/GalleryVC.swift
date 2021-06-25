@@ -11,7 +11,7 @@ import SkeletonView
 import Firebase
 import CoreLocation
 protocol GalleryVCDelegate {
-    func reportThePost()
+    func delete()
 }
 
 
@@ -35,8 +35,6 @@ class GalleryVC: UIViewController , postCellDelegate{
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         setStatusBar()
-        tableview.isHidden = true
-        addLottieAnimation(string: "PostLoading", view: self.view)
         showAlert()
         ConfigureViews()
         refreshControl = UIRefreshControl()
@@ -51,6 +49,7 @@ class GalleryVC: UIViewController , postCellDelegate{
         super.viewWillAppear(animated)
         setStatusBar()
         hideKeyboard()
+        postLikesArray.removeAll()
         PostService.shared.fetchLikesGallery { [self] (array) in
             postLikesArray = array
             fetchFeeds()
@@ -59,7 +58,9 @@ class GalleryVC: UIViewController , postCellDelegate{
     @objc func refresh(_ sender: Any) {
         PostService.shared.fetchLikes { [self] in
             fetchFeeds()
+            self.refreshControl.endRefreshing()
         }
+        
   
     }
     
@@ -127,11 +128,12 @@ class GalleryVC: UIViewController , postCellDelegate{
     //MARK:-API
     
     func fetchFeeds(){
+        tableview.isHidden = true
+        addLottieAnimation(string: "PostLoading", view: self.view)
         postArray.removeAll()
         userArray.removeAll()
         postLikeCount.removeAll()
         postNumberOfComments.removeAll()
-        postLikesArray.removeAll()
         PostService.shared.fetchPost { [self] (post) in
             self.postArray = post
             arrayOfPosts = post
@@ -160,6 +162,11 @@ class GalleryVC: UIViewController , postCellDelegate{
 
 //MARK:- Post Cell delegate
 extension GalleryVC {
+    
+    func delete() {
+        self.fetchFeeds()
+    }
+    
     func comments(tag: Int) {
         print(tag)
         commentsTag = postArray[tag].key
@@ -180,12 +187,3 @@ extension GalleryVC {
     
 }
 
-
-//extension GalleryVC : CLLocationManagerDelegate {
-////    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-////        let userLocation :CLLocation = locations[0] as CLLocation
-////      lat =  String(userLocation.coordinate.latitude)
-////      lng =  String(userLocation.coordinate.longitude)
-////
-////    }
-//}

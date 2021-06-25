@@ -24,6 +24,10 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>LifeArt want to Use Your Camera</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Life Art Want to Know your Current Location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Life Art Want to Know your Current Location</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>LifeArt Want to Access your Photos</string>
 	<key>UIApplicationSceneManifest</key>
@@ -49,7 +53,6 @@
 	<true/>
 	<key>UIBackgroundModes</key>
 	<array>
-		<string>processing</string>
 		<string>remote-notification</string>
 	</array>
 	<key>UILaunchStoryboardName</key>

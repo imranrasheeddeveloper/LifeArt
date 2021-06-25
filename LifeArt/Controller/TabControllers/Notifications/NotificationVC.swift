@@ -45,6 +45,12 @@ class NotificationVC: UIViewController {
             arrayOfNotification  = noti
             dump(arrayOfNotification)
             datasorce.arrayOfNotification = arrayOfNotification
+            if arrayOfNotification.count == 0 {
+                addLottieAnimation(string: "notificationEmpty", view: self.view)
+            }
+            else{
+                removeLottieAnimation()
+            }
             DispatchQueue.main.async {
                 self.tabelView.reloadData()
             }

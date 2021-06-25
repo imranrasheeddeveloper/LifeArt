@@ -7,78 +7,81 @@
 //
 
 import UIKit
-
-class ModelVc: UIViewController, UITextFieldDelegate  {
-
+import CoreLocation
+class ModelVc: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate  {
+    
     //MARK:-OUTLETS
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchTF: DesignableUITextField!
-
+    
     //MARK:-VAriables
     var arrayofModel = [UserModel]()
-   // var realArrayofModel = [UserModel]()
+    var locationManager:CLLocationManager!
+    var userLocation :CLLocation?
     var isSearch = false
     var fillterArray = [UserModel]()
     let searchController = UISearchController(searchResultsController: nil)
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        locationManagerSetup()
         searchTF.delegate = self
-       self.searchController.searchBar.autocapitalizationType = UITextAutocapitalizationType.none
-//               self.navigationItem.searchController = self.searchController
-//              //if this is set to true, the search bar hides when you scroll.
-//               self.navigationItem.hidesSearchBarWhenScrolling = false
-//               //this is so I'm told of changes to what's typed
-//               self.searchController.searchResultsUpdater = self
-//               self.searchController.searchBar.delegate = self
+        self.searchController.searchBar.autocapitalizationType = UITextAutocapitalizationType.none
         setStatusBar()
         hideKeyboard()
         collectionView.delegate = self
         collectionView.dataSource  = self
         collectionView.register(UINib(nibName: "SuggestedCell", bundle: nil), forCellWithReuseIdentifier:  "SuggestedCell")
-
-        UserService.shared.fetchModels { [self] (user) in
-                arrayofModel = user
-           // realArrayofModel = arrayofModel
-
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
+        fetchData()
+        initiateRefreshData()
+        
+    }
+    
+    func locationManagerSetup(){
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled(){
+            locationManager.startUpdatingLocation()
         }
     }
     
-//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//        arrayofModel.removeAll()
-//        for item in realArrayofModel {
-//            if item.firstname.contains(searchBar.text!){
-//                arrayofModel.append(item)
-//            }
-//        }
-//        if (searchBar.text!.isEmpty){
-//           arrayofModel = realArrayofModel
-//        }
-//        self.collectionView.reloadData()
-//    }
+    func fetchData() {
+        UserService.shared.fetchModels { [self] (user) in
+            for (_ , model) in user.enumerated(){
+                let coordinate =  CLLocation(latitude: model.lat, longitude: model.lon)
+                if userLocation!.distance(from: coordinate) < 50000 {
+                    
+                    arrayofModel.append(model)
+                    
+                }
+                
+            }
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
+    
+    
     @IBAction func searchTFChange(_ sender: UITextField) {
         isSearch = true
         fillterArray.removeAll()
-     
         fillterArray = arrayofModel.filter({
             if  $0.firstname.contains(sender.text!) {
                 self.collectionView.reloadData()
                 return true
             }
             else{
-               return false
+                return false
             }
-        
+            
         })
         if sender.text?.count == 0{
             isSearch = false
-           // self.arrayofModel = self.fillterArray
             self.collectionView.reloadData()
         }
-       // self.collectionView.reloadData()
     }
 }
 
@@ -95,35 +98,35 @@ extension ModelVc :  UICollectionViewDelegate, UICollectionViewDataSource ,UICol
         else{
             return arrayofModel.count
         }
-      
+        
     }
     
     //TODO:- set Collection View
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
+        
         let cell  = collectionView.dequeueReusableCell(withReuseIdentifier: "SuggestedCell", for: indexPath) as! SuggestedCell
         if isSearch == true {
-           
+            
             cell.profileImage.sd_setImage(with:URL(string:fillterArray[indexPath.row].image),
                                           placeholderImage: UIImage(named: "placeholder.png"))
-
-        cell.nameLbl.text = "\(fillterArray[indexPath.row].firstname) \(fillterArray[indexPath.row].lastname)"
+            
+            cell.nameLbl.text = "\(fillterArray[indexPath.row].firstname) \(fillterArray[indexPath.row].lastname)"
         }
         else{
             cell.profileImage.sd_setImage(with:URL(string:arrayofModel[indexPath.row].image),
                                           placeholderImage: UIImage(named: "placeholder.png"))
-        cell.profileImage.sd_imageIndicator?.startAnimatingIndicator()
-
-        cell.nameLbl.text = "\(arrayofModel[indexPath.row].firstname) \(arrayofModel[indexPath.row].lastname)"
-        }
-          
+            cell.profileImage.sd_imageIndicator?.startAnimatingIndicator()
             
-            return cell
-     
+            cell.nameLbl.text = "\(arrayofModel[indexPath.row].firstname) \(arrayofModel[indexPath.row].lastname)"
+        }
+        
+        
+        return cell
+        
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
+        
         if isSearch == true {
             GlobaluserID =  fillterArray[indexPath.row].user
         }else{
@@ -144,29 +147,43 @@ extension ModelVc :  UICollectionViewDelegate, UICollectionViewDataSource ,UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-
+        
         let noOfCellsInRow = 2
-
+        
         let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
-
+        
         let totalSpace = flowLayout.sectionInset.left
             + flowLayout.sectionInset.right
             + (flowLayout.minimumInteritemSpacing * CGFloat(noOfCellsInRow - 1))
-
+        
         let size = Int((collectionView.bounds.width - totalSpace) / CGFloat(noOfCellsInRow))
-
+        
         return CGSize(width: size, height: 300)
     }
-//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//        let searchView: UICollectionReusableView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader
-//, withReuseIdentifier: "SearchBar", for: indexPath)
-//
-//        return searchView
-//    }
-   
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
+    
+    
+    
+}
+extension ModelVc {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        userLocation  = locations[0] as CLLocation
     }
-  
+    
+    
+    func initiateRefreshData()-> Void {
 
+           let refreshControl = UIRefreshControl()
+           let title = NSLocalizedString("Refreshing Models...", comment: "Pull to refresh")
+           refreshControl.attributedTitle = NSAttributedString(string: title)
+           refreshControl.tintColor = UIColor(named: "colorPrimary")
+           refreshControl.addTarget(self, action: #selector(refreshOptions(sender:)),
+                                    for: .valueChanged)
+        self.collectionView.refreshControl = refreshControl
+       }
+
+       @objc private func refreshOptions(sender: UIRefreshControl) {
+           arrayofModel.removeAll()
+           fetchData()
+           sender.endRefreshing()
+       }
 }

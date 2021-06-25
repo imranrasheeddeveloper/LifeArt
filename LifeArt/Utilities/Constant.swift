@@ -91,9 +91,8 @@ func currentTimeInInteger() -> String {
     return "\(day)-\(month)-\(year)"
 }
 enum MenuClick {
-    case editPost
     case deletePost
-    case reportPost
+
 }
 var menuClick : MenuClick?
 

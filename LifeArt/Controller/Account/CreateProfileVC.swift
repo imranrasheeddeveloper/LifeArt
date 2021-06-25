@@ -57,6 +57,7 @@ class CreateProfileVC: UIViewController, CLLocationManagerDelegate {
         profileImage.addGestureRecognizer(tap)
         imagePicker.delegate = self
         setupTextFileds()
+        locationManagerSetup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -145,6 +146,7 @@ class CreateProfileVC: UIViewController, CLLocationManagerDelegate {
                         
                     }
                     else{
+                        print(error)
                         AppDelegate.shared.removeLoadIndIndicator()
                         DispatchQueue.main.async {
                             self.showErrorAlert()
@@ -159,6 +161,7 @@ class CreateProfileVC: UIViewController, CLLocationManagerDelegate {
                         self.pushToController(from: .Home , identifier: .TabBar)
                     }
                     else{
+                        print(error)
                         AppDelegate.shared.removeLoadIndIndicator()
                         DispatchQueue.main.async {
                             self.showErrorAlert()

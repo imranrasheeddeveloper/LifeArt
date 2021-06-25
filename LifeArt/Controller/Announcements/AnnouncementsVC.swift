@@ -7,15 +7,16 @@
 //
 
 import UIKit
-
-class AnnouncementsVC: UIViewController {
+import CoreLocation
+class AnnouncementsVC: UIViewController, CLLocationManagerDelegate {
 
     //MARK:-OUtLETS
     @IBOutlet weak var tabelView : UITableView!
     @IBOutlet weak var headerView: UIView!
-
+    var userLocation :CLLocation?
+    var locationManager:CLLocationManager!
     
-    //MARKL:-
+    //MARK:- Variables
     var arrayOfAnnouncment = [Announcements]()
     var announcements : Announcements?
     var notification : NotificationModel?
@@ -24,9 +25,11 @@ class AnnouncementsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        locationManagerSetup()
         setStatusBar()
         hideKeyboard()
+        tabelView.isHidden = true
+        addLottieAnimation(string: "noannouncement", view: self.view)
         tabelView.dataSource =  self
         tabelView.delegate = self
         headerView.dropShadow()
@@ -35,12 +38,36 @@ class AnnouncementsVC: UIViewController {
         apiCalling()
     }
     
+    //MARK:- Location Servieces
+    func locationManagerSetup(){
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled(){
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        userLocation  = locations[0] as CLLocation
+    }
 
 
 //MARK:-APICALLING
 func apiCalling() {
         AnnouncmentService.shared.fetchAnnouncmentServices { [self] (announcements) in
-            arrayOfAnnouncment  = announcements
+            for an in announcements{
+                let coordinate =  CLLocation(latitude: an.lat, longitude: an.lon)
+                if userLocation!.distance(from: coordinate) < 50000 {
+                    arrayOfAnnouncment.append(an)
+                }
+            }
+            if arrayOfAnnouncment.count != 0 {
+                removeLottieAnimation()
+                tabelView.isHidden = false
+            }
             DispatchQueue.main.async {
                 self.tabelView.reloadData()
             }
@@ -70,7 +97,6 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
     cell.priceLbl.text = arrayOfAnnouncment[indexPath.row].salary
     cell.time.text = arrayOfAnnouncment[indexPath.row].time
     cell.titleLbl.text = arrayOfAnnouncment[indexPath.row].title
-    
     cell.salaryLbl.text = arrayOfAnnouncment[indexPath.row].salary
 return cell
 }

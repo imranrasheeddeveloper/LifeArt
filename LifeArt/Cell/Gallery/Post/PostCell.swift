@@ -11,16 +11,12 @@ import SkeletonView
 import ContextMenu
 
 
-public protocol SkeletonTableViewDataSource: UITableViewDataSource {
-    func numSections(in collectionSkeletonView: UITableView) -> Int
-    func collectionSkeletonView(_ skeletonView: UITableView, numberOfRowsInSection section: Int) -> Int
-    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier
-}
 
 protocol postCellDelegate {
     func comments(tag : Int)
     func report(tag : Int)
     func likePost(tag : Int)
+    func delete()
 }
 
 class PostCell: UITableViewCell{
@@ -105,21 +101,20 @@ extension PostCell: ContextMenuDelegate{
 
     func contextMenuDidDismiss(viewController: UIViewController, animated: Bool) {
         
-        
-        
         switch menuClick {
-        case .editPost:
-            break
         case .deletePost:
-            
+            PostService.shared.deletePost(childID: arrayOfPosts[postTag!].key) { [self] (result) in
+                self.window?.rootViewController!.showToast(message: "Post Deleted", seconds: 1.0)
+                delegate.delete()
+            }
             break
             
-        case .reportPost:
-            PostService.shared.reportPost(postUserId: arrayOfPosts[postTag!].postData.user) { (error, data) -> (Void) in
-                self.window?.rootViewController!.showToast(message: "Post Reported", seconds: 1.0)
-                    }
-           
-            break
+//        case .reportPost:
+//            PostService.shared.reportPost(postUserId: arrayOfPosts[postTag!].postData.user) { (error, data) -> (Void) in
+//                self.window?.rootViewController!.showToast(message: "Post Reported", seconds: 1.0)
+//                    }
+//
+//            break
         default:
             return
         }

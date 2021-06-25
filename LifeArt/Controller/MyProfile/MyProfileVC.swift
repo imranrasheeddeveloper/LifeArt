@@ -337,6 +337,10 @@ extension MyProfileVC :  UITableViewDelegate{
 //MARK : - postCellDelegate
 extension MyProfileVC : postCellDelegate
 {
+    func delete() {
+        fetchFeeds()
+    }
+    
     
     
     func report(tag: Int) {

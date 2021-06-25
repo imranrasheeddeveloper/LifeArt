@@ -7,8 +7,8 @@
 //
 
 import UIKit
-
-class ShoutsVc: UIViewController {
+import CoreLocation
+class ShoutsVc: UIViewController, CLLocationManagerDelegate {
 
     //MARK:-OUtLETS
     @IBOutlet weak var tabelView : UITableView!
@@ -21,11 +21,14 @@ class ShoutsVc: UIViewController {
     var notification : NotificationModel?
     let datasorce = NotificationDataSource()
     let delegate = NotificationDelegate()
+    var userLocation :CLLocation?
+    var locationManager:CLLocationManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setStatusBar()
         hideKeyboard()
+        locationManagerSetup()
         tabelView.isHidden = true
         addLottieAnimation(string: "noannouncement", view: self.view)
         tabelView.dataSource =  self
@@ -37,12 +40,33 @@ class ShoutsVc: UIViewController {
 
     }
     
-
+    //MARK:- Location Servieces
+    func locationManagerSetup(){
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled(){
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        userLocation  = locations[0] as CLLocation
+    }
     
     //MARK:-APICALLING
     func apiCalling() {
             AnnouncmentService.shared.fetchAnnouncmentServices { [self] (announcements) in
-                arrayOfAnnouncment  = announcements
+                for an in announcements{
+                    let coordinate =  CLLocation(latitude: an.lat, longitude: an.lon)
+                    if userLocation!.distance(from: coordinate) < 50000 {
+                        arrayOfAnnouncment.append(an)
+                    }
+                }
+                
+
                 if arrayOfAnnouncment.count != 0{
                     removeLottieAnimation()
                     tabelView.isHidden = false
@@ -53,6 +77,7 @@ class ShoutsVc: UIViewController {
                 
             }
         }
+   
     
 }
 extension ShoutsVc: UITableViewDelegate,UITableViewDataSource {

@@ -15,7 +15,7 @@ class CreatePostVC: UIViewController {
     
     //MARK:- Outlets
     @IBOutlet weak var postTitleTF: MDCOutlinedTextField!
-    @IBOutlet weak var textView : UITextView!
+    @IBOutlet weak var descriptionTF : MDCOutlinedTextField!
     @IBOutlet weak var NavigationBarView : UIView!
     @IBOutlet weak var bottomView : UIView!
     @IBOutlet weak var selectedImage : UIImageView!
@@ -39,14 +39,7 @@ class CreatePostVC: UIViewController {
         hideKeyboard()
         NavigationBarView.dropShadow()
         NavigationBarView.roundCorners(corners: .layerMinXMaxYCorner, radius: 30)
-        textView.layer.cornerRadius = 10
         bottomView.dropShadow()
-        textView.layer.borderWidth = 1
-        if #available(iOS 13.0, *) {
-            textView.layer.borderColor = UIColor.systemGray4.cgColor
-        } else {
-            textView.layer.borderColor = UIColor.gray.cgColor
-        }
         checkUserType()
         setupTextfileds()
     }
@@ -59,14 +52,19 @@ class CreatePostVC: UIViewController {
         postTitleTF.label.text = "Title"
         meduimTF.label.text = "Meduim"
         sizeTF.label.text  = "Size"
+        descriptionTF.label.text = "Description"
+        
+        descriptionTF.sizeToFit()
         postTitleTF.sizeToFit()
         meduimTF.sizeToFit()
         sizeTF.sizeToFit()
+        
         postTitleTF.containerRadius = 10
         sizeTF.containerRadius  = 10
         postTitleTF.containerRadius = 10
+        descriptionTF.containerRadius = 10
         
-        
+       // descriptionTF.verticalDensity = 80
         postTitleTF.verticalDensity = 40
         meduimTF.verticalDensity = 40
         sizeTF.verticalDensity = 40
@@ -107,19 +105,19 @@ class CreatePostVC: UIViewController {
     //MARK:- API Calling
     
     func apiCalling(date :  String , time : String) {
-        if textView.text != "" {
+        if descriptionTF.text != "" {
             if postTitleTF.text != ""{
                 if meduimTF.text != ""{
                     if sizeTF.text != ""{
-                        let post = CreatePost(date: date, desc: textView.text ?? "test", image: selectedImage.image ?? #imageLiteral(resourceName: "art2"), medium: meduimTF.text!, size: sizeTF.text!, time: time, title: postTitleTF.text ?? "Test" , user: Auth.auth().currentUser!.uid)
+                        let post = CreatePost(date: date, desc: descriptionTF.text ?? "test", image: selectedImage.image ?? #imageLiteral(resourceName: "art2"), medium: meduimTF.text!, size: sizeTF.text!, time: time, title: postTitleTF.text ?? "Test" , user: Auth.auth().currentUser!.uid)
                         PostService.shared.creatPost(account: accountType , post: post) { [self] (eror, ref) -> (Void) in
                             if eror == nil{
                                 self.showToast(message: "Post Uploaded", seconds: 1.0)
                                 
                                 guard let fullName = user?.firstname else { return }
-                                PushNotificationSender.shared.sendPushNotification(to: "" , title: fullName  , body: textView.text)
+                                PushNotificationSender.shared.sendPushNotification(to: "" , title: fullName  , body: descriptionTF.text!)
                                 postTitleTF.text = ""
-                                textView.text = ""
+                                descriptionTF.text = ""
                                 meduimTF.text = ""
                                 sizeTF.text = ""
                                 selectedImage.image = nil

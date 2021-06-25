@@ -17,6 +17,7 @@ struct AuthCredentials {
     let firstname: String
     var profileImage: UIImage
     let lastname, password, phone, website: String
+    let lat , lon : Double
     
 }
 
@@ -57,18 +58,20 @@ struct AuthService {
                     let passwrod = credentials.password
                     let phone = credentials.phone
                     let website =  credentials.website
+                    let lat = credentials.lat
+                    let lon = credentials.lon
                   
                     
                     //check if the user is 'Artist' or 'Model'
                     switch account {
                     case .Artist :
-                        let values = dictionry(bio: bio, city: city, country: country, email: email, firstname: firstname, lastName: lastname, url: url, lastname: lastname, passwrod: passwrod, phone: phone, website: website, type: "Artist")
+                        let values = dictionry(bio: bio, city: city, country: country, email: email, firstname: firstname, lastName: lastname, url: url, lastname: lastname, passwrod: passwrod, phone: phone, website: website, type: "Artist" , lat: lat , lon: lon)
                         REF_Artists.child(uid).updateChildValues(values, withCompletionBlock: completion)
                         for v in value {
                             REF_Artists.child(uid).child("Interest").childByAutoId().updateChildValues(["name" : v])
                         }
                     case .Model:
-                        let values = dictionry(bio: bio, city: city, country: country, email: email, firstname: firstname, lastName: lastname, url: url, lastname: lastname, passwrod: passwrod, phone: phone, website: website, type: "Model")
+                        let values = dictionry(bio: bio, city: city, country: country, email: email, firstname: firstname, lastName: lastname, url: url, lastname: lastname, passwrod: passwrod, phone: phone, website: website, type: "Model" , lat: lat , lon: lon)
                         
                         REF_Models.child(uid).updateChildValues(values, withCompletionBlock: completion)
                         for v in value {
@@ -82,7 +85,7 @@ struct AuthService {
         }
     }
     
-    func dictionry(bio : String , city : String , country : String, email :  String , firstname : String , lastName : String , url : String , lastname : String , passwrod : String , phone : String , website : String , type : String) -> [String : Any] {
+    func dictionry(bio : String , city : String , country : String, email :  String , firstname : String , lastName : String , url : String , lastname : String , passwrod : String , phone : String , website : String , type : String , lat : Double , lon :  Double) -> [String : Any] {
        return ["bio": bio,
                       "city": city,
                       "country": country,
@@ -94,6 +97,8 @@ struct AuthService {
                       "phone" : phone ,
                       "website" : website ,
                       "type" : type ,
+                      "lat" : lat ,
+                      "lon" : lon
         ]
         as [String : Any]
     }

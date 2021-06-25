@@ -124,7 +124,7 @@ extension ModelVc :  UICollectionViewDelegate, UICollectionViewDataSource ,UICol
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        if isSearch{
+        if isSearch == true {
             GlobaluserID =  fillterArray[indexPath.row].user
         }else{
             GlobaluserID = arrayofModel[indexPath.row].user

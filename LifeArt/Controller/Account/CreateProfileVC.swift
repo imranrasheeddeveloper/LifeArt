@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import CoreLocation
 import MaterialComponents.MDCOutlinedTextField
-class CreateProfileVC: UIViewController {
+class CreateProfileVC: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var topHeaderView : UIView!
     @IBOutlet weak var profileImage  : UIImageView!
@@ -30,8 +31,12 @@ class CreateProfileVC: UIViewController {
     var phoneNo  : String!
     var website : String!
     var array : [String]!
+    var lat : Double?
+    var lng : Double?
+    
     
     var accountType : AccountType!
+    var locationManager:CLLocationManager!
     @IBOutlet weak var heightConstraint:NSLayoutConstraint!
     let maxHeaderHeight: CGFloat = 410
     let minHeaderHeight: CGFloat = 0
@@ -98,6 +103,17 @@ class CreateProfileVC: UIViewController {
         
     }
     
+    func locationManagerSetup(){
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled(){
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
     
     
     @IBAction func continueButtonAction(_ sender : UIButton){
@@ -111,7 +127,7 @@ class CreateProfileVC: UIViewController {
         if validation(){
             
             AppDelegate.shared.loadindIndicator(title: "Creating Account")
-            let credentials =   AuthCredentials(bio: "Test", city: cityTF.text!, country: countryTF.text!, email: emailTF.text!, firstname: firstNameTF.text!, profileImage: profileImage.image!, lastname: lastNameTF.text!, password: password, phone: phoneNoTF.text!, website: websiteTF.text!)
+            let credentials =   AuthCredentials(bio: "Test", city: cityTF.text!, country: countryTF.text!, email: emailTF.text!, firstname: firstNameTF.text!, profileImage: profileImage.image!, lastname: lastNameTF.text!, password: password, phone: phoneNoTF.text!, website: websiteTF.text! , lat: lat ?? 31.00 , lon:  lng ?? 71.12)
             
             switch accountType {
             case .Model:
@@ -211,5 +227,13 @@ extension CreateProfileVC: UIImagePickerControllerDelegate, UINavigationControll
         guard let profileImage = info[.originalImage] as? UIImage else {return}
         self.profileImage.image = profileImage.withRenderingMode(.alwaysOriginal)
         dismiss(animated: true, completion: nil)
+    }
+}
+
+extension CreateProfileVC {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let userLocation :CLLocation = locations[0] as CLLocation
+        lat =   userLocation.coordinate.latitude
+        lng =    userLocation.coordinate.longitude
     }
 }

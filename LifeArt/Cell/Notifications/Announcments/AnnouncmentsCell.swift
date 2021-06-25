@@ -27,7 +27,7 @@ class AnnouncmentsCell: UITableViewCell {
         super.awakeFromNib()
           discriptionView.dropShadow()
 //        typeView.dropShadow()
-       clockView.dropShadow()
+       //clockView.dropShadow()
 //amountView.dropShadow()
           secondView.dropShadow()
     }

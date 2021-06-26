@@ -59,8 +59,7 @@ class LoginVC: UIViewController {
         
         if validation(){
             loginUser()
-        }else{
-            snackBar(str: "Email or Password is Missing")
+        } else {
             removeLottieAnimation()
         }
     }
@@ -73,12 +72,15 @@ class LoginVC: UIViewController {
     
     //MARK:- Validator
     func validation() -> Bool{
-        if !emailTF.text!.isEmpty{
-            if !passwordTF.text!.isEmpty{
-               return true
-            }
+        if !(emailTF.text!.isValidEmail()) {
+            snackBar(str: "Please enter valid email")
+            return false
+           }
+        if passwordTF.text!.isEmpty {
+            snackBar(str: "Please enter password")
+            return false
         }
-    return false
+        else { return true}
     }
     //MARK:- API Calling
     func loginUser() {

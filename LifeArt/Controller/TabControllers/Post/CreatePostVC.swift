@@ -64,12 +64,12 @@ class CreatePostVC: UIViewController {
         postTitleTF.containerRadius = 10
         descriptionTF.containerRadius = 10
         
-       // descriptionTF.verticalDensity = 80
+       descriptionTF.verticalDensity = 80
         postTitleTF.verticalDensity = 40
         meduimTF.verticalDensity = 40
         sizeTF.verticalDensity = 40
     }
-    
+  
     //MARK:- Helper Functions
     
     func checkUserType() {
@@ -86,7 +86,7 @@ class CreatePostVC: UIViewController {
     @IBAction func addPost(_ sender: UIButton) {
         let date = currentDate()
         let time = currentTime()
-        apiCalling(date :  date , time : time)
+        apiCalling2(date :  date , time : time)
     }
     @IBAction func PhotosOpen(_ sender: UIButton) {
         let picker = UIImagePickerController()
@@ -102,39 +102,88 @@ class CreatePostVC: UIViewController {
         present(picker, animated: true)
     }
     
+    
+    //MARK:-Validation
+    
+    func validation() -> Bool{
+        if descriptionTF.text!.isEmpty {
+            snackBar(str: "Please enter your Description")
+        }
+        if postTitleTF.text!.isEmpty {
+            snackBar(str: "Please enter your Post Title")
+            return false
+        }
+        if meduimTF.text!.isEmpty {
+            snackBar(str: "Please enter medium")
+            return false
+        }
+        if sizeTF.text!.isEmpty {
+            snackBar(str: "Please enter the Size")
+            return false
+        }
+        return true
+        
+    }
+    
     //MARK:- API Calling
     
-    func apiCalling(date :  String , time : String) {
-        if descriptionTF.text != "" {
-            if postTitleTF.text != ""{
-                if meduimTF.text != ""{
-                    if sizeTF.text != ""{
-                        let post = CreatePost(date: date, desc: descriptionTF.text ?? "test", image: selectedImage.image ?? #imageLiteral(resourceName: "art2"), medium: meduimTF.text!, size: sizeTF.text!, time: time, title: postTitleTF.text ?? "Test" , user: Auth.auth().currentUser!.uid)
-                        PostService.shared.creatPost(account: accountType , post: post) { [self] (eror, ref) -> (Void) in
-                            if eror == nil{
-                                self.showToast(message: "Post Uploaded", seconds: 1.0)
-                                
-                                guard let fullName = user?.firstname else { return }
-                                PushNotificationSender.shared.sendPushNotification(to: "" , title: fullName  , body: descriptionTF.text!)
-                                postTitleTF.text = ""
-                                descriptionTF.text = ""
-                                meduimTF.text = ""
-                                sizeTF.text = ""
-                                selectedImage.image = nil
-                                
-                            }
-                            else{
-                                print(eror?.localizedDescription as Any)
-                            }
-                        }
-                    }
+    
+    func apiCalling2(date : String , time : String){
+        if validation() {
+            let post = CreatePost(date: date, desc: descriptionTF.text ?? "test", image: selectedImage.image ?? #imageLiteral(resourceName: "art2"), medium: meduimTF.text!, size: sizeTF.text!, time: time, title: postTitleTF.text ?? "Test" , user: Auth.auth().currentUser!.uid)
+            PostService.shared.creatPost(account: accountType , post: post) { [self] (eror, ref) -> (Void) in
+                if eror == nil{
+                    self.showToast(message: "Post Uploaded", seconds: 1.0)
+                    
+                    guard let fullName = user?.firstname else { return }
+                    PushNotificationSender.shared.sendPushNotification(to: "" , title: fullName  , body: descriptionTF.text!)
+                    postTitleTF.text = ""
+                    descriptionTF.text = ""
+                    meduimTF.text = ""
+                    sizeTF.text = ""
+                    selectedImage.image = nil
+                    
+                }
+                else{
+                    print(eror?.localizedDescription as Any)
                 }
             }
-        }
-        else{
-            self.presentAlert(withTitle: "Error", message: "Fill the TextFields")
+        
+        
         }
     }
+    
+    
+    
+//    func apiCalling(date :  String , time : String) {
+//        if descriptionTF.text != "" {
+//            if postTitleTF.text != ""{
+//                if meduimTF.text != ""{
+//                    if sizeTF.text != ""{
+//                        let post = CreatePost(date: date, desc: descriptionTF.text ?? "test", image: selectedImage.image ?? #imageLiteral(resourceName: "art2"), medium: meduimTF.text!, size: sizeTF.text!, time: time, title: postTitleTF.text ?? "Test" , user: Auth.auth().currentUser!.uid)
+//                        PostService.shared.creatPost(account: accountType , post: post) { [self] (eror, ref) -> (Void) in
+//                            if eror == nil{
+//                                self.showToast(message: "Post Uploaded", seconds: 1.0)
+//
+//                                guard let fullName = user?.firstname else { return }
+//                                PushNotificationSender.shared.sendPushNotification(to: "" , title: fullName  , body: descriptionTF.text!)
+//                                postTitleTF.text = ""
+//                                descriptionTF.text = ""
+//                                meduimTF.text = ""
+//                                sizeTF.text = ""
+//                                selectedImage.image = nil
+//
+//                            }
+//                            else{
+//                                print(eror?.localizedDescription as Any)
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//
+//    }
     func fetchUser() {
         guard let uid = Auth.auth().currentUser?.uid else {return}
         UserService.shared.checkArtistExist(uid: uid) { (result) in

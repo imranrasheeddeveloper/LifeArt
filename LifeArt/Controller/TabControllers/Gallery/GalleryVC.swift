@@ -17,7 +17,7 @@ protocol GalleryVCDelegate {
 
 class GalleryVC: UIViewController , postCellDelegate{
     
-    @IBOutlet weak var tableview : UITableView!
+    @IBOutlet weak var tableview :    UITableView!
     @IBOutlet weak var topSearchView: UIView!
     
     let delegate = GalleryDelegate()
@@ -183,7 +183,9 @@ extension GalleryVC {
             }
         }
     }
-    
+    override func didReceiveMemoryWarning() {
+        print("warning")
+    }
     
 }
 

@@ -18,6 +18,8 @@
 		15BA5069267B4C13007BF00F /* AnnouncementsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BA5068267B4C13007BF00F /* AnnouncementsVC.swift */; };
 		15BA506F267B50E7007BF00F /* AddAnnouncementsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BA506E267B50E7007BF00F /* AddAnnouncementsVC.swift */; };
 		15E9D921268387AC004C0F05 /* noannouncement.json in Resources */ = {isa = PBXBuildFile; fileRef = 15E9D920268387AC004C0F05 /* noannouncement.json */; };
+		15F300BE26873BA700A6B376 /* ErrorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F300BD26873BA700A6B376 /* ErrorVC.swift */; };
+		15F300C326873BC800A6B376 /* SuccessVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15F300C226873BC800A6B376 /* SuccessVC.swift */; };
 		4F0CCE6E261F377B00BC0469 /* GalleryDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0CCE6D261F377B00BC0469 /* GalleryDataSource.swift */; };
 		4F0CCE73261F3A7500BC0469 /* GalleryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0CCE72261F3A7500BC0469 /* GalleryDelegate.swift */; };
 		4F154756261C94D80092C2AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F154755261C94D80092C2AE /* AppDelegate.swift */; };
@@ -195,6 +197,8 @@
 		15BA5068267B4C13007BF00F /* AnnouncementsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsVC.swift; sourceTree = "<group>"; };
 		15BA506E267B50E7007BF00F /* AddAnnouncementsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAnnouncementsVC.swift; sourceTree = "<group>"; };
 		15E9D920268387AC004C0F05 /* noannouncement.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = noannouncement.json; sourceTree = "<group>"; };
+		15F300BD26873BA700A6B376 /* ErrorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorVC.swift; sourceTree = "<group>"; };
+		15F300C226873BC800A6B376 /* SuccessVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessVC.swift; sourceTree = "<group>"; };
 		3EB1D11DCCCE1A2E1B60C813 /* Pods-LifeArt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LifeArt.release.xcconfig"; path = "Target Support Files/Pods-LifeArt/Pods-LifeArt.release.xcconfig"; sourceTree = "<group>"; };
 		4F0CCE6D261F377B00BC0469 /* GalleryDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryDataSource.swift; sourceTree = "<group>"; };
 		4F0CCE72261F3A7500BC0469 /* GalleryDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryDelegate.swift; sourceTree = "<group>"; };
@@ -1034,6 +1038,8 @@
 			children = (
 				4FB36895262B19AC00BA31B3 /* SubscriptionAlertVC.swift */,
 				15A64D2E268362D200EE07B1 /* ErrorAlertVC.swift */,
+				15F300BD26873BA700A6B376 /* ErrorVC.swift */,
+				15F300C226873BC800A6B376 /* SuccessVC.swift */,
 			);
 			path = "Alerts Controller";
 			sourceTree = "<group>";
@@ -1370,6 +1376,7 @@
 				4F16C86F264495B300CE455F /* MessagesCell.swift in Sources */,
 				4FFD3A0A263E972C0030FFDC /* TabbarVC.swift in Sources */,
 				4F1DF32B262AE8030001A65B /* NotificationVC.swift in Sources */,
+				15F300C326873BC800A6B376 /* SuccessVC.swift in Sources */,
 				4FD42E9D2677AB9700A1FB26 /* ModelVc.swift in Sources */,
 				4F1547B7261CA5690092C2AE /* UIView+Extension.swift in Sources */,
 				4FB2449E261DD63C00441E6B /* OverlayView.swift in Sources */,
@@ -1441,6 +1448,7 @@
 				4FD5E9AC263C9A6B007E0AB4 /* CountryCallingCodeCell.swift in Sources */,
 				4F1DF330262AE85E0001A65B /* NotificationDataSource.swift in Sources */,
 				4F20CE9B261CFF9900F8EE6F /* CustomAlertView.swift in Sources */,
+				15F300BE26873BA700A6B376 /* ErrorVC.swift in Sources */,
 				4F70EC6926387B81001919F1 /* AccountSettingVC.swift in Sources */,
 				4F15804E2644641900F83A73 /* SceneDelegate.swift in Sources */,
 				4FD4CBE52683C9E1008BE395 /* MockMessage.swift in Sources */,
@@ -1643,7 +1651,7 @@
 				CODE_SIGN_ENTITLEMENTS = LifeArt/LifeArt.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = NF2GHJKNG8;
+				DEVELOPMENT_TEAM = 7YC5553WQQ;
 				INFOPLIST_FILE = LifeArt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1651,7 +1659,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.lifeArt.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lifeArt.app44;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1668,7 +1676,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = NF2GHJKNG8;
+				DEVELOPMENT_TEAM = 7YC5553WQQ;
 				INFOPLIST_FILE = LifeArt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1676,7 +1684,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.lifeArt.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lifeArt.app44;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

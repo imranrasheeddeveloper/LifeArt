@@ -110,8 +110,8 @@
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="bookmark" catalog="system"/>
                             </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="qb6-vc-ikQ">
-                                <rect key="frame" x="20" y="310" width="101.5" height="12"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="qb6-vc-ikQ">
+                                <rect key="frame" x="20" y="310" width="104" height="12"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8 Likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D6n-dx-AFx">
                                         <rect key="frame" x="0.0" y="0.0" width="32" height="12"/>
@@ -122,8 +122,8 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" . 12 comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eGb-e3-mSl">
-                                        <rect key="frame" x="32" y="0.0" width="69.5" height="12"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  12 comments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eGb-e3-mSl">
+                                        <rect key="frame" x="37" y="0.0" width="67" height="12"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
                                         <color key="textColor" systemColor="placeholderTextColor"/>
                                         <nil key="highlightedColor"/>

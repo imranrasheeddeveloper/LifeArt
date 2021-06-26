@@ -5,7 +5,7 @@
 //  Created by Muhammad Imran on 06/05/2021.
 //  Copyright © 2021 Itrid Technologies. All rights reserved.
 //
-
+import UIKit
 import Foundation
 import Lottie
 import SystemConfiguration
@@ -107,4 +107,23 @@ func snackBar(str : String)  {
     message.duration = 1
     message.text = str
     manager.show(message)
+}
+func showError(viewController : UIViewController) {
+    let storyBoard = UIStoryboard(name: "Alerts", bundle: nil)
+    let customAlert = storyBoard.instantiateViewController(withIdentifier: "ErrorVC") as! ErrorVC
+    customAlert.providesPresentationContextTransitionStyle = true
+    customAlert.definesPresentationContext = true
+    customAlert.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+    customAlert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+    viewController.present(customAlert, animated: true, completion: nil)
+}
+
+func Success(viewController : UIViewController) {
+    let storyBoard = UIStoryboard(name: "Alerts", bundle: nil)
+    let customAlert = storyBoard.instantiateViewController(withIdentifier: "SuccessVC") as! SuccessVC
+    customAlert.providesPresentationContextTransitionStyle = true
+    customAlert.definesPresentationContext = true
+    customAlert.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+    customAlert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+    viewController.present(customAlert, animated: true, completion: nil)
 }

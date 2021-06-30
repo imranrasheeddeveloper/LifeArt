@@ -43,16 +43,11 @@ extension GalleryVC : UITableViewDataSource {
         cell.likeButton.tag = cell.tag
         cell.viewAllcomments.setTitle("View all \(postNumberOfComments[indexPath.row] ) Comments", for: .normal)
         cell.totalCommentsLbl.text = "\(postNumberOfComments[indexPath.row] ) Comments"
-        
-        if postArray.count == indexPath.row {
-            cell.artImaeView.hideSkeleton(transition: .crossDissolve(.zero))
-            
-        }
-        
-        
+
         for postLike in postLikesArray{
-            if postArray[indexPath.row].key == postLike.postID {
-                if userArray[indexPath.row].uid == postLike.data?.userID{
+//
+//            if postArray[indexPath.row].key == postLike.postID {
+                if userArray[indexPath.row].uid == postLike.data?.userID!{
                     if #available(iOS 13.0, *) {
                         cell.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
                         cell.likeButton.tintColor = .red
@@ -61,7 +56,7 @@ extension GalleryVC : UITableViewDataSource {
                     }
                     
                 }
-            }
+            //}
         }
         
         return cell

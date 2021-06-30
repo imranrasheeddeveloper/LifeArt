@@ -36,7 +36,7 @@ class ShoutsVc: UIViewController, CLLocationManagerDelegate {
         headerView.dropShadow()
         headerView.roundCorners(corners: .layerMinXMaxYCorner, radius: 30)
         tabelView.register(UINib(nibName: "AnnouncmentsCell", bundle: nil), forCellReuseIdentifier: "AnnouncmentsCell")
-        apiCalling()
+       
 
     }
     
@@ -46,10 +46,25 @@ class ShoutsVc: UIViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
-        
-        if CLLocationManager.locationServicesEnabled(){
-            locationManager.startUpdatingLocation()
-        }
+        checkLocationPermission()
+    }
+    
+    func checkLocationPermission() {
+        if CLLocationManager.locationServicesEnabled() {
+                  switch CLLocationManager.authorizationStatus() {
+                  case .notDetermined:
+                    showLocationAccessAlert()
+                  case .restricted, .denied:
+                    showLocationAccessAlert()
+                  case .authorizedAlways, .authorizedWhenInUse:
+                    locationManager.startUpdatingLocation()
+                    apiCalling()
+                  default:
+                      print("Invalid AuthorizationStatus")
+                  }
+              } else {
+                 showLocationAccessAlert()
+              }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -99,5 +114,7 @@ extension ShoutsVc: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 210
     }
+    
+    
     
 }

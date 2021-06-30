@@ -128,7 +128,7 @@ class CreateProfileVC: UIViewController, CLLocationManagerDelegate {
         if validation(){
             
             AppDelegate.shared.loadindIndicator(title: "Creating Account")
-            let credentials =   AuthCredentials(bio: "Test", city: cityTF.text!, country: countryTF.text!, email: emailTF.text!, firstname: firstNameTF.text!, profileImage: profileImage.image!, lastname: lastNameTF.text!, password: password, phone: phoneNoTF.text!, website: websiteTF.text! , lat: lat ?? 31.00 , lon:  lng ?? 71.12)
+            let credentials =   AuthCredentials(bio: "", city: cityTF.text!, country: countryTF.text!, email: emailTF.text!, firstname: firstNameTF.text!, profileImage: profileImage.image!, lastname: lastNameTF.text!, password: password, phone: phoneNoTF.text!, website: websiteTF.text! , lat: lat ?? 31.00 , lon:  lng ?? 71.12)
             
             switch accountType {
             case .Model:

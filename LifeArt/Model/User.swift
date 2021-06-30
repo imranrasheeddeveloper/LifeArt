@@ -26,7 +26,7 @@ struct User {
         self.uid = uid
         self.bio = dictionary["bio"] as? String ?? ""
         self.city = dictionary["city"] as? String ?? ""
-        self.country = dictionary[" "] as? String ?? ""
+        self.country = dictionary["country"] as? String ?? "456"
         self.email = dictionary["email"] as? String ?? ""
         self.firstname = dictionary["firstname"] as? String ?? ""
         self.lastname = dictionary["lastname"] as? String ?? ""

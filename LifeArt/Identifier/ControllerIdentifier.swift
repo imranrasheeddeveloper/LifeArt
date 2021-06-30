@@ -33,6 +33,7 @@ enum ControllerIdentifier: String {
     case SignupVC
     case SuccessVC
     case ErrorVC
+    case ChatVC
 }
 
 extension UIViewController{

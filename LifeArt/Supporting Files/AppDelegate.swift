@@ -10,6 +10,7 @@ import CoreData
 import Firebase
 import FirebaseMessaging
 import IQKeyboardManagerSwift
+import CoreLocation
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
     
@@ -32,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MessagingDelegate {
         Messaging.messaging().delegate = self
         
         Messaging.messaging().subscribe(toTopic: Auth.auth().currentUser?.uid ?? "") { error in
-           // print("\(Auth.auth().currentUser!.uid) Topic")
+            print("\(Auth.auth().currentUser!.uid) Topic")
         }
         Messaging.messaging().subscribe(toTopic: "Post")
         return true

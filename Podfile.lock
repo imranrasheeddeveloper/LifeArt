@@ -238,6 +238,7 @@ PODS:
     - SDWebImage/Core (= 5.11.1)
   - SDWebImage/Core (5.11.1)
   - SkeletonView (1.15.0)
+  - SwiftyStoreKit (0.16.1)
 
 DEPENDENCIES:
   - CodableFirebase
@@ -260,6 +261,7 @@ DEPENDENCIES:
   - MessageKit
   - SDWebImage (~> 5.0)
   - SkeletonView
+  - SwiftyStoreKit
 
 SPEC REPOS:
   trunk:
@@ -293,6 +295,7 @@ SPEC REPOS:
     - PromisesObjC
     - SDWebImage
     - SkeletonView
+    - SwiftyStoreKit
 
 SPEC CHECKSUMS:
   CodableFirebase: 0bf201991eeec35eb9fcd987d271ea463cf34a80
@@ -325,7 +328,8 @@ SPEC CHECKSUMS:
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SkeletonView: cac18a3ac4f893b09d99e65072d806ef08377aae
+  SwiftyStoreKit: 6b9c08810269f030586dac1fae8e75871a82e84a
 
-PODFILE CHECKSUM: b376cbb261f4cbe636ae6568e52f7a56d3bd1147
+PODFILE CHECKSUM: a135ab8058ce2810d9c086c7cf683afdc7d9394c
 
 COCOAPODS: 1.10.1

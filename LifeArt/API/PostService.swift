@@ -106,8 +106,7 @@ struct PostService{
     
     func likePost(postId : String,  completion: @escaping(Error?, DatabaseReference) -> (Void)) {
         guard let uid = Auth.auth().currentUser?.uid else {return}
-        let values = [uid: true]
-        as [String : Any]
+        let values = [uid: true] as [String : Any]
         REF_Likes.child(postId).updateChildValues(values, withCompletionBlock: completion)
     }
     
@@ -131,7 +130,6 @@ struct PostService{
     
    
     func fetchLikes(completion: @escaping() -> Void) {
-      // var postLikeArray = [PostLikes]()
        REF_Likes.observeSingleEvent(of: .value) { (snapshot) in
           
            for snap in snapshot.children {
@@ -139,9 +137,7 @@ struct PostService{
                let userDict = userSnap.value as! [String:AnyObject]
                let postID = userSnap.key
             for (key , value) in userDict{
-               let obj = PostLikes(postID: postID, data: postLikeData(userID: key, like: value as? Int))
-//                postLikesArray.append(obj)
-//                dump(postLikesArray)
+                _ = PostLikes(postID: postID, data: postLikeData(userID: key, like: value as? Int))
             }
            }
        }
@@ -157,9 +153,7 @@ struct PostService{
             for (key , value) in userDict{
                let obj = PostLikes(postID: postID, data: postLikeData(userID: key, like: value as? Int))
                 postLikeArray.append(obj)
-                
             }
-          
            }
         completion(postLikeArray)
        }
@@ -169,7 +163,7 @@ struct PostService{
     
         REF_Posts.child("artists").child(childID).removeValue { error, _ in
             if error != nil {
-                print(error)
+                print(error as Any)
                 completional(false)
             }
             else{

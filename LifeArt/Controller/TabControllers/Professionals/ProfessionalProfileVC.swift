@@ -8,7 +8,7 @@
 
 import UIKit
 import FittedSheets
-
+import Firebase
 class ProfessionalProfileVC: UIViewController, UICollectionViewDelegate, UITableViewDelegate {
     
     var user : User?
@@ -26,6 +26,7 @@ class ProfessionalProfileVC: UIViewController, UICollectionViewDelegate, UITable
     public var postArray = [Post]()
     public var userArray = [User]()
     public var imageArray = [String]()
+    public var postLikesArray = [PostLikes]()
     public var postLikeCount  = [String]()
     public var postNumberOfComments  = [String]()
     var selectedIndex = 0
@@ -71,8 +72,13 @@ class ProfessionalProfileVC: UIViewController, UICollectionViewDelegate, UITable
             collectionViewLayout.dataSource = photosDataSource
             collectionViewLayout.delegate = self
         }
+        PostService.shared.fetchLikesGallery { [self] (array) in
+            postLikesArray = array
+            fetchFeeds()
+        }
     
         ApiCalling()
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
@@ -150,25 +156,25 @@ class ProfessionalProfileVC: UIViewController, UICollectionViewDelegate, UITable
     }
     
     func fetchFeeds(){
-        PostService.shared.fetchPost { [self] (post) in
-            self.postArray = post
-            for post in postArray{
-                UserService.shared.fetchUser(uid: post.postData.user) { (user) in
-                    PostService.shared.fetchLikesOnPost(postId: post.key) { (count) in
-                        PostService.shared.fetchNumberOfComments(postId: post.key) { (commentsCount) in
-                            self.userArray.append(user)
-                            postLikeCount.append(String(count))
-                            postNumberOfComments.append(String(commentsCount))
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-                                self.tableviewLayout.reloadData()
-                            })
-                        }
-                       
-                    }
+        PostService.shared.fetchPost { [self] (arrayOfPost) in
+        
+            for post in arrayOfPost{
+                if post.postData.user == GlobaluserID {
+                            PostService.shared.fetchLikesOnPost(postId: post.key) { (count) in
+                                PostService.shared.fetchNumberOfComments(postId: post.key) { (commentsCount) in
+                                    postLikeCount.append(String(count))
+                                    postNumberOfComments.append(String(commentsCount))
+                                    postArray.append(post)
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                                        self.tableviewLayout.reloadData()
+                                    })
+                                }
+                            }
                 }
             }
         }
     }
+
     
 }
 
@@ -260,11 +266,59 @@ extension ProfessionalProfileVC : postCellDelegate{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 400
+        return 450
     }
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         return UIView()
     }
     
 }
+
+extension  ProfessionalProfileVC : UITableViewDataSource{
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return postArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostCell
+        cell.delegate = self
+   
+        cell.artImaeView.sd_setImage(with:URL(string:postArray[indexPath.row].postData.image),
+                                     placeholderImage: UIImage(named: "placeholder.png"))
+        cell.discriptionLbl.text = postArray[indexPath.row].postData.desc
+        cell.postUserNameLbl.text =  userName.text!
+        cell.postTimeLbl.text = postArray[indexPath.row].postData.time
+        
+        cell.followedDate.text = (postArray[indexPath.row].postData.medium)
+        cell.postTimeLbl.text = "\(postArray[indexPath.row].postData.date)  at \(postArray[indexPath.row].postData.time)"
+        cell.postProfileImage.image = profileimageView.image
+        cell.postCountryLbl.text = (postArray[indexPath.row].postData.size)
+        cell.likesLbl.text =  "\(postLikeCount[indexPath.row] ) Likes"
+        cell.viewAllcomments.tag = cell.tag
+        cell.likeButton.tag = cell.tag
+        cell.viewAllcomments.setTitle("View all \(postNumberOfComments[indexPath.row] ) Comments", for: .normal)
+        cell.totalCommentsLbl.text = "\(postNumberOfComments[indexPath.row] ) Comments"
+
+//        for postLike in postLikesArray{
+////
+////            if postArray[indexPath.row].key == postLike.postID {
+//                if userArray[indexPath.row].uid == postLike.data?.userID!{
+//                    if #available(iOS 13.0, *) {
+//                        cell.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+//                        cell.likeButton.tintColor = .red
+//                    } else {
+//                        // Fallback on earlier versions
+//                    }
+//                    
+//                }
+//            //}
+//        }
+        cell.selectionStyle = .none
+        return cell
+    }
+    
+}
+
 

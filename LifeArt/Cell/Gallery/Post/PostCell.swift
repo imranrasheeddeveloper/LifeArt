@@ -21,7 +21,6 @@ protocol postCellDelegate {
 
 class PostCell: UITableViewCell{
  
-    @IBOutlet weak var menuView: UIView!
     @IBOutlet weak var bgView : UIView!
     @IBOutlet weak var postProfileImage: UIImageView!
     @IBOutlet weak var postUserNameLbl  : UILabel!

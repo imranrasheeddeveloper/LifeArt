@@ -41,8 +41,6 @@ class GalleryVC: UIViewController , postCellDelegate{
         refreshControl.attributedTitle = NSAttributedString(string: "Updating")
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         tableview.addSubview(refreshControl)
-        
-       
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,12 +54,11 @@ class GalleryVC: UIViewController , postCellDelegate{
         }
     }
     @objc func refresh(_ sender: Any) {
-        PostService.shared.fetchLikes { [self] in
+        postLikesArray.removeAll()
+        PostService.shared.fetchLikesGallery { [self] (array) in
+            postLikesArray = array
             fetchFeeds()
-            self.refreshControl.endRefreshing()
         }
-        
-  
     }
     
     
@@ -94,21 +91,13 @@ class GalleryVC: UIViewController , postCellDelegate{
         tableview.register(UINib(nibName: "PostCell", bundle: nil), forCellReuseIdentifier: "PostCell")
     }
     
-    func locationManagerSetup(){
-        locationManager = CLLocationManager()
-        //locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
-        
-        if CLLocationManager.locationServicesEnabled(){
-            locationManager.startUpdatingLocation()
-        }
-    }
+
     
     //MARK:- Actions
     @IBAction func openMessages(_ sender: UIButton) {
         let Chat = ChatViewController()
-        self.navigationController?.pushViewController(Chat, animated: true)
+        self.pushToController(from: .Home, identifier: .ChatVC)
+        //self.navigationController?.pushViewController(Chat, animated: true)
     }
     
     
@@ -177,15 +166,36 @@ extension GalleryVC {
         postTag = tag
     }
     func likePost(tag: Int) {
-        PostService.shared.likePost(postId: postArray[tag].key) { (error, ref) -> (Void) in
-            DispatchQueue.main.async { [self] in
-                fetchFeeds()
+        PostService.shared.fetchLikesGallery { [self] (result) in
+            //for data in result {
+                PostService.shared.likePost(postId: postArray[tag].key) { [self] (error, ref) -> (Void) in
+                   
+                   postLikesArray.append(PostLikes(postID: postArray[tag].key, data: postLikeData(userID: Auth.auth().currentUser?.uid, like: 1)))
+                    
+                    DispatchQueue.main.async {
+                        self.tableview.reloadData()
+                    }
+                    
+                    PushNotificationSender.shared.sendPushNotification(to: postArray[tag].postData.user, title: "Someone Liked Your Post", body: "Liked on Your Post")
+               // }
+//                if data.postID == postArray[tag].key
+//                {
+//
+//                }
+               // else {
+//                    PostService.shared.unLikePost(postId: postArray[tag].key) { (error, ref) -> (Void) in
+//                        if error != nil {
+//                            print(error as Any)
+//                        }
+//                    }
+//                }
+                
+                
             }
         }
+        
     }
-    override func didReceiveMemoryWarning() {
-        print("warning")
-    }
+    
     
 }
 

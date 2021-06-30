@@ -846,7 +846,7 @@
         <image name="left-arrow" width="512" height="512"/>
         <image name="placeholder" width="770" height="309"/>
         <namedColor name="colorPrimary">
-            <color red="0.41999998688697815" green="0.63099998235702515" blue="0.72500002384185791" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.41960784313725491" green="0.63137254901960782" blue="0.72549019607843135" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

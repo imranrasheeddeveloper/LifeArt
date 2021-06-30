@@ -31,7 +31,6 @@ class ModelVc: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate 
         collectionView.delegate = self
         collectionView.dataSource  = self
         collectionView.register(UINib(nibName: "SuggestedCell", bundle: nil), forCellWithReuseIdentifier:  "SuggestedCell")
-        fetchData()
         initiateRefreshData()
         
     }
@@ -40,11 +39,25 @@ class ModelVc: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate 
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
+        checkLocationPermission()
         
-        if CLLocationManager.locationServicesEnabled(){
-            locationManager.startUpdatingLocation()
-        }
+    }
+    func checkLocationPermission() {
+        if CLLocationManager.locationServicesEnabled() {
+                  switch CLLocationManager.authorizationStatus() {
+                  case .notDetermined:
+                    showLocationAccessAlert()
+                  case .restricted, .denied:
+                    showLocationAccessAlert()
+                  case .authorizedAlways, .authorizedWhenInUse:
+                    locationManager.startUpdatingLocation()
+                    fetchData()
+                  default:
+                      print("Invalid AuthorizationStatus")
+                  }
+              } else {
+                 showLocationAccessAlert()
+              }
     }
     
     func fetchData() {
@@ -149,7 +162,6 @@ extension ModelVc :  UICollectionViewDelegate, UICollectionViewDataSource ,UICol
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let noOfCellsInRow = 2
-        
         let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
         
         let totalSpace = flowLayout.sectionInset.left
@@ -183,7 +195,7 @@ extension ModelVc {
 
        @objc private func refreshOptions(sender: UIRefreshControl) {
            arrayofModel.removeAll()
-           fetchData()
+           checkLocationPermission()
            sender.endRefreshing()
        }
 }

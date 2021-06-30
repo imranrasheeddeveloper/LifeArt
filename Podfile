@@ -27,6 +27,7 @@ pod 'MaterialComponents/TextControls+OutlinedTextAreas'
 pod 'MaterialComponents/TextControls+OutlinedTextFields'
 pod 'MaterialComponents/Snackbar'
 pod 'MDFInternationalization'
+pod 'SwiftyStoreKit'
 
 post_install do |installer|
 installer.pods_project.targets.each do |target|

@@ -7,7 +7,7 @@
 
 import UIKit
 import  Firebase
-import StoreKit
+import SwiftyStoreKit
 struct SettingsModel {
 var detailLbl : String
 var iconImg : UIImage
@@ -115,10 +115,33 @@ func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> U
 
     
     func InAppPurchase() {
-        if SKPaymentQueue.canMakePayments(){
-            let paymentrequest = SKMutablePayment()
-            paymentrequest.productIdentifier = productID
-            SKPaymentQueue.default().add(paymentrequest)
+        SwiftyStoreKit.purchaseProduct("com.lifeArt.app.sub", quantity: 1, atomically: true) { result in
+            switch result {
+            case .success(let purchase):
+                print(purchase.productId)
+                addLottieAnimation(string: "success", view: self.view)
+            case .error(let error):
+                switch error.code {
+                case .unknown: print("Unknown error. Please contact support")
+                    showError(viewController: self)
+                case .clientInvalid: print("Not allowed to make the payment")
+                    showError(viewController: self)
+                case .paymentCancelled: break
+                case .paymentInvalid:
+                    showError(viewController: self)
+                    print("The purchase identifier was invalid")
+                case .paymentNotAllowed: print("The device is not allowed to make the payment")
+                    showError(viewController: self)
+                case .storeProductNotAvailable: print("The product is not available in the current storefront")
+                    showError(viewController: self)
+                case .cloudServicePermissionDenied: print("Access to cloud service information is not allowed")
+                    showError(viewController: self)
+                case .cloudServiceNetworkConnectionFailed: print("Could not connect to the network")
+                case .cloudServiceRevoked: print("User has revoked permission to use this cloud service")
+                    showError(viewController: self)
+                default: print((error as NSError).localizedDescription)
+                }
+            }
         }
     }
 }

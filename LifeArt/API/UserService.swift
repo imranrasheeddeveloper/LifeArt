@@ -30,7 +30,6 @@ struct UserService{
             guard let dictionary = snapshot.value as? [String: Any] else {return}
             let uid = snapshot.key
             let user = User(uid: uid, dictionary: dictionary)
-            dump(user)
             completion(user)
         }
     }

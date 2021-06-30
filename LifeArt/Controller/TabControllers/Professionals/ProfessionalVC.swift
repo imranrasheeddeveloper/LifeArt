@@ -29,10 +29,7 @@ class ProfessionalVC: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
     }
     
-    func loadData() {
-        
-    }
-
+    
 }
 extension ProfessionalVC :  UITableViewDataSource , UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

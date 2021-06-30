@@ -25,9 +25,13 @@
 	<key>NSCameraUsageDescription</key>
 	<string>LifeArt want to Use Your Camera</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Life Art Want to Know your Current Location</string>
+	<string>Life Art show your location</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Life Art show your location</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Life Art show your location</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Life Art Want to Know your Current Location</string>
+	<string>Life Art show your location</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>LifeArt Want to Access your Photos</string>
 	<key>UIApplicationSceneManifest</key>

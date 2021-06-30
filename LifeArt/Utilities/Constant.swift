@@ -127,3 +127,14 @@ func Success(viewController : UIViewController) {
     customAlert.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
     viewController.present(customAlert, animated: true, completion: nil)
 }
+func showLocationAccessAlert() {
+       let alertController = UIAlertController(title: "Location Permission Required", message: "Please enable location permissions in settings.", preferredStyle: UIAlertController.Style.alert)
+       let okAction = UIAlertAction(title: "settings", style: .default, handler: {(cAlertAction) in
+           UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+       })
+       let cancelAction = UIAlertAction(title: "cancel", style: UIAlertAction.Style.cancel)
+       alertController.addAction(cancelAction)
+       alertController.addAction(okAction)
+       let appdelegate = UIApplication.shared.delegate as? AppDelegate
+       appdelegate?.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+   }

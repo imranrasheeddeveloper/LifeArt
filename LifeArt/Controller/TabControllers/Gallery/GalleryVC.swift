@@ -15,21 +15,21 @@ protocol GalleryVCDelegate {
 }
 
 
-class GalleryVC: UIViewController , postCellDelegate{
+class GalleryVC: UIViewController{
     
     @IBOutlet weak var tableview :    UITableView!
     @IBOutlet weak var topSearchView: UIView!
-    
+    var count = 0
     let delegate = GalleryDelegate()
     public var postArray = [Post]()
-    public var userArray = [User]()
-    public var postLikeCount  = [String]()
-    public var postNumberOfComments  = [String]()
-    public var postLikesArray = [PostLikes]()
-    let group = DispatchGroup()
+    public var tempPostArray = [Post]()
     var locationManager:CLLocationManager!
     var refreshControl: UIRefreshControl!
-   
+    let group = DispatchGroup()
+    var flag = false
+    var previousKey: String = ""
+    
+    
     //MARK:- LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,18 +47,12 @@ class GalleryVC: UIViewController , postCellDelegate{
         super.viewWillAppear(animated)
         setStatusBar()
         hideKeyboard()
-        postLikesArray.removeAll()
-        PostService.shared.fetchLikesGallery { [self] (array) in
-            postLikesArray = array
-            fetchFeeds()
-        }
+        fetchPost()
+        
     }
     @objc func refresh(_ sender: Any) {
-        postLikesArray.removeAll()
-        PostService.shared.fetchLikesGallery { [self] (array) in
-            postLikesArray = array
-            fetchFeeds()
-        }
+        
+          fetchPost()
     }
     
     
@@ -91,11 +85,11 @@ class GalleryVC: UIViewController , postCellDelegate{
         tableview.register(UINib(nibName: "PostCell", bundle: nil), forCellReuseIdentifier: "PostCell")
     }
     
-
+    
     
     //MARK:- Actions
     @IBAction func openMessages(_ sender: UIButton) {
-        let Chat = ChatViewController()
+        _ = ChatViewController()
         self.pushToController(from: .Home, identifier: .ChatVC)
         //self.navigationController?.pushViewController(Chat, animated: true)
     }
@@ -107,7 +101,7 @@ class GalleryVC: UIViewController , postCellDelegate{
     
     @IBAction func profileBtn(_ sender: Any) {
         self.pushToController(from: .Home, identifier: .MyProfileVC)
-
+        
     }
     
     
@@ -116,48 +110,24 @@ class GalleryVC: UIViewController , postCellDelegate{
     }
     //MARK:-API
     
-    func fetchFeeds(){
-        tableview.isHidden = true
-        addLottieAnimation(string: "PostLoading", view: self.view)
-        postArray.removeAll()
-        userArray.removeAll()
-        postLikeCount.removeAll()
-        postNumberOfComments.removeAll()
-        PostService.shared.fetchPost { [self] (post) in
-            self.postArray = post
-            arrayOfPosts = post
-            for post in postArray{
-                UserService.shared.fetchUser(uid: post.postData.user) { (user) in
-                    PostService.shared.fetchLikesOnPost(postId: post.key) { (count) in
-                        PostService.shared.fetchNumberOfComments(postId: post.key) { (commentsCount) in
-                            self.userArray.append(user)
-                            postLikeCount.append(String(count))
-                            postNumberOfComments.append(String(commentsCount))
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-                                    tableview.isHidden = false
-                                    removeLottieAnimation()
-                                    self.tableview.reloadData()
-                                    self.refreshControl.endRefreshing()
-                                })
-                        }
-                       
-                    }
-                }
-            }
-        }
-    }
     
 }
 
 //MARK:- Post Cell delegate
-extension GalleryVC {
+extension GalleryVC : postCellDelegate{
     
-    func delete() {
-        self.fetchFeeds()
+    func delete(tag : Int) {
+        PostService.shared.deletePost(childID: postArray[tag].key) { (delete) in
+//            if delete {
+//                fetchPost()
+//            }
+//            else{
+//
+//            }
+        }
     }
     
     func comments(tag: Int) {
-        print(tag)
         commentsTag = postArray[tag].key
         postOwner   = postArray[tag].postData.user
         presenttSheet(tag: tag, view: self.view, controller: self, Identifier: .CommentsVC, storyBoard: .Home)
@@ -166,36 +136,45 @@ extension GalleryVC {
         postTag = tag
     }
     func likePost(tag: Int) {
-        PostService.shared.fetchLikesGallery { [self] (result) in
-            //for data in result {
-                PostService.shared.likePost(postId: postArray[tag].key) { [self] (error, ref) -> (Void) in
-                   
-                   postLikesArray.append(PostLikes(postID: postArray[tag].key, data: postLikeData(userID: Auth.auth().currentUser?.uid, like: 1)))
-                    
-                    DispatchQueue.main.async {
-                        self.tableview.reloadData()
+        PushNotificationSender.shared.sendPushNotification(to: postArray[tag].postData.user, title: "Someone Liked Your Post", body: "Liked on Your Post")
+        
+    }
+    
+    func fetchPost() {
+        
+        REF_Posts.child("artists").observe(.value) { [self] (snapshot) in
+            
+            for (i , snap) in snapshot.children.enumerated() {
+                let postSnap = snap as! DataSnapshot
+                let postDict = postSnap.value as! [String:AnyObject]
+                tempPostArray.removeAll()
+                UserService.shared.fetchArtistUser(uid: postDict["user"] as! String) { (user) in
+                    PostService.shared.fetchLikesOnPost(postId: postSnap.key) { (totalLikes) in
+                        PostService.shared.fetchNumberOfComments(postId: postSnap.key) { (totalComments) in
+                            PostService.shared.fetchAlreadyLiked(postkey: postSnap.key) {
+                                [self] (exist) in
+                                if exist {
+                                  flag = true
+                                }
+                                else{
+                                  flag = false
+                                }
+                                    let post = Post(key: postSnap.key, postData: PostData(dictionary: postDict), userData: PostUserData(fullName: user.firstname, lastName: user.lastname, profileImage: user.image), postLikeAndCommentsData: PostLikeAndCommentsData(numberOfLikes: String(totalLikes), numberOfComments: String(totalComments), liked: flag))
+                                        tempPostArray.append(post)
+                                    postArray = tempPostArray
+                                    DispatchQueue.main.async {
+                                        self.tableview.reloadData()
+                                      
+                                    }
+                            }
+                        }
                     }
-                    
-                    PushNotificationSender.shared.sendPushNotification(to: postArray[tag].postData.user, title: "Someone Liked Your Post", body: "Liked on Your Post")
-               // }
-//                if data.postID == postArray[tag].key
-//                {
-//
-//                }
-               // else {
-//                    PostService.shared.unLikePost(postId: postArray[tag].key) { (error, ref) -> (Void) in
-//                        if error != nil {
-//                            print(error as Any)
-//                        }
-//                    }
-//                }
-                
-                
+                }
             }
         }
         
     }
-    
-    
 }
+
+
 

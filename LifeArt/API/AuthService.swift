@@ -31,6 +31,7 @@ enum AccountType {
     case Model
 }
 
+
 struct AuthService {
     static let shared = AuthService()
     
@@ -78,13 +79,10 @@ struct AuthService {
                             REF_Models.child(uid).child("Interest").childByAutoId().updateChildValues(["name" : v])
                         }
                     }
-                   
-                  
                 }
             }
         }
     }
-    
     func dictionry(bio : String , city : String , country : String, email :  String , firstname : String , lastName : String , url : String , lastname : String , passwrod : String , phone : String , website : String , type : String , lat : Double , lon :  Double) -> [String : Any] {
        return ["bio": bio,
                       "city": city,

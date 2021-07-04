@@ -66,7 +66,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="dateLbl" destination="rLe-g9-0Fy" id="CJv-Sp-CSf"/>
-                <outlet property="responseLbl" destination="QkE-YL-1By" id="pEH-W1-X7G"/>
+                <outlet property="message" destination="QkE-YL-1By" id="eM4-jw-BPg"/>
                 <outlet property="userImage" destination="it8-qq-AVw" id="XZl-ME-5Hy"/>
                 <outlet property="userNameLbl" destination="dAq-OS-gVs" id="FBX-mZ-BOo"/>
             </connections>

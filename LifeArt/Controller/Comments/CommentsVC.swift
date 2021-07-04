@@ -9,7 +9,7 @@
 import UIKit
 
 class CommentsVC: UIViewController {
-    
+    var count = 0
     //MARK:- Outlets
     @IBOutlet weak var tableView : UITableView!
     @IBOutlet weak var commentsView : UIView!
@@ -59,6 +59,7 @@ class CommentsVC: UIViewController {
     }
 
     func fetchComments() {
+       
         CommentsService.shared.fetchCommentstServices { [self] (comments) in
             self.array.append(contentsOf: comments)
             for (index , _) in array.enumerated(){
@@ -111,16 +112,19 @@ extension CommentsVC : UITableViewDataSource , UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
         let cell = tableView.dequeueReusableCell(withIdentifier: "CommentsCell", for: indexPath) as! CommentsCell
         cell.commentText.text = array[indexPath.row].commentsData.comment
         cell.userImage.sd_setImage(with:URL(string:users[indexPath.row].image),
                                    placeholderImage: UIImage(named: "placeholder.png"))
         cell.fullname.text = "\(users[indexPath.row].firstname) \(users[indexPath.row].lastname)"
         cell.selectionStyle = .none
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
         return 90 + cellSize(forWidth: self.view.frame.size.width, text: array[indexPath.row].commentsData.comment).height
         }
     func cellSize(forWidth width: CGFloat, text : String) -> CGSize {

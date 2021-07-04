@@ -72,10 +72,7 @@ class ProfessionalProfileVC: UIViewController, UICollectionViewDelegate, UITable
             collectionViewLayout.dataSource = photosDataSource
             collectionViewLayout.delegate = self
         }
-        PostService.shared.fetchLikesGallery { [self] (array) in
-            postLikesArray = array
-            fetchFeeds()
-        }
+      fetchFeeds()
     
         ApiCalling()
         
@@ -242,9 +239,10 @@ extension ProfessionalProfileVC : UICollectionViewDelegateFlowLayout{
     }
 }
 extension ProfessionalProfileVC : postCellDelegate{
-    func delete() {
-        fetchFeeds()
+    func delete(tag: Int) {
+        
     }
+ 
     
    
     func report(tag: Int) {

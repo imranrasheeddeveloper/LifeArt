@@ -16,7 +16,7 @@ protocol postCellDelegate {
     func comments(tag : Int)
     func report(tag : Int)
     func likePost(tag : Int)
-    func delete()
+    func delete(tag : Int)
 }
 
 class PostCell: UITableViewCell{
@@ -102,10 +102,8 @@ extension PostCell: ContextMenuDelegate{
         
         switch menuClick {
         case .deletePost:
-            PostService.shared.deletePost(childID: arrayOfPosts[postTag!].key) { [self] (result) in
-                self.window?.rootViewController!.showToast(message: "Post Deleted", seconds: 1.0)
-                delegate.delete()
-            }
+          
+            delegate.delete(tag: postTag!)
             break
             
 //        case .reportPost:

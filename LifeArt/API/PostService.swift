@@ -23,34 +23,66 @@ struct PostService{
    
     
     //MARK: - Fetch Post
-    mutating func fetchPost(completion: @escaping([Post]) -> Void) {
+    func fetchPost(completion: @escaping([Post]) -> Void) {
         var postArray = [Post]()
-        REF_Posts.child("artists").observeSingleEvent(of: .value) { (snapshot) in
-            //guard let dictionary = snapshot.value as? [String: Any] else {return}
+        REF_Posts.child("artists").observe(.value) { (snapshot) in
             for snap in snapshot.children {
-                let userSnap = snap as! DataSnapshot
-                //let uid = userSnap.key //the uid of each user
-                let userDict = userSnap.value as! [String:AnyObject]
-                let post = Post(key: userSnap.key, postData: PostData(dictionary: userDict))
-                postArray.append(post)
+                let postSnap = snap as! DataSnapshot
+                let postDict = postSnap.value as! [String:AnyObject]
+                UserService.shared.fetchArtistUser(uid: postDict["user"] as! String) { (user) in
+                    fetchLikesOnPost(postId: postSnap.key) { (totalLikes) in
+                        fetchNumberOfComments(postId: postSnap.key) { (totalComments) in
+                            fetchAlreadyLiked(postkey: postSnap.key) { (exist) in
+                                if exist {
+                                    let post = Post(key: postSnap.key, postData: PostData(dictionary: postDict), userData: PostUserData(fullName: user.firstname, lastName: user.lastname, profileImage: user.image), postLikeAndCommentsData: PostLikeAndCommentsData(numberOfLikes: String(totalLikes), numberOfComments: String(totalComments), liked: true))
+                                        postArray.append(post)
+                                }
+                                else{
+                                    let post = Post(key: postSnap.key, postData: PostData(dictionary: postDict), userData: PostUserData(fullName: user.firstname, lastName: user.lastname, profileImage: user.image), postLikeAndCommentsData: PostLikeAndCommentsData(numberOfLikes: String(totalLikes), numberOfComments: String(totalComments), liked: false))
+                                        postArray.append(post)
+                                    
+                                    DispatchQueue.main.async {
+                                        completion(postArray)
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                }
             }
-            DispatchQueue.main.async {
-                completion(postArray)
-            }
+            
         }
     }
     
-    mutating func fetchPostOfModel(completion: @escaping([Post]) -> Void) {
+    func fetchPostOfModel(completion: @escaping([Post]) -> Void) {
         var postArray = [Post]()
-        REF_Posts.child("models").observeSingleEvent(of: .value) { (snapshot) in
-            //guard let dictionary = snapshot.value as? [String: Any] else {return}
+        REF_Posts.child("models").observe(.childAdded) { (snapshot) in
             for snap in snapshot.children {
-                let userSnap = snap as! DataSnapshot
-                //let uid = userSnap.key //the uid of each user
-                print(userSnap.key)
-                let userDict = userSnap.value as! [String:AnyObject]
-                let post = Post(key: userSnap.key, postData: PostData(dictionary: userDict))
-                postArray.append(post)
+                let postSnap = snap as! DataSnapshot
+                let postDict = postSnap.value as? [String:AnyObject]
+                UserService.shared.fetchModelsUser(uid: postDict?["user"] as? String ?? "") { (user) in
+                    fetchLikesOnPost(postId: postSnap.key) { (totalLikes) in
+                        fetchNumberOfComments(postId: postSnap.key) { (totalComments) in
+                            fetchAlreadyLiked(postkey: postSnap.key) { (exist) in
+                                if exist {
+                                    let post = Post(key: postSnap.key, postData: PostData(dictionary: postDict ?? [:]), userData: PostUserData(fullName: user.firstname, lastName: user.lastname, profileImage: user.image), postLikeAndCommentsData: PostLikeAndCommentsData(numberOfLikes: String(totalLikes), numberOfComments: String(totalComments), liked: true))
+                                        postArray.append(post)
+                                }
+                                else{
+                                    let post = Post(key: postSnap.key, postData: PostData(dictionary: postDict ?? [:]), userData: PostUserData(fullName: user.firstname, lastName: user.lastname, profileImage: user.image), postLikeAndCommentsData: PostLikeAndCommentsData(numberOfLikes: String(totalLikes), numberOfComments: String(totalComments), liked: false))
+                                        postArray.append(post)
+                                }
+                            }
+                            
+                            
+                            
+                            
+                           
+                        }
+                    }
+
+                }
             }
             DispatchQueue.main.async {
                 completion(postArray)
@@ -60,7 +92,7 @@ struct PostService{
     
 
     
-    func creatPost(account : AccountType , post: CreatePost , completion: @escaping(Error?, DatabaseReference) -> (Void)) {
+    func creatPost(post: CreatePost , completion: @escaping(Error?, DatabaseReference) -> (Void)) {
         AppDelegate.shared.loadindIndicator(title: "Uploading Post")
         if let data = post.image.pngData() {
             FirebaseStorageManager().uploadImageData(data: data, serverFileName: UUID().uuidString) { (isSuccess, url) in
@@ -82,14 +114,18 @@ struct PostService{
                               "user" : uid,
                 ]
                 as [String : Any]
-                //check if the user is 'Artist' or 'Model'
-                switch account {
-                case .Artist :
-                    REF_Posts.child("artists").childByAutoId().updateChildValues(values, withCompletionBlock: completion)
-                case .Model:
-                    REF_Posts.child("models").childByAutoId().updateChildValues(values, withCompletionBlock: completion)
+                guard let userId = currentUserID else {return}
+                UserService.shared.checkArtistExist(uid: userId) { (result) in
+                    if result {
+                        REF_Posts.child("artists").childByAutoId().updateChildValues(values, withCompletionBlock: completion)
+                    }
+                    else{
+                        REF_Posts.child("models").childByAutoId().updateChildValues(values, withCompletionBlock: completion)
+                    }
                 }
+
                 AppDelegate.shared.removeLoadIndIndicator()
+                
             }
         }
     }
@@ -122,7 +158,7 @@ struct PostService{
     }
     
     func fetchNumberOfComments(postId : String , completion: @escaping(UInt) -> Void) {
-        REF_Comments.child(postId).observeSingleEvent(of: .value) { (snapshot) in
+        REF_Comments.child(postId).observe(.value) { (snapshot) in
             completion(snapshot.childrenCount)
         }
     }
@@ -130,7 +166,7 @@ struct PostService{
     
    
     func fetchLikes(completion: @escaping() -> Void) {
-       REF_Likes.observeSingleEvent(of: .value) { (snapshot) in
+       REF_Likes.observe(.value) { (snapshot) in
           
            for snap in snapshot.children {
                let userSnap = snap as! DataSnapshot
@@ -142,21 +178,16 @@ struct PostService{
            }
        }
    }
-    func fetchLikesGallery(completion: @escaping([PostLikes]) -> Void) {
-       var postLikeArray = [PostLikes]()
-       REF_Likes.observeSingleEvent(of: .value) { (snapshot) in
-          
-           for snap in snapshot.children {
-               let userSnap = snap as! DataSnapshot
-               let userDict = userSnap.value as! [String:AnyObject]
-               let postID = userSnap.key
-            for (key , value) in userDict{
-               let obj = PostLikes(postID: postID, data: postLikeData(userID: key, like: value as? Int))
-                postLikeArray.append(obj)
+    func fetchAlreadyLiked(postkey : String, completional: @escaping(Bool) -> Void) {
+        guard let uid = currentUserID else { return  }
+        REF_Likes.child(postkey).child(uid).observeSingleEvent(of: .value) {(snapshot) in
+            if snapshot.exists() {
+                completional(true)
             }
-           }
-        completion(postLikeArray)
-       }
+            else{
+                completional(false)
+            }
+        }
    }
     
     func deletePost(childID : String , completional : @escaping(Bool) -> Void) {

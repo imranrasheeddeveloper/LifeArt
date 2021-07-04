@@ -27,7 +27,6 @@ class CreatePostVC: UIViewController {
     
     //MARK:- variable declaration
     
-    var accountType : AccountType = .Artist
     var user : User?
     
     
@@ -40,7 +39,6 @@ class CreatePostVC: UIViewController {
         NavigationBarView.dropShadow()
         NavigationBarView.roundCorners(corners: .layerMinXMaxYCorner, radius: 30)
         bottomView.dropShadow()
-        checkUserType()
         setupTextfileds()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -72,16 +70,6 @@ class CreatePostVC: UIViewController {
   
     //MARK:- Helper Functions
     
-    func checkUserType() {
-     REF_Artists.child(Auth.auth().currentUser!.uid).observe(.value) { [self] (snapshot) in
-            if snapshot.exists() {
-                accountType = .Artist
-            }
-            else{
-                accountType = .Model
-            }
-        }
-    }
     
     @IBAction func addPost(_ sender: UIButton) {
         let date = currentDate()
@@ -131,7 +119,7 @@ class CreatePostVC: UIViewController {
     func apiCalling2(date : String , time : String){
         if validation() {
             let post = CreatePost(date: date, desc: descriptionTF.text ?? "test", image: selectedImage.image ?? #imageLiteral(resourceName: "art2"), medium: meduimTF.text!, size: sizeTF.text!, time: time, title: postTitleTF.text ?? "Test" , user: Auth.auth().currentUser!.uid)
-            PostService.shared.creatPost(account: accountType , post: post) { [self] (eror, ref) -> (Void) in
+            PostService.shared.creatPost(post: post) { [self] (eror, ref) -> (Void) in
                 if eror == nil{
                     self.showToast(message: "Post Uploaded", seconds: 1.0)
                     
@@ -145,7 +133,7 @@ class CreatePostVC: UIViewController {
                     
                 }
                 else{
-                    print(eror?.localizedDescription as Any)
+                  showError(viewController: self)
                 }
             }
         
@@ -155,35 +143,6 @@ class CreatePostVC: UIViewController {
     
     
     
-//    func apiCalling(date :  String , time : String) {
-//        if descriptionTF.text != "" {
-//            if postTitleTF.text != ""{
-//                if meduimTF.text != ""{
-//                    if sizeTF.text != ""{
-//                        let post = CreatePost(date: date, desc: descriptionTF.text ?? "test", image: selectedImage.image ?? #imageLiteral(resourceName: "art2"), medium: meduimTF.text!, size: sizeTF.text!, time: time, title: postTitleTF.text ?? "Test" , user: Auth.auth().currentUser!.uid)
-//                        PostService.shared.creatPost(account: accountType , post: post) { [self] (eror, ref) -> (Void) in
-//                            if eror == nil{
-//                                self.showToast(message: "Post Uploaded", seconds: 1.0)
-//
-//                                guard let fullName = user?.firstname else { return }
-//                                PushNotificationSender.shared.sendPushNotification(to: "" , title: fullName  , body: descriptionTF.text!)
-//                                postTitleTF.text = ""
-//                                descriptionTF.text = ""
-//                                meduimTF.text = ""
-//                                sizeTF.text = ""
-//                                selectedImage.image = nil
-//
-//                            }
-//                            else{
-//                                print(eror?.localizedDescription as Any)
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//
-//    }
     func fetchUser() {
         guard let uid = Auth.auth().currentUser?.uid else {return}
         UserService.shared.checkArtistExist(uid: uid) { (result) in

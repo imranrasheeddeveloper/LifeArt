@@ -127,7 +127,6 @@ struct UserService{
     }
     func checkArtistExist(uid: String, completion: @escaping(Bool) -> Void) {
         REF_Artists.child(uid).observe(.value) {(snapshot) in
-            print(uid)
             if snapshot.exists() {
                 completion(true)
             }

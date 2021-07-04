@@ -16,8 +16,6 @@ class EditProfile: UIViewController {
             lastNameTF.text = user?.lastname
             emailTF.text = user?.email
             countryTF.text = user?.country
-           // cityTF.text = user?.city
-          //  phoneTF.text = user?.phone
             websiteTF.text  = user?.website
             contractNoTF.text = user?.contractNo
             bioTF.text = user?.bio

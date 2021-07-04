@@ -19,17 +19,14 @@ struct CommentsService{
     static let shared = CommentsService()
     func fetchCommentstServices(completion: @escaping([Comments]) -> Void) {
         var commentsArray = [Comments]()
-        REF_Comments.observeSingleEvent(of: .value) { (snapshot) in
+        REF_Comments.observeSingleEvent(of : .value) { (snapshot) in
             guard let commentsDict = (snapshot.value as? [String:AnyObject]) else{return}
             for (commentkey,values) in commentsDict{
                 let val = values as? [String : AnyObject]
                 for (_ , value) in val! {
-                    print(commentsTag)
-                    print(commentkey)
                     if commentkey == commentsTag{
                         commentsArray.append(Comments(key: commentkey, commentsData: CommentsData(dictionary: value as! [String : AnyObject])))
                     }
-                    
                 }
             }
             DispatchQueue.main.async {

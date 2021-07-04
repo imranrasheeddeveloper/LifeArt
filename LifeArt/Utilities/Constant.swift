@@ -10,7 +10,13 @@ import Foundation
 import Lottie
 import SystemConfiguration
 import MaterialComponents.MaterialSnackbar
+import Firebase
+
+var currentUserID = Auth.auth().currentUser?.uid
 var animationView: AnimationView!
+
+
+
 func  addLottieAnimation(string : String ,view : UIView ) {
     animationView = .init(name: string)
     animationView.translatesAutoresizingMaskIntoConstraints = false
@@ -98,9 +104,6 @@ var menuClick : MenuClick?
 
 var postTag : Int?
 
-var arrayOfPosts = [Post]()
-
-
 func snackBar(str : String)  {
     let manager = MDCSnackbarManager()
     let message = MDCSnackbarMessage()
@@ -138,3 +141,38 @@ func showLocationAccessAlert() {
        let appdelegate = UIApplication.shared.delegate as? AppDelegate
        appdelegate?.window?.rootViewController?.present(alertController, animated: true, completion: nil)
    }
+
+func listenForAllChildEvents(atPath path: String, completion: @escaping(_ snapshot: DataSnapshot?, _ error: Error?, _ eventType: DataEventType?) -> ()) {
+        var ref: DatabaseReference!
+        ref = Database.database().reference()
+        let itemRef = ref.root.child(path)
+        itemRef.observe(.childAdded, with: { (snapshot) in
+            completion(snapshot,nil,DataEventType.childAdded)
+        }) { (error) in
+            completion(nil,error,nil)
+        }
+        itemRef.observe(.childMoved, with: { (snapshot) in
+            completion(snapshot,nil,DataEventType.childMoved)
+        }) { (error) in
+            completion(nil,error,nil)
+        }
+        itemRef.observe(.childRemoved, with: { (snapshot) in
+            completion(snapshot,nil,DataEventType.childRemoved)
+        }) { (error) in
+            completion(nil,error,nil)
+        }
+        itemRef.observe(.childChanged, with: { (snapshot) in
+            completion(snapshot,nil,DataEventType.childChanged)
+        }) { (error) in
+            completion(nil,error,nil)
+        }
+    }
+
+extension Double {
+    func getDateStringFromUnixTime(dateStyle: DateFormatter.Style, timeStyle: DateFormatter.Style) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = dateStyle
+        dateFormatter.timeStyle = timeStyle
+        return dateFormatter.string(from: Date(timeIntervalSince1970: self))
+    }
+}

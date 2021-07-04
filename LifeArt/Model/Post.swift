@@ -8,11 +8,15 @@
 
 import Foundation
 
+typealias PostModel = [Post]
+
 struct PostData {
     var date, desc: String
     var image: String
     var medium, size, time, title: String
     var user: String
+  
+    
     init(dictionary: [String: Any]) {
         self.user = dictionary["user"] as? String ?? ""
         self.date = dictionary["date"] as? String ?? ""
@@ -22,10 +26,25 @@ struct PostData {
         self.size = dictionary["size"] as? String ?? ""
         self.time = dictionary["time"] as? String ?? ""
         self.title = dictionary["title"] as? String ?? ""
+    
     }
 }
 
 struct Post {
     var key : String
     var postData : PostData
+    var userData : PostUserData
+    var postLikeAndCommentsData : PostLikeAndCommentsData
+}
+struct PostUserData {
+    var fullName : String
+    var lastName : String
+    var profileImage : String
+    
+}
+
+struct PostLikeAndCommentsData {
+    var numberOfLikes : String
+    var numberOfComments : String
+    var liked : Bool
 }

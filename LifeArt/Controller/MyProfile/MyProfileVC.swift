@@ -65,10 +65,7 @@ class MyProfileVC: UIViewController, UICollectionViewDelegate, UIViewControllerT
     //MARK:- Life Cycle
     override func viewDidLoad() {
         setupViews()
-        PostService.shared.fetchLikesGallery { [self] (array) in
-            postLikesArray = array
-            fetchFeeds()
-        }
+       
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -349,11 +346,10 @@ extension MyProfileVC :  UITableViewDelegate{
 //MARK : - postCellDelegate
 extension MyProfileVC : postCellDelegate
 {
-    func delete() {
-        fetchFeeds()
+   
+    func delete(tag: Int) {
+        
     }
-    
-    
     
     func report(tag: Int) {
         

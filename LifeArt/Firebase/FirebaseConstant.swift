@@ -26,4 +26,5 @@ let REF_Reported_Posts = DB_REF.child("Reported_posts")
 
 
 
+
 typealias DatabaseCompletion = ((Error?, DatabaseReference) -> Void)

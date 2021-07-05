@@ -144,7 +144,7 @@ extension GalleryVC : postCellDelegate{
         
         REF_Posts.child("artists").observe(.value) { [self] (snapshot) in
             
-            for (i , snap) in snapshot.children.enumerated() {
+            for (_ , snap) in snapshot.children.enumerated() {
                 let postSnap = snap as! DataSnapshot
                 let postDict = postSnap.value as! [String:AnyObject]
                 tempPostArray.removeAll()

@@ -28,7 +28,6 @@ class OverlayView: UIViewController  {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.allowsMultipleSelection = true
-        
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -83,11 +82,10 @@ extension OverlayView: UICollectionViewDelegate, UICollectionViewDataSource, UIC
         if selectData.count != 0{
             for (index, data) in selectData.enumerated() {
                 if arrData[indexPath.row] == data{
-                    arrData.remove(at: index)
+                    selectData.remove(at: index)
                 }
                 else{
                     selectData.append(arrData[indexPath.row])
-                    
                 }
             }
         }

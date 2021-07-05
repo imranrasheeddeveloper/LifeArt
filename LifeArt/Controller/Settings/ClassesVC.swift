@@ -119,7 +119,12 @@ extension ClassesVC : UITableViewDataSource,UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let Chat = ChatViewController()
-        Chat.otherUid = fillterArray[indexPath.row].user
+        if isSearch{
+            Chat.otherUid = fillterArray[indexPath.row].user
+        }else{
+            Chat.otherUid = classesData[indexPath.row].user
+        }
+        
         self.navigationController?.pushViewController(Chat, animated: true)
     }
     

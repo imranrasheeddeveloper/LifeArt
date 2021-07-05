@@ -73,8 +73,7 @@ class ProfessionalProfileVC: UIViewController, UICollectionViewDelegate, UITable
             collectionViewLayout.delegate = self
         }
       fetchFeeds()
-    
-        ApiCalling()
+      ApiCalling()
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -99,6 +98,7 @@ class ProfessionalProfileVC: UIViewController, UICollectionViewDelegate, UITable
     }
     @IBAction func followAction(_ sender: UIButton) {
         let vc = ChatViewController()
+        vc.otherUid = GlobaluserID
         self.navigationController?.pushViewController(vc, animated: true)
     }
     @IBAction func ValueChanged(_ sender: SWSegmentedControl) {

@@ -190,13 +190,13 @@ class SignupVC: UIViewController , UITextFieldDelegate, whoAreYouDelegate{
 }
 extension SignupVC:  UIViewControllerTransitioningDelegate {
     func whoAreYouData(categories : [String] ) {
-       
         categories.forEach({
             guard let whoAreYou = whoAreYou.text else {return}
             let whoAreYouString  = "\(whoAreYou),\($0)"
             self.whoAreYou.text =  String(whoAreYouString.dropFirst())
         })
         selectedArray = categories
+        selectedArray.removeAll()
     }
     
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {

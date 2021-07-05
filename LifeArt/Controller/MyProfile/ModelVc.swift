@@ -61,15 +61,19 @@ class ModelVc: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate 
     }
     
     func fetchData() {
+        guard let uid = currentUserID else { return }
         UserService.shared.fetchModels { [self] (user) in
             for (_ , model) in user.enumerated(){
                 let coordinate =  CLLocation(latitude: model.lat, longitude: model.lon)
                 if userLocation!.distance(from: coordinate) < 50000 {
-                    
                     arrayofModel.append(model)
                     
                 }
-                
+            }
+            for (i, a) in arrayofModel.enumerated(){
+                if a.user == uid{
+                    arrayofModel.remove(at: i)
+                }
             }
             DispatchQueue.main.async {
                 self.collectionView.reloadData()

@@ -33,8 +33,13 @@ class ArtistVC: UIViewController, UITextFieldDelegate {
     func fetchData() {
         UserService.shared.fetchArtist { [self] (user) in
                 arrayofModel = user
+            guard let uid = currentUserID else{return}
+            for (i,a) in arrayofModel.enumerated() {
+                if a.user == uid{
+                    arrayofModel.remove(at: i)
+                }
+            }
                 DispatchQueue.main.async {
-                    
                     self.collectionView.reloadData()
                 }
         }

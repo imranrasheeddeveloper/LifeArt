@@ -51,8 +51,7 @@ class GalleryVC: UIViewController{
         
     }
     @objc func refresh(_ sender: Any) {
-        
-          fetchPost()
+        fetchPost()
     }
     
     
@@ -118,12 +117,6 @@ extension GalleryVC : postCellDelegate{
     
     func delete(tag : Int) {
         PostService.shared.deletePost(childID: postArray[tag].key) { (delete) in
-//            if delete {
-//                fetchPost()
-//            }
-//            else{
-//
-//            }
         }
     }
     
@@ -134,16 +127,19 @@ extension GalleryVC : postCellDelegate{
     }
     func report(tag: Int) {
         postTag = tag
+        
+        PostService.shared.reportPost(postUserId: postArray[tag].key) { (error, ref) -> (Void) in
+            
+        }
+        
     }
     func likePost(tag: Int) {
-        PushNotificationSender.shared.sendPushNotification(to: postArray[tag].postData.user, title: "Someone Liked Your Post", body: "Liked on Your Post")
-        
+        PushNotificationSender.shared.sendPushNotification(to: postArray[tag].postData.user, title: "\(currentUserID ?? "") Liked Your Post", body: "Liked on Your Post")
     }
     
     func fetchPost() {
         
         REF_Posts.child("artists").observe(.value) { [self] (snapshot) in
-            
             for (_ , snap) in snapshot.children.enumerated() {
                 let postSnap = snap as! DataSnapshot
                 let postDict = postSnap.value as! [String:AnyObject]
@@ -154,25 +150,23 @@ extension GalleryVC : postCellDelegate{
                             PostService.shared.fetchAlreadyLiked(postkey: postSnap.key) {
                                 [self] (exist) in
                                 if exist {
-                                  flag = true
+                                    flag = true
                                 }
                                 else{
-                                  flag = false
+                                    flag = false
                                 }
-                                    let post = Post(key: postSnap.key, postData: PostData(dictionary: postDict), userData: PostUserData(fullName: user.firstname, lastName: user.lastname, profileImage: user.image), postLikeAndCommentsData: PostLikeAndCommentsData(numberOfLikes: String(totalLikes), numberOfComments: String(totalComments), liked: flag))
-                                        tempPostArray.append(post)
-                                    postArray = tempPostArray
-                                    DispatchQueue.main.async {
-                                        self.tableview.reloadData()
-                                      
-                                    }
+                                let post = Post(key: postSnap.key, postData: PostData(dictionary: postDict), userData: PostUserData(fullName: user.firstname, lastName: user.lastname, profileImage: user.image), postLikeAndCommentsData: PostLikeAndCommentsData(numberOfLikes: String(totalLikes), numberOfComments: String(totalComments), liked: flag))
+                                tempPostArray.append(post)
+                                postArray = tempPostArray
+                                DispatchQueue.main.async {
+                                    self.tableview.reloadData()
+                                }
                             }
                         }
                     }
                 }
             }
         }
-        
     }
 }
 

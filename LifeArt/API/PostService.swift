@@ -74,11 +74,6 @@ struct PostService{
                                         postArray.append(post)
                                 }
                             }
-                            
-                            
-                            
-                            
-                           
                         }
                     }
 
@@ -158,7 +153,7 @@ struct PostService{
     }
     
     func fetchNumberOfComments(postId : String , completion: @escaping(UInt) -> Void) {
-        REF_Comments.child(postId).observe(.value) { (snapshot) in
+        REF_Comments.child(postId).observeSingleEvent(of: .value) { (snapshot) in
             completion(snapshot.childrenCount)
         }
     }
@@ -166,7 +161,7 @@ struct PostService{
     
    
     func fetchLikes(completion: @escaping() -> Void) {
-       REF_Likes.observe(.value) { (snapshot) in
+        REF_Likes.observeSingleEvent(of: .value) { (snapshot) in
           
            for snap in snapshot.children {
                let userSnap = snap as! DataSnapshot

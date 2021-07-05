@@ -27,6 +27,22 @@ struct Message: MessageType {
     
 }
 
+private struct ImageMediaItem: MediaItem {
+    
+
+    var url: URL?
+    var image: UIImage?
+    var placeholderImage: UIImage
+    var size: CGSize
+
+    init(url: URL) {
+        self.url = url
+        self.size = CGSize(width: 240, height: 240)
+        self.placeholderImage = UIImage()
+    }
+
+}
+
 class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLayoutDelegate,MessagesDisplayDelegate, MessageCellDelegate {
     
     //MARK:- varibale Delration
@@ -119,10 +135,10 @@ class ChatViewController: MessagesViewController, MessagesDataSource,MessagesLay
             DispatchQueue.main.async { [self] in
                 if messageArray[count].type == "image"{
                     if messageArray[count].from == currentUserID{
-                        messages.append(Message(sender: currentUser, messageId: String(count), sentDate: Date().addingTimeInterval(-86400), kind: .photo(URL(string: messageArray[count].message) as! MediaItem)))
+                        messages.append(Message(sender: currentUser, messageId: String(count), sentDate: Date().addingTimeInterval(-86400), kind: .photo(ImageMediaItem(url: URL(string: messageArray[count].message)!))))
                     }
                     else{
-                        messages.append(Message(sender: currentUser, messageId: String(count), sentDate: Date().addingTimeInterval(-86400), kind: .photo(<#T##MediaItem#>)))
+                        messages.append(Message(sender: currentUser, messageId: String(count), sentDate: Date().addingTimeInterval(-86400), kind: .photo(ImageMediaItem(url: URL(string: messageArray[count].message)!))))
                     }
 
                     self.messagesCollectionView.reloadData()
@@ -403,14 +419,13 @@ extension ChatViewController : InputBarAccessoryViewDelegate  {
         nameLabel.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
         nameLabel.heightAnchor.constraint(equalTo: profileImageView.heightAnchor).isActive = true
         
-        containerView.leadingAnchor.constraint(equalTo: titleView.centerXAnchor).isActive = true
-        containerView.centerYAnchor.constraint(equalTo: titleView.centerYAnchor).isActive = true
+        containerView.leadingAnchor.constraint(equalTo: titleView.centerXAnchor , constant: -120).isActive = true
+        containerView.centerYAnchor.constraint(equalTo: titleView.centerYAnchor , constant: 0).isActive = true
       
         self.navigationItem.titleView = titleView
         
 //        titleView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showChatController)))
     }
-    
     
     
 }
